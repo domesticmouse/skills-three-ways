@@ -1,0 +1,3 @@
+interface:
+  display_name: "asciinema"
+  short_description: "Record, replay, and convert terminal sessions"
