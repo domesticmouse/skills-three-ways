@@ -6,10 +6,10 @@ class: text-center
 <!-- S21 -->
 <div class="space-y-4">
   <h1 class="text-4xl font-extrabold text-white">
-    Way 1: Library Review Skills
+    Library Review Skills
   </h1>
   <p class="text-xl font-mono text-cyan-300">
-    libdaisy-guide
+    libdaisy-guide daisysp-guide
   </p>
   <p class="text-base text-gray-400 max-w-xl mx-auto">
     Turning 50,000+ lines of embedded C++ headers into high-signal runbooks
@@ -26,7 +26,7 @@ layout: default
 
 <!-- S22 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">The Pattern: Source Tree &rarr; Architecture Report &rarr; Skill</h2>
+  <h2 class="text-2xl font-bold m-0">Source Tree &rarr; Architecture Report &rarr; Skill</h2>
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
@@ -34,21 +34,21 @@ layout: default
     <strong class="text-white">Clone Source: Check Out the Raw C++ Repo</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Clone <code>electro-smith/libDaisy</code> directly into the workspace</li>
-      <li>Lets the agent inspect actual <code>.h</code> and <code>.cpp</code> files rather than relying on stale training weights</li>
+      <li>Ask agent to inspect source code rather than relying on stale training weights</li>
     </ul>
   </li>
   <li>
     <strong class="text-white">Deep Audit: Synthesize Architecture</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Have AGY survey directory prefixes, linker scripts, memory sections, real-time ISR rules, and module catalogs</li>
+      <li>Have Antigravity survey linker scripts, memory sections, real-time ISR rules, and module catalogs</li>
       <li>Compile findings into a structured architectural reference</li>
     </ul>
   </li>
   <li>
     <strong class="text-white">Package Skill: Distill into <code>.agents/skills/</code></strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Convert the report into a fast Tier-2 <code>SKILL.md</code> cheatsheet plus Tier-3 <code>references/</code> catalogs</li>
-      <li>Future tasks never need to grep 200 headers again</li>
+      <li>Convert the report into a <code>SKILL.md</code> cheatsheet plus <code>references</code> catalogs</li>
+      <li>Future tasks know where to start looking for things</li>
     </ul>
   </li>
 </ol>

@@ -89,8 +89,23 @@ kbd {
   line-height: 1.45 !important;
 }
 
+/* Inline code styling for subtle visibility on dark slides */
+#slide-content :not(pre) > code,
+.slidev-layout :not(pre) > code {
+  font-family: 'Fira Code', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #bae6fd;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.25rem;
+  padding: 0.08rem 0.3rem;
+  font-size: 0.9em;
+}
+
+
+
 /* Fix Slidev Goto dialog bug: hide completely when not open */
 #slidev-goto-dialog:not(.top-5) {
   display: none !important;
 }
+
 
