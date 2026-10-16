@@ -99,7 +99,6 @@ layout: default
         "What are agent skills?"
       </p>
     </div>
-
     <div class="space-y-2 text-sm text-gray-300">
       <div class="font-semibold text-white">What to Watch For in the Recording:</div>
       <ul class="text-xs text-gray-300 space-y-2 list-disc pl-5">
