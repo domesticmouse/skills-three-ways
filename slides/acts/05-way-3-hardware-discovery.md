@@ -62,7 +62,7 @@ layout: cast-full
 title: "Designing the 6-Phase Hardware Probing Plan (PLAN.md)"
 cast: /casts/reverse-engineering-plan.cast
 autoPlay: false
-speed: 3.0
+speed: 10.0
 idleTimeLimit: 1.0
 fit: both
 ---
