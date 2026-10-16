@@ -113,7 +113,7 @@ Click to play: watch AGY scan `libDaisy/src/`, inspect the peripheral headers an
 layout: skill-breakdown
 way: 1
 skill: .agents/skills/libdaisy-guide/SKILL.md
-title: "libdaisy-guide: Frontmatter & Activation Triggers"
+title: Frontmatter & Activation Triggers
 step: Zoom-In 1 of 3
 ---
 
