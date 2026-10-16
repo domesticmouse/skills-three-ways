@@ -79,8 +79,8 @@ layout: default
     <div class="p-5 rounded-xl bg-gray-900/80 border border-gray-800 space-y-3">
       <div class="text-xs font-mono text-amber-400 uppercase">Chronology of a Hardware Impulse Buy</div>
       <ol class="text-sm text-gray-300 space-y-3 list-decimal pl-5">
-        <li>Backed / ordered a <strong>Gamma Mini Synth</strong> and waited patiently while the batch was being manufactured.</li>
-        <li>Months later, late at night, saw an email about the Gamma, completely forgot I already had one in the queue...</li>
+        <li>Ordered a <strong>Gamma Mini Synth</strong> and waited patiently while the batch was being manufactured.</li>
+        <li>Months later, late at night, saw an ad about the Gamma, completely forgot I already had one in the queue...</li>
         <li><strong>Ordered a second one.</strong></li>
       </ol>
     </div>
