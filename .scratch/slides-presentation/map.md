@@ -1,3 +1,5 @@
+# Skills Three Ways Presentation Architecture
+
 ## Destination
 
 A complete technical architecture, presentation structure, and content specification for the "Skills Three Ways" slide deck by Brett Morgan, built with Slidev in `slides/`, integrating embedded asciinema recordings, and configured for deployment to GitHub Pages.
@@ -9,6 +11,7 @@ A complete technical architecture, presentation structure, and content specifica
 - Framework: Slidev (Markdown + Vue 3 / Vite) located in `slides/`.
 - Terminal sessions: Embedded via `asciinema-player` playing `.cast` files.
 - Deployment: GitHub Actions building static output to GitHub Pages.
+- PoC Override ("Plan, don't do"): Ticket 02 executes and deploys a minimal live proof-of-concept Slidev deck (embedding `terminal-recordings/what-are-agent-skills.cast`) to GitHub Pages so the stack can be validated before planning the full slide deck.
 - Relevant skills: `asciinema`, `agent-skills`, `writing-for-agents`, `codebase-design`.
 - Related repository context: https://github.com/domesticmouse/reverse-engineering-gamma
 

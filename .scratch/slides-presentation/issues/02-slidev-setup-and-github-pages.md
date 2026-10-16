@@ -1,9 +1,9 @@
-# Slidev project configuration and GitHub Pages workflow
+# Proof of concept: Slidev + asciinema-player on GitHub Pages
 
-Type: prototype
+Type: task
 Status: open
 Blocked by: 01
 
 ## Question
 
-What is the optimal Slidev project structure in `slides/` (dependencies in `package.json`, Slidev/Vite base URL configuration for `https://domesticmouse.github.io/skills-three-ways/`), and the minimal GitHub Actions workflow (`.github/workflows/deploy-slides.yml`) to build and publish the slides artifact to GitHub Pages?
+Does a minimal Slidev deck in `slides/` embedding `terminal-recordings/what-are-agent-skills.cast` via `AsciinemaPlayer.vue` and deployed via `.github/workflows/deploy-slides.yml` to `https://domesticmouse.github.io/skills-three-ways/` work cleanly and meet the bar as the presentation stack for "Skills Three Ways"?

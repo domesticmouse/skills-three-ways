@@ -1,6 +1,6 @@
 # Terminal recording inventory and scenario scripts
 
-Type: task
+Type: grilling
 Status: open
 Blocked by: 03
 
