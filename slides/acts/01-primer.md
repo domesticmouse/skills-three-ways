@@ -88,46 +88,26 @@ layout: default
 
 <!-- S04 -->
 <div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Asking Antigravity: "What Are Agent Skills?"</h2>
+  <h2 class="text-2xl font-bold m-0">What Are Agent Skills?</h2>
 </div>
 
-<div class="grid grid-cols-12 gap-6 mt-6 items-center">
-  <div class="col-span-7 space-y-4">
-    <div class="p-4 rounded-xl bg-gray-900 border border-gray-700">
-      <div class="text-xs font-mono text-cyan-400 uppercase mb-1">Exact AGY CLI Prompt</div>
-      <p class="font-mono text-base text-white m-0">
-        "What are agent skills?"
-      </p>
-    </div>
-    <div class="space-y-2 text-sm text-gray-300">
-      <div class="font-semibold text-white">What to Watch For in the Recording:</div>
-      <ul class="text-xs text-gray-300 space-y-2 list-disc pl-5">
-        <li>AGY recognizes the question matches its built-in <code>agy-customizations</code> and <code>agent-skills</code> knowledge.</li>
-        <li>Explains how skills live in <code>.agents/skills/&lt;skill-name&gt;/SKILL.md</code>.</li>
-        <li>Highlights on-demand activation via YAML frontmatter descriptions.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="col-span-5 p-5 rounded-xl bg-gray-900/60 border border-gray-800 text-xs text-gray-400 space-y-2">
-    <div class="font-mono text-emerald-400 uppercase">Interactive Player Note</div>
-    <p>
-      On the next slide, the terminal recording is rendered by <code>asciinema-player</code> v3 (WebAssembly)—click the terminal to start playback at 2&times; speed.
-    </p>
-  </div>
+<div class="h-80 flex flex-col items-center justify-center text-center">
+  <p class="text-4xl font-semibold text-white tracking-tight">
+    "I know, let's ask Antigravity!"
+  </p>
 </div>
 
 <!--
-Let's ask Antigravity directly in the terminal: "What are agent skills?" On the next slide, I'll click the terminal player to play back the session.
+Let's ask Antigravity directly in the terminal: "What are agent skills?" 
 -->
 
 ---
 layout: cast-full
 act: Act 1 · Primer
-title: "Recording 01: What Are Agent Skills?"
+title: "Asking Antigravity: What Are Agent Skills?"
 cast: /casts/what-are-agent-skills.cast
-autoPlay: false
-speed: 2.0
+autoPlay: true
+speed: 1.75
 idleTimeLimit: 1.0
 fit: both
 ---
