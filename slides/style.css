@@ -88,3 +88,9 @@ kbd {
   font-size: 0.85rem !important;
   line-height: 1.45 !important;
 }
+
+/* Fix Slidev Goto dialog bug: hide completely when not open */
+#slidev-goto-dialog:not(.top-5) {
+  display: none !important;
+}
+
