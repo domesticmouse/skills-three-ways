@@ -9,7 +9,7 @@ class: text-center
     Hardware Discovery Skills
   </h1>
   <p class="text-xl font-mono text-emerald-300">
-    gamma-pinout &middot; gamma-hardware-controls
+    gamma-pinout &middot; gamma-hardware-controls &middot; gamma-usb-connectivity
   </p>
   <p class="text-base text-gray-400 max-w-xl mx-auto">
     Executing a 6-phase diagnostic firmware plan to map every pin, bus, polarity, and ISR timer
@@ -17,7 +17,7 @@ class: text-center
 </div>
 
 <!--
-Now we had the C++ library skills (Way 1) and the DFU flash/restore skills (Way 2). It was time for Act 5 and Way 3: probing the physical hardware to create our Hardware Discovery Skills.
+Now we had the C++ library skills (Way 1) and the DFU flash/restore skills (Way 2). It was time for Act 5 and Way 3: probing the physical hardware to create our three Hardware Discovery Skills.
 -->
 
 ---
@@ -45,21 +45,21 @@ layout: default
     </ul>
   </li>
   <li>
-    <strong class="text-white">Split Facts vs. Idioms: Two Complementary Skills</strong>
+    <strong class="text-white">Split Facts vs. Idioms: Modular Hardware Skills</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Package raw pinout truth + <code>gamma_pins.h</code> in <code>gamma-pinout</code></li>
-      <li>Package C++ peripheral driver architectures in <code>gamma-hardware-controls</code></li>
+      <li>Package C++ peripheral and USB driver architectures in <code>gamma-hardware-controls</code> and <code>gamma-usb-connectivity</code></li>
     </ul>
   </li>
 </ol>
 
 <!--
-How do you reverse-engineer a board with no schematic? You design a phased sequence of diagnostic firmwares where Phase 1 finds the display, and every subsequent phase uses that display to turn physical actions into verified pin tables.
+How do you reverse-engineer a board with no schematic? You design a phased sequence of diagnostic firmwares where Phase 1 finds the display, and every subsequent phase uses that display to turn physical actions into verified pin tables and driver skills.
 -->
 
 ---
 layout: cast-full
-title: "Recording 04: Designing the 6-Phase Hardware Probing Plan (PLAN.md)"
+title: "Designing the 6-Phase Hardware Probing Plan (PLAN.md)"
 cast: /casts/reverse-engineering-plan.cast
 autoPlay: false
 speed: 3.0
@@ -368,7 +368,7 @@ layout: default
 
 <!-- S57 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">Distilling Facts vs. Idioms: Why Two Hardware Skills?</h2>
+  <h2 class="text-2xl font-bold m-0">Distilling Facts vs. Idioms: Three Modular Hardware Skills</h2>
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
@@ -376,20 +376,27 @@ layout: default
     <strong class="text-white"><code class="text-emerald-300">gamma-pinout</code> &middot; Declarative Hardware Truth</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Answers <strong>"What is connected where?"</strong> via a master 32-row pinout and polarity table</li>
-      <li>Bundles a drop-in <code>resources/gamma_pins.h</code> C++ header with pure hardware constants and zero driver state machines</li>
+      <li>Bundles a drop-in <code>resources/gamma_pins.h</code> C++ header with pure hardware constants</li>
     </ul>
   </li>
   <li>
-    <strong class="text-white"><code class="text-emerald-300">gamma-hardware-controls</code> &middot; Procedural Driver Idioms</strong>
+    <strong class="text-white"><code class="text-emerald-300">gamma-hardware-controls</code> &middot; Front-Panel Driver Idioms</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Answers <strong>"How do I poll and render controls safely?"</strong> via a 1 kHz <code>TIM5</code> ISR Buxton Gray-code encoder state machine</li>
       <li>Provides lock-free key event queues, IIR deadband pot smoothing, and 5 deep subsystem guides in <code>references/*.md</code></li>
     </ul>
   </li>
+  <li>
+    <strong class="text-white"><code class="text-emerald-300">gamma-usb-connectivity</code> &middot; Non-Blocking USB CDC &amp; Reboot</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Answers <strong>"Why is <code>hw.StartLog()</code> silent?"</strong> (Gamma routes USB-C to <code>UsbHandle::FS_EXTERNAL</code> on <code>D29/D30</code>, not the Seed's internal port)</li>
+      <li>Bundles <code>resources/gamma_usb.h</code> for deadlock-free telemetry and the hands-free <code>'b'</code> DFU soft-reboot command</li>
+    </ul>
+  </li>
 </ol>
 
 <!--
-Once Phases 1 through 5 were complete, we made a key architectural decision: we split our hardware knowledge into two skills—`gamma-pinout` for declarative pin truth and `gamma_pins.h`, and `gamma-hardware-controls` for non-blocking C++ driver idioms.
+Once our hardware probing was complete, we split our findings into three focused skills: `gamma-pinout` for declarative pin truth (`gamma_pins.h`), `gamma-hardware-controls` for non-blocking front-panel drivers, and `gamma-usb-connectivity` (`gamma_usb.h`) after discovering the carrier board routes USB-C to `FS_EXTERNAL` pins rather than the Seed's onboard port. Let's zoom into `gamma-pinout` and `gamma-hardware-controls`.
 -->
 
 ---
@@ -401,7 +408,7 @@ step: Zoom-In 1 of 4
 ---
 
 <!-- S58 -->
-<div class="space-y-2 text-s">
+<div class="space-y-2 text-xs">
   <table>
     <thead>
       <tr>
