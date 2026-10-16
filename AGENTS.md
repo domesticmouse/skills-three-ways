@@ -1,5 +1,9 @@
 # AGENTS.md
 
+## Slide deck conventions
+
+- Do **NOT** use badges, pills, or tags (e.g., `<span class="...rounded...">` or `badge-*` classes) in slide titles or headers. Keep slide headings clean.
+
 ## Agent skills
 
 ### Issue tracker

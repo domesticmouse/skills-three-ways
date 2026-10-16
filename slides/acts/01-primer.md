@@ -126,10 +126,13 @@ layout: default
   <h2 class="text-2xl font-bold m-0">Model Context Protocol</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ul class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
   <li>
-    <strong class="text-white">Origins &amp; Shift to Remote:</strong>
-    Started as local desktop execution (stdio); migrated to remote servers as teams moved to the cloud.
+    <strong class="text-white">Local &raquo; Remote</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Started as local desktop execution (stdio)</li>
+      <li>Migrated to remote servers as teams moved to the cloud</li>
+    </ul>
   </li>
   <li>
     <strong class="text-white">The Infrastructure Fix (MCP 2):</strong>
@@ -143,7 +146,7 @@ layout: default
     <strong class="text-white">The Orthogonal Shift: LLMs Can Code:</strong>
     Server infrastructure got easier, but agent capability leaped forward—modern models can write scripts and execute CLI runbooks directly, bypassing rigid RPC wrappers.
   </li>
-</ol>
+</ul>
 
 <!--
 MCP started as a clean way to connect local desktop clients to tools over stdio, then migrated to remote servers. Early on, that meant stateful connections and sticky sessions. MCP 2 addressed that head-on—going stateless and exposing methods in headers so server farms and API gateways can easily route calls.
@@ -158,7 +161,6 @@ layout: default
 <!-- S06b -->
 <div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Always-On Rules</h2>
-  <span class="text-xs font-mono text-blue-400 border border-blue-500/40 px-2 py-0.5 rounded"><code>AGENTS.md</code></span>
 </div>
 
 <div class="grid grid-cols-2 gap-5">
@@ -198,7 +200,6 @@ layout: default
 <!-- S06c -->
 <div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Agent Skills</h2>
-  <span class="text-xs font-mono text-emerald-400 border border-emerald-500/40 px-2 py-0.5 rounded"><code>SKILL.md</code></span>
 </div>
 
 <div class="grid grid-cols-2 gap-5">
