@@ -1,0 +1,15 @@
+{
+  "name": "skills-three-ways-slides",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --base /skills-three-ways/",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.48.0",
+    "@slidev/theme-default": "^0.25.0",
+    "asciinema-player": "^3.8.0",
+    "vue": "^3.4.0"
+  }
+}
