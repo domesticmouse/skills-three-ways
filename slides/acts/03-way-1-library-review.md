@@ -99,7 +99,7 @@ layout: cast-full
 title: "Creating libdaisy-guide from libDaisy"
 cast: /casts/libdaisy-skill-creation.cast
 autoPlay: false
-speed: 2.0
+speed: 20.0
 idleTimeLimit: 1.0
 fit: both
 ---
