@@ -226,7 +226,7 @@ Let's ask Antigravity directly in the terminal: "What are agent skills?"
 layout: cast-full
 title: "Asking Antigravity: What Are Agent Skills?"
 cast: /casts/what-are-agent-skills.cast
-autoPlay: true
+autoPlay: false
 speed: 2.0
 idleTimeLimit: 1.0
 fit: both
