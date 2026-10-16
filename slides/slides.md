@@ -414,9 +414,6 @@ class: text-center
 
 <!-- S11 -->
 <div class="space-y-4">
-  <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full bg-gray-800 text-gray-300 border border-gray-700">
-    Act 2 · Slides 11–20
-  </span>
   <h1 class="text-4xl font-extrabold text-white">
     Primer: What Are Agent Skills?
   </h1>
@@ -799,9 +796,6 @@ class: text-center
 
 <!-- S21 -->
 <div class="space-y-4">
-  <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full badge-way1">
-    Act 3 · Slides 21–34
-  </span>
   <h1 class="text-4xl font-extrabold text-white">
     Way 1: Library Review Skills
   </h1>
@@ -1339,9 +1333,6 @@ class: text-center
 
 <!-- S35 -->
 <div class="space-y-4">
-  <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full badge-way2">
-    Act 4 · Slides 35–46
-  </span>
   <h1 class="text-4xl font-extrabold text-white">
     Way 2: DFU Operational Skills
   </h1>
@@ -1813,9 +1804,6 @@ class: text-center
 
 <!-- S47 -->
 <div class="space-y-4">
-  <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full badge-way3">
-    Act 5 · Slides 47–62
-  </span>
   <h1 class="text-4xl font-extrabold text-white">
     Way 3: Hardware Discovery Skills
   </h1>
@@ -2528,9 +2516,6 @@ class: text-center
 
 <!-- S63 -->
 <div class="space-y-4">
-  <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full badge-mashup">
-    Act 6 · Slides 63–70
-  </span>
   <h1 class="text-4xl font-extrabold text-white">
     The Mashup Skill
   </h1>
@@ -2828,9 +2813,6 @@ class: text-center
 
 <!-- S71 -->
 <div class="space-y-4">
-  <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/40">
-    Act 7 · Slides 71–80
-  </span>
   <h1 class="text-4xl font-extrabold text-white">
     Putting All 7 Skills to the Test
   </h1>
