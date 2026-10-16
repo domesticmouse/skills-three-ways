@@ -53,7 +53,7 @@ How should the narrative beats be structured into concrete Slidev slides, includ
 - **S15**: One for Music, One for Science — Why having a spare unit changes your risk tolerance for hardware hacking
 - **S16**: Asking the Creator How to Get Inside — The annotated photo showing which screws to undo (`gamma-screws.jpg`)
 - **S17**: Inside the Chassis — Discovering the **Electro-Smith Daisy Seed 2 DFM** (ARM Cortex-M7 @ 480 MHz, STM32H750IBK6, PCM3060 stereo codec)
-- **S18**: The Catch — No public schematic, no pinout table, and factory firmware written in closed-source embedded Rust
+- **S18**: The Catch — No public schematic, no pinout table, and closed factory firmware with no public source code
 - **S19**: The Mission — Can an AI coding agent (AGY) reverse-engineer the hardware and build custom C++ DSP synth firmware?
 - **S20**: The Thesis: *Skills Three Ways* — Library Review Skills, DFU Operational Skills, Hardware Discovery Skills (+ The Mashup Skill)
 

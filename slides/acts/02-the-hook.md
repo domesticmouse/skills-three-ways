@@ -216,7 +216,7 @@ layout: default
 
 <!-- S18 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">The Catch: Zero Schematics, Closed-Source Rust</h2>
+  <h2 class="text-2xl font-bold m-0">The Catch: Zero Schematics, Closed-Source Firmware</h2>
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
@@ -230,8 +230,8 @@ layout: default
   <li>
     <strong class="text-white">Closed Factory Firmware</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Stock firmware (<code>gamma-v2.0.3.bin</code>) is distributed only as a raw compiled binary written in embedded Rust</li>
-      <li>No C++ project template or board header exists</li>
+      <li>Stock firmware (<code>gamma-v2.0.3.bin</code>) is distributed only as a raw compiled binary (likely C++) with no public source</li>
+      <li>No C++ project template, board support package, or pin definition header exists</li>
     </ul>
   </li>
   <li>
@@ -248,7 +248,7 @@ layout: default
 </div>
 
 <!--
-Here's the catch: knowing it's a Daisy Seed doesn't tell you how the carrier PCB is wired. There's no schematic, no pinout table, and the stock binary is closed-source Rust. An out-of-the-box coding agent has zero chance of guessing the pins.
+Here's the catch: knowing it's a Daisy Seed doesn't tell you how the carrier PCB is wired. There's no schematic, no pinout table, and the factory binary is closed-source. An out-of-the-box coding agent has zero chance of guessing the pins.
 -->
 
 ---
@@ -336,4 +336,3 @@ layout: default
 <!--
 Across this project, seven skills emerged naturally in three distinct patterns—what I call "Skills Three Ways": Library Review Skills, DFU Operational Skills, and Hardware Discovery Skills, plus a seventh Mashup skill that combines all three.
 -->
-
