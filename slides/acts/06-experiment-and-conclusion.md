@@ -27,7 +27,7 @@ layout: default
 </div>
 
 <div class="p-4 rounded-xl bg-gray-900 border border-gray-700 mt-4">
-  <div class="text-xs font-mono text-cyan-400 uppercase mb-1">Identical Prompt Given to Both Agents (Scenarios 05 &amp; 06)</div>
+  <div class="text-xs font-mono text-cyan-400 uppercase mb-1">Identical Prompt Given to Both Agents</div>
   <p class="font-mono text-sm text-white leading-relaxed m-0">
     "Write and build a complete C++ firmware for a 7-voice drum synth on the this.is.NOISE Gamma mini synth using libDaisy and DaisySP, mapping the drum voices to the front keys and filter controls to the knobs."
   </p>
@@ -35,7 +35,7 @@ layout: default
 
 <div class="grid grid-cols-2 gap-5 mt-5 text-xs">
   <div class="p-4 rounded-xl bg-red-950/15 border border-red-500/30">
-    <div class="font-mono font-bold text-red-400 uppercase mb-1">Workspace A (Scenario 05)</div>
+    <div class="font-mono font-bold text-red-400 uppercase mb-1">Workspace A</div>
     <div class="text-base font-bold text-white mb-1">Without Skills</div>
     <p class="text-gray-400">
       Contains checkouts of <code>libDaisy/</code> and <code>DaisySP/</code>, plus <code>arm-none-eabi-gcc</code>—and <strong>zero skills</strong> in <code>.agents/skills/</code>.
@@ -43,7 +43,7 @@ layout: default
   </div>
 
   <div class="p-4 rounded-xl bg-emerald-950/15 border border-emerald-500/30">
-    <div class="font-mono font-bold text-emerald-400 uppercase mb-1">Workspace B (Scenario 06)</div>
+    <div class="font-mono font-bold text-emerald-400 uppercase mb-1">Workspace B</div>
     <div class="text-base font-bold text-white mb-1">With All 7 Skills</div>
     <p class="text-gray-400">
       Identical <code>libDaisy/</code> and <code>DaisySP/</code> checkouts, plus <strong>all 7 skills</strong> installed in <code>.agents/skills/</code>.
@@ -483,7 +483,7 @@ layout: default
 
 <div class="grid grid-cols-2 gap-4 mt-5 text-xs">
   <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
-    <div class="text-gray-400 uppercase font-mono text-[10px]">Presentation Deck &amp; Recording Scenarios</div>
+    <div class="text-gray-400 uppercase font-mono text-[10px]">Presentation Deck</div>
     <div class="text-sm font-bold text-cyan-300 font-mono mt-0.5">github.com/domesticmouse/skills-three-ways</div>
   </div>
 
