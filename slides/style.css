@@ -1,5 +1,52 @@
 @import 'asciinema-player/dist/bundle/asciinema-player.css';
 
+:root {
+  /* Skill Category Color System */
+  --skill-way1: #38bdf8;       /* Way 1: Library Review (Sky Cyan) */
+  --skill-way1-bg: rgba(56, 189, 248, 0.12);
+  --skill-way1-border: rgba(56, 189, 248, 0.4);
+
+  --skill-way2: #fbbf24;       /* Way 2: DFU Operational (Amber Gold) */
+  --skill-way2-bg: rgba(251, 191, 36, 0.12);
+  --skill-way2-border: rgba(251, 191, 36, 0.4);
+
+  --skill-way3: #34d399;       /* Way 3: Hardware Discovery (Mint Emerald) */
+  --skill-way3-bg: rgba(52, 211, 153, 0.12);
+  --skill-way3-border: rgba(52, 211, 153, 0.4);
+
+  --skill-mashup: #a78bfa;     /* The Mashup Skill (Violet Purple) */
+  --skill-mashup-bg: rgba(167, 139, 250, 0.12);
+  --skill-mashup-border: rgba(167, 139, 250, 0.4);
+
+  --bg-dark-base: #121317;
+  --bg-card-base: #1a1b22;
+}
+
+/* Category Badge Utilities */
+.badge-way1 {
+  background-color: var(--skill-way1-bg);
+  color: var(--skill-way1);
+  border: 1px solid var(--skill-way1-border);
+}
+
+.badge-way2 {
+  background-color: var(--skill-way2-bg);
+  color: var(--skill-way2);
+  border: 1px solid var(--skill-way2-border);
+}
+
+.badge-way3 {
+  background-color: var(--skill-way3-bg);
+  color: var(--skill-way3);
+  border: 1px solid var(--skill-way3-border);
+}
+
+.badge-mashup {
+  background-color: var(--skill-mashup-bg);
+  color: var(--skill-mashup);
+  border: 1px solid var(--skill-mashup-border);
+}
+
 /* High-contrast and crisp terminal readability for Slidev */
 .ap-player,
 .asciinema-player-theme-dracula {
@@ -21,4 +68,23 @@
   --term-color-13: #bb9af7;
   --term-color-14: #2ac3de;
   --term-color-15: #ffffff;
+}
+
+/* Slidev UI polish */
+kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background-color: #27272a;
+  color: #e4e4e7;
+  border: 1px solid #3f3f46;
+  border-bottom: 2px solid #52525b;
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+  font-size: 0.8em;
+}
+
+/* Code block typography */
+.slidev-code {
+  font-family: 'Fira Code', 'JetBrains Mono', Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.85rem !important;
+  line-height: 1.45 !important;
 }
