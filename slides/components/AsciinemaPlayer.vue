@@ -203,9 +203,9 @@ onUnmounted(() => {
   teardownPlayer()
 })
 
-// Reinitialize when source or theme changes reactively
+// Reinitialize when source, theme, fit, or speed changes reactively
 watch(
-  () => [props.src, props.theme, props.fit],
+  () => [props.src, props.theme, props.fit, props.speed],
   () => {
     initPlayer()
   }
@@ -215,6 +215,9 @@ watch(
 <template>
   <div class="asciinema-player-wrapper">
     <div ref="containerRef" class="asciinema-player-element" />
+    <div v-if="speed && speed !== 1" class="asciinema-speed-hint">
+      Playback speed: {{ speed }}x
+    </div>
   </div>
 </template>
 
@@ -223,6 +226,7 @@ watch(
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: transparent;
@@ -230,7 +234,22 @@ watch(
 
 .asciinema-player-element {
   width: 100%;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.asciinema-speed-hint {
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #9ca3af;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.025em;
 }
 
 /* Ensure player terminal controls match slide styling */
