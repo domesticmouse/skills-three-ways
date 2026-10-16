@@ -459,40 +459,66 @@ layout: default
 ---
 
 <!-- S80 -->
-<div class="flex items-center justify-between mb-4">
-  <div class="flex items-center gap-3">
-    <h2 class="text-2xl font-bold m-0">Skills Three Ways: Key Takeaways &amp; Links</h2>
-  </div>
-  <span class="text-xs font-mono text-gray-400">Brett Morgan &middot; Google Cloud DevRel</span>
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">Links &amp; Resources</h2>
 </div>
 
-<ol class="space-y-3 text-xs text-gray-200 list-decimal pl-6 mt-3 leading-relaxed">
-  <li>
-    <strong class="text-white">Way 1 &middot; Library Review Skills</strong>
-    <span class="text-gray-300"> &mdash; Audit C++ source repos once and package architecture &amp; memory rules into <code>SKILL.md</code> + <code>references/</code></span>
-  </li>
-  <li>
-    <strong class="text-white">Way 2 &middot; DFU Operational Skills</strong>
-    <span class="text-gray-300"> &mdash; Wrap fragile hardware timing races and binary validation into deterministic <code>scripts/*.py</code></span>
-  </li>
-  <li>
-    <strong class="text-white">Way 3 &middot; Hardware Discovery Skills</strong>
-    <span class="text-gray-300"> &mdash; Run phased diagnostic probes and ship verified <code>resources/gamma_pins.h</code> &amp; 1 kHz ISR blueprints</span>
-  </li>
-</ol>
-
-<div class="grid grid-cols-2 gap-4 mt-5 text-xs">
+<div class="space-y-4 mt-6">
   <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
-    <div class="text-gray-400 uppercase font-mono text-[10px]">Presentation Deck</div>
-    <div class="text-sm font-bold text-cyan-300 font-mono mt-0.5">github.com/domesticmouse/skills-three-ways</div>
+    <div class="flex items-center justify-between">
+      <div class="text-xs font-mono text-cyan-400 uppercase tracking-wide">Presentation Deck</div>
+      <span class="text-xs font-mono text-gray-500">github.com</span>
+    </div>
+    <div class="text-base font-bold font-mono mt-1">
+      <a
+        href="https://github.com/domesticmouse/skills-three-ways"
+        target="_blank"
+        class="text-cyan-300 hover:underline"
+      >github.com/domesticmouse/skills-three-ways</a>
+    </div>
+    <p class="text-xs text-gray-400 mt-1.5 m-0">
+      Slidev deck source, asciinema terminal recordings, and a fun use of Matt Pocock's <code>/wayfinder</code> skill
+    </p>
   </div>
 
   <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
-    <div class="text-gray-400 uppercase font-mono text-[10px]">Gamma Firmware, Phased Probes &amp; 7 Skills</div>
-    <div class="text-sm font-bold text-emerald-300 font-mono mt-0.5">github.com/domesticmouse/reverse-engineering-gamma</div>
+    <div class="flex items-center justify-between">
+      <div class="text-xs font-mono text-emerald-400 uppercase tracking-wide">Gamma Synth Repo</div>
+      <span class="text-xs font-mono text-gray-500">github.com</span>
+    </div>
+    <div class="text-base font-bold font-mono mt-1">
+      <a
+        href="https://github.com/domesticmouse/reverse-engineering-gamma"
+        target="_blank"
+        class="text-emerald-300 hover:underline"
+      >github.com/domesticmouse/reverse-engineering-gamma</a>
+    </div>
+    <p class="text-xs text-gray-400 mt-1.5 m-0">
+      Multiple Gamma firmwares, hardware discovery plan, and all 7 custom skills
+    </p>
+  </div>
+
+  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
+    <div class="flex items-center justify-between">
+      <div class="text-xs font-mono text-purple-400 uppercase tracking-wide">Technical Blog</div>
+      <span class="text-xs font-mono text-gray-500">medium.com</span>
+    </div>
+    <div class="text-base font-bold font-mono mt-1">
+      <a
+        href="https://medium.com/@domesticmouse/"
+        target="_blank"
+        class="text-purple-300 hover:underline"
+      >https://medium.com/@domesticmouse/</a>
+    </div>
+    <p class="text-xs text-gray-400 mt-1.5 m-0">
+      Deep-dive writeups on reverse engineering the Gamma synth, AI coding agents, and random DevRel musings
+    </p>
   </div>
 </div>
 
 <!--
-Thank you all so much! Whether you're teaching an agent a new library (Way 1), automating a tricky deployment workflow (Way 2), or reverse-engineering undocumented hardware (Way 3), Agent Skills turn one-off debugging sessions into permanent superpowers. Both repos are live on GitHub!
+Thank you all so much! All three resources are available online:
+1. The presentation deck repository at github.com/domesticmouse/skills-three-ways includes the full Slidev source, all embedded asciinema recordings, and the skill definitions.
+2. The Gamma synth companion repo at github.com/domesticmouse/reverse-engineering-gamma contains the C++ firmware, diagnostic probes, and all seven skills we built.
+3. And you can follow my blog on Medium at medium.com/@domesticmouse for in-depth articles detailing the reverse-engineering journey and agent workflows.
 -->
