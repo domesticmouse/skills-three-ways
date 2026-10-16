@@ -58,10 +58,11 @@ layout: default
     <div class="text-xs font-mono text-red-400 uppercase">Anti-Pattern: Monolithic AGENTS.md</div>
     <h3 class="text-lg font-bold text-white">Stuffing Every Manual into Always-On Rules</h3>
     <ul class="text-xs text-gray-300 space-y-2 list-disc pl-4">
-      <li>50,000+ lines of <code>libDaisy</code> and <code>DaisySP</code> headers</li>
-      <li>32-row pinout tables, ADC channel maps, and I2C addresses</li>
-      <li>DFU bootloader recovery procedures and Python scripts</li>
-      <li><strong>Result</strong>: Permanent token bloat on every turn, competing instructions, and degraded reasoning focus.</li>
+      <li>Dozens of MCP servers with hundreds of functions</li>
+      <li>Massive monolithic <code>AGENTS.md</code> files</li>
+      <li>Pasted PDF manuals and sprawling documentation</li>
+      <li>Increased token consumption and competing instructions</li>
+      <li><strong>Result:</strong> Degraded reasoning and lost focus.</li>
     </ul>
   </div>
 
@@ -70,15 +71,15 @@ layout: default
     <h3 class="text-lg font-bold text-white">Modular, Self-Contained Skill Packages</h3>
     <ul class="text-xs text-gray-300 space-y-2 list-disc pl-4">
       <li>Keep <code>AGENTS.md</code> tiny—only universal project conventions</li>
-      <li>Package domain-specific workflows into <code>.agents/skills/&lt;name&gt;/</code></li>
-      <li>Agent sees only a ~100-token <code>name</code> + <code>description</code> pointer at startup</li>
-      <li>Full runbook, headers, and scripts load <strong>only when triggered</strong></li>
+      <li>Package domain-specific workflows into Agent Skills</li>
+      <li>Agent sees only an invitation to invoke a capability</li>
+      <li>Cheatsheets, runbooks, and scripts load <strong>when required</strong></li>
     </ul>
   </div>
 </div>
 
 <!--
-Why not just paste all our hardware docs and library guides into AGENTS.md? Because always-on rules consume context on every single turn and dilute attention. Skills give us progressive disclosure.
+Why not just load dozens of MCP servers, paste in PDF manuals, or stuff everything into AGENTS.md? Because always-on rules consume context on every single turn and dilute attention. Skills give us progressive disclosure.
 -->
 
 ---
