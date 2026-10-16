@@ -106,6 +106,8 @@ Records child process termination status:
 [0.051200, "x", 0]
 ```
 
+*Note on final frame holding*: In v3 recordings, preceding the `"x"` event with a 2–3s delay (e.g. `[3.0, "x", 0]`) holds the completed terminal screen so viewers can read final output before video players or animated GIFs loop.
+
 ### 4. Inline Comments
 Lines starting with `#` are treated as comments and ignored by parsers:
 ```text

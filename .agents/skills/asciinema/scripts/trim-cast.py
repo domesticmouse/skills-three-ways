@@ -9,6 +9,7 @@ Capabilities:
    warnings, shell drop-backs, and trailing subshell exits.
 3. Holds final frame: Appends a clean exit code event ('x') with a configurable trailing hold
    (default: 3.0s), preventing abrupt video/animation cutoffs or instant replay loops.
+4. Preserves formatting: Keeps unmodified recording lines byte-for-byte identical.
 """
 
 import argparse
@@ -90,6 +91,16 @@ def format_duration(seconds):
     return f"{seconds:.2f}s"
 
 
+class CastEvent:
+    def __init__(self, parsed, raw_line):
+        self.parsed = parsed  # list [time, type, data] or None
+        self.raw_line = raw_line
+
+    @property
+    def is_event(self):
+        return isinstance(self.parsed, list) and len(self.parsed) >= 2
+
+
 def load_cast(file_path):
     if not os.path.exists(file_path):
         sys.stderr.write(f"Error: File not found: {file_path}\n")
@@ -97,6 +108,7 @@ def load_cast(file_path):
 
     events = []
     header = None
+    header_raw = None
     with open(file_path, "r", encoding="utf-8") as f:
         first_line = f.readline()
         if not first_line:
@@ -105,24 +117,25 @@ def load_cast(file_path):
 
         try:
             header = json.loads(first_line)
+            header_raw = first_line
         except json.JSONDecodeError as err:
             sys.stderr.write(f"Error: Invalid header JSON: {err}\n")
             sys.exit(1)
 
-        for line_num, line in enumerate(f, start=2):
+        for line in f:
             trimmed = line.strip()
             if not trimmed:
                 continue
             if trimmed.startswith("#"):
-                events.append({"raw_comment": line})
+                events.append(CastEvent(None, line))
                 continue
             try:
                 ev = json.loads(trimmed)
-                events.append(ev)
+                events.append(CastEvent(ev, line))
             except json.JSONDecodeError:
-                events.append({"raw_line": line})
+                events.append(CastEvent(None, line))
 
-    return header, events
+    return header, header_raw, events
 
 
 def calculate_durations(header, events, idle_limit_override=None):
@@ -138,27 +151,25 @@ def calculate_durations(header, events, idle_limit_override=None):
 
     if version == 3:
         for ev in events:
-            if isinstance(ev, dict):
+            if not ev.is_event:
                 continue
-            if len(ev) >= 2:
-                ev_type = ev[1]
-                event_counts[ev_type if ev_type in event_counts else "other"] += 1
-                dt = float(ev[0])
-                raw_duration += dt
-                capped_duration += min(dt, idle_limit) if (idle_limit is not None and idle_limit > 0) else dt
+            ev_type = ev.parsed[1]
+            event_counts[ev_type if ev_type in event_counts else "other"] += 1
+            dt = float(ev.parsed[0])
+            raw_duration += dt
+            capped_duration += min(dt, idle_limit) if (idle_limit is not None and idle_limit > 0) else dt
     else:  # version 2 (absolute timestamps)
         prev_time = 0.0
         for ev in events:
-            if isinstance(ev, dict):
+            if not ev.is_event:
                 continue
-            if len(ev) >= 2:
-                ev_type = ev[1]
-                event_counts[ev_type if ev_type in event_counts else "other"] += 1
-                curr_time = float(ev[0])
-                dt = max(0.0, curr_time - prev_time)
-                raw_duration = curr_time
-                capped_duration += min(dt, idle_limit) if (idle_limit is not None and idle_limit > 0) else dt
-                prev_time = curr_time
+            ev_type = ev.parsed[1]
+            event_counts[ev_type if ev_type in event_counts else "other"] += 1
+            curr_time = float(ev.parsed[0])
+            dt = max(0.0, curr_time - prev_time)
+            raw_duration = curr_time
+            capped_duration += min(dt, idle_limit) if (idle_limit is not None and idle_limit > 0) else dt
+            prev_time = curr_time
 
     return {
         "version": version,
@@ -179,11 +190,10 @@ def find_cut_index(events, cut_at=None, cut_regex=None, cut_index=None):
 
     custom_re = re.compile(cut_regex) if cut_regex else None
 
-    # Search through events
     for idx, ev in enumerate(events):
-        if isinstance(ev, dict) or len(ev) < 3:
+        if not ev.is_event or len(ev.parsed) < 3:
             continue
-        ev_type, ev_data = ev[1], ev[2]
+        ev_type, ev_data = ev.parsed[1], ev.parsed[2]
         if ev_type != "o" or not isinstance(ev_data, str):
             continue
 
@@ -213,32 +223,25 @@ def print_info(title, stats):
         print(f"Playback Duration:    {format_duration(stats['capped_duration'])} (no idle_time_limit)")
 
 
-def write_cast(file_path, header, events):
+def write_cast(file_path, header_line, events):
     with open(file_path, "w", encoding="utf-8") as f:
-        f.write(json.dumps(header) + "\n")
+        f.write(header_line if header_line.endswith("\n") else header_line + "\n")
         for ev in events:
-            if isinstance(ev, dict):
-                if "raw_comment" in ev:
-                    f.write(ev["raw_comment"])
-                elif "raw_line" in ev:
-                    f.write(ev["raw_line"])
-            else:
-                f.write(json.dumps(ev) + "\n")
+            f.write(ev.raw_line if ev.raw_line.endswith("\n") else ev.raw_line + "\n")
 
 
 def main():
     args = parse_args()
-    header, events = load_cast(args.input)
+    header, header_raw, events = load_cast(args.input)
 
     orig_stats = calculate_durations(header, events, args.idle_limit)
 
     if args.info or (args.output is None and not args.in_place):
         print_info(f"Asciicast Timing Analysis: {args.input}", orig_stats)
-        # Check if an exit sequence was detected
         auto_cut = find_cut_index(events, args.cut_at, args.cut_regex, args.cut_index)
         if auto_cut is not None:
             ev = events[auto_cut]
-            sample = repr(ev[2][:60]) if len(ev) > 2 else ""
+            sample = repr(ev.parsed[2][:60]) if (ev.is_event and len(ev.parsed) > 2) else ""
             print(f"\nDetected Trailing Exit Sequence at event #{auto_cut}:")
             print(f"  Payload sample: {sample}")
             trimmed = events[:auto_cut]
@@ -258,24 +261,33 @@ def main():
         sys.stderr.write("No matching exit sequence found to trim. No changes made.\n")
         sys.exit(1)
 
-    kept_events = events[:cut_idx]
+    kept_events = list(events[:cut_idx])
     version = orig_stats["version"]
 
     # Append clean exit event
     if version == 3:
-        kept_events.append([round(args.hold, 3), "x", "0"])
+        exit_ev = [round(args.hold, 3), "x", "0"]
+        exit_line = json.dumps(exit_ev) + "\n"
+        kept_events.append(CastEvent(exit_ev, exit_line))
+        header_line = header_raw
     else:
         last_time = 0.0
         for ev in reversed(kept_events):
-            if not isinstance(ev, dict) and len(ev) >= 1:
-                last_time = float(ev[0])
+            if ev.is_event and len(ev.parsed) >= 1:
+                last_time = float(ev.parsed[0])
                 break
-        kept_events.append([round(last_time + args.hold, 3), "x", "0"])
+        total_time = round(last_time + args.hold, 3)
+        exit_ev = [total_time, "x", "0"]
+        exit_line = json.dumps(exit_ev) + "\n"
+        kept_events.append(CastEvent(exit_ev, exit_line))
         if "duration" in header:
-            header["duration"] = round(last_time + args.hold, 3)
+            header["duration"] = total_time
+            header_line = json.dumps(header, ensure_ascii=False) + "\n"
+        else:
+            header_line = header_raw
 
     out_path = args.input if args.in_place else args.output
-    write_cast(out_path, header, kept_events)
+    write_cast(out_path, header_line, kept_events)
 
     new_stats = calculate_durations(header, kept_events, args.idle_limit)
     print_info(f"Original: {args.input}", orig_stats)

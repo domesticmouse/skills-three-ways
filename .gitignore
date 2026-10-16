@@ -11,3 +11,6 @@ Thumbs.db
 
 # Slidev PID
 slides/.slidev.pid
+
+# Scenario workspaces
+terminal-recordings/**/workspace/

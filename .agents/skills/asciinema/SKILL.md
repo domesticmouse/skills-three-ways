@@ -1,6 +1,6 @@
 ---
 name: asciinema
-description: Record, replay, convert, and embed terminal sessions. Use when recording terminal demos, converting .cast files to animated GIF or SVG, embedding asciinema-player in web apps, or sanitizing terminal recordings.
+description: Record, replay, convert, and embed terminal sessions. Use when recording terminal demos, converting .cast files to animated GIF or SVG, embedding asciinema-player in web apps, sanitizing terminal recordings, inspecting cast durations, or trimming trailing exit sequences.
 ---
 
 # Asciinema
@@ -15,8 +15,9 @@ Identify the user's objective and choose the matching workflow:
 2. [Replay or Inspect a Recording](#2-replay-or-inspect-a-recording)
 3. [Convert and Export (GIF / SVG / Text)](#3-convert-and-export)
 4. [Sanitize and Redact Sensitive Data](#4-sanitize-and-redact-sensitive-data)
-5. [Embed in Web Applications](#5-embed-in-web-applications)
-6. [Self-Host an asciinema Server](#6-self-host-an-asciinema-server)
+5. [Trim Exit Sequences and Inspect Timing](#5-trim-exit-sequences-and-inspect-timing)
+6. [Embed in Web Applications](#6-embed-in-web-applications)
+7. [Self-Host an asciinema Server](#7-self-host-an-asciinema-server)
 
 ---
 
@@ -141,7 +142,39 @@ sed -E 's/(ghp_[a-zA-Z0-9]{36}|AKIA[0-9A-Z]{16})/REDACTED/g' session.cast > sani
 
 ---
 
-### 5. Embed in Web Applications
+### 5. Trim Exit Sequences and Inspect Timing
+
+Interactive recordings frequently capture trailing `Ctrl+D` keystrokes, warning prompts (e.g. `press ctrl+d again to exit`), resume text, or dropping back into the shell prompt before session termination.
+
+Use the bundled utility script [scripts/trim-cast.py](scripts/trim-cast.py):
+
+#### A. Inspect Durations and Detect Exit Sequences
+Inspect recording duration (both raw elapsed time and `idle_time_limit` playback time) and auto-detect trailing exit prompts without modifying the file:
+
+```bash
+# Print timing analysis and trailing pattern detection
+python3 .agents/skills/asciinema/scripts/trim-cast.py session.cast --info
+```
+
+#### B. Strip Exit Sequences and Hold Final Frame
+Cut off the trailing exit sequence and append a clean exit event (`"x"`) holding on the final frame (default: 3.0s pause before exit) so that video exports and looping web players don't immediately restart:
+
+```bash
+# Trim in place with default 3.0s final frame hold
+python3 .agents/skills/asciinema/scripts/trim-cast.py session.cast --in-place
+
+# Trim and write to a new file with custom 2.0s hold
+python3 .agents/skills/asciinema/scripts/trim-cast.py session.cast trimmed.cast --hold 2.0
+
+# Trim at an explicit pattern or regex
+python3 .agents/skills/asciinema/scripts/trim-cast.py session.cast --in-place --cut-at "press ctrl+d"
+```
+
+- **Checkable Completion Criterion**: Run `python3 .agents/skills/asciinema/scripts/trim-cast.py <file> --info`. Confirm that no trailing exit sequence is detected and duration matches the expected trimmed time.
+
+---
+
+### 6. Embed in Web Applications
 
 Integrate interactive virtual terminal playback using `asciinema-player` v3 (WASM/Rust driven).
 
@@ -154,7 +187,7 @@ Consult [EMBEDDING.md](EMBEDDING.md) for complete copy-pasteable code examples:
 
 ---
 
-### 6. Self-Host an asciinema Server
+### 7. Self-Host an asciinema Server
 
 For private session repositories, air-gapped networks, or corporate compliance:
 - Run `asciinema-server` via Docker Compose (Phoenix + PostgreSQL).
