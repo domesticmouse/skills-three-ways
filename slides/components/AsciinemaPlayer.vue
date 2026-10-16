@@ -225,10 +225,7 @@ watch(
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
-  background-color: #1a1b26;
+  background-color: transparent;
 }
 
 .asciinema-player-element {
@@ -239,5 +236,7 @@ watch(
 /* Ensure player terminal controls match slide styling */
 :deep(.asciinema-player-wrapper .ap-player) {
   border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 </style>
