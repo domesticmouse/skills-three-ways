@@ -30,8 +30,8 @@ import AsciinemaPlayer from '../components/AsciinemaPlayer.vue'
     <!-- Main Viewport Area (85-90% height) -->
     <div class="flex-1 w-full min-h-0 pt-3 flex items-center justify-center">
       <AsciinemaPlayer
-        v-if="$frontmatter.src"
-        :src="$frontmatter.src"
+        v-if="$frontmatter.cast || $frontmatter.castSrc"
+        :src="$frontmatter.cast || $frontmatter.castSrc"
         :autoPlay="$frontmatter.autoPlay ?? false"
         :speed="$frontmatter.speed ?? 2.0"
         :idleTimeLimit="$frontmatter.idleTimeLimit ?? 1.0"

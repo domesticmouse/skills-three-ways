@@ -1,0 +1,5 @@
+{"version":2,"width":116,"height":30,"timestamp":1792108485,"env":{"SHELL":"/bin/zsh","TERM":"xterm-256color"}}
+[0.1,"o","\\u001b[1;36m=== Recording 05: 7-Voice Drum Synth WITHOUT Skills (Placeholder Cast) ===\\u001b[0m\\r\\n\\r\\n"]
+[0.4,"o","To capture this live session in Ghostty (116x30), run:\\r\\n\\r\\n"]
+[0.8,"o","  \\u001b[1;32mcd terminal-recordings/scenarios/05-drum-synth-without-skills && ./record.sh\\u001b[0m\\r\\n\\r\\n"]
+[1.4,"o","The recorded .cast file will automatically deploy to slides/public/casts/drum-synth-without-skills.cast.\\r\\n"]
