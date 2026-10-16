@@ -245,6 +245,28 @@ Notice how the skills composed: `libdaisy-guide` and `daisysp-guide` handled the
 -->
 
 ---
+layout: center
+class: text-center
+---
+
+<!-- S79 -->
+<div class="space-y-4">
+  <h1 class="text-4xl font-extrabold text-white">
+    Wrapping Up
+  </h1>
+  <p class="text-xl text-cyan-300">
+    Tools, Rules, and Skills in Harmony
+  </p>
+  <p class="text-base text-gray-400 max-w-xl mx-auto">
+    Stepping back to see where Agent Skills fit alongside MCP and always-on rules
+  </p>
+</div>
+
+<!--
+With our drum synth built and the hardware experiment complete, let's step back and wrap up. How do Agent Skills fit into the broader agent ecosystem alongside tools like MCP and rules like AGENTS.md? Let's break down how they work together.
+-->
+
+---
 layout: default
 ---
 
