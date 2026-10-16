@@ -49,8 +49,8 @@ The terminal on the right is an interactive recording, not a video: text can be 
   <AsciinemaPlayer
     src="/casts/what-are-agent-skills.cast"
     theme="dracula"
-    :speed="1.2"
-    :idleTimeLimit="1.5"
+    :speed="2.0"
+    :idleTimeLimit="1.0"
     :autoPlay="true"
     fit="width"
   />
