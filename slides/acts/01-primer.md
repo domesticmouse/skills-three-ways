@@ -124,37 +124,31 @@ layout: default
 <!-- S06a -->
 <div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Model Context Protocol</h2>
-  <span class="text-xs font-mono text-purple-400 border border-purple-500/40 px-2 py-0.5 rounded">Tools &amp; Sensors</span>
 </div>
 
-<div class="grid grid-cols-2 gap-5">
-  <div class="p-5 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
-    <div class="text-xs font-mono text-purple-400 uppercase tracking-wider">Cognitive Role</div>
-    <div class="text-lg font-bold text-white">Muscle &amp; Sensors</div>
-    <p class="text-xs text-gray-300">Live external execution via Remote Procedure Calls.</p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
-    <div class="text-xs font-mono text-purple-400 uppercase tracking-wider">Context Cost</div>
-    <div class="text-lg font-bold text-white">Tool Definition Space</div>
-    <p class="text-xs text-gray-300">Tool schemas loaded upfront in the tool declaration space.</p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
-    <div class="text-xs font-mono text-purple-400 uppercase tracking-wider">Bundled Assets</div>
-    <div class="text-lg font-bold text-white">Endpoints &amp; Binaries</div>
-    <p class="text-xs text-gray-300">Remote network services or local executable processes.</p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
-    <div class="text-xs font-mono text-purple-400 uppercase tracking-wider">Open Standard</div>
-    <div class="text-lg font-bold text-white">modelcontextprotocol.io</div>
-    <p class="text-xs text-gray-300">Open specification for agent tool interoperability.</p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Origins &amp; Shift to Remote:</strong>
+    Started as local desktop execution (stdio); migrated to remote servers as teams moved to the cloud.
+  </li>
+  <li>
+    <strong class="text-white">The Infrastructure Fix (MCP 2):</strong>
+    Simplified server-farm deployment—shifted from stateful sessions to stateless requests with routing headers, eliminating sticky sessions.
+  </li>
+  <li>
+    <strong class="text-white">The Persistent Token Tax:</strong>
+    Context overhead still scales as <span class="font-mono text-purple-300">Servers &times; Tools per Server</span>. Every schema must be declared upfront in tool definition space.
+  </li>
+  <li>
+    <strong class="text-white">The Orthogonal Shift: LLMs Can Code:</strong>
+    Server infrastructure got easier, but agent capability leaped forward—modern models can write scripts and execute CLI runbooks directly, bypassing rigid RPC wrappers.
+  </li>
+</ol>
 
 <!--
-MCP provides live external tools and sensors—the muscles that let the model act on the world via remote procedure calls.
+MCP started as a clean way to connect local desktop clients to tools over stdio, then migrated to remote servers. Early on, that meant stateful connections and sticky sessions. MCP 2 addressed that head-on—going stateless and exposing methods in headers so server farms and API gateways can easily route calls.
+
+However, that’s an infrastructure optimization. It doesn't solve the context window tax: you're still paying the schema cost for every tool across every server upfront. More importantly, it’s orthogonal to the biggest change in AI: LLMs can now write and execute code. If an agent can run a script or follow a runbook, we don't always need a heavyweight RPC server to get work done.
 -->
 
 ---
