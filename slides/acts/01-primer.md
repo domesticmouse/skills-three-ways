@@ -53,7 +53,6 @@ layout: default
     <strong class="text-white">How Agents Re-Shape User Interfaces</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Exploring how LLMs and Antigravity re-shape the definition of &mdash; and requirement for &mdash; user interfaces</li>
-      <li>As the folks at <a href="https://posthog.com/newsletter/building-ai-products" target="_blank" class="text-cyan-300 underline">PostHog</a> put it: <em>&ldquo;Don’t ask &lsquo;how do we add AI to this?&rsquo; Ask &lsquo;what is the agent-first version of this?&rsquo;&rdquo;</em></li>
     </ul>
   </li>
 </ol>
@@ -63,7 +62,7 @@ Before we jump in, a quick bit about me. I'm Brett Morgan, and I've been a Devel
 
 Why am I talking about hardware synthesizers today? A couple of years ago I picked up electronics as a hobby after falling down a YouTube rabbit hole on Eurorack synthesizers, and it has snowballed from there.
 
-Coming from Flutter to Antigravity, I'm deeply interested in how LLMs and agents re-shape the definition of—and even the requirement for—user interfaces. There's a great line from the folks at PostHog that captures how I think about this: "Don't ask 'how do we add AI to this?' Ask 'what is the agent-first version of this?'" And today, we're going to ask what the agent-first version of hardware bring-up and documentation looks like.
+Coming from Flutter to Antigravity, I'm deeply interested in how LLMs and agents re-shape the definition of—and even the requirement for—user interfaces.
 -->
 
 ---
@@ -71,6 +70,32 @@ layout: default
 ---
 
 <!-- S1-01c -->
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">Quote of the Day</h2>
+</div>
+
+
+<div class="h-80 flex flex-col items-center justify-center text-center px-8">
+  <blockquote class="text-3xl font-semibold text-white tracking-tight leading-snug max-w-3xl">
+    &ldquo;Don&rsquo;t ask &lsquo;How do we add AI to this?&rsquo;<br/>
+    Ask &lsquo;What is the agent-first version of this?&rsquo;&rdquo;
+  </blockquote>
+  <p class="mt-6 text-sm text-gray-400">
+    &mdash; From PostHog's newsletter <a href="https://posthog.com/newsletter/building-ai-products" target="_blank" class="text-cyan-300 underline">38 things we've learned about building AI products</a>
+  </p>
+</div>
+
+<!--
+There's a great line from the folks at PostHog that captures how I think about this shift: "Don't ask 'how do we add AI to this?' Ask 'what is the agent-first version of this?'"
+
+Today, we're going to ask what the agent-first version of hardware bring-up, reverse engineering, and documentation looks like.
+-->
+
+---
+layout: default
+---
+
+<!-- S1-01d -->
 <div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Today&rsquo;s Itinerary</h2>
 </div>
