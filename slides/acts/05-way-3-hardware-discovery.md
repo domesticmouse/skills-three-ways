@@ -6,7 +6,7 @@ class: text-center
 <!-- S47 -->
 <div class="space-y-4">
   <h1 class="text-4xl font-extrabold text-white">
-    Way 3: Hardware Discovery Skills
+    Hardware Discovery Skills
   </h1>
   <p class="text-xl font-mono text-emerald-300">
     gamma-pinout &middot; gamma-hardware-controls
@@ -604,7 +604,7 @@ layout: default
 
 <!-- S62 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">Way 3 Takeaway: Hardware Discovery Skills</h2>
+  <h2 class="text-2xl font-bold m-0">Takeaway: Hardware Discovery Skills</h2>
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">

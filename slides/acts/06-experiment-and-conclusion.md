@@ -502,4 +502,3 @@ layout: default
 <!--
 Thank you all so much! Whether you're teaching an agent a new library (Way 1), automating a tricky deployment workflow (Way 2), or reverse-engineering undocumented hardware (Way 3), Agent Skills turn one-off debugging sessions into permanent superpowers. Both repos are live on GitHub!
 -->
-
