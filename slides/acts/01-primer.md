@@ -67,6 +67,61 @@ Coming from Flutter to Antigravity, I'm deeply interested in how LLMs and agents
 -->
 
 ---
+layout: default
+---
+
+<!-- S1-01c -->
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">Today&rsquo;s Itinerary</h2>
+</div>
+
+<ol class="space-y-3.5 text-sm text-gray-200 list-decimal pl-6 mt-4 leading-relaxed">
+  <li>
+    <strong class="text-white">What Are Agent Skills?</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Monolithic system prompts &rarr; 3-tier progressive disclosure</li>
+      <li>Using Google Antigravity's inbuilt skills for fun and profit</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Two Synths &amp; Zero Schematics</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>How a late-night impulse purchases lead to developer talks</li>
+      <li>Figuring out firmware without documentation</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Teaching the Agent Step by Step</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Building cheatsheets from libraries</li>
+      <li>Making processes repeatable with code</li>
+      <li>Planning out experiments to working hardware</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Without Skills vs. With Skills</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Same prompt, how different are the results?</li>
+    </ul>
+  </li>
+</ol>
+
+<!--
+Here's our itinerary for today.
+
+First, we'll do a quick primer on Agent Skills—why stuffing every manual into a monolithic system prompt fails, how 3-tier progressive disclosure keeps context clean, and how we use meta-skills so the agent actually writes the skills for us.
+
+Second, I'll introduce the hardware mystery at the center of this talk: how a late-night ordering accident gave me a spare Gamma Mini Synth to open up, revealing an Electro-Smith Daisy Seed 2 DFM inside, but with closed-source firmware and zero wiring schematics.
+
+Third is the core of the talk—Skills Three Ways:
+- Way 1 is Library Review Skills, where we distill 50,000 lines of C++ audio library source code into architectural runbooks.
+- Way 2 is DFU Operational Skills, where we turn fragile USB bootloader button-press races into deterministic flash and factory-restore scripts.
+- Way 3 is Hardware Discovery Skills, where we run a 6-phase diagnostic firmware campaign to map every button, knob, joystick, and OLED pin on the board.
+
+Finally, we'll put all seven skills to the test in a head-to-head experiment: giving two clean workspaces the exact same prompt to build a 7-voice drum synthesizer—one without skills, and one with skills—and seeing what happens.
+-->
+
+---
 layout: center
 class: text-center
 ---
