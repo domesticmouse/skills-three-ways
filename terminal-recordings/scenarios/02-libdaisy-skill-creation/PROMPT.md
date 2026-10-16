@@ -1,0 +1,1 @@
+Inspect the libDaisy/ repository in this workspace. Produce a comprehensive architectural report on how to build firmware with libDaisy, detailing the hardware peripheral taxonomy, STM32H7 memory map, and initialization patterns, and format it as an Agent Skill named `libdaisy-guide`.

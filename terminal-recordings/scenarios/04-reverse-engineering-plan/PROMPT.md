@@ -1,0 +1,1 @@
+We have a Gamma mini synth built on the Daisy Seed 2 DFM (STM32H750IBK6), but no schematics or pinout table. Using our libdaisy-guide and daisysp-guide skills, design a phased, safe reverse-engineering plan (`PLAN.md`) starting with firmware backup and progressing through I2C scanning, ADC pot/joystick mapping, digital key scanning, and audio amp discovery.

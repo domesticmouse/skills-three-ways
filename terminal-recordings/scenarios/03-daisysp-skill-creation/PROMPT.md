@@ -1,0 +1,1 @@
+Inspect the DaisySP/ repository in this workspace. Review the DSP synthesis modules, extract the 5 real-time audio constraints, and convert the findings into an Agent Skill named `daisysp-guide` with a fast module catalog.
