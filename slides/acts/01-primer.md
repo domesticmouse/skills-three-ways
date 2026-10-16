@@ -126,7 +126,7 @@ layout: default
   <h2 class="text-2xl font-bold m-0">Model Context Protocol</h2>
 </div>
 
-<ul class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
   <li>
     <strong class="text-white">Local &rarr; Remote</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
@@ -135,18 +135,27 @@ layout: default
     </ul>
   </li>
   <li>
-    <strong class="text-white">The Infrastructure Fix (MCP 2):</strong>
-    Simplified server-farm deployment—shifted from stateful sessions to stateless requests with routing headers, eliminating sticky sessions.
+    <strong class="text-white">MCP V2</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Simplified server-farm deployment</li>
+      <li>Shifted from stateful sessions to stateless requests with routing headers</li>
+    </ul>
   </li>
   <li>
-    <strong class="text-white">The Persistent Token Tax:</strong>
-    Context overhead still scales as <span class="font-mono text-purple-300">Servers &times; Tools per Server</span>. Every schema must be declared upfront in tool definition space.
+    <strong class="text-white">Token Tax</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Context overhead scales at <span class="font-mono text-purple-300">Servers &times; Tools per Server</span></li>
+      <li>Every schema must be declared upfront in tool definition</li>
+    </ul>
   </li>
   <li>
-    <strong class="text-white">The Orthogonal Shift: LLMs Can Code:</strong>
-    Server infrastructure got easier, but agent capability leaped forward—modern models can write scripts and execute CLI runbooks directly, bypassing rigid RPC wrappers.
+    <strong class="text-white">LLMs Can now Code</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Server infrastructure got easier, but agent capability leaped forward</li>
+      <li>Modern models can write scripts and execute CLI runbooks directly</li>
+    </ul>
   </li>
-</ul>
+</ol>
 
 <!--
 MCP started as a clean way to connect local desktop clients to tools over stdio, then migrated to remote servers. Early on, that meant stateful connections and sticky sessions. MCP 2 addressed that head-on—going stateless and exposing methods in headers so server farms and API gateways can easily route calls.
