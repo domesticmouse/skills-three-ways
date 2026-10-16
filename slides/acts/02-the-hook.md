@@ -172,7 +172,7 @@ layout: hardware-callout
 title: Inside the Chassis
 subtitle: Electro-Smith Daisy Seed 2 DFM
 image: /images/ES_Daisy_Seed2_DFM_light.png
-imageCaption: Electro-Smith Daisy Seed 2 DFM — STM32H750 @ 480 MHz & TI PCM3060 Codec
+imageCaption: Electro-Smith Daisy Seed 2 DFM — STM32H750 @ 480 MHz
 ---
 
 <!-- S17 -->

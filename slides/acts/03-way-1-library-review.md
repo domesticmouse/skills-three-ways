@@ -12,7 +12,7 @@ class: text-center
     libdaisy-guide &middot; daisysp-guide
   </p>
   <p class="text-base text-gray-400 max-w-xl mx-auto">
-    Turning 50,000+ lines of embedded C++ headers into high-signal architectural runbooks
+    Turning 50,000+ lines of embedded C++ headers into high-signal runbooks
   </p>
 </div>
 
@@ -70,7 +70,7 @@ layout: default
   <li>
     <strong class="text-white">Hallucinated HAL APIs</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Without a skill, LLMs mix up Arduino <code>analogRead()</code>, raw STM32 HAL calls, and older <code>libDaisy</code> v4 vs v7 <code>AdcChannelConfig</code> structs</li>
+      <li>Without a skill, LLMs mix up Arduino <code>analogRead()</code>, raw STM32 HAL calls, and older <code>libDaisy</code> v4 vs v7</li>
       <li>Causes immediate compile errors and wasted retry loops</li>
     </ul>
   </li>
@@ -524,4 +524,3 @@ layout: default
 <!--
 That's Way 1: Library Review Skills. By distilling 50,000+ lines of C++ headers into two ~200-line runbooks, the agent writes idiomatically correct Daisy C++ on the first try—and those two skills are reusable on any Daisy hardware project.
 -->
-
