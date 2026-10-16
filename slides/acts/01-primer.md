@@ -426,7 +426,7 @@ layout: default
     </ul>
   </li>
   <li>
-    <strong class="text-white">Phase 2 &middot; Synthesis with Meta-Skills (<code>agy-customizations</code>)</strong>
+    <strong class="text-white">Phase 2 &middot; Synthesis with Meta-Skills (<code>/agy-customizations</code>)</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Prompt the agent: <code>"/agy-customize Please convert this into an agent skill"</code></li>
       <li>The agent structures <code>SKILL.md</code>, formats YAML frontmatter, and isolates deep context into <code>scripts/</code> or <code>references/</code></li>
