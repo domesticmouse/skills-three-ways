@@ -36,5 +36,5 @@ src: ./acts/05-way-3-hardware-discovery.md
 ---
 
 ---
-src: ./acts/07-experiment-and-conclusion.md
+src: ./acts/06-experiment-and-conclusion.md
 ---

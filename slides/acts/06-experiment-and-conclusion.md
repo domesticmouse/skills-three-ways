@@ -14,7 +14,7 @@ class: text-center
 </div>
 
 <!--
-Now for Act 7—the payoff! We have all seven skills in `.agents/skills/`. What happens when we give an agent the exact same prompt to build a 7-voice Drum Synth for the Gamma mini synth WITHOUT skills versus WITH skills?
+Now for Act 6—the payoff! We have all seven skills in `.agents/skills/`. What happens when we give an agent the exact same prompt to build a 7-voice Drum Synth for the Gamma mini synth WITHOUT skills versus WITH skills?
 -->
 
 ---
@@ -484,10 +484,6 @@ layout: default
   <li>
     <strong class="text-white">Way 3 &middot; Hardware Discovery Skills</strong>
     <span class="text-gray-300"> &mdash; Run phased diagnostic probes and ship verified <code>resources/gamma_pins.h</code> &amp; 1 kHz ISR blueprints</span>
-  </li>
-  <li>
-    <strong class="text-white">The Mashup Skill</strong>
-    <span class="text-gray-300"> &mdash; Combine pinout truth (<code>SKILL.md</code>), firmware headers (<code>resources/</code>), and host CLI (<code>scripts/</code>) in one package</span>
   </li>
 </ol>
 

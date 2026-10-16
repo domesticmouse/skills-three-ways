@@ -17,7 +17,6 @@ Leverage Slidev's native `src:` frontmatter imports to split the presentation in
 - `slides/acts/03-way-1-library-review.md`: Slides 21–34 (S21–S34)
 - `slides/acts/04-way-2-dfu-operational.md`: Slides 35–46 (S35–S46)
 - `slides/acts/05-way-3-hardware-discovery.md`: Slides 47–62 (S47–S62)
-- `slides/acts/06-the-mashup.md`: Slides 63–70 (S63–S70)
-- `slides/acts/07-experiment-and-conclusion.md`: Slides 71–80 (S71–S80)
+- `slides/acts/06-experiment-and-conclusion.md`: Slides 63–72 (S71–S80)
 
 The master `slides/slides.md` maintains global presentation metadata (theme, background, highlighter, info, transitions) with `hide: true` on the headmatter block to prevent empty slide insertion or frontmatter pollution, followed by clean `src: ./acts/NN-*.md` imports. Slidev parser verification confirms all 80 slide tags, frontmatters, notes, and titles match 100%, and `npm run build` compiles with zero warnings or errors.
