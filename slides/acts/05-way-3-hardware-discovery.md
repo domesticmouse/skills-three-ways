@@ -25,35 +25,33 @@ layout: default
 ---
 
 <!-- S48 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">The Pattern: Diagnostic Firmwares (<code>PLAN.md</code>) &rarr; Truth + Idioms</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-4 mt-8">
-  <div class="p-5 rounded-xl bg-gray-900 border border-emerald-500/30">
-    <div class="text-xs font-mono text-emerald-400 mb-1">Step 1 · Phased Plan</div>
-    <h3 class="text-base font-bold text-white mb-2">Bootstrap One Output Channel First</h3>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      You can't probe 30 unknown pins blind. First find the OLED screen (<code>Phase 1 &amp; 2</code>) so the synth itself can display live GPIO &amp; ADC readings!
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900 border border-emerald-500/30">
-    <div class="text-xs font-mono text-emerald-400 mb-1">Step 2 · Interactive Probing</div>
-    <h3 class="text-base font-bold text-white mb-2">Turn Knobs, Press Keys, Log Truth</h3>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Flash diagnostic firmwares (<code>phase3_adc</code>, <code>phase4_keys_encoder</code>, <code>phase5_audio</code>) and record exact pin numbers, polarities, and timing hazards.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900 border border-emerald-500/30">
-    <div class="text-xs font-mono text-emerald-400 mb-1">Step 3 · Split Facts vs. Idioms</div>
-    <h3 class="text-base font-bold text-white mb-2">Two Complementary Skills</h3>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Package raw pinout truth + <code>gamma_pins.h</code> in <code>gamma-pinout</code>, and C++ peripheral driver architectures in <code>gamma-hardware-controls</code>.
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Phased Plan: Bootstrap One Output Channel First</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>You can't probe 30 unknown pins blind without telemetry</li>
+      <li>First find the OLED screen (<code>Phase 1 &amp; 2</code>) so the synth itself can display live GPIO and ADC readings</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Interactive Probing: Turn Knobs, Press Keys, Log Truth</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Flash diagnostic firmwares (<code>phase3_adc</code>, <code>phase4_keys_encoder</code>, <code>phase5_audio</code>)</li>
+      <li>Record exact pin numbers, electrical polarities, and timing hazards</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Split Facts vs. Idioms: Two Complementary Skills</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Package raw pinout truth + <code>gamma_pins.h</code> in <code>gamma-pinout</code></li>
+      <li>Package C++ peripheral driver architectures in <code>gamma-hardware-controls</code></li>
+    </ul>
+  </li>
+</ol>
 
 <!--
 How do you reverse-engineer a board with no schematic? You design a phased sequence of diagnostic firmwares where Phase 1 finds the display, and every subsequent phase uses that display to turn physical actions into verified pin tables.
@@ -96,13 +94,11 @@ layout: default
 </div>
 
 <!--
-In Recording 4, we ask AGY—armed with <code>libdaisy-guide</code> and <code>daisysp-guide</code>—to design a safe, phased hardware reverse-engineering plan (<code>PLAN.md</code>). Let's watch the replay.
+In Recording 4, we ask AGY—armed with `libdaisy-guide` and `daisysp-guide`—to design a safe, phased hardware reverse-engineering plan (`PLAN.md`). Let's watch the replay.
 -->
 
 ---
 layout: cast-full
-act: Act 5 · Way 3 (Hardware Discovery)
-badgeClass: badge-way3
 title: "Recording 04: Designing the 6-Phase Hardware Probing Plan (PLAN.md)"
 cast: /casts/reverse-engineering-plan.cast
 autoPlay: false
@@ -113,7 +109,7 @@ fit: both
 
 <!-- S50 -->
 <!--
-Click to play: AGY reads <code>libdaisy-guide</code> to identify all candidate I2C, ADC, and GPIO pins on the Daisy Seed 2 DFM and structures the 6-phase <code>PLAN.md</code> diagnostic roadmap.
+Click to play: AGY reads `libdaisy-guide` to identify all candidate I2C, ADC, and GPIO pins on the Daisy Seed 2 DFM and structures the 6-phase `PLAN.md` diagnostic roadmap.
 -->
 
 ---
@@ -125,46 +121,47 @@ layout: default
   <h2 class="text-2xl font-bold m-0">The 6-Phase Hardware Probing Roadmap (<code>PLAN.md</code>)</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-3.5 mt-5 text-xs">
-  <div class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
-    <div class="font-mono text-amber-300 font-bold">Phase 0 · Safety Net</div>
-    <div class="text-white font-semibold mt-1">Factory Backup &amp; DFU Restore</div>
-    <p class="text-gray-400 mt-1">Verify <code>gamma-v2.0.3.bin</code> restore and confirm <code>APP_TYPE = BOOT_SRAM</code> vector table entry.</p>
-  </div>
-
-  <div class="p-3.5 rounded-xl bg-gray-900 border border-emerald-500/30">
-    <div class="font-mono text-emerald-300 font-bold">Phase 1 &amp; 2 · Visual Output</div>
-    <div class="text-white font-semibold mt-1">I2C Bus Scan &amp; OLED Bringup</div>
-    <p class="text-gray-400 mt-1">Scan <code>I2C1</code>, <code>I2C2</code>, <code>I2C4</code> across <code>0x08</code>–<code>0x77</code> to locate the 128&times;64 SSD1306 OLED screen.</p>
-  </div>
-
-  <div class="p-3.5 rounded-xl bg-gray-900 border border-emerald-500/30">
-    <div class="font-mono text-emerald-300 font-bold">Phase 3 · Analog Controls</div>
-    <div class="text-white font-semibold mt-1">ADC1 Pots &amp; Thumbsticks</div>
-    <p class="text-gray-400 mt-1">Render live bar graphs for all 12 Daisy ADC pins on the OLED; turn each knob and stick axis one by one.</p>
-  </div>
-
-  <div class="p-3.5 rounded-xl bg-gray-900 border border-emerald-500/30">
-    <div class="font-mono text-emerald-300 font-bold">Phase 4 · Digital Inputs</div>
-    <div class="text-white font-semibold mt-1">14 Keys &amp; Rotary Encoder</div>
-    <p class="text-gray-400 mt-1">Poll all remaining candidate GPIOs with internal pull-ups (<code>INPUT_PULLUP</code>) and display active-low pin indices on screen.</p>
-  </div>
-
-  <div class="p-3.5 rounded-xl bg-gray-900 border border-emerald-500/30">
-    <div class="font-mono text-emerald-300 font-bold">Phase 5 · Audio &amp; Amp</div>
-    <div class="text-white font-semibold mt-1">PCM3060 Codec &amp; Speaker Enable</div>
-    <p class="text-gray-400 mt-1">Output a 440 Hz test tone via SAI1 and probe candidate output pins to unmute the internal speaker amplifier.</p>
-  </div>
-
-  <div class="p-3.5 rounded-xl bg-gray-900 border border-cyan-500/30">
-    <div class="font-mono text-cyan-300 font-bold">Phase 6 · Synthesis</div>
-    <div class="text-white font-semibold mt-1">Distill into Skills &amp; Build Synths</div>
-    <p class="text-gray-400 mt-1">Freeze all discoveries into <code>gamma-pinout</code> and <code>gamma-hardware-controls</code>, then build full instruments.</p>
-  </div>
-</div>
+<ol class="space-y-2.5 text-xs text-gray-200 list-decimal pl-6 mt-4 leading-relaxed">
+  <li>
+    <strong class="text-white">Phase 0 &middot; Safety Net (Factory Backup &amp; DFU Restore)</strong>
+    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
+      <li>Verify <code>gamma-v2.0.3.bin</code> restore and confirm <code>APP_TYPE = BOOT_SRAM</code> vector table entry</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Phase 1 &amp; 2 &middot; Visual Output (I2C Bus Scan &amp; OLED Bringup)</strong>
+    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
+      <li>Scan <code>I2C1</code>, <code>I2C2</code>, <code>I2C4</code> across <code>0x08</code>–<code>0x77</code> to locate the 128&times;64 SSD1306 OLED screen</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Phase 3 &middot; Analog Controls (ADC1 Pots &amp; Thumbsticks)</strong>
+    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
+      <li>Render live bar graphs for all 12 Daisy ADC pins on the OLED; turn each knob and stick axis one by one</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Phase 4 &middot; Digital Inputs (14 Keys &amp; Rotary Encoder)</strong>
+    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
+      <li>Poll all remaining candidate GPIOs with internal pull-ups (<code>INPUT_PULLUP</code>) and display active-low pin indices on screen</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Phase 5 &middot; Audio &amp; Amp (PCM3060 Codec &amp; Speaker Enable)</strong>
+    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
+      <li>Output a 440 Hz test tone via SAI1 and probe candidate output pins to unmute the internal speaker amplifier</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Phase 6 &middot; Synthesis (Distill into Skills &amp; Build Synths)</strong>
+    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
+      <li>Freeze all discoveries into <code>gamma-pinout</code> and <code>gamma-hardware-controls</code>, then build full instruments</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
-Here is the 6-phase probing roadmap from <code>PLAN.md</code>. Notice how each phase builds on the last: Phase 0 secures recovery, Phase 1-2 unlocks the OLED screen, and Phases 3, 4, and 5 use the OLED screen to map every analog, digital, and audio pin.
+Here is the 6-phase probing roadmap from `PLAN.md`. Notice how each phase builds on the last: Phase 0 secures recovery, Phase 1-2 unlocks the OLED screen, and Phases 3, 4, and 5 use the OLED screen to map every analog, digital, and audio pin.
 -->
 
 ---
@@ -210,7 +207,7 @@ oled_config.driver_config.transport_config.i2c_address = 0x3D;
 </div>
 
 <!--
-In Phase 1, how do you read I2C scan results without a screen or serial port? We had the scanner try initializing an SSD1306 driver on every I2C address that ACKed—and the OLED lit up immediately on <code>I2C1</code> (<code>D11</code>/<code>D12</code>) at address <code>0x3D</code>!
+In Phase 1, how do you read I2C scan results without a screen or serial port? We had the scanner try initializing an SSD1306 driver on every I2C address that ACKed—and the OLED lit up immediately on `I2C1` (`D11`/`D12`) at address `0x3D`!
 -->
 
 ---
@@ -257,7 +254,7 @@ layout: default
 </div>
 
 <!--
-With the OLED working, <code>phase3_adc</code> drew real-time bar graphs for all ADC channels on the screen. Turning each knob and moving each stick mapped all 4 pots (<code>D18</code>, <code>D17</code>, <code>D19</code>, <code>D20</code>) and all 4 joystick axes (<code>D22</code>, <code>D21</code>, <code>D24</code>, <code>D23</code>).
+With the OLED working, `phase3_adc` drew real-time bar graphs for all ADC channels on the screen. Turning each knob and moving each stick mapped all 4 pots (`D18`, `D17`, `D19`, `D20`) and all 4 joystick axes (`D22`, `D21`, `D24`, `D23`).
 -->
 
 ---
@@ -355,7 +352,7 @@ layout: default
 </div>
 
 <!--
-In Phase 4, we mapped all 14 tactile switches (<code>N1</code>–<code>N7</code> and <code>C1</code>–<code>C7</code>) plus the rotary encoder (<code>D15</code>, <code>D16</code>, <code>D28</code>). We also discovered that <code>oled.Update()</code> blocks for 9.5 ms over I2C—so encoder & key polling must run inside a 1 kHz <code>TIM5</code> timer interrupt!
+In Phase 4, we mapped all 14 tactile switches (`N1`–`N7` and `C1`–`C7`) plus the rotary encoder (`D15`, `D16`, `D28`). We also discovered that `oled.Update()` blocks for 9.5 ms over I2C—so encoder & key polling must run inside a 1 kHz `TIM5` timer interrupt!
 -->
 
 ---
@@ -403,7 +400,7 @@ spk_en.Write(true);
 </div>
 
 <!--
-In Phase 5, our 440 Hz test tone played on headphones, but the internal speaker was dead silent! Probing the remaining pins revealed that <code>seed::D32</code> (<code>PC3</code>) is an active-HIGH speaker amplifier enable pin. Driving <code>D32</code> HIGH brought the speaker to life.
+In Phase 5, our 440 Hz test tone played on headphones, but the internal speaker was dead silent! Probing the remaining pins revealed that `seed::D32` (`PC3`) is an active-HIGH speaker amplifier enable pin. Driving `D32` HIGH brought the speaker to life.
 -->
 
 ---
@@ -411,44 +408,29 @@ layout: default
 ---
 
 <!-- S57 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Distilling Facts vs. Idioms: Why Two Hardware Skills?</h2>
 </div>
 
-<div class="grid grid-cols-2 gap-6 mt-6">
-  <div class="p-5 rounded-xl bg-emerald-950/15 border border-emerald-500/40 space-y-3">
-    <div class="flex items-center justify-between">
-      <span class="font-mono text-sm font-bold text-emerald-300">gamma-pinout</span>
-      <span class="text-xs px-2 py-0.5 rounded bg-gray-800 text-gray-300">Declarative Hardware Truth</span>
-    </div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Answers <strong>"What is connected where?"</strong>
-    </p>
-    <ul class="text-xs text-gray-400 space-y-1.5 list-disc pl-4">
-      <li>Master 32-row pinout &amp; polarity table</li>
-      <li>Drop-in <code>resources/gamma_pins.h</code> C++ header</li>
-      <li>Zero driver state machines—pure hardware constants</li>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white"><code class="text-emerald-300">gamma-pinout</code> &middot; Declarative Hardware Truth</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Answers <strong>"What is connected where?"</strong> via a master 32-row pinout and polarity table</li>
+      <li>Bundles a drop-in <code>resources/gamma_pins.h</code> C++ header with pure hardware constants and zero driver state machines</li>
     </ul>
-  </div>
-
-  <div class="p-5 rounded-xl bg-emerald-950/15 border border-emerald-500/40 space-y-3">
-    <div class="flex items-center justify-between">
-      <span class="font-mono text-sm font-bold text-emerald-300">gamma-hardware-controls</span>
-      <span class="text-xs px-2 py-0.5 rounded bg-gray-800 text-gray-300">Procedural Driver Idioms</span>
-    </div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Answers <strong>"How do I poll and render controls safely?"</strong>
-    </p>
-    <ul class="text-xs text-gray-400 space-y-1.5 list-disc pl-4">
-      <li>1 kHz <code>TIM5</code> ISR Buxton Gray-code encoder state machine</li>
-      <li>Lock-free key event queue &amp; IIR deadband pot smoothing</li>
-      <li>5 deep subsystem guides in <code>references/*.md</code></li>
+  </li>
+  <li>
+    <strong class="text-white"><code class="text-emerald-300">gamma-hardware-controls</code> &middot; Procedural Driver Idioms</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Answers <strong>"How do I poll and render controls safely?"</strong> via a 1 kHz <code>TIM5</code> ISR Buxton Gray-code encoder state machine</li>
+      <li>Provides lock-free key event queues, IIR deadband pot smoothing, and 5 deep subsystem guides in <code>references/*.md</code></li>
     </ul>
-  </div>
-</div>
+  </li>
+</ol>
 
 <!--
-Once Phases 1 through 5 were complete, we made a key architectural decision: we split our hardware knowledge into two skills—<code>gamma-pinout</code> for declarative pin truth and <code>gamma_pins.h</code>, and <code>gamma-hardware-controls</code> for non-blocking C++ driver idioms.
+Once Phases 1 through 5 were complete, we made a key architectural decision: we split our hardware knowledge into two skills—`gamma-pinout` for declarative pin truth and `gamma_pins.h`, and `gamma-hardware-controls` for non-blocking C++ driver idioms.
 -->
 
 ---
@@ -526,7 +508,7 @@ step: Zoom-In 1 of 4
 </div>
 
 <!--
-Zooming into <code>gamma-pinout/SKILL.md</code>: every single peripheral, Daisy Seed pin, STM32 port, ADC channel, and electrical polarity is documented in one authoritative table.
+Zooming into `gamma-pinout/SKILL.md`: every single peripheral, Daisy Seed pin, STM32 port, ADC channel, and electrical polarity is documented in one authoritative table.
 -->
 
 ---
@@ -570,7 +552,7 @@ namespace speaker_amp {
 </div>
 
 <!--
-Even better, <code>gamma-pinout</code> bundles <code>resources/gamma_pins.h</code> right inside the skill directory. The agent doesn't have to transcribe 30 pin numbers from markdown—it just copies <code>gamma_pins.h</code> into the project and <code>#include</code>s it.
+Even better, `gamma-pinout` bundles `resources/gamma_pins.h` right inside the skill directory. The agent doesn't have to transcribe 30 pin numbers from markdown—it just copies `gamma_pins.h` into the project and `#include`s it.
 -->
 
 ---
@@ -614,7 +596,7 @@ tim_cfg.enable_irq = true;
 </div>
 
 <!--
-In <code>gamma-hardware-controls/SKILL.md</code>, we give the agent the 1 kHz <code>TIM5</code> hardware interrupt architecture so OLED updates never drop encoder clicks, plus a symptom-to-root-cause troubleshooting table.
+In `gamma-hardware-controls/SKILL.md`, we give the agent the 1 kHz `TIM5` hardware interrupt architecture so OLED updates never drop encoder clicks, plus a symptom-to-root-cause troubleshooting table.
 -->
 
 ---
@@ -626,49 +608,35 @@ step: Zoom-In 4 of 4
 ---
 
 <!-- S61 -->
-<div class="grid grid-cols-5 gap-2.5 text-xs mt-2">
-  <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
-    <div class="font-mono font-bold text-emerald-300 mb-1">display.md</div>
-    <p class="text-gray-400 text-[11px]">
-      <code>I2C1</code> force-reset sequence, <code>I2C_1MHZ</code> config, 30 Hz frame throttling.
-    </p>
-  </div>
-
-  <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
-    <div class="font-mono font-bold text-emerald-300 mb-1">analog_inputs.md</div>
-    <p class="text-gray-400 text-[11px]">
-      9-channel <code>AdcChannelConfig</code>, pot inversion, soft-takeover / pickup logic.
-    </p>
-  </div>
-
-  <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
-    <div class="font-mono font-bold text-emerald-300 mb-1">digital_keys.md</div>
-    <p class="text-gray-400 text-[11px]">
-      14 active-low keys, 8ms shift-register debounce, lock-free <code>KeyEvent</code> ring buffer.
-    </p>
-  </div>
-
-  <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
-    <div class="font-mono font-bold text-emerald-300 mb-1">rotary_encoder.md</div>
-    <p class="text-gray-400 text-[11px]">
-      Buxton Gray-code state table eliminating mechanical contact bounce.
-    </p>
-  </div>
-
-  <div class="p-3 rounded-lg bg-gray-900 border border-emerald-500/40">
-    <div class="font-mono font-bold text-white mb-1">main_loop_blueprint.md</div>
-    <p class="text-gray-300 text-[11px]">
-      Complete end-to-end C++ firmware skeleton combining all 4 subsystems!
-    </p>
-  </div>
-</div>
+<ol class="space-y-2.5 text-xs text-gray-200 list-decimal pl-6 leading-relaxed">
+  <li>
+    <strong class="text-emerald-300 font-mono">references/display.md</strong>
+    <span class="text-gray-300"> &mdash; <code>I2C1</code> force-reset sequence, <code>I2C_1MHZ</code> config, and 30 Hz frame throttling</span>
+  </li>
+  <li>
+    <strong class="text-emerald-300 font-mono">references/analog_inputs.md</strong>
+    <span class="text-gray-300"> &mdash; 9-channel <code>AdcChannelConfig</code>, pot/joystick inversion, and soft-takeover / pickup logic</span>
+  </li>
+  <li>
+    <strong class="text-emerald-300 font-mono">references/digital_keys.md</strong>
+    <span class="text-gray-300"> &mdash; 14 active-low keys, 8ms shift-register debounce, and lock-free <code>KeyEvent</code> ring buffer</span>
+  </li>
+  <li>
+    <strong class="text-emerald-300 font-mono">references/rotary_encoder.md</strong>
+    <span class="text-gray-300"> &mdash; Buxton Gray-code state table eliminating mechanical contact bounce</span>
+  </li>
+  <li>
+    <strong class="text-white font-mono">references/main_loop_blueprint.md</strong>
+    <span class="text-gray-300"> &mdash; Complete end-to-end C++ firmware skeleton combining all 4 subsystems</span>
+  </li>
+</ol>
 
 <div class="mt-4 p-3 rounded-lg bg-gray-900/70 border border-gray-800 text-xs text-gray-300 text-center">
   <code>SKILL.md</code> stays a crisp 91-line index; the agent reads only the specific <code>references/*.md</code> file it needs.
 </div>
 
 <!--
-Look at how <code>gamma-hardware-controls</code> uses Tier-3 <code>references/</code>: <code>SKILL.md</code> is only 91 lines long, pointing to five deep reference files—<code>display.md</code>, <code>analog_inputs.md</code>, <code>digital_keys.md</code>, <code>rotary_encoder.md</code>, and <code>main_loop_blueprint.md</code>.
+Look at how `gamma-hardware-controls` uses Tier-3 `references/`: `SKILL.md` is only 91 lines long, pointing to five deep reference files—`display.md`, `analog_inputs.md`, `digital_keys.md`, `rotary_encoder.md`, and `main_loop_blueprint.md`.
 -->
 
 ---
@@ -676,37 +644,34 @@ layout: default
 ---
 
 <!-- S62 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Way 3 Takeaway: Hardware Discovery Skills</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-5 mt-8">
-  <div class="p-5 rounded-xl bg-emerald-950/15 border border-emerald-500/30">
-    <div class="text-xs font-mono text-emerald-400 uppercase mb-1">Takeaway 1</div>
-    <h3 class="text-base font-bold text-white mb-2">Telemetry First</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      When reverse-engineering hardware with an agent, prioritize bringing up a visual or serial output channel in Phase 1 so the device can report its own state.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-emerald-950/15 border border-emerald-500/30">
-    <div class="text-xs font-mono text-emerald-400 uppercase mb-1">Takeaway 2</div>
-    <h3 class="text-base font-bold text-white mb-2">Bundle Verified Code (<code>resources/</code>)</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Don't just describe pin numbers in prose—ship a tested <code>gamma_pins.h</code> header in <code>resources/</code> so future builds have zero transcription errors.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-emerald-950/15 border border-emerald-500/30">
-    <div class="text-xs font-mono text-emerald-400 uppercase mb-1">Takeaway 3</div>
-    <h3 class="text-base font-bold text-white mb-2">Separate Truth from Drivers</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Keeping <code>gamma-pinout</code> (facts) distinct from <code>gamma-hardware-controls</code> (ISR drivers) keeps both skills modular and easy to maintain.
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Telemetry First</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>When reverse-engineering hardware with an agent, prioritize bringing up a visual or serial output channel in Phase 1</li>
+      <li>Turns the device itself into a live logic analyzer for every subsequent phase</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Bundle Verified Code in <code>resources/</code></strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Don't just describe pin numbers in prose—ship a tested <code>gamma_pins.h</code> header in <code>resources/</code></li>
+      <li>Eliminates pin transcription errors in future firmware builds</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Separate Declarative Truth from Driver Idioms</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Keeping <code>gamma-pinout</code> (facts) distinct from <code>gamma-hardware-controls</code> (ISR drivers) keeps both skills modular and easy to maintain</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
-That's Way 3: Hardware Discovery Skills. Turn ephemeral debugging sessions into permanent, verifiable hardware abstractions by bundling both declarative truth (<code>gamma_pins.h</code>) and real-time driver blueprints.
+That's Way 3: Hardware Discovery Skills. Turn ephemeral debugging sessions into permanent, verifiable hardware abstractions by bundling both declarative truth (`gamma_pins.h`) and real-time driver blueprints.
 -->
 

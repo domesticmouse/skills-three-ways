@@ -17,7 +17,7 @@ class: text-center
 </div>
 
 <!--
-Now we arrive at Act 6: our seventh skill, <code>gamma-usb-connectivity</code>. We call this "The Mashup Skill" because solving USB serial on the Gamma required combining all three ways into a single package.
+Now we arrive at Act 6: our seventh skill, `gamma-usb-connectivity`. We call this "The Mashup Skill" because solving USB serial on the Gamma required combining all three ways into a single package.
 -->
 
 ---
@@ -58,7 +58,7 @@ hw.PrintLine("Hello from Daisy!");
 </div>
 
 <!--
-Here was the mystery: every <code>libDaisy</code> example uses <code>hw.StartLog()</code>, which defaults to <code>LOGGER_INTERNAL</code> on pins <code>PA11</code>/<code>PA12</code>. On the Gamma, <code>hw.StartLog()</code> produced zero USB enumeration! Why?
+Here was the mystery: every `libDaisy` example uses `hw.StartLog()`, which defaults to `LOGGER_INTERNAL` on pins `PA11`/`PA12`. On the Gamma, `hw.StartLog()` produced zero USB enumeration! Why?
 -->
 
 ---
@@ -102,7 +102,7 @@ hw.usb_handle.Init(UsbHandle::FS_EXTERNAL); // D29/D30
 </div>
 
 <!--
-By displaying the STM32 USB registers on the OLED screen, we proved that the Gamma's USB-C port is wired to <code>D29</code> and <code>D30</code>—<code>UsbHandle::FS_EXTERNAL</code>. The moment we initialized <code>FS_EXTERNAL</code>, <code>/dev/cu.usbmodem*</code> appeared on macOS!
+By displaying the STM32 USB registers on the OLED screen, we proved that the Gamma's USB-C port is wired to `D29` and `D30`—`UsbHandle::FS_EXTERNAL`. The moment we initialized `FS_EXTERNAL`, `/dev/cu.usbmodem*` appeared on macOS!
 -->
 
 ---
@@ -133,7 +133,7 @@ layout: default
 </div>
 
 <!--
-Getting USB to enumerate was only half the battle. In real-time synthesis, standard <code>libDaisy</code> USB logging has two fatal deadlocks: <code>TransmitSync()</code> freezes forever the moment you close your terminal window, and printing inside <code>UsbRxCallback</code> deadlocks the USB ISR.
+Getting USB to enumerate was only half the battle. In real-time synthesis, standard `libDaisy` USB logging has two fatal deadlocks: `TransmitSync()` freezes forever the moment you close your terminal window, and printing inside `UsbRxCallback` deadlocks the USB ISR.
 -->
 
 ---
@@ -141,38 +141,36 @@ layout: default
 ---
 
 <!-- S67 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Why <code>gamma-usb-connectivity</code> Is a Three-Way Mashup</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-4 mt-6 text-xs">
-  <div class="p-4 rounded-xl bg-gray-900 border border-emerald-500/40 space-y-2">
-    <span class="px-2 py-0.5 rounded-full badge-way3 text-[10px] uppercase font-semibold">From Way 3 · Hardware Truth</span>
-    <div class="font-mono font-bold text-white text-sm pt-1">SKILL.md Pinout &amp; VID/PID</div>
-    <p class="text-gray-400 leading-relaxed">
-      Documents <code>UsbHandle::FS_EXTERNAL</code> on <code>D29</code>/<code>D30</code> (<code>PB14</code>/<code>PB15</code>), VID/PID <code>0483:5740</code>, and why <code>hw.StartLog()</code> must never be used.
-    </p>
-  </div>
-
-  <div class="p-4 rounded-xl bg-gray-900 border border-cyan-500/40 space-y-2">
-    <span class="px-2 py-0.5 rounded-full badge-way1 text-[10px] uppercase font-semibold">From Way 1 · C++ Architecture</span>
-    <div class="font-mono font-bold text-white text-sm pt-1">resources/gamma_usb.h</div>
-    <p class="text-gray-400 leading-relaxed">
-      Drop-in C++ driver (<code>gamma_usb::UsbComm</code>) with a 4-buffer non-blocking TX pool, 500 &mu;s timeout, 200 ms backoff, and lock-free RX ring buffer.
-    </p>
-  </div>
-
-  <div class="p-4 rounded-xl bg-gray-900 border border-amber-500/40 space-y-2">
-    <span class="px-2 py-0.5 rounded-full badge-way2 text-[10px] uppercase font-semibold">From Way 2 · Operational CLI</span>
-    <div class="font-mono font-bold text-white text-sm pt-1">scripts/gamma_usb.py</div>
-    <p class="text-gray-400 leading-relaxed">
-      Zero-dependency Python <code>termios</code> host utility for live serial monitoring, command dispatch, and sending <code>'b'</code> to reboot into DFU mode.
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">From Way 3 (Hardware Truth): <code>SKILL.md</code> Pinout &amp; VID/PID</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Documents <code>UsbHandle::FS_EXTERNAL</code> on <code>D29</code>/<code>D30</code> (<code>PB14</code>/<code>PB15</code>) and VID/PID <code>0483:5740</code></li>
+      <li>Establishes negative constraint against calling <code>hw.StartLog()</code></li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">From Way 1 (C++ Architecture): <code>resources/gamma_usb.h</code></strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Drop-in C++ driver (<code>gamma_usb::UsbComm</code>) with a 4-buffer non-blocking TX pool</li>
+      <li>Enforces a 500 &mu;s timeout, 200 ms disconnect backoff, and lock-free RX ring buffer</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">From Way 2 (Operational CLI): <code>scripts/gamma_usb.py</code></strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Zero-dependency Python <code>termios</code> host utility for live serial monitoring and command dispatch</li>
+      <li>Sends <code>'b'</code> over USB CDC to trigger hands-free reboots into DFU bootloader mode</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
-To solve this cleanly for the agent, <code>gamma-usb-connectivity</code> mashes up all three ways in one skill directory: Way 3 hardware truth in <code>SKILL.md</code>, a Way 1 deadlock-free C++ header in <code>resources/gamma_usb.h</code>, and a Way 2 host Python CLI in <code>scripts/gamma_usb.py</code>.
+To solve this cleanly for the agent, `gamma-usb-connectivity` mashes up all three ways in one skill directory: Way 3 hardware truth in `SKILL.md`, a Way 1 deadlock-free C++ header in `resources/gamma_usb.h`, and a Way 2 host Python CLI in `scripts/gamma_usb.py`.
 -->
 
 ---
@@ -214,7 +212,7 @@ description: >-
 </div>
 
 <!--
-Look at <code>gamma-usb-connectivity/SKILL.md</code>: it documents even subtle C++ traps like never naming your namespace <code>gamma</code> (which collides with <code>&lt;math.h&gt;</code>'s <code>gamma()</code> function in newlib) and building in the <code>'b'</code> soft-reboot command.
+Look at `gamma-usb-connectivity/SKILL.md`: it documents even subtle C++ traps like never naming your namespace `gamma` (which collides with `<math.h>`'s `gamma()` function in newlib) and building in the `'b'` soft-reboot command.
 -->
 
 ---
@@ -253,7 +251,7 @@ while(s_hw->usb_handle.TransmitExternal((uint8_t*)buf, len) == UsbHandle::Result
 </div>
 
 <!--
-Inside <code>resources/gamma_usb.h</code>, <code>RxCallbackInternal</code> only pushes bytes into a lock-free ring buffer, and <code>TransmitExternal</code> caps waiting at 500 microseconds with a 200 millisecond fast-fail backoff when no terminal is listening.
+Inside `resources/gamma_usb.h`, `RxCallbackInternal` only pushes bytes into a lock-free ring buffer, and `TransmitExternal` caps waiting at 500 microseconds with a 200 millisecond fast-fail backoff when no terminal is listening.
 -->
 
 ---
@@ -292,6 +290,6 @@ python3 .agents/skills/gamma-usb-connectivity/scripts/gamma_usb.py --bootloader
 </div>
 
 <!--
-And on the host side, <code>scripts/gamma_usb.py</code> uses standard-library POSIX <code>termios</code>—zero pip dependencies—so the agent can run <code>--test</code>, send interactive commands with <code>--send</code>, or reboot into DFU mode with <code>--bootloader</code>.
+And on the host side, `scripts/gamma_usb.py` uses standard-library POSIX `termios`—zero pip dependencies—so the agent can run `--test`, send interactive commands with `--send`, or reboot into DFU mode with `--bootloader`.
 -->
 

@@ -17,7 +17,7 @@ class: text-center
 </div>
 
 <!--
-Act 3 brings us to Way 1: Library Review Skills. Before touching the Gamma hardware, we needed the agent to master <code>libDaisy</code> and <code>DaisySP</code>.
+Act 3 brings us to Way 1: Library Review Skills. Before touching the Gamma hardware, we needed the agent to master `libDaisy` and `DaisySP`.
 -->
 
 ---
@@ -25,35 +25,33 @@ layout: default
 ---
 
 <!-- S22 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">The Pattern: Source Tree &rarr; Architecture Report &rarr; Skill</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-4 mt-8">
-  <div class="p-5 rounded-xl bg-gray-900 border border-cyan-500/30">
-    <div class="text-xs font-mono text-cyan-400 mb-1">Step 1 · Clone Source</div>
-    <h3 class="text-base font-bold text-white mb-2">Check Out the Raw C++ Repo</h3>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Clone <code>electro-smith/libDaisy</code> and <code>electro-smith/DaisySP</code> directly into the workspace so the agent can read actual <code>.h</code> and <code>.cpp</code> files rather than relying on stale training weights.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900 border border-cyan-500/30">
-    <div class="text-xs font-mono text-cyan-400 mb-1">Step 2 · Deep Audit</div>
-    <h3 class="text-base font-bold text-white mb-2">Synthesize Architecture</h3>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Have AGY survey directory prefixes, linker scripts, memory sections, real-time ISR rules, and module catalogs into a structured architectural report.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900 border border-cyan-500/30">
-    <div class="text-xs font-mono text-cyan-400 mb-1">Step 3 · Package Skill</div>
-    <h3 class="text-base font-bold text-white mb-2">Distill into <code>.agents/skills/</code></h3>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Convert the report into a fast Tier-2 <code>SKILL.md</code> cheatsheet plus Tier-3 <code>references/</code> catalogs so future tasks never need to grep 200 headers again.
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Clone Source: Check Out the Raw C++ Repo</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Clone <code>electro-smith/libDaisy</code> and <code>electro-smith/DaisySP</code> directly into the workspace</li>
+      <li>Lets the agent inspect actual <code>.h</code> and <code>.cpp</code> files rather than relying on stale training weights</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Deep Audit: Synthesize Architecture</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Have AGY survey directory prefixes, linker scripts, memory sections, real-time ISR rules, and module catalogs</li>
+      <li>Compile findings into a structured architectural reference</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Package Skill: Distill into <code>.agents/skills/</code></strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Convert the report into a fast Tier-2 <code>SKILL.md</code> cheatsheet plus Tier-3 <code>references/</code> catalogs</li>
+      <li>Future tasks never need to grep 200 headers again</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
 The Way 1 pattern is simple and repeatable for any library: check out the source repository locally, have the agent perform a systematic architectural audit, and package that audit into a progressive-disclosure skill.
@@ -64,35 +62,33 @@ layout: default
 ---
 
 <!-- S23 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Why Embedded C++ Libraries Need Skills</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-4 mt-6">
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800 space-y-2">
-    <div class="text-xs font-mono text-red-400 uppercase">Failure Mode 1</div>
-    <div class="text-base font-bold text-white">Hallucinated HAL APIs</div>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Without a skill, LLMs mix up Arduino <code>analogRead()</code>, raw STM32 HAL calls, and older <code>libDaisy</code> v4 vs v7 <code>AdcChannelConfig</code> structs—causing immediate compile errors.
-    </p>
-  </div>
-
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800 space-y-2">
-    <div class="text-xs font-mono text-red-400 uppercase">Failure Mode 2</div>
-    <div class="text-base font-bold text-white">STM32H7 DMA &amp; RAM Traps</div>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      The Cortex-M7 D-Cache does not snoop DMA! Putting a DMA buffer in cached AXI SRAM or putting a 395 KB <code>ReverbSc</code> on the stack silently crashes the MCU.
-    </p>
-  </div>
-
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800 space-y-2">
-    <div class="text-xs font-mono text-red-400 uppercase">Failure Mode 3</div>
-    <div class="text-base font-bold text-white">ISR Deadline Violations</div>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      At 48 kHz with a 48-sample block, <code>AudioCallback</code> has exactly <strong>1.0 millisecond</strong>. Calling <code>oled.Update()</code> (9 ms over I2C) inside the audio ISR destroys audio output.
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Hallucinated HAL APIs</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Without a skill, LLMs mix up Arduino <code>analogRead()</code>, raw STM32 HAL calls, and older <code>libDaisy</code> v4 vs v7 <code>AdcChannelConfig</code> structs</li>
+      <li>Causes immediate compile errors and wasted retry loops</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">STM32H7 DMA &amp; RAM Traps</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>The Cortex-M7 D-Cache does not snoop DMA transfers</li>
+      <li>Putting a DMA buffer in cached AXI SRAM or a 395 KB <code>ReverbSc</code> on the stack silently crashes the MCU</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">ISR Deadline Violations</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>At 48 kHz with a 48-sample block, <code>AudioCallback</code> has a strict <strong>1.0 millisecond</strong> deadline</li>
+      <li>Calling <code>oled.Update()</code> (9 ms over I2C) inside the audio ISR destroys audio output</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
 Why is this especially critical for embedded C++? Because general LLM weights hallucinate API signatures, forget Cortex-M7 DMA cache attributes, and put 395 KB reverbs on the stack.
@@ -136,13 +132,11 @@ layout: default
 </div>
 
 <!--
-In Recording 2, we point AGY at a shallow checkout of <code>libDaisy/</code> and ask it to inspect the source tree and produce the <code>libdaisy-guide</code> skill. Let's watch how it explores the codebase.
+In Recording 2, we point AGY at a shallow checkout of `libDaisy/` and ask it to inspect the source tree and produce the `libdaisy-guide` skill. Let's watch how it explores the codebase.
 -->
 
 ---
 layout: cast-full
-act: Act 3 · Way 1 (Library Review)
-badgeClass: badge-way1
 title: "Recording 02: Creating libdaisy-guide from libDaisy/"
 cast: /casts/libdaisy-skill-creation.cast
 autoPlay: false
@@ -153,7 +147,7 @@ fit: both
 
 <!-- S25 -->
 <!--
-Click to play: watch AGY scan <code>libDaisy/src/</code>, inspect the peripheral headers and STM32H750 linker sections, and synthesize the complete <code>libdaisy-guide</code> skill.
+Click to play: watch AGY scan `libDaisy/src/`, inspect the peripheral headers and STM32H750 linker sections, and synthesize the complete `libdaisy-guide` skill.
 -->
 
 ---
@@ -191,7 +185,7 @@ description: >-
 </div>
 
 <!--
-Let's zoom into the resulting <code>libdaisy-guide</code> skill. First, look at its YAML frontmatter: it packs every peripheral acronym and STM32H7 memory section into the description so any firmware task activates it automatically.
+Let's zoom into the resulting `libdaisy-guide` skill. First, look at its YAML frontmatter: it packs every peripheral acronym and STM32H7 memory section into the description so any firmware task activates it automatically.
 -->
 
 ---
@@ -246,7 +240,7 @@ step: Zoom-In 2 of 3
 </div>
 
 <!--
-Second, look at how <code>libdaisy-guide</code> organizes the codebase into six clean prefixes: <code>sys/</code>, <code>per/</code>, <code>dev/</code>, <code>hid/</code>, <code>ui/</code>, and <code>util/</code>, naming the exact C++ classes in each domain.
+Second, look at how `libdaisy-guide` organizes the codebase into six clean prefixes: `sys/`, `per/`, `dev/`, `hid/`, `ui/`, and `util/`, naming the exact C++ classes in each domain.
 -->
 
 ---
@@ -303,7 +297,7 @@ step: Zoom-In 3 of 3
 </div>
 
 <!--
-Third, <code>libdaisy-guide</code> gives the agent the exact STM32H750 memory map table—making it impossible to confuse cached AXI SRAM (<code>0x24000000</code>), non-cached <code>DMA_BUFFER_MEM_SECTION</code> (<code>0x30000000</code>), and <code>DSY_SDRAM_BSS</code> (<code>0xC0000000</code>).
+Third, `libdaisy-guide` gives the agent the exact STM32H750 memory map table—making it impossible to confuse cached AXI SRAM (`0x24000000`), non-cached `DMA_BUFFER_MEM_SECTION` (`0x30000000`), and `DSY_SDRAM_BSS` (`0xC0000000`).
 -->
 
 ---
@@ -344,13 +338,11 @@ layout: default
 </div>
 
 <!--
-Next, in Recording 3, we run the same Way 1 playbook on <code>DaisySP/</code>—asking AGY to extract the real-time audio constraints and build a fast module catalog skill.
+Next, in Recording 3, we run the same Way 1 playbook on `DaisySP/`—asking AGY to extract the real-time audio constraints and build a fast module catalog skill.
 -->
 
 ---
 layout: cast-full
-act: Act 3 · Way 1 (Library Review)
-badgeClass: badge-way1
 title: "Recording 03: Creating daisysp-guide from DaisySP/"
 cast: /casts/daisysp-skill-creation.cast
 autoPlay: false
@@ -361,7 +353,7 @@ fit: both
 
 <!-- S30 -->
 <!--
-Click to play: AGY scans every DSP category in <code>DaisySP/Source/</code> and <code>DaisySP-LGPL/</code>, checks memory footprints like <code>ReverbSc</code>, and builds <code>daisysp-guide</code> along with its Tier-3 reference catalog.
+Click to play: AGY scans every DSP category in `DaisySP/Source/` and `DaisySP-LGPL/`, checks memory footprints like `ReverbSc`, and builds `daisysp-guide` along with its Tier-3 reference catalog.
 -->
 
 ---
@@ -399,7 +391,7 @@ description: >-
 </div>
 
 <!--
-Zooming into <code>daisysp-guide</code>: right after the frontmatter, it highlights a crucial build boundary—which modules live in MIT <code>daisysp.h</code> vs which require <code>USE_DAISYSP_LGPL = 1</code> and <code>daisysp-lgpl.h</code>.
+Zooming into `daisysp-guide`: right after the frontmatter, it highlights a crucial build boundary—which modules live in MIT `daisysp.h` vs which require `USE_DAISYSP_LGPL = 1` and `daisysp-lgpl.h`.
 -->
 
 ---
@@ -434,7 +426,7 @@ step: Zoom-In 2 of 3
       <tr>
         <td><strong>3. Signal Ranges</strong></td>
         <td>Normalized floats</td>
-        <td>Audio signals in $[-1.0\text{f}, +1.0\text{f}]$ ($0\text{ dBFS}$); control voltages in $[0.0\text{f}, 1.0\text{f}]$.</td>
+        <td>Audio signals in <code>[-1.0f, +1.0f]</code> (<code>0 dBFS</code>); control voltages in <code>[0.0f, 1.0f]</code>.</td>
       </tr>
       <tr>
         <td><strong>4. Rate Separation</strong></td>
@@ -451,7 +443,7 @@ step: Zoom-In 2 of 3
 </div>
 
 <!--
-Next, <code>daisysp-guide</code> enforces the 5 Real-Time Audio Tenets: zero heap allocation in the audio callback, single-sample <code>Process()</code>, normalized floats, rate separation, and mandatory <code>.Init(sample_rate)</code> before audio starts.
+Next, `daisysp-guide` enforces the 5 Real-Time Audio Tenets: zero heap allocation in the audio callback, single-sample `Process()`, normalized floats, rate separation, and mandatory `.Init(sample_rate)` before audio starts.
 -->
 
 ---
@@ -493,7 +485,7 @@ step: Zoom-In 3 of 3
 </div>
 
 <!--
-And look at the Tier-2 vs Tier-3 split in <code>daisysp-guide</code>: <code>SKILL.md</code> has a compact 13-row table so the agent picks the right DSP module in seconds, and then reads <code>references/module_catalog.md</code> for exact method signatures.
+And look at the Tier-2 vs Tier-3 split in `daisysp-guide`: `SKILL.md` has a compact 13-row table so the agent picks the right DSP module in seconds, and then reads `references/module_catalog.md` for exact method signatures.
 -->
 
 ---
@@ -501,35 +493,33 @@ layout: default
 ---
 
 <!-- S34 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Way 1 Takeaway: Library Review Skills</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-5 mt-8">
-  <div class="p-5 rounded-xl bg-cyan-950/15 border border-cyan-500/30 text-center">
-    <div class="text-3xl font-black text-cyan-300 mb-1">50,000+</div>
-    <div class="text-xs font-mono uppercase text-gray-400 mb-2">Lines of C++ Headers</div>
-    <p class="text-xs text-gray-300">
-      Raw source across <code>libDaisy/</code> and <code>DaisySP/</code> that would overwhelm context if searched ad-hoc every session.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-cyan-950/15 border border-cyan-500/30 text-center">
-    <div class="text-3xl font-black text-cyan-300 mb-1">~200</div>
-    <div class="text-xs font-mono uppercase text-gray-400 mb-2">Lines per SKILL.md</div>
-    <p class="text-xs text-gray-300">
-      Distilled architectural cheatsheets with zero-hallucination class names, memory macros, and real-time rules.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-cyan-950/15 border border-cyan-500/30 text-center">
-    <div class="text-3xl font-black text-cyan-300 mb-1">100%</div>
-    <div class="text-xs font-mono uppercase text-gray-400 mb-2">Reusable Across Projects</div>
-    <p class="text-xs text-gray-300">
-      <code>libdaisy-guide</code> and <code>daisysp-guide</code> work for <strong>any</strong> Electro-Smith Daisy project—not just the Gamma!
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">50,000+ Lines of C++ Headers Distilled</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Raw source across <code>libDaisy/</code> and <code>DaisySP/</code> would overwhelm context if searched ad-hoc every session</li>
+      <li>Pre-auditing once eliminates repetitive codebase grep loops</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">~200 Lines per <code>SKILL.md</code> Runbook</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Concise architectural cheatsheets with zero-hallucination class names, memory macros, and real-time rules</li>
+      <li>Backed by on-demand Tier-3 catalogs in <code>references/</code></li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">100% Reusable Across Any Daisy Project</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li><code>libdaisy-guide</code> and <code>daisysp-guide</code> capture platform-level knowledge independent of the Gamma PCB</li>
+      <li>Portable to any Electro-Smith Daisy Seed, Pod, Patch, or Petal project</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
 That's Way 1: Library Review Skills. By distilling 50,000+ lines of C++ headers into two ~200-line runbooks, the agent writes idiomatically correct Daisy C++ on the first try—and those two skills are reusable on any Daisy hardware project.

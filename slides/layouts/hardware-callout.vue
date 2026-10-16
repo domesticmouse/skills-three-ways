@@ -3,7 +3,7 @@
     <!-- Header Bar -->
     <div class="flex items-center justify-between pb-3 border-b border-gray-800 shrink-0">
       <div class="flex items-center gap-3">
-        <h2 class="text-xl font-bold text-gray-100 tracking-wide m-0">
+        <h2 class="text-2xl font-bold text-gray-100 m-0">
           {{ $frontmatter.title || 'Hardware Architecture' }}
         </h2>
       </div>
@@ -28,15 +28,12 @@
             Hardware visual asset placeholder
           </div>
 
-          <!-- Floating badge overlay -->
+          <!-- Caption overlay -->
           <div
             v-if="$frontmatter.imageCaption"
             class="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-sm border border-gray-800 px-3 py-1.5 rounded text-xs text-gray-300 flex items-center justify-between"
           >
             <span>{{ $frontmatter.imageCaption }}</span>
-            <span v-if="$frontmatter.imageTag" class="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-emerald-900/60 text-emerald-300 border border-emerald-700/40">
-              {{ $frontmatter.imageTag }}
-            </span>
           </div>
         </div>
       </div>

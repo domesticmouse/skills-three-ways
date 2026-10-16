@@ -1,11 +1,9 @@
 ---
 layout: hardware-callout
-section: Act 2 · The Hook
 title: Meet the Gamma Mini Synth
 subtitle: this.is.NOISE inc.
 image: /images/gamma-promo.png
 imageCaption: Gamma Mini Synth — Pocket-sized polyphonic chord & lead synthesizer
-imageTag: Hardware Target
 ---
 
 <!-- S12 -->
@@ -31,35 +29,33 @@ layout: default
 ---
 
 <!-- S13 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">What the Factory Synth Does Out of the Box</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-4 mt-6">
-  <div class="p-4 rounded-xl bg-gray-900/70 border border-gray-800">
-    <div class="text-cyan-400 font-mono text-xs uppercase mb-1">Left &amp; Right Keypads</div>
-    <div class="text-lg font-bold text-white mb-2">7 Note + 7 Chord Keys</div>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Left keypad plays melodic scale degrees (<code>N1</code>–<code>N7</code>). Right keypad triggers rich diatonic seventh &amp; extended chords (<code>C1</code>–<code>C7</code>).
-    </p>
-  </div>
-
-  <div class="p-4 rounded-xl bg-gray-900/70 border border-gray-800">
-    <div class="text-amber-400 font-mono text-xs uppercase mb-1">Expressive Modulation</div>
-    <div class="text-lg font-bold text-white mb-2">2 Analog Thumbsticks</div>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Spring-loaded 2-axis joysticks bend pitch, sweep LFO depth, and morph wave-shaping in real time under your thumbs.
-    </p>
-  </div>
-
-  <div class="p-4 rounded-xl bg-gray-900/70 border border-gray-800">
-    <div class="text-emerald-400 font-mono text-xs uppercase mb-1">Top Panel &amp; Menu</div>
-    <div class="text-lg font-bold text-white mb-2">4 Knobs + OLED + Encoder</div>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Dedicated Chord/Note Volume &amp; Filter cutoff knobs across the top, plus a 128&times;64 OLED navigated by a clickable rotary dial.
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Left &amp; Right Keypads: 7 Note + 7 Chord Keys</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Left keypad plays melodic scale degrees (<code>N1</code>–<code>N7</code>)</li>
+      <li>Right keypad triggers rich diatonic seventh &amp; extended chords (<code>C1</code>–<code>C7</code>)</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Expressive Modulation: 2 Analog Thumbsticks</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Spring-loaded 2-axis joysticks bend pitch and sweep LFO depth</li>
+      <li>Morphs wave-shaping in real time under your thumbs</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Top Panel &amp; Menu: 4 Knobs + OLED + Encoder</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Dedicated Chord/Note Volume &amp; Filter cutoff knobs across the top</li>
+      <li>128&times;64 OLED navigated by a clickable rotary dial</li>
+    </ul>
+  </li>
+</ol>
 
 <div class="mt-6 p-3.5 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
   It's super fun out of the box—so why would anyone risk bricking it?
@@ -115,8 +111,8 @@ layout: default
 <div class="grid grid-cols-2 gap-6 mt-8">
   <div class="p-6 rounded-xl bg-gray-900/60 border border-gray-800 flex flex-col justify-between">
     <div>
-      <span class="text-xs font-mono px-2 py-0.5 rounded bg-gray-800 text-gray-300">Unit #1 · Factory Stock</span>
-      <h3 class="text-xl font-bold text-white mt-3 mb-2">One for Making Music</h3>
+      <div class="text-xs font-mono uppercase text-gray-400">Unit #1 &middot; Factory Stock</div>
+      <h3 class="text-xl font-bold text-white mt-2 mb-2">One for Making Music</h3>
       <p class="text-sm text-gray-400 leading-relaxed">
         Kept completely untouched running official <code>gamma-v2.0.3.bin</code> firmware. Serves as the ground-truth behavioral reference for how every knob, stick, and key should feel.
       </p>
@@ -128,8 +124,8 @@ layout: default
 
   <div class="p-6 rounded-xl bg-emerald-950/15 border border-emerald-500/40 flex flex-col justify-between">
     <div>
-      <span class="text-xs font-mono px-2 py-0.5 rounded badge-way3">Unit #2 · The Lab Rat</span>
-      <h3 class="text-xl font-bold text-emerald-300 mt-3 mb-2">One for Reverse Engineering</h3>
+      <div class="text-xs font-mono uppercase text-emerald-400">Unit #2 &middot; The Lab Rat</div>
+      <h3 class="text-xl font-bold text-emerald-300 mt-2 mb-2">One for Reverse Engineering</h3>
       <p class="text-sm text-gray-300 leading-relaxed">
         Having a spare unit completely transforms your risk tolerance. We can open the chassis, probe unknown buses, and flash experimental firmware without fear.
       </p>
@@ -146,12 +142,10 @@ Having a spare unit completely changes your psychology. One unit stays pristine 
 
 ---
 layout: hardware-callout
-section: Act 2 · The Hook
 title: Asking the Creator How to Get Inside
 subtitle: Disassembly Guidance
 image: /images/gamma-screws.jpg
 imageCaption: Annotated rear enclosure photo showing which 4 corner screws to remove
-imageTag: Chassis Access
 ---
 
 <!-- S16 -->
@@ -221,35 +215,33 @@ layout: default
 ---
 
 <!-- S18 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">The Catch: Zero Schematics, Closed-Source Rust</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-4 mt-6">
-  <div class="p-5 rounded-xl bg-red-950/20 border border-red-500/30">
-    <div class="text-xs font-mono text-red-400 uppercase mb-1">Obstacle 1</div>
-    <h3 class="text-base font-bold text-white mb-2">No Public Schematic</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Over 30 Daisy Seed GPIO pins (<code>D0</code>–<code>D32</code>), 3 I2C buses, and multiple ADC channels—with zero documentation on what pin connects to which button, pot, stick, or amp.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-red-950/20 border border-red-500/30">
-    <div class="text-xs font-mono text-red-400 uppercase mb-1">Obstacle 2</div>
-    <h3 class="text-base font-bold text-white mb-2">Closed Factory Firmware</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      The stock firmware (<code>gamma-v2.0.3.bin</code>) is distributed only as a raw compiled binary written in embedded Rust—no C++ project template or board header exists.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-red-950/20 border border-red-500/30">
-    <div class="text-xs font-mono text-red-400 uppercase mb-1">Obstacle 3</div>
-    <h3 class="text-base font-bold text-white mb-2">Silent Failure Modes</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Wrong linker target? Red SOS LED blink. Wrong USB port? Complete silence on <code>hw.StartLog()</code>. Uninitialized speaker mute pin? Dead audio output.
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">No Public Schematic</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Over 30 Daisy Seed GPIO pins (<code>D0</code>–<code>D32</code>), 3 I2C buses, and multiple ADC channels</li>
+      <li>Zero documentation on what pin connects to which button, pot, stick, or amp</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Closed Factory Firmware</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Stock firmware (<code>gamma-v2.0.3.bin</code>) is distributed only as a raw compiled binary written in embedded Rust</li>
+      <li>No C++ project template or board header exists</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Silent Failure Modes</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Wrong linker target? Red SOS LED blink. Wrong USB port? Complete silence on <code>hw.StartLog()</code></li>
+      <li>Uninitialized speaker mute pin? Dead audio output</li>
+    </ul>
+  </li>
+</ol>
 
 <div class="mt-6 p-3.5 rounded-lg bg-gray-900/70 border border-gray-800 text-center text-sm text-gray-300">
   If you ask a coding agent out-of-the-box to "build a synth for the Gamma", it has <strong>zero chance</strong> of guessing the hardware wiring.
@@ -307,55 +299,39 @@ layout: default
 ---
 
 <!-- S20 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">The Thesis: Skills Three Ways (+ The Mashup)</h2>
 </div>
 
-<div class="grid grid-cols-2 gap-4 mt-4">
-  <div class="p-4 rounded-xl border border-cyan-500/40 bg-cyan-950/15">
-    <div class="flex items-center justify-between mb-1.5">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full badge-way1">Way 1 · Library Review Skills</span>
-      <span class="text-xs font-mono text-cyan-300">2 Skills</span>
-    </div>
-    <div class="font-mono text-sm font-bold text-white mb-1">libdaisy-guide &middot; daisysp-guide</div>
-    <p class="text-xs text-gray-300">
-      Point AGY at a third-party C++ source tree &rarr; generate an architectural usage report &rarr; distill into a progressive-disclosure runbook.
-    </p>
-  </div>
-
-  <div class="p-4 rounded-xl border border-amber-500/40 bg-amber-950/15">
-    <div class="flex items-center justify-between mb-1.5">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full badge-way2">Way 2 · DFU Operational Skills</span>
-      <span class="text-xs font-mono text-amber-300">2 Skills</span>
-    </div>
-    <div class="font-mono text-sm font-bold text-white mb-1">gamma-firmware-flash &middot; gamma-firmware-restore</div>
-    <p class="text-xs text-gray-300">
-      Solve fragile USB DFU timing &amp; linker traps interactively &rarr; codify into deterministic Python scripts wrapped by a skill.
-    </p>
-  </div>
-
-  <div class="p-4 rounded-xl border border-emerald-500/40 bg-emerald-950/15">
-    <div class="flex items-center justify-between mb-1.5">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full badge-way3">Way 3 · Hardware Discovery Skills</span>
-      <span class="text-xs font-mono text-emerald-300">2 Skills</span>
-    </div>
-    <div class="font-mono text-sm font-bold text-white mb-1">gamma-pinout &middot; gamma-hardware-controls</div>
-    <p class="text-xs text-gray-300">
-      Execute a 6-phase hardware probing plan (<code>PLAN.md</code>) &rarr; capture verified pin tables (<code>gamma_pins.h</code>) and 1 kHz ISR driver idioms.
-    </p>
-  </div>
-
-  <div class="p-4 rounded-xl border border-purple-500/40 bg-purple-950/15">
-    <div class="flex items-center justify-between mb-1.5">
-      <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full badge-mashup">The Mashup Skill</span>
-      <span class="text-xs font-mono text-purple-300">1 Skill</span>
-    </div>
-    <div class="font-mono text-sm font-bold text-white mb-1">gamma-usb-connectivity</div>
-    <p class="text-xs text-gray-300">
-      Combines all three ways in one package: hardware pinout truth (<code>FS_EXTERNAL</code>), deadlock-free C++ header (<code>gamma_usb.h</code>), and host Python CLI (<code>gamma_usb.py</code>).
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Way 1 &middot; Library Review Skills (<code class="text-cyan-300">libdaisy-guide</code>, <code class="text-cyan-300">daisysp-guide</code>)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Point AGY at a third-party C++ source tree and generate an architectural usage report</li>
+      <li>Distill 50,000+ lines of headers into a progressive-disclosure runbook and module catalog</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Way 2 &middot; DFU Operational Skills (<code class="text-amber-300">gamma-firmware-flash</code>, <code class="text-amber-300">gamma-firmware-restore</code>)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Solve fragile USB DFU timing races and linker traps interactively</li>
+      <li>Codify into deterministic Python scripts wrapped by a skill</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Way 3 &middot; Hardware Discovery Skills (<code class="text-emerald-300">gamma-pinout</code>, <code class="text-emerald-300">gamma-hardware-controls</code>)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Execute a 6-phase hardware probing plan (<code>PLAN.md</code>) on the physical device</li>
+      <li>Capture verified pin tables (<code>gamma_pins.h</code>) and 1 kHz ISR driver idioms</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">The Mashup Skill (<code class="text-purple-300">gamma-usb-connectivity</code>)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Combines all three ways in one package: hardware pinout truth (<code>FS_EXTERNAL</code>), deadlock-free C++ header (<code>gamma_usb.h</code>), and host Python CLI (<code>gamma_usb.py</code>)</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
 Across this project, seven skills emerged naturally in three distinct patterns—what I call "Skills Three Ways": Library Review Skills, DFU Operational Skills, and Hardware Discovery Skills, plus a seventh Mashup skill that combines all three.

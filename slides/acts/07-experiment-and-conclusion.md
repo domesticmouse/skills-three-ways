@@ -14,7 +14,7 @@ class: text-center
 </div>
 
 <!--
-Now for Act 7—the payoff! We have all seven skills in <code>.agents/skills/</code>. What happens when we give an agent the exact same prompt to build a 7-voice Drum Synth for the Gamma mini synth WITHOUT skills versus WITH skills?
+Now for Act 7—the payoff! We have all seven skills in `.agents/skills/`. What happens when we give an agent the exact same prompt to build a 7-voice Drum Synth for the Gamma mini synth WITHOUT skills versus WITH skills?
 -->
 
 ---
@@ -52,7 +52,7 @@ layout: default
 </div>
 
 <!--
-To make this a fair scientific comparison, both runs receive the exact same one-sentence prompt and have local checkouts of <code>libDaisy/</code> and <code>DaisySP/</code>. The only difference is <code>.agents/skills/</code>.
+To make this a fair scientific comparison, both runs receive the exact same one-sentence prompt and have local checkouts of `libDaisy/` and `DaisySP/`. The only difference is `.agents/skills/`.
 -->
 
 ---
@@ -89,8 +89,6 @@ Let's watch Attempt 1 first: building the drum synth WITHOUT skills. Spoiler ale
 
 ---
 layout: cast-full
-act: Act 7 · Without Skills
-badgeClass: bg-red-950 text-red-300 border border-red-500/40
 title: "Recording 05: Building the 7-Voice Drum Synth WITHOUT Skills"
 cast: /casts/drum-synth-without-skills.cast
 autoPlay: false
@@ -101,7 +99,7 @@ fit: both
 
 <!-- S74 -->
 <!--
-Click to play: watch the unskilled agent grep through <code>libDaisy</code> and <code>DaisySP</code>, guess sequential pins <code>D0</code> through <code>D6</code> for the keys and <code>A0</code> through <code>A3</code> for the knobs, omit <code>APP_TYPE = BOOT_SRAM</code>, and never enable the speaker amp.
+Click to play: watch the unskilled agent grep through `libDaisy` and `DaisySP`, guess sequential pins `D0` through `D6` for the keys and `A0` through `A3` for the knobs, omit `APP_TYPE = BOOT_SRAM`, and never enable the speaker amp.
 -->
 
 ---
@@ -153,7 +151,7 @@ layout: default
 </div>
 
 <!--
-Look at the post-mortem of Attempt 1: five fatal hardware bugs in code that compiled cleanly! Wrong <code>Makefile</code> target (SOS blink), muted speaker amp (<code>D32</code>), guessed key pins (<code>D0</code> is battery fault!), encoder pins wired as ADC knobs, and wrong OLED I2C address (<code>0x3C</code> vs <code>0x3D</code>).
+Look at the post-mortem of Attempt 1: five fatal hardware bugs in code that compiled cleanly! Wrong `Makefile` target (SOS blink), muted speaker amp (`D32`), guessed key pins (`D0` is battery fault!), encoder pins wired as ADC knobs, and wrong OLED I2C address (`0x3C` vs `0x3D`).
 -->
 
 ---
@@ -189,8 +187,6 @@ Now let's watch Attempt 2: the exact same prompt, but in a workspace with our 7 
 
 ---
 layout: cast-full
-act: Act 7 · With All 7 Skills
-badgeClass: badge-way3
 title: "Recording 06: Building the 7-Voice Drum Synth WITH All 7 Skills"
 cast: /casts/drum-synth-with-skills.cast
 autoPlay: false
@@ -201,7 +197,7 @@ fit: both
 
 <!-- S77 -->
 <!--
-Click to play: AGY reads our skills, copies <code>gamma_pins.h</code> and <code>gamma_usb.h</code> into the project, wires all 7 drum voices to <code>N1</code>–<code>N7</code> and presets to <code>C1</code>–<code>C7</code>, sets <code>APP_TYPE = BOOT_SRAM</code>, and builds a verified binary at <code>0x24000000</code>.
+Click to play: AGY reads our skills, copies `gamma_pins.h` and `gamma_usb.h` into the project, wires all 7 drum voices to `N1`–`N7` and presets to `C1`–`C7`, sets `APP_TYPE = BOOT_SRAM`, and builds a verified binary at `0x24000000`.
 -->
 
 ---
@@ -213,39 +209,39 @@ layout: default
   <h2 class="text-2xl font-bold m-0">How All 7 Skills Composed Together</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-3 mt-4 text-xs">
-  <div class="p-3 rounded-xl border border-cyan-500/30 bg-cyan-950/10">
-    <div class="font-mono font-bold text-cyan-300">1. libdaisy-guide</div>
-    <p class="text-gray-400 mt-1">48 kHz SAI1 <code>AudioCallback</code>, <code>AdcChannelConfig</code>, <code>OledDisplay</code> setup.</p>
-  </div>
-  <div class="p-3 rounded-xl border border-cyan-500/30 bg-cyan-950/10">
-    <div class="font-mono font-bold text-cyan-300">2. daisysp-guide</div>
-    <p class="text-gray-400 mt-1">7 drum voices (<code>AnalogBassDrum</code> &le; 90 Hz, <code>AnalogSnareDrum</code>, <code>HiHat</code>, <code>Svf</code>).</p>
-  </div>
-  <div class="p-3 rounded-xl border border-emerald-500/30 bg-emerald-950/10">
-    <div class="font-mono font-bold text-emerald-300">3. gamma-pinout</div>
-    <p class="text-gray-400 mt-1">Provided <code>gamma_pins.h</code> (<code>D1</code>–<code>D7</code> keys, <code>D18/17/19/20</code> pots, <code>D32</code> speaker amp).</p>
-  </div>
-  <div class="p-3 rounded-xl border border-emerald-500/30 bg-emerald-950/10">
-    <div class="font-mono font-bold text-emerald-300">4. gamma-hardware-controls</div>
-    <p class="text-gray-400 mt-1">1 kHz <code>TIM5</code> key/encoder ISR, <code>1.0f - raw</code> pot inversion, <code>I2C1</code> <code>0x3D</code> OLED reset.</p>
-  </div>
-  <div class="p-3 rounded-xl border border-purple-500/30 bg-purple-950/10">
-    <div class="font-mono font-bold text-purple-300">5. gamma-usb-connectivity</div>
-    <p class="text-gray-400 mt-1">Provided <code>gamma_usb.h</code> on <code>FS_EXTERNAL</code> with <code>'b'</code> DFU bootloader command.</p>
-  </div>
-  <div class="p-3 rounded-xl border border-amber-500/30 bg-amber-950/10">
-    <div class="font-mono font-bold text-amber-300">6 &amp; 7. flash &amp; restore</div>
-    <p class="text-gray-400 mt-1">Verified <code>APP_TYPE = BOOT_SRAM</code> (<code>0x24000000</code>) and ready for live USB DFU flashing!</p>
-  </div>
-</div>
+<ol class="space-y-2.5 text-xs text-gray-200 list-decimal pl-6 mt-4 leading-relaxed">
+  <li>
+    <strong class="text-cyan-300 font-mono">libdaisy-guide</strong>
+    <span class="text-gray-300"> &mdash; Configured 48 kHz SAI1 <code>AudioCallback</code>, <code>AdcChannelConfig</code>, and <code>OledDisplay</code> transport</span>
+  </li>
+  <li>
+    <strong class="text-cyan-300 font-mono">daisysp-guide</strong>
+    <span class="text-gray-300"> &mdash; Selected and initialized the 7 drum voices (<code>AnalogBassDrum</code> &le; 90 Hz, <code>AnalogSnareDrum</code>, <code>HiHat</code>, <code>Svf</code>)</span>
+  </li>
+  <li>
+    <strong class="text-emerald-300 font-mono">gamma-pinout</strong>
+    <span class="text-gray-300"> &mdash; Supplied drop-in <code>gamma_pins.h</code> (<code>D1</code>–<code>D7</code> keys, <code>D18/17/19/20</code> pots, <code>D32</code> speaker amp)</span>
+  </li>
+  <li>
+    <strong class="text-emerald-300 font-mono">gamma-hardware-controls</strong>
+    <span class="text-gray-300"> &mdash; Supplied 1 kHz <code>TIM5</code> key/encoder ISR, <code>1.0f - raw</code> pot inversion, and <code>I2C1</code> <code>0x3D</code> OLED reset</span>
+  </li>
+  <li>
+    <strong class="text-purple-300 font-mono">gamma-usb-connectivity</strong>
+    <span class="text-gray-300"> &mdash; Supplied <code>gamma_usb.h</code> on <code>FS_EXTERNAL</code> with non-blocking logging and <code>'b'</code> DFU reboot hook</span>
+  </li>
+  <li>
+    <strong class="text-amber-300 font-mono">gamma-firmware-flash &amp; gamma-firmware-restore</strong>
+    <span class="text-gray-300"> &mdash; Enforced <code>APP_TYPE = BOOT_SRAM</code> (<code>0x24000000</code>) and automated USB DFU flashing</span>
+  </li>
+</ol>
 
 <div class="mt-4 p-3 rounded-lg bg-gray-900 border border-gray-800 text-center text-xs text-gray-300">
-  No single mega-skill did this—<strong>6 small, focused skills composed seamlessly</strong> at task time.
+  No single mega-skill did this—<strong>focused, modular skills composed seamlessly</strong> at task time.
 </div>
 
 <!--
-Notice how the skills composed: <code>libdaisy-guide</code> and <code>daisysp-guide</code> handled the DSP engine, <code>gamma-pinout</code> supplied <code>gamma_pins.h</code>, <code>gamma-hardware-controls</code> supplied the 1 kHz <code>TIM5</code> ISR and pot inversion, and <code>gamma-usb-connectivity</code> added non-blocking telemetry and soft-rebooting.
+Notice how the skills composed: `libdaisy-guide` and `daisysp-guide` handled the DSP engine, `gamma-pinout` supplied `gamma_pins.h`, `gamma-hardware-controls` supplied the 1 kHz `TIM5` ISR and pot inversion, and `gamma-usb-connectivity` added non-blocking telemetry and soft-rebooting.
 -->
 
 ---
@@ -254,34 +250,26 @@ class: text-center
 ---
 
 <!-- S79 -->
-<div class="space-y-5">
-  <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/50 text-xs font-mono uppercase tracking-widest">
-    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-    Live Hardware Stage Demo
-  </div>
-
+<div class="space-y-6">
   <h1 class="text-5xl font-extrabold text-white">
     Live Demo on the Gamma Mini Synth
   </h1>
 
-  <div class="grid grid-cols-3 gap-4 max-w-3xl mx-auto text-left text-xs pt-4">
-    <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
-      <div class="font-mono text-amber-300 font-bold mb-1">1. Factory Synth</div>
-      <p class="text-gray-400">Play the physical Gamma running stock factory firmware.</p>
-    </div>
-    <div class="p-4 rounded-xl bg-gray-900 border border-emerald-500/40">
-      <div class="font-mono text-emerald-300 font-bold mb-1">2. Flash <code>drum_synth</code></div>
-      <p class="text-gray-400">Run <code>flash_firmware.py</code> via <code>gamma-firmware-flash</code> over USB-C.</p>
-    </div>
-    <div class="p-4 rounded-xl bg-gray-900 border border-cyan-500/40">
-      <div class="font-mono text-cyan-300 font-bold mb-1">3. Play the 7 Drum Voices</div>
-      <p class="text-gray-400">Trigger Kick, Snare, Hats, Clap, Tom &amp; sweep the DJ filter live!</p>
-    </div>
-  </div>
+  <ol class="space-y-3 text-sm text-gray-200 list-decimal pl-6 max-w-xl mx-auto text-left leading-relaxed">
+    <li>
+      <strong class="text-white">Factory Synth Baseline</strong> &mdash; Play the physical Gamma running stock <code>gamma-v2.0.3.bin</code> firmware
+    </li>
+    <li>
+      <strong class="text-white">Flash Custom <code>drum_synth</code></strong> &mdash; Run <code>flash_firmware.py</code> via <code>gamma-firmware-flash</code> over USB-C
+    </li>
+    <li>
+      <strong class="text-white">Play the 7 Drum Voices Live</strong> &mdash; Trigger Kick, Snare, Hats, Clap, and Tom on the keys &amp; sweep the filter knobs
+    </li>
+  </ol>
 </div>
 
 <!--
-Now let's put the slides aside for a moment and do this live on the physical Gamma Mini Synth right here on stage! First I'll play the factory synth, then we'll run <code>flash_firmware.py</code> to flash the <code>drum_synth</code> binary we just built, and play the 7 drum voices live.
+Now let's put the slides aside for a moment and do this live on the physical Gamma Mini Synth right here on stage! First I'll play the factory synth, then we'll run `flash_firmware.py` to flash the `drum_synth` binary we just built, and play the 7 drum voices live.
 -->
 
 ---
@@ -296,40 +284,34 @@ layout: default
   <span class="text-xs font-mono text-gray-400">Brett Morgan &middot; Google Cloud DevRel</span>
 </div>
 
-<div class="grid grid-cols-4 gap-3 mt-4 text-xs">
-  <div class="p-3.5 rounded-xl border border-cyan-500/40 bg-cyan-950/15">
-    <div class="font-mono font-bold text-cyan-300 uppercase mb-1">Way 1 · Library Review</div>
-    <p class="text-gray-300">Audit C++ source repos once &rarr; package architecture &amp; memory rules into <code>SKILL.md</code> + <code>references/</code>.</p>
-  </div>
-  <div class="p-3.5 rounded-xl border border-amber-500/40 bg-amber-950/15">
-    <div class="font-mono font-bold text-amber-300 uppercase mb-1">Way 2 · Operational</div>
-    <p class="text-gray-300">Wrap fragile hardware timing &amp; binary validation into deterministic <code>scripts/*.py</code>.</p>
-  </div>
-  <div class="p-3.5 rounded-xl border border-emerald-500/40 bg-emerald-950/15">
-    <div class="font-mono font-bold text-emerald-300 uppercase mb-1">Way 3 · Discovery</div>
-    <p class="text-gray-300">Run phased diagnostic probes &rarr; ship verified <code>resources/gamma_pins.h</code> &amp; ISR blueprints.</p>
-  </div>
-  <div class="p-3.5 rounded-xl border border-purple-500/40 bg-purple-950/15">
-    <div class="font-mono font-bold text-purple-300 uppercase mb-1">The Mashup</div>
-    <p class="text-gray-300">Combine pinout truth (<code>SKILL.md</code>), firmware headers (<code>resources/</code>), and host CLI (<code>scripts/</code>).</p>
-  </div>
-</div>
+<ol class="space-y-3 text-xs text-gray-200 list-decimal pl-6 mt-3 leading-relaxed">
+  <li>
+    <strong class="text-white">Way 1 &middot; Library Review Skills</strong>
+    <span class="text-gray-300"> &mdash; Audit C++ source repos once and package architecture &amp; memory rules into <code>SKILL.md</code> + <code>references/</code></span>
+  </li>
+  <li>
+    <strong class="text-white">Way 2 &middot; DFU Operational Skills</strong>
+    <span class="text-gray-300"> &mdash; Wrap fragile hardware timing races and binary validation into deterministic <code>scripts/*.py</code></span>
+  </li>
+  <li>
+    <strong class="text-white">Way 3 &middot; Hardware Discovery Skills</strong>
+    <span class="text-gray-300"> &mdash; Run phased diagnostic probes and ship verified <code>resources/gamma_pins.h</code> &amp; 1 kHz ISR blueprints</span>
+  </li>
+  <li>
+    <strong class="text-white">The Mashup Skill</strong>
+    <span class="text-gray-300"> &mdash; Combine pinout truth (<code>SKILL.md</code>), firmware headers (<code>resources/</code>), and host CLI (<code>scripts/</code>) in one package</span>
+  </li>
+</ol>
 
 <div class="grid grid-cols-2 gap-4 mt-5 text-xs">
-  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-between">
-    <div>
-      <div class="text-gray-400 uppercase font-mono text-[10px]">Presentation Deck &amp; Recording Scenarios</div>
-      <div class="text-sm font-bold text-white font-mono mt-0.5">github.com/domesticmouse/skills-three-ways</div>
-    </div>
-    <span class="px-2 py-1 rounded bg-gray-800 text-cyan-300 font-mono">Slidev + Casts</span>
+  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
+    <div class="text-gray-400 uppercase font-mono text-[10px]">Presentation Deck &amp; Recording Scenarios</div>
+    <div class="text-sm font-bold text-cyan-300 font-mono mt-0.5">github.com/domesticmouse/skills-three-ways</div>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 flex items-center justify-between">
-    <div>
-      <div class="text-gray-400 uppercase font-mono text-[10px]">Gamma Firmware, Phased Probes &amp; 7 Skills</div>
-      <div class="text-sm font-bold text-white font-mono mt-0.5">github.com/domesticmouse/reverse-engineering-gamma</div>
-    </div>
-    <span class="px-2 py-1 rounded bg-gray-800 text-emerald-300 font-mono">C++ &amp; Skills</span>
+  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
+    <div class="text-gray-400 uppercase font-mono text-[10px]">Gamma Firmware, Phased Probes &amp; 7 Skills</div>
+    <div class="text-sm font-bold text-emerald-300 font-mono mt-0.5">github.com/domesticmouse/reverse-engineering-gamma</div>
   </div>
 </div>
 

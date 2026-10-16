@@ -103,7 +103,6 @@ Let's ask Antigravity directly in the terminal: "What are agent skills?"
 
 ---
 layout: cast-full
-act: Act 1 · Primer
 title: "Asking Antigravity: What Are Agent Skills?"
 cast: /casts/what-are-agent-skills.cast
 autoPlay: true
@@ -389,7 +388,7 @@ description: >-
 </div>
 
 <!--
-Inside SKILL.md, the YAML frontmatter is critical. Because the agent only sees <code>name</code> and <code>description</code> in its initial system prompt, your <code>description</code> is the semantic router that determines whether the skill gets read.
+Inside SKILL.md, the YAML frontmatter is critical. Because the agent only sees `name` and `description` in its initial system prompt, your `description` is the semantic router that determines whether the skill gets read.
 -->
 
 ---
@@ -443,38 +442,33 @@ layout: default
 ---
 
 <!-- S10 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">The 3-Tier Progressive Disclosure Model</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-4 mt-6">
-  <div class="p-5 rounded-xl bg-gray-900/90 border border-cyan-500/30 relative">
-    <div class="text-xs font-mono text-cyan-400 uppercase mb-1">Tier 1 · Discovery</div>
-    <div class="text-xl font-bold text-white mb-2">~100 Tokens</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      At session start, only <code>name</code> and <code>description</code> from each skill's YAML frontmatter are injected into the system prompt.
-    </p>
-    <div class="mt-4 text-[11px] font-mono text-cyan-300">Loaded: Always</div>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900/90 border border-amber-500/30 relative">
-    <div class="text-xs font-mono text-amber-400 uppercase mb-1">Tier 2 · Activation</div>
-    <div class="text-xl font-bold text-white mb-2">&lt; 5,000 Tokens</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      When the user's task matches a skill's description, the agent calls <code>view_file</code> on <code>SKILL.md</code> to load the core runbook into working memory.
-    </p>
-    <div class="mt-4 text-[11px] font-mono text-amber-300">Loaded: When relevant</div>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900/90 border border-emerald-500/30 relative">
-    <div class="text-xs font-mono text-emerald-400 uppercase mb-1">Tier 3 · Execution</div>
-    <div class="text-xl font-bold text-white mb-2">On-Demand Files</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      The agent selectively reads <code>references/*.md</code>, copies <code>resources/*.h</code>, or executes <code>scripts/*.py</code> only for the specific sub-steps required.
-    </p>
-    <div class="mt-4 text-[11px] font-mono text-emerald-300">Loaded: Per sub-task</div>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Tier 1 &middot; Discovery (~100 Tokens, Always Loaded)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>At session start, only <code>name</code> and <code>description</code> from each skill's YAML frontmatter are injected into the system prompt</li>
+      <li>Acts as a lightweight semantic index without consuming working memory</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Tier 2 &middot; Activation (&lt; 5,000 Tokens, Loaded When Relevant)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>When the user's task matches a skill's description, the agent reads <code>SKILL.md</code> into working memory</li>
+      <li>Provides the primary procedural workflow, negative constraints, and relative links</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Tier 3 &middot; Execution (On-Demand Files, Loaded Per Sub-Task)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>The agent selectively reads <code>references/*.md</code>, copies <code>resources/*.h</code>, or executes <code>scripts/*.py</code> only for required sub-steps</li>
+      <li>Executable code runs in the terminal rather than bloating the prompt context</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
 This 3-tier progressive disclosure model is why we can have 40+ skills installed in a workspace without blowing up the context window: 100 tokens at Tier 1, SKILL.md at Tier 2, and deep reference files or scripts at Tier 3.
@@ -514,5 +508,5 @@ layout: default
 </div>
 
 <!--
-Best of all, you don't have to hand-author every line of SKILL.md. Using the <code>agent-skills</code> and <code>agy-customizations</code> skills, you can have the agent itself package its research and scripts into a compliant skill directory. Now let's meet the mystery hardware we're going to tackle!
+Best of all, you don't have to hand-author every line of SKILL.md. Using the `agent-skills` and `agy-customizations` skills, you can have the agent itself package its research and scripts into a compliant skill directory. Now let's meet the mystery hardware we're going to tackle!
 -->

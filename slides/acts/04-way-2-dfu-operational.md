@@ -25,35 +25,33 @@ layout: default
 ---
 
 <!-- S36 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">The Pattern: Interactive Troubleshooting &rarr; Script &rarr; Skill</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-4 mt-8">
-  <div class="p-5 rounded-xl bg-gray-900 border border-amber-500/30">
-    <div class="text-xs font-mono text-amber-400 mb-1">Step 1 · Hit the Wall</div>
-    <h3 class="text-base font-bold text-white mb-2">Debug the Hardware Protocol</h3>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Work interactively with AGY to figure out USB VID/PIDs, bootloader button combos, memory offsets, and exit codes.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900 border border-amber-500/30">
-    <div class="text-xs font-mono text-amber-400 mb-1">Step 2 · Automate in Code</div>
-    <h3 class="text-base font-bold text-white mb-2">Write a Deterministic Script</h3>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Don't leave timing loops or binary header checks as prose instructions! Put the exact polling &amp; validation logic into a Python script.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-gray-900 border border-amber-500/30">
-    <div class="text-xs font-mono text-amber-400 mb-1">Step 3 · Wrap in a Skill</div>
-    <h3 class="text-base font-bold text-white mb-2">Bundle <code>scripts/*.py</code> + <code>SKILL.md</code></h3>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Package the script inside <code>.agents/skills/&lt;name&gt;/scripts/</code> and write <code>SKILL.md</code> to tell the agent when and how to invoke it.
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Hit the Wall: Debug the Hardware Protocol</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Work interactively with AGY to figure out USB VID/PIDs, bootloader button combos, memory offsets, and exit codes</li>
+      <li>Isolate where standard assumptions fail on the target hardware</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Automate in Code: Write a Deterministic Script</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Don't leave timing loops or binary header checks as prose instructions</li>
+      <li>Put the exact polling and validation logic into a standalone Python utility</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Wrap in a Skill: Bundle <code>scripts/*.py</code> + <code>SKILL.md</code></strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Package the script inside <code>.agents/skills/&lt;name&gt;/scripts/</code></li>
+      <li>Write <code>SKILL.md</code> to tell the agent when and how to invoke it</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
 Way 2 follows a different pattern: when you hit operational friction like flashing hardware or racing a bootloader window, you debug it interactively once, codify the mechanics into a Python script, and wrap that script in an Agent Skill.
@@ -93,7 +91,7 @@ Found DFU: [0483:df11] ver=0200, devnum=12, cfg=1, intf=0, path="1-1", alt=0,
 </div>
 
 <!--
-When we plugged the Gamma in over USB-C and ran <code>dfu-util -l</code>, we immediately hit four classic embedded traps. First contact showed the Electro-Smith Daisy Bootloader (<code>0483:df11</code>) exposing external QSPI flash at <code>0x90040000</code>.
+When we plugged the Gamma in over USB-C and ran `dfu-util -l`, we immediately hit four classic embedded traps. First contact showed the Electro-Smith Daisy Bootloader (`0483:df11`) exposing external QSPI flash at `0x90040000`.
 -->
 
 ---
@@ -130,7 +128,7 @@ layout: default
 </div>
 
 <!--
-Trap #1: If you follow standard Daisy Seed instructions and hold BOOT while tapping RESET, you enter the raw STM32 ROM bootloader—which can't write to QSPI at <code>0x90040000</code> and risks overwriting the Daisy Bootloader! You have to tap RESET alone.
+Trap #1: If you follow standard Daisy Seed instructions and hold BOOT while tapping RESET, you enter the raw STM32 ROM bootloader—which can't write to QSPI at `0x90040000` and risks overwriting the Daisy Bootloader! You have to tap RESET alone.
 -->
 
 ---
@@ -215,7 +213,7 @@ with open("gamma-v2.0.3.bin", "rb") as f:
 </div>
 
 <!--
-Trap #3 was a real head-scratcher: since we flash to QSPI at <code>0x90040000</code>, we compiled with <code>APP_TYPE = BOOT_QSPI</code>—and got an SOS error blink! AGY inspected the ARM vector table of the factory binary and saw the Reset Handler at <code>0x240047ED</code>: AXI SRAM (<code>BOOT_SRAM</code>)!
+Trap #3 was a real head-scratcher: since we flash to QSPI at `0x90040000`, we compiled with `APP_TYPE = BOOT_QSPI`—and got an SOS error blink! AGY inspected the ARM vector table of the factory binary and saw the Reset Handler at `0x240047ED`: AXI SRAM (`BOOT_SRAM`)!
 -->
 
 ---
@@ -280,7 +278,7 @@ layout: default
 </div>
 
 <!--
-Before probing a single unknown pin, we built our parachute: <code>gamma-firmware-restore</code>. Whenever an experimental firmware hung the MCU, one command + one tap of RESET brought the synth back to factory condition in four seconds.
+Before probing a single unknown pin, we built our parachute: `gamma-firmware-restore`. Whenever an experimental firmware hung the MCU, one command + one tap of RESET brought the synth back to factory condition in four seconds.
 -->
 
 ---
@@ -342,7 +340,7 @@ while time.time() - start_time < timeout:
 </div>
 
 <!--
-Here's <code>gamma-firmware-restore</code> side by side: <code>SKILL.md</code> tells the agent when to use it and how to verify recovery, while <code>scripts/restore_firmware.py</code> handles downloading/caching <code>gamma-v2.0.3.bin</code> and polling <code>dfu-util</code> at 100ms.
+Here's `gamma-firmware-restore` side by side: `SKILL.md` tells the agent when to use it and how to verify recovery, while `scripts/restore_firmware.py` handles downloading/caching `gamma-v2.0.3.bin` and polling `dfu-util` at 100ms.
 -->
 
 ---
@@ -391,7 +389,7 @@ an SOS error blink on the LED).*
 </div>
 
 <!--
-Now look at <code>gamma-firmware-flash/SKILL.md</code>. Beyond requiring <code>APP_TYPE = BOOT_SRAM</code>, notice Constraint 2: <code>dfu-util</code> always exits with code 74 on <code>:leave</code> because the STM32 reboots before acknowledging the final USB status packet. Documenting that stops the agent from thinking the flash failed!
+Now look at `gamma-firmware-flash/SKILL.md`. Beyond requiring `APP_TYPE = BOOT_SRAM`, notice Constraint 2: `dfu-util` always exits with code 74 on `:leave` because the STM32 reboots before acknowledging the final USB status packet. Documenting that stops the agent from thinking the flash failed!
 -->
 
 ---
@@ -427,7 +425,7 @@ for dev in glob.glob("/dev/cu.usbmodem*"):
 </div>
 
 <!--
-And inside <code>scripts/flash_firmware.py</code>, we added two superpowers: first, it unpacks the binary's ARM vector table to verify the Reset Handler is in <code>0x24000000</code> AXI SRAM before flashing; second, if USB serial is active, it sends <code>'b'</code> to reboot the synth into DFU mode hands-free!
+And inside `scripts/flash_firmware.py`, we added two superpowers: first, it unpacks the binary's ARM vector table to verify the Reset Handler is in `0x24000000` AXI SRAM before flashing; second, if USB serial is active, it sends `'b'` to reboot the synth into DFU mode hands-free!
 -->
 
 ---
@@ -435,35 +433,31 @@ layout: default
 ---
 
 <!-- S46 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Way 2 Takeaway: DFU Operational Skills</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-5 mt-8">
-  <div class="p-5 rounded-xl bg-amber-950/15 border border-amber-500/30">
-    <div class="text-xs font-mono text-amber-400 uppercase mb-1">Principle 1</div>
-    <h3 class="text-base font-bold text-white mb-2">Scripts Over Prose for Timing</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Never ask an LLM to race a 2.5-second hardware window via sequential shell tool calls. Put the polling loop inside <code>scripts/</code>.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-amber-950/15 border border-amber-500/30">
-    <div class="text-xs font-mono text-amber-400 uppercase mb-1">Principle 2</div>
-    <h3 class="text-base font-bold text-white mb-2">Pre-Flight Validation</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Checking 8 bytes of the <code>.bin</code> header in <code>flash_firmware.py</code> catches wrong <code>Makefile</code> linker targets before touching hardware.
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-amber-950/15 border border-amber-500/30">
-    <div class="text-xs font-mono text-amber-400 uppercase mb-1">Principle 3</div>
-    <h3 class="text-base font-bold text-white mb-2">Document Benign Errors</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Explicitly noting that <code>dfu-util</code> exit code <code>74</code> on <code>:leave</code> is expected prevents wasted agent debugging loops.
-    </p>
-  </div>
-</div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Scripts Over Prose for Timing Races</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Never ask an LLM to race a 2.5-second hardware window via sequential shell tool calls</li>
+      <li>Encapsulate tight 100ms polling loops inside <code>scripts/</code></li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Pre-Flight Binary Validation</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Checking the first 8 bytes of the <code>.bin</code> header in <code>flash_firmware.py</code> catches wrong <code>Makefile</code> linker targets before touching hardware</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Document Benign Tool Exit Codes</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Explicitly noting that <code>dfu-util</code> exit code <code>74</code> on <code>:leave</code> is expected prevents wasted agent debugging loops</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
 That's Way 2: DFU Operational Skills. Don't make the agent re-solve fragile hardware timing races in prose—wrap operational mechanics and pre-flight binary checks into deterministic Python scripts inside the skill.
