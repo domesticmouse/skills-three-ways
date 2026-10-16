@@ -111,7 +111,6 @@ layout: default
         "Inspect the libDaisy/ repository in this workspace. Produce a comprehensive architectural report on how to build firmware with libDaisy, detailing the hardware peripheral taxonomy, STM32H7 memory map, and initialization patterns, and format it as an Agent Skill named libdaisy-guide."
       </p>
     </div>
-
     <div class="text-xs text-gray-300 space-y-1.5">
       <div class="font-semibold text-white">What to Watch For:</div>
       <ul class="list-disc pl-5 space-y-1 text-gray-400">
@@ -317,7 +316,6 @@ layout: default
         "Inspect the DaisySP/ repository in this workspace. Review the DSP synthesis modules, extract the 5 real-time audio constraints, and convert the findings into an Agent Skill named daisysp-guide with a fast module catalog."
       </p>
     </div>
-
     <div class="text-xs text-gray-300 space-y-1.5">
       <div class="font-semibold text-white">What to Watch For:</div>
       <ul class="list-disc pl-5 space-y-1 text-gray-400">
