@@ -7,13 +7,6 @@ import AsciinemaPlayer from '../components/AsciinemaPlayer.vue'
     <!-- Header Bar (~10-12% height) -->
     <div class="flex items-center justify-between pb-2 border-b border-gray-800/80 shrink-0">
       <div class="flex items-center gap-3">
-        <span
-          v-if="$frontmatter.act"
-          class="text-xs font-semibold px-2.5 py-0.5 rounded-full tracking-wider uppercase"
-          :class="$frontmatter.badgeClass || 'bg-gray-800 text-gray-300 border border-gray-700'"
-        >
-          {{ $frontmatter.act }}
-        </span>
         <h2 class="text-lg font-bold text-gray-100 tracking-wide m-0">
           {{ $frontmatter.title || 'Terminal Session Recording' }}
         </h2>

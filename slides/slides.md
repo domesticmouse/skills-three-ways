@@ -78,7 +78,6 @@ layout: default
 
 <!-- S03 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-600/40">Act 1 · The Hook</span>
   <h2 class="text-2xl font-bold m-0">What the Factory Synth Does Out of the Box</h2>
 </div>
 
@@ -122,7 +121,6 @@ layout: default
 
 <!-- S04 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-600/40">Act 1 · The Hook</span>
   <h2 class="text-2xl font-bold m-0">The Late-Night Accident</h2>
 </div>
 
@@ -157,7 +155,6 @@ layout: default
 
 <!-- S05 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-600/40">Act 1 · The Hook</span>
   <h2 class="text-2xl font-bold m-0">One for Music, One for Science</h2>
 </div>
 
@@ -227,7 +224,6 @@ layout: default
 
 <!-- S07 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-600/40">Act 1 · The Hook</span>
   <h2 class="text-2xl font-bold m-0">Inside the Chassis: Electro-Smith Daisy Seed 2 DFM</h2>
 </div>
 
@@ -272,7 +268,6 @@ layout: default
 
 <!-- S08 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-600/40">Act 1 · The Hook</span>
   <h2 class="text-2xl font-bold m-0">The Catch: Zero Schematics, Closed-Source Rust</h2>
 </div>
 
@@ -316,7 +311,6 @@ layout: default
 
 <!-- S09 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-600/40">Act 1 · The Hook</span>
   <h2 class="text-2xl font-bold m-0">The Mission: Collaborating with Antigravity (AGY)</h2>
 </div>
 
@@ -360,7 +354,6 @@ layout: default
 
 <!-- S10 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-600/40">Act 1 · The Hook</span>
   <h2 class="text-2xl font-bold m-0">The Thesis: Skills Three Ways (+ The Mashup)</h2>
 </div>
 
@@ -442,7 +435,6 @@ layout: default
 
 <!-- S12 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-gray-800 text-gray-300 border border-gray-700">Act 2 · Primer</span>
   <h2 class="text-2xl font-bold m-0">The Context Window Trap</h2>
 </div>
 
@@ -480,7 +472,6 @@ layout: default
 
 <!-- S13 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-gray-800 text-gray-300 border border-gray-700">Act 2 · Recording 1 Intro</span>
   <h2 class="text-2xl font-bold m-0">Asking Antigravity: "What Are Agent Skills?"</h2>
 </div>
 
@@ -537,7 +528,6 @@ layout: default
 
 <!-- S15 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-gray-800 text-gray-300 border border-gray-700">Act 2 · Primer</span>
   <h2 class="text-2xl font-bold m-0">Rules vs. Agent Skills vs. MCP Tools</h2>
 </div>
 
@@ -594,7 +584,6 @@ layout: default
 
 <!-- S16 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-gray-800 text-gray-300 border border-gray-700">Act 2 · Primer</span>
   <h2 class="text-2xl font-bold m-0">Directory Anatomy of an Agent Skill</h2>
 </div>
 
@@ -641,7 +630,6 @@ layout: default
 
 <!-- S17 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-gray-800 text-gray-300 border border-gray-700">Act 2 · Primer</span>
   <h2 class="text-2xl font-bold m-0">Inside SKILL.md Part 1: YAML Frontmatter</h2>
 </div>
 
@@ -685,7 +673,6 @@ layout: default
 
 <!-- S18 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-gray-800 text-gray-300 border border-gray-700">Act 2 · Primer</span>
   <h2 class="text-2xl font-bold m-0">Inside SKILL.md Part 2: Runbooks &amp; Negative Constraints</h2>
 </div>
 
@@ -732,7 +719,6 @@ layout: default
 
 <!-- S19 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-gray-800 text-gray-300 border border-gray-700">Act 2 · Primer</span>
   <h2 class="text-2xl font-bold m-0">The 3-Tier Progressive Disclosure Model</h2>
 </div>
 
@@ -775,7 +761,6 @@ layout: default
 
 <!-- S20 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-gray-800 text-gray-300 border border-gray-700">Act 2 · Primer</span>
   <h2 class="text-2xl font-bold m-0">Authoring Skills with Agent Skills</h2>
 </div>
 
@@ -838,7 +823,6 @@ layout: default
 
 <!-- S22 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way1">Act 3 · Way 1</span>
   <h2 class="text-2xl font-bold m-0">The Pattern: Source Tree &rarr; Architecture Report &rarr; Skill</h2>
 </div>
 
@@ -878,7 +862,6 @@ layout: default
 
 <!-- S23 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way1">Act 3 · Way 1</span>
   <h2 class="text-2xl font-bold m-0">Why Embedded C++ Libraries Need Skills</h2>
 </div>
 
@@ -918,7 +901,6 @@ layout: default
 
 <!-- S24 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way1">Act 3 · Recording 2 Intro</span>
   <h2 class="text-2xl font-bold m-0">Creating the <code>libdaisy-guide</code> Skill from Source</h2>
 </div>
 
@@ -1127,7 +1109,6 @@ layout: default
 
 <!-- S29 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way1">Act 3 · Recording 3 Intro</span>
   <h2 class="text-2xl font-bold m-0">Creating the <code>daisysp-guide</code> Skill from Source</h2>
 </div>
 
@@ -1318,7 +1299,6 @@ layout: default
 
 <!-- S34 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way1">Act 3 · Way 1 Takeaway</span>
   <h2 class="text-2xl font-bold m-0">Way 1 Takeaway: Library Review Skills</h2>
 </div>
 
@@ -1383,7 +1363,6 @@ layout: default
 
 <!-- S36 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way2">Act 4 · Way 2</span>
   <h2 class="text-2xl font-bold m-0">The Pattern: Interactive Troubleshooting &rarr; Script &rarr; Skill</h2>
 </div>
 
@@ -1423,7 +1402,6 @@ layout: default
 
 <!-- S37 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way2">Act 4 · Way 2</span>
   <h2 class="text-2xl font-bold m-0">First Contact over USB-C (<code>dfu-util -l</code>)</h2>
 </div>
 
@@ -1461,7 +1439,6 @@ layout: default
 
 <!-- S38 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way2">Act 4 · Way 2</span>
   <h2 class="text-2xl font-bold m-0">Trap #1: The Two Different Bootloaders</h2>
 </div>
 
@@ -1499,7 +1476,6 @@ layout: default
 
 <!-- S39 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way2">Act 4 · Way 2</span>
   <h2 class="text-2xl font-bold m-0">Trap #2: The 2.5-Second DFU Grace Period Race</h2>
 </div>
 
@@ -1542,7 +1518,6 @@ layout: default
 
 <!-- S40 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way2">Act 4 · Way 2</span>
   <h2 class="text-2xl font-bold m-0">Trap #3: Why Does My Firmware Blink SOS?</h2>
 </div>
 
@@ -1586,7 +1561,6 @@ layout: default
 
 <!-- S41 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way2">Act 4 · Way 2</span>
   <h2 class="text-2xl font-bold m-0">Trap #4: The Ghost on the OLED Screen</h2>
 </div>
 
@@ -1618,7 +1592,6 @@ layout: default
 
 <!-- S42 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way2">Act 4 · Way 2</span>
   <h2 class="text-2xl font-bold m-0">Safety First: Building <code>gamma-firmware-restore</code> Before Probing</h2>
 </div>
 
@@ -1800,7 +1773,6 @@ layout: default
 
 <!-- S46 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way2">Act 4 · Way 2 Takeaway</span>
   <h2 class="text-2xl font-bold m-0">Way 2 Takeaway: DFU Operational Skills</h2>
 </div>
 
@@ -1865,7 +1837,6 @@ layout: default
 
 <!-- S48 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 5 · Way 3</span>
   <h2 class="text-2xl font-bold m-0">The Pattern: Diagnostic Firmwares (<code>PLAN.md</code>) &rarr; Truth + Idioms</h2>
 </div>
 
@@ -1905,7 +1876,6 @@ layout: default
 
 <!-- S49 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 5 · Recording 4 Intro</span>
   <h2 class="text-2xl font-bold m-0">Designing the 6-Phase Reverse-Engineering Plan (<code>PLAN.md</code>)</h2>
 </div>
 
@@ -1963,7 +1933,6 @@ layout: default
 
 <!-- S51 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 5 · Way 3</span>
   <h2 class="text-2xl font-bold m-0">The 6-Phase Hardware Probing Roadmap (<code>PLAN.md</code>)</h2>
 </div>
 
@@ -2015,7 +1984,6 @@ layout: default
 
 <!-- S52 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 5 · Phase 1 &amp; 2</span>
   <h2 class="text-2xl font-bold m-0">Phase 1 &amp; 2 (<code>phase1_i2c_scan</code>): Finding the OLED Screen</h2>
 </div>
 
@@ -2062,7 +2030,6 @@ layout: default
 
 <!-- S53 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 5 · Phase 3</span>
   <h2 class="text-2xl font-bold m-0">Phase 3 (<code>phase3_adc</code>): Mapping Knobs &amp; Thumbsticks</h2>
 </div>
 
@@ -2110,7 +2077,6 @@ layout: default
 
 <!-- S54 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 5 · Phase 3</span>
   <h2 class="text-2xl font-bold m-0">The Polarity Surprise: Inverted Pots &amp; Asymmetric Sticks!</h2>
 </div>
 
@@ -2162,7 +2128,6 @@ layout: default
 
 <!-- S55 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 5 · Phase 4</span>
   <h2 class="text-2xl font-bold m-0">Phase 4 (<code>phase4_keys_encoder</code>): 14 Keys &amp; Quadrature Encoder</h2>
 </div>
 
@@ -2210,7 +2175,6 @@ layout: default
 
 <!-- S56 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 5 · Phase 5</span>
   <h2 class="text-2xl font-bold m-0">Phase 5 (<code>phase5_audio</code>): The Hidden Speaker Amplifier Pin</h2>
 </div>
 
@@ -2259,7 +2223,6 @@ layout: default
 
 <!-- S57 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 5 · Way 3 Architecture</span>
   <h2 class="text-2xl font-bold m-0">Distilling Facts vs. Idioms: Why Two Hardware Skills?</h2>
 </div>
 
@@ -2525,7 +2488,6 @@ layout: default
 
 <!-- S62 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 5 · Way 3 Takeaway</span>
   <h2 class="text-2xl font-bold m-0">Way 3 Takeaway: Hardware Discovery Skills</h2>
 </div>
 
@@ -2590,7 +2552,6 @@ layout: default
 
 <!-- S64 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-mashup">Act 6 · The Mashup</span>
   <h2 class="text-2xl font-bold m-0">The Mystery: Why Did <code>hw.StartLog()</code> Produce Zero Output?</h2>
 </div>
 
@@ -2632,7 +2593,6 @@ layout: default
 
 <!-- S65 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-mashup">Act 6 · The Mashup</span>
   <h2 class="text-2xl font-bold m-0">On-OLED Register Debugging: Discovering <code>UsbHandle::FS_EXTERNAL</code></h2>
 </div>
 
@@ -2677,7 +2637,6 @@ layout: default
 
 <!-- S66 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-mashup">Act 6 · The Mashup</span>
   <h2 class="text-2xl font-bold m-0">Two Real-Time USB Deadlocks That Hung the Synth</h2>
 </div>
 
@@ -2709,7 +2668,6 @@ layout: default
 
 <!-- S67 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-mashup">Act 6 · The Mashup</span>
   <h2 class="text-2xl font-bold m-0">Why <code>gamma-usb-connectivity</code> Is a Three-Way Mashup</h2>
 </div>
 
@@ -2891,7 +2849,6 @@ layout: default
 
 <!-- S72 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-gray-800 text-gray-300 border border-gray-700">Act 7 · The A/B Experiment</span>
   <h2 class="text-2xl font-bold m-0">Identical Prompt, Two Workspaces</h2>
 </div>
 
@@ -2930,7 +2887,6 @@ layout: default
 
 <!-- S73 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-red-950/80 text-red-300 border border-red-500/40">Act 7 · Recording 5 Intro</span>
   <h2 class="text-2xl font-bold m-0">Attempt 1: Building the Drum Synth WITHOUT Skills</h2>
 </div>
 
@@ -2980,7 +2936,6 @@ layout: default
 
 <!-- S75 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-red-950/80 text-red-300 border border-red-500/40">Act 7 · Post-Mortem</span>
   <h2 class="text-2xl font-bold m-0">Anatomy of the Failure (Without Skills)</h2>
 </div>
 
@@ -3033,7 +2988,6 @@ layout: default
 
 <!-- S76 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 7 · Recording 6 Intro</span>
   <h2 class="text-2xl font-bold m-0">Attempt 2: Building the Drum Synth WITH All 7 Skills</h2>
 </div>
 
@@ -3082,7 +3036,6 @@ layout: default
 
 <!-- S78 -->
 <div class="flex items-center gap-3 mb-4">
-  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase badge-way3">Act 7 · Composition</span>
   <h2 class="text-2xl font-bold m-0">How All 7 Skills Composed Together</h2>
 </div>
 
@@ -3164,7 +3117,6 @@ layout: default
 <!-- S80 -->
 <div class="flex items-center justify-between mb-4">
   <div class="flex items-center gap-3">
-    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase bg-emerald-950 text-emerald-300 border border-emerald-500/40">Act 7 · Closing</span>
     <h2 class="text-2xl font-bold m-0">Skills Three Ways: Key Takeaways &amp; Links</h2>
   </div>
   <span class="text-xs font-mono text-gray-400">Brett Morgan &middot; Google Cloud DevRel</span>

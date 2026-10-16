@@ -3,12 +3,6 @@
     <!-- Header Bar -->
     <div class="flex items-center justify-between pb-3 border-b border-gray-800 shrink-0">
       <div class="flex items-center gap-3">
-        <span
-          v-if="$frontmatter.section"
-          class="text-xs font-semibold px-2.5 py-0.5 rounded-full tracking-wider uppercase bg-emerald-950/70 text-emerald-300 border border-emerald-600/40"
-        >
-          {{ $frontmatter.section }}
-        </span>
         <h2 class="text-xl font-bold text-gray-100 tracking-wide m-0">
           {{ $frontmatter.title || 'Hardware Architecture' }}
         </h2>
