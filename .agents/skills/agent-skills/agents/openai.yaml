@@ -1,0 +1,3 @@
+interface:
+  display_name: "Agent Skills"
+  short_description: "Design, author, audit, and validate Agent Skills packages"
