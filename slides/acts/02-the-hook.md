@@ -145,14 +145,14 @@ layout: hardware-callout
 title: Asking the Creator How to Get Inside
 subtitle: Disassembly Guidance
 image: /images/GammaSynthScrews.png
-imageCaption: Annotated rear enclosure photo showing which 4 corner screws to remove
+imageCaption: Annotated front panel photo showing which 2 outer screws release the faceplate
 ---
 
 <!-- S16 -->
 <div class="space-y-4">
   <h3 class="text-lg font-bold text-amber-300">Which Screws Open the Case?</h3>
   <p class="text-sm text-gray-300 leading-relaxed">
-    The rear plate has multiple fasteners holding both internal standoffs and the outer shell. Before randomly unscrewing hardware, I reached out to the creator at <strong>this.is.NOISE</strong>.
+    The front panel has six hex fasteners holding both the OLED screen and the outer enclosure. Before randomly unscrewing hardware, I reached out to the creator at <strong>this.is.NOISE</strong>.
   </p>
   <div class="p-3.5 rounded-lg bg-gray-900/80 border border-gray-800 text-xs text-gray-300 space-y-2">
     <div class="font-semibold text-white">Creator's Reply:</div>
@@ -164,7 +164,7 @@ imageCaption: Annotated rear enclosure photo showing which 4 corner screws to re
 </div>
 
 <!--
-Before taking a screwdriver to every bolt on the backplate, I asked the creator how to safely open the enclosure. They kindly sent back an annotated photo showing which four corner screws release the shell.
+Before taking a hex driver to every screw on the front panel, I asked the creator how to safely open the enclosure. They kindly sent back an annotated photo showing which two outer screws release the faceplate without dropping the OLED screen inside.
 -->
 
 ---
@@ -179,7 +179,7 @@ imageCaption: Electro-Smith Daisy Seed 2 DFM — STM32H750 @ 480 MHz
 <div class="space-y-3">
   <h3 class="text-lg font-bold text-cyan-300">The Brain: Daisy Seed 2 DFM</h3>
   <p class="text-sm text-gray-300 leading-relaxed">
-    Lifting the back cover revealed a welcome surprise soldered onto the Gamma carrier board: an <strong>Electro-Smith Daisy Seed 2 DFM</strong> module!
+    Rotating the faceplate open revealed a welcome surprise soldered onto the Gamma carrier board: an <strong>Electro-Smith Daisy Seed 2 DFM</strong> module!
   </p>
 
   <div class="p-3 rounded-lg bg-cyan-950/20 border border-cyan-500/30 space-y-1.5">
@@ -246,32 +246,35 @@ layout: default
 ---
 
 <!-- S19 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">The Mission: Collaborating with Antigravity</h2>
 </div>
 
-<div class="grid grid-cols-12 gap-6 mt-6 items-center">
-  <div class="col-span-7 space-y-4">
-    <p class="text-sm text-gray-200 leading-relaxed">
-      Could we use <strong>Google Antigravity</strong> not just to write C++ code, but to systematically <strong>reverse-engineer the physical hardware</strong> and capture every discovery as reusable <strong>Agent Skills</strong>?
-    </p>
-    <div class="space-y-2.5 text-xs text-gray-300">
-      <div class="p-3 rounded-lg bg-gray-900 border border-gray-800 flex items-center gap-3">
-        <span class="text-cyan-400 font-bold font-mono">Step 1</span>
-        <span>Teach the agent the C++ libraries (<code>libDaisy</code> &amp; <code>DaisySP</code>) before touching hardware.</span>
-      </div>
-      <div class="p-3 rounded-lg bg-gray-900 border border-gray-800 flex items-center gap-3">
-        <span class="text-amber-400 font-bold font-mono">Step 2</span>
-        <span>Establish a rock-solid USB DFU flash &amp; factory restore safety net.</span>
-      </div>
-      <div class="p-3 rounded-lg bg-gray-900 border border-gray-800 flex items-center gap-3">
-        <span class="text-emerald-400 font-bold font-mono">Step 3</span>
-        <span>Run phased diagnostic firmwares to map every pin, polarity, and peripheral.</span>
-      </div>
-    </div>
-  </div>
-</div>
+<p class="text-sm text-gray-200 leading-relaxed">
+  Could we use <strong>Google Antigravity</strong> not just to write C++ code, but to systematically <strong>reverse-engineer the physical hardware</strong> and capture every discovery as reusable <strong>Agent Skills</strong>?
+</p>
+
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Way 1 &middot; Library Review Skills (<code class="text-cyan-300">libdaisy-guide</code>, <code class="text-cyan-300">daisysp-guide</code>)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Teach the agent the C++ hardware abstraction and DSP libraries before touching the hardware</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Way 2 &middot; DFU Operational Skills (<code class="text-amber-300">gamma-firmware-restore</code>, <code class="text-amber-300">gamma-firmware-flash</code>)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Establish a rock-solid USB DFU factory restore parachute and automated flash workflow</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Way 3 &middot; Hardware Discovery Skills (<code class="text-emerald-300">gamma-pinout</code>, <code class="text-emerald-300">gamma-hardware-controls</code>, <code class="text-emerald-300">gamma-usb-connectivity</code>)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Run phased diagnostic firmwares to map every pin, polarity, timer ISR, and USB bus</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
-So the mission became: can we partner with Google Antigravity to reverse-engineer the hardware step by step, and package everything we learn into modular Agent Skills so future firmware builds work on the first try?
+So the mission became: can we partner with Google Antigravity to reverse-engineer the hardware step by step, and package everything we learn into seven modular Agent Skills across three distinct skill-creation patterns so future firmware builds work on the first try?
 -->

@@ -91,7 +91,7 @@ Found DFU: [0483:df11] ver=0200, devnum=12, cfg=1, intf=0, path="1-1", alt=0,
 </div>
 
 <!--
-When we plugged the Gamma in over USB-C and ran `dfu-util -l`, we immediately hit four classic embedded traps. First contact showed the Electro-Smith Daisy Bootloader (`0483:df11`) exposing external QSPI flash at `0x90040000`.
+When we plugged the Gamma in over USB-C and ran `dfu-util -l`, first contact showed the Electro-Smith Daisy Bootloader (`0483:df11`) exposing external QSPI flash at `0x90040000`—and we immediately ran into two bootloader traps and two build/flash constraints.
 -->
 
 ---

@@ -111,7 +111,7 @@ layout: default
   <li>
     <strong class="text-white">Two Synths &amp; Zero Schematics</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>How a late-night impulse purchases lead to developer talks</li>
+      <li>How a late-night impulse purchase leads to developer talks</li>
       <li>Figuring out firmware without documentation</li>
     </ul>
   </li>
@@ -134,7 +134,7 @@ layout: default
 <!--
 Here's our itinerary for today.
 
-First, we'll do a quick primer on Agent Skills—why stuffing every manual into a monolithic system prompt fails, how 3-tier progressive disclosure keeps context clean, and how we use meta-skills so the agent actually writes the skills for us.
+First, we'll do a quick primer on Agent Skills—why stuffing every manual into a monolithic system prompt fails, how 3-tier progressive disclosure keeps context clean, and how we use Antigravity's built-in customization skill so the agent actually writes the skills for us.
 
 Second, I'll introduce the hardware mystery at the center of this talk: how a late-night ordering accident gave me a spare Gamma Mini Synth to open up, revealing an Electro-Smith Daisy Seed 2 DFM inside, but with closed-source firmware and zero wiring schematics.
 
@@ -426,7 +426,7 @@ layout: default
     </ul>
   </li>
   <li>
-    <strong class="text-white">Phase 2 &middot; Synthesis with Meta-Skills</strong>
+    <strong class="text-white">Phase 2 &middot; Synthesis with Built-In Customization Skill</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Prompt the agent: <code>"/agy-customize Please convert this into an agent skill"</code></li>
       <li>The agent structures <code>SKILL.md</code>, formats YAML frontmatter, and isolates deep context into <code>scripts/</code> or <code>references/</code></li>
@@ -446,5 +446,5 @@ layout: default
 </div>
 
 <!--
-Best of all, you don't have to hand-author every line of SKILL.md. We use two built-in meta-skills—`agent-skills` for standard directory anatomy and YAML frontmatter, and `agy-customizations` for Antigravity-specific rules and discovery roots. The workflow is simple: first, solve the problem interactively in the terminal; second, tell the agent to package the working session into a skill; third, verify it in a brand-new conversation to prove it works from cold storage. Now let's meet the mystery hardware we're going to tackle!
+Best of all, you don't have to hand-author every line of SKILL.md. We use Antigravity's built-in `agy-customizations` skill—invoked via `/agy-customize`—which knows the standard directory anatomy, YAML frontmatter rules, and discovery roots out of the box. The workflow is simple: first, solve the problem interactively in the terminal; second, tell the agent `/agy-customize Please convert this into an agent skill`; third, verify it in a brand-new conversation to prove it works from cold storage. Now let's meet the mystery hardware we're going to tackle!
 -->

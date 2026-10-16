@@ -9,7 +9,7 @@ class: text-center
     Library Review Skills
   </h1>
   <p class="text-xl font-mono text-cyan-300">
-    libdaisy-guide daisysp-guide
+    libdaisy-guide &middot; daisysp-guide
   </p>
   <p class="text-base text-gray-400 max-w-xl mx-auto">
     Turning 50,000+ lines of embedded C++ headers into high-signal runbooks
@@ -17,7 +17,7 @@ class: text-center
 </div>
 
 <!--
-Act 3 brings us to Way 1: Library Review Skills. Before touching the Gamma hardware, we needed the agent to master `libDaisy`.
+Act 3 brings us to Way 1: Library Review Skills. Before touching the Gamma hardware, we needed the agent to master both `libDaisy` (the hardware abstraction layer) and `DaisySP` (the DSP synthesis library). We used the exact same workflow to generate `libdaisy-guide` and `daisysp-guide`—let's walk through how `libdaisy-guide` was built.
 -->
 
 ---
@@ -31,9 +31,9 @@ layout: default
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
   <li>
-    <strong class="text-white">Clone Source: Check Out the Raw C++ Repo</strong>
+    <strong class="text-white">Clone Source: Check Out the Raw C++ Repos</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Clone <code>electro-smith/libDaisy</code> directly into the workspace</li>
+      <li>Clone <code>electro-smith/libDaisy</code> and <code>electro-smith/DaisySP</code> directly into the workspace</li>
       <li>Ask agent to inspect source code rather than relying on stale training weights</li>
     </ul>
   </li>
@@ -189,14 +189,14 @@ step: Zoom-In 3 of 3
 
 The `libDaisy` source tree ([`libDaisy/src/`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/)) uses standardized module prefixes:
 
-| Prefix | Subsystem Domain | Description & Key Classes |
+| Prefix | Subsystem Domain | Description & Representative Classes |
 | :--- | :--- | :--- |
-| **`sys/`** | **System Infrastructure** | Clocks, MPU, D-cache invalidation, DMA routing, FatFs.<br>• [`System`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/sys/system.h), [`DmaHandler`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/sys/dma.h), [`FatFSInterface`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/sys/fatfs.h) |
-| **`per/`** | **Internal Peripherals** | High-performance C++ drivers for STM32 on-chip peripherals.<br>• [`AdcHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/adc.h), [`DacHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/dac.h), [`GPIO`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/gpio.h), [`I2CHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/i2c.h), [`SpiHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/spi.h), [`SaiHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/sai.h), [`UartHandler`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/uart.h), [`QSPIHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/qspi.h), [`TimerHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/tim.h), [`Pwm`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/pwm.h), [`Random`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/rng.h) |
-| **`dev/`** | **External Devices** | External ICs mounted on boards.<br>• Codecs: [`Ak4556`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/codec_ak4556.h), [`Wm8731`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/codec_wm8731.h), [`Pcm3060`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/codec_pcm3060.h)<br>• Displays: [`SSD130x`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/oled_ssd130x.h), [`SH1106`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/oled_sh1106.h), [`SSD1327`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/oled_ssd1327.h), [`SSD1351`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/oled_ssd1351.h)<br>• Memory & Expanders: [`SdramHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/sdram.h), [`IS25LP064A`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/flash_IS25LP064A.h), [`MCP23x17`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/mcp23x17.h), [`TCA9534`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/tca9534.h), [`ShiftRegister595`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/sr_595.h), [`ShiftRegister4021`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/sr_4021.h)<br>• Sensors & LEDs: [`Mpr121`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/mpr121.h), [`APDS9960`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/apds9960.h), [`NeoPixel`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/neopixel.h), [`DotStar`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/dotstar.h) |
-| **`hid/`** | **Human Interface** | Real-time audio engine, smoothed inputs, debounce, encoders, MIDI, USB, and display drawing.<br>• [`AudioHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/audio.h), [`AnalogControl`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/ctrl.h), [`Parameter`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/parameter.h), [`Switch`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/switch.h), [`Switch3`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/switch3.h), [`Encoder`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/encoder.h), [`GateIn`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/gatein.h), [`Led`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/led.h), [`RgbLed`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/rgb_led.h), [`MidiHandler`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/midi.h), [`UsbHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/usb.h), [`UsbHostHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/usb_host.h), [`Logger`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/logger.h), [`Display`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/disp/display.h), [`OledDisplay`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/disp/oled_display.h) |
-| **`ui/`** | **User Interface** | Screen menu hierarchies, event queues, and input monitoring.<br>• [`UI`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/ui/UI.h), [`UiEventQueue`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/ui/UiEventQueue.h), [`AbstractMenu`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/ui/AbstractMenu.h), [`FullScreenItemMenu`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/ui/FullScreenItemMenu.h), [`ButtonMonitor`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/ui/ButtonMonitor.h) |
-| **`util/`** | **Utilities** | Lock-free FIFOs, string formatting without heap allocation, WAV streaming, preset saving, and load profiling.<br>• [`FIFO`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/FIFO.h), [`FixedCapStr`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/FixedCapStr.h), [`WavPlayer`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/WavPlayer.h), [`WavWriter`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/WavWriter.h), [`WaveTableLoader`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/WaveTableLoader.h), [`PersistentStorage`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/PersistentStorage.h), [`CpuLoadMeter`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/CpuLoadMeter.h), [`VoctCalibration`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/VoctCalibration.h) |
+| **`sys/`** | **System Infrastructure** | Clocks, MPU, D-cache invalidation, DMA routing, FatFs (`System`, `DmaHandler`, `FatFSInterface`) |
+| **`per/`** | **Internal Peripherals** | On-chip STM32H7 drivers (`AdcHandle`, `DacHandle`, `GPIO`, `I2CHandle`, `SpiHandle`, `SaiHandle`, `QSPIHandle`, `TimerHandle`) |
+| **`dev/`** | **External Devices** | Off-chip ICs: codecs (`Pcm3060`, `Ak4556`), OLEDs (`SSD130x`, `SH1106`), memory (`SdramHandle`, `IS25LP064A`), expanders & LEDs |
+| **`hid/`** | **Human Interface** | Real-time audio & controls (`AudioHandle`, `AnalogControl`, `Switch`, `Encoder`, `MidiHandler`, `UsbHandle`, `OledDisplay`) |
+| **`ui/`** | **User Interface** | Screen menu hierarchies, event queues, and input monitoring (`UI`, `UiEventQueue`, `AbstractMenu`, `FullScreenItemMenu`) |
+| **`util/`** | **Utilities** | Lock-free `FIFO`, heap-free `FixedCapStr`, `WavPlayer`, `PersistentStorage`, and `CpuLoadMeter` |
 
 </div>
 
@@ -217,26 +217,26 @@ layout: default
   <li>
     <strong class="text-white">50,000+ Lines of C++ Headers Distilled</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Raw source across <code>libDaisy/</code> would overwhelm context if searched ad-hoc every session</li>
+      <li>Raw source across <code>libDaisy/</code> and <code>DaisySP/</code> would overwhelm context if searched ad-hoc every session</li>
       <li>Pre-auditing once eliminates repetitive codebase grep loops</li>
     </ul>
   </li>
   <li>
     <strong class="text-white">~200 Lines per <code>SKILL.md</code> Runbook</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Concise architectural cheatsheets with zero-hallucination class names, memory macros, and real-time rules</li>
-      <li>Backed by on-demand Tier-3 catalogs in <code>references/</code></li>
+      <li>Concise architectural cheatsheets with zero-hallucination class names, memory macros, and real-time DSP rules</li>
+      <li>Backed by on-demand Tier-3 module catalogs in <code>references/</code></li>
     </ul>
   </li>
   <li>
     <strong class="text-white">100% Reusable Across Any Daisy Project</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li><code>libdaisy-guide</code> captures platform-level knowledge independent of the Gamma PCB</li>
+      <li><code>libdaisy-guide</code> and <code>daisysp-guide</code> capture platform-level knowledge independent of the Gamma PCB</li>
       <li>Portable to any Electro-Smith Daisy Seed, Pod, Patch, or Petal project</li>
     </ul>
   </li>
 </ol>
 
 <!--
-That's Way 1: Library Review Skills. By distilling 50,000+ lines of C++ headers into a ~200-line runbook, the agent writes idiomatically correct Daisy C++ on the first try—and that skill is reusable on any Daisy hardware project.
+That's Way 1: Library Review Skills. We ran this exact same audit workflow on both `libDaisy` and `DaisySP` to produce `libdaisy-guide` and `daisysp-guide`. By distilling 50,000+ lines of C++ headers into ~200-line runbooks, the agent writes idiomatically correct Daisy C++ and DSP synthesis on the first try—and both skills are reusable on any Daisy hardware project.
 -->

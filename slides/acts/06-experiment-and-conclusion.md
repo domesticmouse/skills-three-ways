@@ -89,7 +89,7 @@ Let's watch Attempt 1 first: building the drum synth WITHOUT skills. Spoiler ale
 
 ---
 layout: cast-full
-title: "Recording 05: Building the 7-Voice Drum Synth WITHOUT Skills"
+title: "Building the 7-Voice Drum Synth WITHOUT Skills"
 cast: /casts/drum-synth-without-skills.cast
 autoPlay: false
 speed: 3.0
@@ -187,7 +187,7 @@ Now let's watch Attempt 2: the exact same prompt, but in a workspace with our 7 
 
 ---
 layout: cast-full
-title: "Recording 06: Building the 7-Voice Drum Synth WITH All 7 Skills"
+title: "Building the 7-Voice Drum Synth WITH All 7 Skills"
 cast: /casts/drum-synth-with-skills.cast
 autoPlay: false
 speed: 4.0
@@ -227,7 +227,7 @@ layout: default
     <span class="text-gray-300"> &mdash; Supplied 1 kHz <code>TIM5</code> key/encoder ISR, <code>1.0f - raw</code> pot inversion, and <code>I2C1</code> <code>0x3D</code> OLED reset</span>
   </li>
   <li>
-    <strong class="text-purple-300 font-mono">gamma-usb-connectivity</strong>
+    <strong class="text-emerald-300 font-mono">gamma-usb-connectivity</strong>
     <span class="text-gray-300"> &mdash; Supplied <code>gamma_usb.h</code> on <code>FS_EXTERNAL</code> with non-blocking logging and <code>'b'</code> DFU reboot hook</span>
   </li>
   <li>
@@ -298,7 +298,7 @@ layout: default
     </ul>
   </li>
   <li>
-    <strong class="text-white">LLMs Can now Code</strong>
+    <strong class="text-white">LLMs Can Now Code</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Server infrastructure got easier, but agent capability leaped forward</li>
       <li>Modern models can write scripts and execute CLI runbooks directly</li>
@@ -378,10 +378,10 @@ layout: default
     </ul>
   </li>
   <li>
-    <strong class="text-white">Two-Stage Discovery</strong>
+    <strong class="text-white">3-Tier Progressive Disclosure</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Only metadata (~100 tokens) loaded into system context at startup</li>
-      <li>Full instructions and references pulled into context only on match</li>
+      <li>Full <code>SKILL.md</code> runbook and <code>references/</code> pulled into context only on match</li>
     </ul>
   </li>
   <li>
