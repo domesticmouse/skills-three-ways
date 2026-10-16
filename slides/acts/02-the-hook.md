@@ -58,7 +58,7 @@ layout: default
 </ol>
 
 <div class="mt-6 p-3.5 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
-  It's super fun out of the box—so why would anyone risk bricking it?
+  It's super fun out of the box—so why would anyone risk <strong>bricking it</strong>?
 </div>
 
 <!--

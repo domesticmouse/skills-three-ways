@@ -330,7 +330,9 @@ layout: default
   </li>
 </ol>
 
-<strong class="text-gray-200">You don't need to write the skill by hand!</strong> 
+<div class="mt-6 p-3.5 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
+  You don't need to write the skill <strong>by hand</strong>!
+</div>
 
 <!--
 Best of all, you don't have to hand-author every line of SKILL.md. We use two built-in meta-skills—`agent-skills` for standard directory anatomy and YAML frontmatter, and `agy-customizations` for Antigravity-specific rules and discovery roots. The workflow is simple: first, solve the problem interactively in the terminal; second, tell the agent to package the working session into a skill; third, verify it in a brand-new conversation to prove it works from cold storage. Now let's meet the mystery hardware we're going to tackle!
