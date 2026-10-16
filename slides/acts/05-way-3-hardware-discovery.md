@@ -404,7 +404,7 @@ layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-pinout/SKILL.md
 title: Master Pinout & Polarity Table
-step: Zoom-In 1 of 4
+step: Zoom-In 1 of 3
 ---
 
 <!-- S58 -->
@@ -482,7 +482,7 @@ layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-pinout/resources/gamma_pins.h
 title: Bundling resources/gamma_pins.h
-step: Zoom-In 2 of 4
+step: Zoom-In 2 of 3
 ---
 
 <!-- S59 -->
@@ -524,53 +524,9 @@ Even better, `gamma-pinout` bundles `resources/gamma_pins.h` right inside the sk
 ---
 layout: skill-breakdown
 way: 3
-skill: .agents/skills/gamma-hardware-controls/SKILL.md
-title: 1 kHz TIM5 ISR & Diagnostic Table
-step: Zoom-In 3 of 4
----
-
-<!-- S60 -->
-<div class="grid grid-cols-12 gap-4 items-center text-xs">
-  <div class="col-span-6 space-y-2">
-    <div class="font-mono text-emerald-300 uppercase">1 kHz Hardware Timer (<code>TIM5</code>)</div>
-
-```cpp
-// Sample encoder & 14 keys at 1000 Hz
-// Immune to 9.5ms I2C OLED frame updates!
-TimerHandle::Config tim_cfg;
-tim_cfg.periph     = TimerHandle::Config::Peripheral::TIM_5;
-tim_cfg.dir        = TimerHandle::Config::CounterDir::UP;
-tim_cfg.period     = 240000 - 1; // 240MHz / 240k = 1kHz
-tim_cfg.enable_irq = true;
-```
-
-  </div>
-
-  <div class="col-span-6 space-y-2">
-    <div class="font-mono text-amber-300 uppercase">Symptom &rarr; Cause Lookup in SKILL.md</div>
-    <table>
-      <thead>
-        <tr><th>Symptom</th><th>Root Cause</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>OLED blank on soft reboot</td><td>Missing <code>I2C1_FORCE_RESET</code></td></tr>
-        <tr><td>Encoder misses clicks</td><td>Polled in main loop vs <code>TIM5</code></td></tr>
-        <tr><td>Controls freeze during play</td><td>Runaway DSP (<code>AnalogBassDrum</code> &gt; 90 Hz) starving <code>TIM5</code> ISR</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!--
-In `gamma-hardware-controls/SKILL.md`, we give the agent the 1 kHz `TIM5` hardware interrupt architecture so OLED updates never drop encoder clicks, plus a symptom-to-root-cause troubleshooting table.
--->
-
----
-layout: skill-breakdown
-way: 3
 skill: .agents/skills/gamma-hardware-controls/references/
 title: Progressive Disclosure via references
-step: Zoom-In 4 of 4
+step: Zoom-In 3 of 3
 ---
 
 <!-- S61 -->
