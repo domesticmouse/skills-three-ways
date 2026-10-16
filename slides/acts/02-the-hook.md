@@ -155,9 +155,10 @@ imageCaption: Annotated rear enclosure photo showing which 4 corner screws to re
     The rear plate has multiple fasteners holding both internal standoffs and the outer shell. Before randomly unscrewing hardware, I reached out to the creator at <strong>this.is.NOISE</strong>.
   </p>
   <div class="p-3.5 rounded-lg bg-gray-900/80 border border-gray-800 text-xs text-gray-300 space-y-2">
-    <div class="font-semibold text-white">Creator's Annotated Reply:</div>
+    <div class="font-semibold text-white">Creator's Reply:</div>
     <p class="text-gray-400">
-      Undo only the <strong>4 outer corner screws</strong> circled on the backplate—leave the inner assembly screws untouched so the key switches and thumbsticks stay aligned.
+        Undo only the two outer screws. The inner screws hold the screen in place.
+        Carefully rotate the faceplate towards you, there are ribbon cables attaching the display and keys to the PCB.
     </p>
   </div>
 </div>
@@ -243,10 +244,6 @@ layout: default
   </li>
 </ol>
 
-<div class="mt-6 p-3.5 rounded-lg bg-gray-900/70 border border-gray-800 text-center text-sm text-gray-300">
-  If you ask a coding agent out-of-the-box to "build a synth for the Gamma", it has <strong>zero chance</strong> of guessing the hardware wiring.
-</div>
-
 <!--
 Here's the catch: knowing it's a Daisy Seed doesn't tell you how the carrier PCB is wired. There's no schematic, no pinout table, and the factory binary is closed-source. An out-of-the-box coding agent has zero chance of guessing the pins.
 -->
@@ -257,13 +254,13 @@ layout: default
 
 <!-- S19 -->
 <div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">The Mission: Collaborating with Antigravity (AGY)</h2>
+  <h2 class="text-2xl font-bold m-0">The Mission: Collaborating with Antigravity</h2>
 </div>
 
 <div class="grid grid-cols-12 gap-6 mt-6 items-center">
   <div class="col-span-7 space-y-4">
     <p class="text-sm text-gray-200 leading-relaxed">
-      Could we use <strong>Google Antigravity (AGY)</strong> not just to write C++ code, but to systematically <strong>reverse-engineer the physical hardware</strong> and capture every discovery as reusable <strong>Agent Skills</strong>?
+      Could we use <strong>Google Antigravity</strong> not just to write C++ code, but to systematically <strong>reverse-engineer the physical hardware</strong> and capture every discovery as reusable <strong>Agent Skills</strong>?
     </p>
     <div class="space-y-2.5 text-xs text-gray-300">
       <div class="p-3 rounded-lg bg-gray-900 border border-gray-800 flex items-center gap-3">
@@ -280,18 +277,10 @@ layout: default
       </div>
     </div>
   </div>
-
-  <div class="col-span-5 p-5 rounded-xl bg-gray-900/90 border border-gray-700/80 text-left space-y-3">
-    <div class="text-xs font-mono text-purple-300 uppercase">The End Goal</div>
-    <div class="text-lg font-bold text-white">One-Shot Custom Firmware</div>
-    <p class="text-xs text-gray-400 leading-relaxed">
-      Once all 7 skills are authored, any developer or agent can prompt: <em>"Build a 7-voice drum synth for the Gamma"</em>—and get working, hardware-verified firmware on the first build.
-    </p>
-  </div>
 </div>
 
 <!--
-So the mission became: can we partner with Google Antigravity (AGY) to reverse-engineer the hardware step by step, and package everything we learn into modular Agent Skills so future firmware builds work on the first try?
+So the mission became: can we partner with Google Antigravity to reverse-engineer the hardware step by step, and package everything we learn into modular Agent Skills so future firmware builds work on the first try?
 -->
 
 ---
