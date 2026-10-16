@@ -227,7 +227,7 @@ layout: cast-full
 title: "Asking Antigravity: What Are Agent Skills?"
 cast: /casts/what-are-agent-skills.cast
 autoPlay: true
-speed: 1.75
+speed: 2.0
 idleTimeLimit: 1.0
 fit: both
 ---
@@ -251,7 +251,7 @@ layout: default
   <div class="col-span-6">
 
 ```text
-skills/code-reviewer/
+.agents/skills/code-reviewer/
 ├── SKILL.md          # Required: YAML frontmatter + core runbook
 ├── scripts/          # Optional: Helper scripts & CLI utilities
 │   └── run_linter.py
@@ -270,7 +270,7 @@ skills/code-reviewer/
     </div>
     <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
       <div class="font-mono font-bold text-amber-300">scripts/ (Executable Utilities)</div>
-      <p class="text-gray-400 mt-1">Deterministic Python/Bash tools so the agent runs tested commands instead of improvising fragile shell pipelines.</p>
+      <p class="text-gray-400 mt-1">Deterministic tools so the agent runs tested commands instead of ad hoc on-the-fly solutions.</p>
     </div>
     <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
       <div class="font-mono font-bold text-emerald-300">references/ &amp; resources/ (Deep Context)</div>
@@ -309,7 +309,7 @@ description: >-
   <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
     <div class="font-mono font-bold text-white mb-1"><code>name</code> (Identifier Constraint)</div>
     <p class="text-gray-400 leading-relaxed">
-      A unique, lowercase, hyphenated identifier (<code>^[a-z0-9]+(-[a-z0-9]+)*$</code>) that <strong>must match the parent directory name</strong>.
+      A unique, lowercase, hyphenated identifier that <strong>must match the parent directory name</strong>.
     </p>
   </div>
 
@@ -331,33 +331,34 @@ layout: default
 
 <!-- S1-08 -->
 <div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Inside SKILL.md Part 2: Procedural Instructions</h2>
+  <h2 class="text-2xl font-bold m-0">Inside SKILL.md Part 2: The Important Stuff</h2>
 </div>
 
-<div class="grid grid-cols-2 gap-5 mt-4">
-  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
-    <div class="text-xs font-mono text-amber-300 uppercase">1. Sharp Negative Constraints ("Do NOT")</div>
-    <p class="text-xs text-gray-300">
-      Tell the agent explicitly what <em>not</em> to do to avoid dangerous or failing defaults:
+<div class="grid grid-cols-2 gap-5 mt-6">
+  <div class="p-5 rounded-xl bg-gray-900 border border-gray-800 space-y-3">
+    <div class="text-xs font-mono text-cyan-300 uppercase">1. Runbook Procedures</div>
+    <p class="text-xs text-gray-300 leading-relaxed">
+      Step-by-step operational workflows, domain rules, and verification criteria the agent follows from start to finish:
     </p>
 
 ```markdown
-> [!CAUTION]
-> Do **NOT** modify production database tables
-> directly or bypass linter rules with flags!
+## Review Workflow
+1. Run the static analysis script on changed files.
+2. Check changes against the project style guide.
+3. Summarize findings using the report template.
 ```
 
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
-    <div class="text-xs font-mono text-emerald-300 uppercase">2. Relative Links to Deep Files</div>
-    <p class="text-xs text-gray-300">
-      Link directly to bundled scripts and reference docs using relative paths:
+  <div class="p-5 rounded-xl bg-gray-900 border border-gray-800 space-y-3">
+    <div class="text-xs font-mono text-emerald-300 uppercase">2. Pointers to Scripts &amp; References</div>
+    <p class="text-xs text-gray-300 leading-relaxed">
+      Relative links to executable utilities and deep reference documentation housed inside the skill directory:
     </p>
 
 ```markdown
-## Execution & References
-* Run linter:
+## Bundled Resources
+* Linter script:
   [`scripts/run_linter.py`](scripts/run_linter.py)
 * Style guide:
   [`references/style_guide.md`](references/style_guide.md)
@@ -366,19 +367,8 @@ layout: default
   </div>
 </div>
 
-<div class="grid grid-cols-2 gap-4 mt-3 text-xs">
-  <div class="p-3 rounded-lg bg-gray-900/60 border border-gray-800/80">
-    <strong class="text-white">Explicit Workflows:</strong>
-    <span class="text-gray-400"> Numbered, step-by-step instructions and procedural runbooks.</span>
-  </div>
-  <div class="p-3 rounded-lg bg-gray-900/60 border border-gray-800/80">
-    <strong class="text-white">Validation Steps:</strong>
-    <span class="text-gray-400"> Clear criteria and commands for the agent to verify its own work.</span>
-  </div>
-</div>
-
 <!--
-The markdown body contains the procedural guidance. As Antigravity explained in the recording, it combines step-by-step workflows with sharp negative constraints to prevent unwanted actions, relative links to secondary files, and explicit validation criteria.
+Once triggered, the markdown body of SKILL.md acts as the agent's operational runbook. It contains the key step-by-step procedures for the task alongside direct relative pointers to additional resources housed within the skill—like helper scripts in `scripts/` and deep documentation in `references/`.
 -->
 
 ---
