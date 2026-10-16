@@ -245,34 +245,6 @@ Notice how the skills composed: `libdaisy-guide` and `daisysp-guide` handled the
 -->
 
 ---
-layout: center
-class: text-center
----
-
-<!-- S79 -->
-<div class="space-y-6">
-  <h1 class="text-5xl font-extrabold text-white">
-    Live Demo on the Gamma Mini Synth
-  </h1>
-
-  <ol class="space-y-3 text-sm text-gray-200 list-decimal pl-6 max-w-xl mx-auto text-left leading-relaxed">
-    <li>
-      <strong class="text-white">Factory Synth Baseline</strong> &mdash; Play the physical Gamma running stock <code>gamma-v2.0.3.bin</code> firmware
-    </li>
-    <li>
-      <strong class="text-white">Flash Custom <code>drum_synth</code></strong> &mdash; Run <code>flash_firmware.py</code> via <code>gamma-firmware-flash</code> over USB-C
-    </li>
-    <li>
-      <strong class="text-white">Play the 7 Drum Voices Live</strong> &mdash; Trigger Kick, Snare, Hats, Clap, and Tom on the keys &amp; sweep the filter knobs
-    </li>
-  </ol>
-</div>
-
-<!--
-Now let's put the slides aside for a moment and do this live on the physical Gamma Mini Synth right here on stage! First I'll play the factory synth, then we'll run `flash_firmware.py` to flash the `drum_synth` binary we just built, and play the 7 drum voices live.
--->
-
----
 layout: default
 ---
 
