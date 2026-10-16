@@ -128,7 +128,7 @@ layout: default
 
 <ul class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
   <li>
-    <strong class="text-white">Local &raquo; Remote</strong>
+    <strong class="text-white">Local &rarr; Remote</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Started as local desktop execution (stdio)</li>
       <li>Migrated to remote servers as teams moved to the cloud</li>
