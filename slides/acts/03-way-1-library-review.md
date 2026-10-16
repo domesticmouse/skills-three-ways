@@ -151,112 +151,57 @@ Let's zoom into the resulting `libdaisy-guide` skill. First, look at its YAML fr
 layout: skill-breakdown
 way: 1
 skill: .agents/skills/libdaisy-guide/SKILL.md
-title: "libdaisy-guide: Codebase Prefix Taxonomy"
+title: "System & Hardware Architecture"
 step: Zoom-In 2 of 3
 ---
 
 <!-- S27 -->
 <div class="space-y-3 text-xs">
-  <p class="text-gray-300">
-    Instead of grepping blindly through hundreds of files, the skill maps <code>libDaisy/src/</code> into 6 domain prefixes:
-  </p>
-  <table>
-    <thead>
-      <tr>
-        <th>Prefix</th>
-        <th>Subsystem Domain</th>
-        <th>Key Classes Documented in <code>SKILL.md</code></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>sys/</code></td>
-        <td>System Infrastructure</td>
-        <td><code>System</code>, <code>DmaHandler</code>, <code>FatFSInterface</code> (Clocks, MPU, D-cache)</td>
-      </tr>
-      <tr>
-        <td><code>per/</code></td>
-        <td>On-Chip Peripherals</td>
-        <td><code>AdcHandle</code>, <code>GPIO</code>, <code>I2CHandle</code>, <code>SaiHandle</code>, <code>TimerHandle</code></td>
-      </tr>
-      <tr>
-        <td><code>dev/</code></td>
-        <td>External IC Drivers</td>
-        <td><code>Pcm3060</code>, <code>SSD130x</code>, <code>SdramHandle</code>, <code>IS25LP064A</code></td>
-      </tr>
-      <tr>
-        <td><code>hid/</code></td>
-        <td>Human Interface</td>
-        <td><code>AudioHandle</code>, <code>Switch</code>, <code>Encoder</code>, <code>UsbHandle</code>, <code>OledDisplay</code></td>
-      </tr>
-      <tr>
-        <td><code>ui/</code> &amp; <code>util/</code></td>
-        <td>Menus &amp; RT Utilities</td>
-        <td><code>FIFO</code>, <code>FixedCapStr</code>, <code>PersistentStorage</code>, <code>CpuLoadMeter</code></td>
-      </tr>
-    </tbody>
-  </table>
+
+`libDaisy` targets the **STM32H750IBK6** high-performance microcontroller and standard Daisy hardware peripherals:
+
+| Component | Hardware Specification | libDaisy Support |
+| :--- | :--- | :--- |
+| **MCU Core** | ARM Cortex-M7 @ 480 MHz with FPU (double/single precision) & DSP extensions | CMSIS-DSP, CMSIS Core, LL / HAL drivers |
+| **Internal Flash** | 128 KB User Flash (`0x08000000`) | Base bootloader location (`APP_TYPE = BOOT_NONE`) |
+| **Internal RAM** | 1 MB total: AXI SRAM (512 KB), DTCM (128 KB), SRAM1–3 (288 KB), SRAM4 (64 KB) | Fast DSP state (`DTCM`), DMA buffers (`SRAM1`) |
+| **External SDRAM** | 64 MB 32-bit SDRAM (AS4C32M16SB) via FMC bus @ ~100–120 MHz | Large audio buffers / delay lines (`DSY_SDRAM_BSS`) |
+| **External Flash** | 8 MB QSPI NOR Flash (IS25LP064A) via Quad-SPI | Daisy Bootloader app storage (`APP_TYPE = BOOT_SRAM`) & presets |
+| **Audio Codec** | 24-bit stereo up to 96 kHz (AK4556, WM8731, PCM3060, TAC5242) | Interrupt double-buffered DMA via SAI1 |
+| **USB** | USB 2.0 Full-Speed (12 Mbps) or High-Speed with external ULPI | USB CDC (Serial), USB MIDI, USB Audio, USB Host |
+
 </div>
 
 <!--
-Second, look at how `libdaisy-guide` organizes the codebase into six clean prefixes: `sys/`, `per/`, `dev/`, `hid/`, `ui/`, and `util/`, naming the exact C++ classes in each domain.
+Second, look at how `libdaisy-guide` anchors the hardware specification: naming the STM32H750 MCU core, memory sections, external SDRAM/Flash, audio codec, and USB peripherals directly in the skill runbook.
 -->
 
 ---
 layout: skill-breakdown
 way: 1
 skill: .agents/skills/libdaisy-guide/SKILL.md
-title: "libdaisy-guide: STM32H750 Memory Map & DMA Rules"
+title: Codebase Organization
 step: Zoom-In 3 of 3
 ---
 
 <!-- S28 -->
 <div class="space-y-3 text-xs">
-  <table>
-    <thead>
-      <tr>
-        <th>Memory Region</th>
-        <th>Base Address</th>
-        <th>Size</th>
-        <th>Macro / Attribute</th>
-        <th>Critical Engineering Rule</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>DTCM RAM</strong></td>
-        <td><code>0x20000000</code></td>
-        <td>128 KB</td>
-        <td><code>DTCM_MEM_SECTION</code></td>
-        <td>Zero-wait 480 MHz DSP state. <strong>No DMA access!</strong></td>
-      </tr>
-      <tr>
-        <td><strong>AXI SRAM</strong></td>
-        <td><code>0x24000000</code></td>
-        <td>512 KB</td>
-        <td>Standard (<code>.bss</code>/<code>.data</code>)</td>
-        <td>Primary app RAM for <code>APP_TYPE = BOOT_SRAM</code>. Cached.</td>
-      </tr>
-      <tr>
-        <td><strong>SRAM1 (D2)</strong></td>
-        <td><code>0x30000000</code></td>
-        <td>128 KB</td>
-        <td><code>DMA_BUFFER_MEM_SECTION</code></td>
-        <td><strong>Non-cached.</strong> Mandatory for ADC, SAI, I2C, SPI DMA buffers.</td>
-      </tr>
-      <tr>
-        <td><strong>External SDRAM</strong></td>
-        <td><code>0xC0000000</code></td>
-        <td>64 MB</td>
-        <td><code>DSY_SDRAM_BSS</code></td>
-        <td>Large audio delay lines. No dynamic C++ constructors before <code>hw.Init()</code>.</td>
-      </tr>
-    </tbody>
-  </table>
+
+The `libDaisy` source tree ([`libDaisy/src/`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/)) uses standardized module prefixes:
+
+| Prefix | Subsystem Domain | Description & Key Classes |
+| :--- | :--- | :--- |
+| **`sys/`** | **System Infrastructure** | Clocks, MPU, D-cache invalidation, DMA routing, FatFs.<br>• [`System`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/sys/system.h), [`DmaHandler`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/sys/dma.h), [`FatFSInterface`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/sys/fatfs.h) |
+| **`per/`** | **Internal Peripherals** | High-performance C++ drivers for STM32 on-chip peripherals.<br>• [`AdcHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/adc.h), [`DacHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/dac.h), [`GPIO`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/gpio.h), [`I2CHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/i2c.h), [`SpiHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/spi.h), [`SaiHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/sai.h), [`UartHandler`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/uart.h), [`QSPIHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/qspi.h), [`TimerHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/tim.h), [`Pwm`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/pwm.h), [`Random`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/per/rng.h) |
+| **`dev/`** | **External Devices** | External ICs mounted on boards.<br>• Codecs: [`Ak4556`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/codec_ak4556.h), [`Wm8731`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/codec_wm8731.h), [`Pcm3060`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/codec_pcm3060.h)<br>• Displays: [`SSD130x`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/oled_ssd130x.h), [`SH1106`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/oled_sh1106.h), [`SSD1327`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/oled_ssd1327.h), [`SSD1351`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/oled_ssd1351.h)<br>• Memory & Expanders: [`SdramHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/sdram.h), [`IS25LP064A`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/flash_IS25LP064A.h), [`MCP23x17`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/mcp23x17.h), [`TCA9534`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/tca9534.h), [`ShiftRegister595`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/sr_595.h), [`ShiftRegister4021`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/sr_4021.h)<br>• Sensors & LEDs: [`Mpr121`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/mpr121.h), [`APDS9960`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/apds9960.h), [`NeoPixel`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/neopixel.h), [`DotStar`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/dev/dotstar.h) |
+| **`hid/`** | **Human Interface** | Real-time audio engine, smoothed inputs, debounce, encoders, MIDI, USB, and display drawing.<br>• [`AudioHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/audio.h), [`AnalogControl`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/ctrl.h), [`Parameter`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/parameter.h), [`Switch`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/switch.h), [`Switch3`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/switch3.h), [`Encoder`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/encoder.h), [`GateIn`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/gatein.h), [`Led`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/led.h), [`RgbLed`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/rgb_led.h), [`MidiHandler`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/midi.h), [`UsbHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/usb.h), [`UsbHostHandle`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/usb_host.h), [`Logger`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/logger.h), [`Display`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/disp/display.h), [`OledDisplay`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/hid/disp/oled_display.h) |
+| **`ui/`** | **User Interface** | Screen menu hierarchies, event queues, and input monitoring.<br>• [`UI`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/ui/UI.h), [`UiEventQueue`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/ui/UiEventQueue.h), [`AbstractMenu`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/ui/AbstractMenu.h), [`FullScreenItemMenu`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/ui/FullScreenItemMenu.h), [`ButtonMonitor`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/ui/ButtonMonitor.h) |
+| **`util/`** | **Utilities** | Lock-free FIFOs, string formatting without heap allocation, WAV streaming, preset saving, and load profiling.<br>• [`FIFO`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/FIFO.h), [`FixedCapStr`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/FixedCapStr.h), [`WavPlayer`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/WavPlayer.h), [`WavWriter`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/WavWriter.h), [`WaveTableLoader`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/WaveTableLoader.h), [`PersistentStorage`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/PersistentStorage.h), [`CpuLoadMeter`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/CpuLoadMeter.h), [`VoctCalibration`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/util/VoctCalibration.h) |
+
 </div>
 
 <!--
-Third, `libdaisy-guide` gives the agent the exact STM32H750 memory map table—making it impossible to confuse cached AXI SRAM (`0x24000000`), non-cached `DMA_BUFFER_MEM_SECTION` (`0x30000000`), and `DSY_SDRAM_BSS` (`0xC0000000`).
+Third, `libdaisy-guide` maps out libDaisy's subsystem prefixes—`sys/`, `per/`, `dev/`, `hid/`, `ui/`, and `util/`. Instead of blindly grepping across 50,000 lines of headers, the agent knows immediately which directory hosts on-chip peripheral handles versus off-board IC drivers like display controllers and audio codecs.
 -->
 
 ---
