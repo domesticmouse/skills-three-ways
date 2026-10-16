@@ -90,7 +90,7 @@ layout: default
     <div class="text-4xl font-black text-amber-300 mb-2">2&times;</div>
     <div class="text-base font-semibold text-white mb-2">Gamma Mini Synths Arrived</div>
     <p class="text-xs text-gray-400">
-      What starts as a late-night ordering mistake quickly turns into an engineering opportunity.
+      What starts as a late-night ordering mistake quickly turns into an opportunity for exploration.
     </p>
   </div>
 </div>
