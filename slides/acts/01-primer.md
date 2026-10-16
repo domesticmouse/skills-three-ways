@@ -26,6 +26,47 @@ Welcome everyone! Today we're going to explore how to teach AI coding agents new
 -->
 
 ---
+layout: default
+---
+
+<!-- S1-01b -->
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">About Me: Brett Morgan</h2>
+</div>
+
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">16 Years in Developer Relations at Google</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>From Sydney &mdash; though I lived right here in Brisbane for a couple of years during the awkward years.</li>
+      <li>Supported <strong>Blogger</strong>, <strong>Google+</strong>, <strong>Google Maps</strong>, <strong>Flutter</strong>, and now <strong>Google Antigravity</strong></li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Down the Synthesizer &amp; Electronics Rabbit Hole</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Picked up electronics as a hobby a couple of years ago after watching videos on Eurorack synthesizers</li>
+      <li>It quickly snowballed from building modules into reverse-engineering hardware</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">How Agents Re-Shape User Interfaces</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Exploring how LLMs and Antigravity re-shape the definition of &mdash; and requirement for &mdash; user interfaces</li>
+      <li>As the folks at <a href="https://posthog.com/newsletter/building-ai-products" target="_blank" class="text-cyan-300 underline">PostHog</a> put it: <em>&ldquo;Don’t ask &lsquo;how do we add AI to this?&rsquo; Ask &lsquo;what is the agent-first version of this?&rsquo;&rdquo;</em></li>
+    </ul>
+  </li>
+</ol>
+
+<!--
+Before we jump in, a quick bit about me. I'm Brett Morgan, and I've been a Developer Relations Engineer at Google for 16 years. I'm from Sydney, though I actually lived right here in Brisbane for a couple of years during the awkward years! Over my time at Google I've supported Blogger, Google+, Google Maps, Flutter, and now Antigravity.
+
+Why am I talking about hardware synthesizers today? A couple of years ago I picked up electronics as a hobby after falling down a YouTube rabbit hole on Eurorack synthesizers, and it has snowballed from there.
+
+Coming from Flutter to Antigravity, I'm deeply interested in how LLMs and agents re-shape the definition of—and even the requirement for—user interfaces. There's a great line from the folks at PostHog that captures how I think about this: "Don't ask 'how do we add AI to this?' Ask 'what is the agent-first version of this?'" And today, we're going to ask what the agent-first version of hardware bring-up and documentation looks like.
+-->
+
+---
 layout: center
 class: text-center
 ---
