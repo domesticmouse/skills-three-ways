@@ -190,7 +190,7 @@ layout: cast-full
 title: "Building the 7-Voice Drum Synth WITH All 7 Skills"
 cast: /casts/drum-synth-with-skills.cast
 autoPlay: false
-speed: 4.0
+speed: 10.0
 idleTimeLimit: 1.0
 fit: both
 ---

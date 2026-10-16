@@ -32,13 +32,17 @@ SKILLS=(
   "gamma-usb-connectivity"
 )
 
-SKILLS_SRC=""
-if [ -d "../../../.agents/skills" ] && [ -d "../../../.agents/skills/libdaisy-guide" ]; then
-  SKILLS_SRC="../../../.agents/skills"
-elif [ -d "../../../../reverse-engineering-gamma/.agents/skills" ]; then
-  SKILLS_SRC="../../../../reverse-engineering-gamma/.agents/skills"
-elif [ -d "../../../../../reverse-engineering-gamma/.agents/skills" ]; then
-  SKILLS_SRC="../../../../../reverse-engineering-gamma/.agents/skills"
+SKILLS_SRC="${SKILLS_SRC:-}"
+if [ -z "$SKILLS_SRC" ]; then
+  if [ -d "../../../.agents/skills" ] && [ -d "../../../.agents/skills/libdaisy-guide" ]; then
+    SKILLS_SRC="../../../.agents/skills"
+  elif [ -d "/Users/brett/Documents/GitHub/skills-three-ways/.agents/skills" ] && [ -d "/Users/brett/Documents/GitHub/skills-three-ways/.agents/skills/libdaisy-guide" ]; then
+    SKILLS_SRC="/Users/brett/Documents/GitHub/skills-three-ways/.agents/skills"
+  elif [ -d "../../../../reverse-engineering-gamma/.agents/skills" ]; then
+    SKILLS_SRC="../../../../reverse-engineering-gamma/.agents/skills"
+  elif [ -d "../../../../../reverse-engineering-gamma/.agents/skills" ]; then
+    SKILLS_SRC="../../../../../reverse-engineering-gamma/.agents/skills"
+  fi
 fi
 
 if [ -n "$SKILLS_SRC" ] && [ -d "$SKILLS_SRC/libdaisy-guide" ]; then
