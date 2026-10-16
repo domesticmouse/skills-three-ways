@@ -122,46 +122,39 @@ layout: default
 ---
 
 <!-- S06a -->
-<div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">The Execution Layer: Model Context Protocol</h2>
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">Model Context Protocol</h2>
+  <span class="text-xs font-mono text-purple-400 border border-purple-500/40 px-2 py-0.5 rounded">Tools &amp; Sensors</span>
 </div>
 
-<div class="grid grid-cols-2 gap-4 mt-6">
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
+<div class="grid grid-cols-2 gap-5">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
     <div class="text-xs font-mono text-purple-400 uppercase tracking-wider">Cognitive Role</div>
-    <div class="text-base font-bold text-white">Live External Muscle &amp; Sensors</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Connects the agent directly to external environments via JSON Remote Procedure Calls. Gives the agent the capability to execute commands, query databases, read sensors, and communicate with external services.
-    </p>
+    <div class="text-lg font-bold text-white">Muscle &amp; Sensors</div>
+    <p class="text-xs text-gray-300">Live external execution via Remote Procedure Calls.</p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
     <div class="text-xs font-mono text-purple-400 uppercase tracking-wider">Context Cost</div>
-    <div class="text-base font-bold text-white">Tool Definition Space</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      JSON Schema definitions for every exposed tool are loaded upfront into the agent's tool space, consuming context tokens for each available tool signature.
-    </p>
+    <div class="text-lg font-bold text-white">Tool Definition Space</div>
+    <p class="text-xs text-gray-300">Tool schemas loaded upfront in the tool declaration space.</p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
     <div class="text-xs font-mono text-purple-400 uppercase tracking-wider">Bundled Assets</div>
-    <div class="text-base font-bold text-white">Endpoints &amp; Executable Binaries</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Remote Application Programming Interface endpoints or local executable binaries running over standard input and output streams.
-    </p>
+    <div class="text-lg font-bold text-white">Endpoints &amp; Binaries</div>
+    <p class="text-xs text-gray-300">Remote network services or local executable processes.</p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
     <div class="text-xs font-mono text-purple-400 uppercase tracking-wider">Open Standard</div>
-    <div class="text-base font-bold text-white">Model Context Protocol</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Governed by the open standard at <a href="https://modelcontextprotocol.io" class="text-purple-300 hover:underline">modelcontextprotocol.io</a>, enabling interoperable tool clients across different agent runtimes.
-    </p>
+    <div class="text-lg font-bold text-white">modelcontextprotocol.io</div>
+    <p class="text-xs text-gray-300">Open specification for agent tool interoperability.</p>
   </div>
 </div>
 
 <!--
-The first piece of the puzzle is the Model Context Protocol. MCP provides live external tools and sensors—the muscles that let the model act on the world via remote procedure calls.
+MCP provides live external tools and sensors—the muscles that let the model act on the world via remote procedure calls.
 -->
 
 ---
@@ -169,46 +162,39 @@ layout: default
 ---
 
 <!-- S06b -->
-<div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Always-On Rules: <code>AGENTS.md</code></h2>
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">Always-On Rules</h2>
+  <span class="text-xs font-mono text-blue-400 border border-blue-500/40 px-2 py-0.5 rounded"><code>AGENTS.md</code></span>
 </div>
 
-<div class="grid grid-cols-2 gap-4 mt-6">
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-blue-500/30 space-y-2">
+<div class="grid grid-cols-2 gap-5">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-blue-500/30 space-y-2">
     <div class="text-xs font-mono text-blue-400 uppercase tracking-wider">Cognitive Role</div>
-    <div class="text-base font-bold text-white">Project Constitution &amp; Guardrails</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Functions as the permanent, always-active project constitution. Enforces non-negotiable repository conventions, coding standards, safety boundaries, and high-level architectural rules.
-    </p>
+    <div class="text-lg font-bold text-white">Constitution &amp; Guardrails</div>
+    <p class="text-xs text-gray-300">Permanent project conventions and non-negotiable boundaries.</p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-blue-500/30 space-y-2">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-blue-500/30 space-y-2">
     <div class="text-xs font-mono text-blue-400 uppercase tracking-wider">Context Cost</div>
-    <div class="text-base font-bold text-white">Paid on Every Turn (100% Upfront)</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Every single character is injected directly into the system prompt on every conversational turn, permanently occupying working memory throughout the entire session.
-    </p>
+    <div class="text-lg font-bold text-white">Paid on Every Turn</div>
+    <p class="text-xs text-gray-300">100% upfront; injected into prompt context on every interaction.</p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-blue-500/30 space-y-2">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-blue-500/30 space-y-2">
     <div class="text-xs font-mono text-blue-400 uppercase tracking-wider">Bundled Assets</div>
-    <div class="text-base font-bold text-white">Plain Markdown Text Only</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Consists strictly of raw Markdown instructions in files like <code>AGENTS.md</code> or <code>CLAUDE.md</code>. Cannot natively bundle executable scripts or helper assets.
-    </p>
+    <div class="text-lg font-bold text-white">Plain Markdown Only</div>
+    <p class="text-xs text-gray-300">Text-only instructions; cannot bundle executable scripts or assets.</p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-blue-500/30 space-y-2">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-blue-500/30 space-y-2">
     <div class="text-xs font-mono text-blue-400 uppercase tracking-wider">Open Standard</div>
-    <div class="text-base font-bold text-white">Repository Conventions</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      De facto developer conventions (such as <code>AGENTS.md</code> and <code>CLAUDE.md</code>) recognized across modern AI coding agents to define root project context.
-    </p>
+    <div class="text-lg font-bold text-white">Repository Convention</div>
+    <p class="text-xs text-gray-300">De facto standard convention (<code>AGENTS.md</code>, <code>CLAUDE.md</code>).</p>
   </div>
 </div>
 
 <!--
-Next are Rules, typically placed in AGENTS.md. Rules are always on and paid for upfront on every single turn. They establish essential project conventions and guardrails that must never be broken.
+Rules in AGENTS.md establish essential conventions and guardrails, but cost context on every single turn.
 -->
 
 ---
@@ -216,46 +202,39 @@ layout: default
 ---
 
 <!-- S06c -->
-<div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">On-Demand Capabilities: Agent Skills</h2>
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">Agent Skills</h2>
+  <span class="text-xs font-mono text-emerald-400 border border-emerald-500/40 px-2 py-0.5 rounded"><code>SKILL.md</code></span>
 </div>
 
-<div class="grid grid-cols-2 gap-4 mt-6">
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-emerald-500/30 space-y-2">
+<div class="grid grid-cols-2 gap-5">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-emerald-500/30 space-y-2">
     <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Cognitive Role</div>
-    <div class="text-base font-bold text-white">Procedural Runbook &amp; Domain Kit</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Provides deep, step-by-step procedural knowledge for specialized workflows. Equips the agent with domain expertise that is retrieved and loaded only when relevant.
-    </p>
+    <div class="text-lg font-bold text-white">Procedural Runbooks</div>
+    <p class="text-xs text-gray-300">On-demand workflows loaded only when relevant to the task.</p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-emerald-500/30 space-y-2">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-emerald-500/30 space-y-2">
     <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Context Cost</div>
-    <div class="text-base font-bold text-white">Approximately 100 Tokens at Startup</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Consumes only around one hundred tokens upfront for the name and description. The full procedural body is loaded into context only when triggered by matching task intent.
-    </p>
+    <div class="text-lg font-bold text-white">~100 Tokens at Startup</div>
+    <p class="text-xs text-gray-300">Lightweight discovery; full instructions load on match.</p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-emerald-500/30 space-y-2">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-emerald-500/30 space-y-2">
     <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Bundled Assets</div>
-    <div class="text-base font-bold text-white">Self-Contained Directory Package</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Bundles core instructions (<code>SKILL.md</code>), executable helper utilities (<code>scripts/</code>), in-depth technical guides (<code>references/</code>), and templates (<code>resources/</code>).
-    </p>
+    <div class="text-lg font-bold text-white">Directory Package</div>
+    <p class="text-xs text-gray-300">Bundles <code>SKILL.md</code>, <code>scripts/</code>, <code>references/</code>, and <code>resources/</code>.</p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900/80 border border-emerald-500/30 space-y-2">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-emerald-500/30 space-y-2">
     <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Open Standard</div>
-    <div class="text-base font-bold text-white">agentskills.io Specification</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      Built on the open, portable specification at <a href="https://agentskills.io" class="text-emerald-300 hover:underline">agentskills.io</a>, interoperable across Antigravity, Claude Code, and emerging agent platforms.
-    </p>
+    <div class="text-lg font-bold text-white">agentskills.io</div>
+    <p class="text-xs text-gray-300">Portable open specification for agent skills across platforms.</p>
   </div>
 </div>
 
 <!--
-Agent Skills represent the modular middle ground: on-demand procedural runbooks that cost almost nothing at startup, bundle scripts and reference materials, and follow the portable agentskills.io standard.
+Agent Skills are on-demand procedural runbooks that cost almost nothing upfront and bundle instructions with code and assets.
 -->
 
 ---
@@ -263,58 +242,49 @@ layout: default
 ---
 
 <!-- S06d -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">The Laboratory Analogy</h2>
 </div>
 
-<div class="grid grid-cols-3 gap-4 mt-6">
-  <div class="p-5 rounded-xl bg-gray-900/80 border border-purple-500/30 flex flex-col justify-between">
-    <div class="space-y-2">
-      <div class="text-xs font-mono text-purple-400 uppercase tracking-wider">Model Context Protocol</div>
-      <div class="text-lg font-bold text-white">The Keycard &amp; Instruments</div>
-      <p class="text-xs text-gray-300 leading-relaxed">
-        Unlocks the laboratory doors and powers up the physical test benches, signal generators, and oscilloscopes.
-      </p>
-    </div>
-    <div class="mt-4 text-[11px] font-mono text-purple-300/80">Provides the ability to act</div>
+<div class="grid grid-cols-3 gap-5">
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-purple-500/30 space-y-2">
+    <div class="text-xs font-mono text-purple-400 uppercase tracking-wider">Model Context Protocol</div>
+    <div class="text-xl font-bold text-white">The Keycard</div>
+    <p class="text-xs text-gray-300">
+      Unlocks the lab doors and powers the instruments.
+    </p>
+    <div class="pt-2 text-[11px] font-mono text-purple-300/80">Ability to act</div>
   </div>
 
-  <div class="p-5 rounded-xl bg-gray-900/80 border border-blue-500/30 flex flex-col justify-between">
-    <div class="space-y-2">
-      <div class="text-xs font-mono text-blue-400 uppercase tracking-wider">Rules (AGENTS.md)</div>
-      <div class="text-lg font-bold text-white">The Safety Placard on the Wall</div>
-      <p class="text-xs text-gray-300 leading-relaxed">
-        The permanent laboratory safety regulations and building code posted at the entrance. Always visible, non-negotiable boundaries.
-      </p>
-    </div>
-    <div class="mt-4 text-[11px] font-mono text-blue-300/80">Defines what never to do</div>
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-blue-500/30 space-y-2">
+    <div class="text-xs font-mono text-blue-400 uppercase tracking-wider">Rules (AGENTS.md)</div>
+    <div class="text-xl font-bold text-white">The Safety Placard</div>
+    <p class="text-xs text-gray-300">
+      Safety rules posted on the wall.
+    </p>
+    <div class="pt-2 text-[11px] font-mono text-blue-300/80">Boundaries never to cross</div>
   </div>
 
-  <div class="p-5 rounded-xl bg-gray-900/80 border border-emerald-500/30 flex flex-col justify-between">
-    <div class="space-y-2">
-      <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Agent Skills</div>
-      <div class="text-lg font-bold text-white">The Standard Operating Procedure Manual</div>
-      <p class="text-xs text-gray-300 leading-relaxed">
-        The binder on the workbench detailing the exact sequence of steps, tool settings, and verification checks for each experiment.
-      </p>
-    </div>
-    <div class="mt-4 text-[11px] font-mono text-emerald-300/80">Guides how to succeed</div>
+  <div class="p-5 rounded-xl bg-gray-900/80 border border-emerald-500/30 space-y-2">
+    <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Agent Skills</div>
+    <div class="text-xl font-bold text-white">The Procedure Manual</div>
+    <p class="text-xs text-gray-300">
+      Standard operating procedures on the workbench.
+    </p>
+    <div class="pt-2 text-[11px] font-mono text-emerald-300/80">Step-by-step execution</div>
   </div>
 </div>
 
-<div class="mt-6 p-4 rounded-xl bg-cyan-950/20 border border-cyan-500/30 text-center">
-  <p class="text-sm text-cyan-200 m-0 leading-relaxed">
-    <strong>Model Context Protocol</strong> gives the agent access to the tools.<br>
-    <strong>Rules</strong> post the non-negotiable boundaries on the laboratory wall.<br>
-    <strong>Agent Skills</strong> provide the <strong>standard operating procedure manual</strong> that teaches how to run the experiment.
+<div class="mt-8 p-4 rounded-xl bg-cyan-950/20 border border-cyan-500/30 text-center">
+  <p class="text-sm text-cyan-200 m-0">
+    <strong>Tools</strong> provide access &middot; 
+    <strong>Rules</strong> set boundaries &middot; 
+    <strong>Skills</strong> teach the standard operating procedure
   </p>
 </div>
 
 <!--
-To pull it all together, think of a scientific laboratory:
-Model Context Protocol is the keycard that unlocks the door and powers the instruments.
-Rules are the safety regulations posted on the wall that keep everyone safe.
-And an Agent Skill is the standard operating procedure manual sitting on the workbench that walks you through running the experiment step by step.
+In a lab: MCP is the keycard that powers the instruments, Rules are the safety policies on the wall, and Agent Skills are the standard operating procedures on the workbench.
 -->
 
 ---
