@@ -16,7 +16,7 @@ The presentation incorporates 6 asciinema terminal recordings, each paired acros
 
 | # | Cast File Name | Slide Beat | Act & Context | Prompt Summary | Target Workspace |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **01** | `what-are-agent-skills.cast` | S13–S14 | Act 2: Primer | "What are agent skills?" | Empty / reference workspace |
+| **01** | `what-are-agent-skills.cast` | S04–S05 | Act 1: Primer | "What are agent skills?" | Empty / reference workspace |
 | **02** | `libdaisy-skill-creation.cast` | S24–S25 | Act 3: Way 1 | Inspect `libDaisy/` source tree, report architecture, create `libdaisy-guide` | Shallow checkout of `libDaisy` |
 | **03** | `daisysp-skill-creation.cast` | S29–S30 | Act 3: Way 1 | Inspect `DaisySP/` source tree, report real-time audio rules, create `daisysp-guide` | Shallow checkout of `DaisySP` |
 | **04** | `reverse-engineering-plan.cast` | S49–S50 | Act 5: Way 3 | Collaborate on 6-phase diagnostic probing plan (`PLAN.md`) | `libDaisy` + `DaisySP` + 2 library skills |

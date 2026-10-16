@@ -33,29 +33,29 @@ How should the narrative beats be structured into concrete Slidev slides, includ
 
 ### 3. Complete 80-Slide Breakdown
 
-#### Act 1: The Hook & The Two Gamma Mini Synths (Slides 1–10)
+#### Act 1: Primer — What Are Agent Skills? (Slides 1–11)
 - **S01**: Title — *Skills Three Ways: Teaching Agents New Tricks* (Brett Morgan, Developer Relations Engineer, Google Cloud)
-- **S02**: Meet the **Gamma mini synth** by *this.is.NOISE inc.* (`gamma-promo.png` + hardware overview)
-- **S03**: What the Factory Synth Does Out of the Box — 7 chord keys, 7 note keys, 2 analog thumbsticks, 4 pots, rotary encoder, 1.3" OLED
-- **S04**: The Late-Night Accident — Ordering a second Gamma mini synth while the first was still being manufactured
-- **S05**: One for Music, One for Science — Why having a spare unit changes your risk tolerance for hardware hacking
-- **S06**: Asking the Creator How to Get Inside — The annotated photo showing which screws to undo (`gamma-screws.jpg`)
-- **S07**: Inside the Chassis — Discovering the **Electro-Smith Daisy Seed 2 DFM** (ARM Cortex-M7 @ 480 MHz, STM32H750IBK6, PCM3060 stereo codec)
-- **S08**: The Catch — No public schematic, no pinout table, and factory firmware written in closed-source embedded Rust
-- **S09**: The Mission — Can an AI coding agent (AGY) reverse-engineer the hardware and build custom C++ DSP synth firmware?
-- **S10**: The Thesis: *Skills Three Ways* — Library Review Skills, DFU Operational Skills, Hardware Discovery Skills (+ The Mashup Skill)
+- **S02**: Section Divider — *Primer: What Are Agent Skills?*
+- **S03**: The Context Window Trap — Why stuffing every manual, pinout, and script into `AGENTS.md` fails
+- **S04**: Recording 1 Intro — *Asking AGY: "What are Agent Skills?"*
+- **S05**: Recording 1 Replay (`cast-full`, click-to-play) — `what-are-agent-skills.cast`
+- **S06**: Agent Skills as On-Demand Runbooks — Open specification (`agentskills.io`) vs. always-on Rules and raw MCP Tools
+- **S07**: Directory Anatomy of a Skill — `SKILL.md`, `scripts/`, `references/`, `resources/`
+- **S08**: Inside `SKILL.md` Part 1 — YAML Frontmatter (`name` + semantic trigger `description`)
+- **S09**: Inside `SKILL.md` Part 2 — Procedural workflows, negative constraints, and relative links
+- **S10**: The 3-Tier Progressive Disclosure Model — Discovery (~100 tokens) $\to$ Activation (`SKILL.md`) $\to$ Execution (`references/` & `scripts/`)
+- **S11**: Generating Skills with `/agy-customizations` & `agent-skills` — Turning research and workflows into self-contained packages
 
-#### Act 2: Primer — What Are Agent Skills? (Slides 11–20)
-- **S11**: Section Divider — *Primer: What Are Agent Skills?*
-- **S12**: The Context Window Trap — Why stuffing every manual, pinout, and script into `AGENTS.md` fails
-- **S13**: Recording 1 Intro — *Asking AGY: "What are Agent Skills?"*
-- **S14**: Recording 1 Replay (`cast-full`, click-to-play) — `what-are-agent-skills.cast`
-- **S15**: Agent Skills as On-Demand Runbooks — Open specification (`agentskills.io`) vs. always-on Rules and raw MCP Tools
-- **S16**: Directory Anatomy of a Skill — `SKILL.md`, `scripts/`, `references/`, `resources/`
-- **S17**: Inside `SKILL.md` Part 1 — YAML Frontmatter (`name` + semantic trigger `description`)
-- **S18**: Inside `SKILL.md` Part 2 — Procedural workflows, negative constraints, and relative links
-- **S19**: The 3-Tier Progressive Disclosure Model — Discovery (~100 tokens) $\to$ Activation (`SKILL.md`) $\to$ Execution (`references/` & `scripts/`)
-- **S20**: Generating Skills with `/agy-customizations` & `agent-skills` — Turning research and workflows into self-contained packages
+#### Act 2: The Hook & The Two Gamma Mini Synths (Slides 12–20)
+- **S12**: Meet the **Gamma mini synth** by *this.is.NOISE inc.* (`gamma-promo.png` + hardware overview)
+- **S13**: What the Factory Synth Does Out of the Box — 7 chord keys, 7 note keys, 2 analog thumbsticks, 4 pots, rotary encoder, 1.3" OLED
+- **S14**: The Late-Night Accident — Ordering a second Gamma mini synth while the first was still being manufactured
+- **S15**: One for Music, One for Science — Why having a spare unit changes your risk tolerance for hardware hacking
+- **S16**: Asking the Creator How to Get Inside — The annotated photo showing which screws to undo (`gamma-screws.jpg`)
+- **S17**: Inside the Chassis — Discovering the **Electro-Smith Daisy Seed 2 DFM** (ARM Cortex-M7 @ 480 MHz, STM32H750IBK6, PCM3060 stereo codec)
+- **S18**: The Catch — No public schematic, no pinout table, and factory firmware written in closed-source embedded Rust
+- **S19**: The Mission — Can an AI coding agent (AGY) reverse-engineer the hardware and build custom C++ DSP synth firmware?
+- **S20**: The Thesis: *Skills Three Ways* — Library Review Skills, DFU Operational Skills, Hardware Discovery Skills (+ The Mashup Skill)
 
 #### Act 3: Way 1 — Library Review Skills (`libdaisy-guide` & `daisysp-guide`) (Slides 21–34)
 - **S21**: Section Divider — *Way 1: Library Review Skills (`libdaisy-guide` & `daisysp-guide`)*
