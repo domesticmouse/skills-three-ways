@@ -26,7 +26,7 @@ layout: default
 
 <!-- S48 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">The Pattern: Diagnostic Firmwares (<code>PLAN.md</code>) &rarr; Truth + Idioms</h2>
+  <h2 class="text-2xl font-bold m-0">Diagnostic Firmwares (<code>PLAN.md</code>) &rarr; Truth + Idioms</h2>
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
@@ -55,46 +55,6 @@ layout: default
 
 <!--
 How do you reverse-engineer a board with no schematic? You design a phased sequence of diagnostic firmwares where Phase 1 finds the display, and every subsequent phase uses that display to turn physical actions into verified pin tables.
--->
-
----
-layout: default
----
-
-<!-- S49 -->
-<div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Designing the 6-Phase Reverse-Engineering Plan (<code>PLAN.md</code>)</h2>
-</div>
-
-<div class="grid grid-cols-12 gap-6 mt-5 items-center">
-  <div class="col-span-8 space-y-4">
-    <div class="p-4 rounded-xl bg-gray-900 border border-emerald-500/40">
-      <div class="text-xs font-mono text-emerald-400 uppercase mb-1">Exact AGY Prompt (Scenario 04)</div>
-      <p class="font-mono text-xs text-white leading-relaxed m-0">
-        "We have a Gamma mini synth built on the Daisy Seed 2 DFM (STM32H750IBK6), but no schematics or pinout table. Using our libdaisy-guide and daisysp-guide skills, design a phased, safe reverse-engineering plan (PLAN.md) starting with firmware backup and progressing through I2C scanning, ADC pot/joystick mapping, digital key scanning, and audio amp discovery."
-      </p>
-    </div>
-
-    <div class="text-xs text-gray-300 space-y-1.5">
-      <div class="font-semibold text-white">What to Watch For:</div>
-      <ul class="list-disc pl-5 space-y-1 text-gray-400">
-        <li>AGY activates <code>libdaisy-guide</code> and <code>daisysp-guide</code> to check valid Daisy Seed I2C, ADC, and GPIO pins.</li>
-        <li>Designs a safe, dependency-ordered 6-phase probing roadmap (<code>PLAN.md</code>).</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="col-span-4 p-4 rounded-xl bg-emerald-950/15 border border-emerald-500/30 text-xs text-gray-300">
-    <div class="font-mono text-emerald-300 uppercase mb-1">Key Insight</div>
-    <div class="font-bold text-white mb-2">Bootstrapping Telemetry</div>
-    <p class="text-gray-400">
-      Once Phase 1 discovers the OLED screen on I2C, the OLED becomes our logic analyzer for Phases 2–5!
-    </p>
-  </div>
-</div>
-
-<!--
-In Recording 4, we ask AGY—armed with `libdaisy-guide` and `daisysp-guide`—to design a safe, phased hardware reverse-engineering plan (`PLAN.md`). Let's watch the replay.
 -->
 
 ---
@@ -200,9 +160,9 @@ i2c_config.pin_config.sda = seed::D12; // PB9 (I2C1_SDA)
 oled_config.driver_config.transport_config.i2c_address = 0x3D;
 ```
 
-    <div class="mt-3 p-2.5 rounded bg-amber-950/20 border border-amber-500/30 text-xs text-amber-200 font-mono">
-      Bonus Discovery: Must call <code>__HAL_RCC_I2C1_FORCE_RESET()</code> on boot to clear stalled I2C1 state after soft-resetting!
-    </div>
+  <div class="mt-3 p-2.5 rounded bg-amber-950/20 border border-amber-500/30 text-xs text-amber-200 font-mono">
+    Bonus Discovery: Must call <code>__HAL_RCC_I2C1_FORCE_RESET()</code> on boot to clear stalled I2C1 state after soft-resetting!
+  </div>
   </div>
 </div>
 
@@ -274,7 +234,6 @@ layout: default
         Turning any top knob <strong>clockwise</strong> swept the ADC voltage from <code>3.3V &rarr; 0.0V</code> (<code>1.0f</code> down to <code>0.0f</code>). Without <code>1.0f - raw</code>, turning volume up turns the sound down!
       </p>
     </div>
-
     <div class="p-4 rounded-xl bg-purple-950/20 border border-purple-500/30 space-y-2">
       <div class="font-mono font-bold text-purple-300 uppercase">Surprise 2: 3 of 4 Stick Axes Are Inverted</div>
       <p class="text-gray-300 leading-relaxed">
@@ -437,12 +396,12 @@ Once Phases 1 through 5 were complete, we made a key architectural decision: we 
 layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-pinout/SKILL.md
-title: "gamma-pinout: Master Pinout & Polarity Table"
+title: Master Pinout & Polarity Table
 step: Zoom-In 1 of 4
 ---
 
 <!-- S58 -->
-<div class="space-y-2 text-xs">
+<div class="space-y-2 text-s">
   <table>
     <thead>
       <tr>
@@ -515,7 +474,7 @@ Zooming into `gamma-pinout/SKILL.md`: every single peripheral, Daisy Seed pin, S
 layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-pinout/resources/gamma_pins.h
-title: "gamma-pinout: Bundling resources/gamma_pins.h"
+title: Bundling resources/gamma_pins.h
 step: Zoom-In 2 of 4
 ---
 
@@ -559,7 +518,7 @@ Even better, `gamma-pinout` bundles `resources/gamma_pins.h` right inside the sk
 layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-hardware-controls/SKILL.md
-title: "gamma-hardware-controls: 1 kHz TIM5 ISR & Diagnostic Table"
+title: 1 kHz TIM5 ISR & Diagnostic Table
 step: Zoom-In 3 of 4
 ---
 
@@ -603,7 +562,7 @@ In `gamma-hardware-controls/SKILL.md`, we give the agent the 1 kHz `TIM5` hardwa
 layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-hardware-controls/references/
-title: "gamma-hardware-controls: Progressive Disclosure via references/"
+title: Progressive Disclosure via references
 step: Zoom-In 4 of 4
 ---
 
@@ -626,7 +585,7 @@ step: Zoom-In 4 of 4
     <span class="text-gray-300"> &mdash; Buxton Gray-code state table eliminating mechanical contact bounce</span>
   </li>
   <li>
-    <strong class="text-white font-mono">references/main_loop_blueprint.md</strong>
+    <strong class="text-emerald-300 font-mono">references/main_loop_blueprint.md</strong>
     <span class="text-gray-300"> &mdash; Complete end-to-end C++ firmware skeleton combining all 4 subsystems</span>
   </li>
 </ol>
@@ -674,4 +633,3 @@ layout: default
 <!--
 That's Way 3: Hardware Discovery Skills. Turn ephemeral debugging sessions into permanent, verifiable hardware abstractions by bundling both declarative truth (`gamma_pins.h`) and real-time driver blueprints.
 -->
-
