@@ -8,3 +8,6 @@ slides/node_modules/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Slidev PID
+slides/.slidev.pid

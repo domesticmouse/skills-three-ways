@@ -4,12 +4,6 @@ class: text-center
 
 <!-- S01 -->
 <div class="h-full flex flex-col items-center justify-center">
-  <div class="flex items-center gap-2 mb-4">
-    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full badge-way1">Library Review</span>
-    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full badge-way2">DFU Operational</span>
-    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full badge-way3">Hardware Discovery</span>
-    <span class="px-3 py-1 text-xs font-semibold uppercase tracking-widest rounded-full badge-mashup">+ The Mashup</span>
-  </div>
 
   <h1 class="text-5xl font-extrabold tracking-tight text-white mb-3">
     Skills Three Ways
@@ -412,4 +406,3 @@ layout: default
 <!--
 Best of all, you don't have to hand-author every line of SKILL.md. Using the <code>agent-skills</code> and <code>agy-customizations</code> skills, you can have the agent itself package its research and scripts into a compliant skill directory. Now let's meet the mystery hardware we're going to tackle!
 -->
-
