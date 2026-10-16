@@ -419,21 +419,21 @@ layout: default
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
   <li>
-    <strong class="text-white">Phase 1 &middot; Exploration &amp; Problem Solving (Do the Work First)</strong>
+    <strong class="text-white">Phase 1 &middot; Exploration &amp; Problem Solving</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Solve an unfamiliar task, research an API, or reverse-engineer hardware interactively in the workspace</li>
       <li>Iterate until commands, scripts, and edge-case fixes are thoroughly tested and proven</li>
     </ul>
   </li>
   <li>
-    <strong class="text-white">Phase 2 &middot; Synthesis with Meta-Skills (<code>/agy-customizations</code>)</strong>
+    <strong class="text-white">Phase 2 &middot; Synthesis with Meta-Skills</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Prompt the agent: <code>"/agy-customize Please convert this into an agent skill"</code></li>
       <li>The agent structures <code>SKILL.md</code>, formats YAML frontmatter, and isolates deep context into <code>scripts/</code> or <code>references/</code></li>
     </ul>
   </li>
   <li>
-    <strong class="text-white">Phase 3 &middot; Verification from Cold Storage (Test in a Clean Session)</strong>
+    <strong class="text-white">Phase 3 &middot; Test in a Clean Session</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Start a brand-new conversation with an empty context window to simulate a real user prompt</li>
       <li>Verify that semantic routing activates Tier 1 and the agent executes Tier 2 and 3 without human intervention</li>
