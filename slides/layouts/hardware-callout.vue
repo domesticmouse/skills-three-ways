@@ -1,3 +1,24 @@
+<script setup lang="ts">
+/**
+ * Normalizes asset paths against Vite's base URL for GitHub Pages compatibility
+ */
+function resolveUrl(rawSrc: string | undefined): string {
+  if (!rawSrc) return ''
+  if (
+    rawSrc.startsWith('http://') ||
+    rawSrc.startsWith('https://') ||
+    rawSrc.startsWith('data:') ||
+    rawSrc.startsWith('blob:')
+  ) {
+    return rawSrc
+  }
+  const base = import.meta.env.BASE_URL || '/'
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`
+  const cleanPath = rawSrc.replace(/^\.?\//, '')
+  return `${normalizedBase}${cleanPath}`
+}
+</script>
+
 <template>
   <div class="h-full w-full flex flex-col bg-[#121317] p-6 text-white overflow-hidden">
     <!-- Header Bar -->
@@ -20,7 +41,7 @@
         <div class="relative w-full h-[360px] rounded-xl border border-gray-700/60 bg-[#0d0e12] overflow-hidden flex items-center justify-center p-3 shadow-lg">
           <img
             v-if="$frontmatter.image"
-            :src="$frontmatter.image"
+            :src="resolveUrl($frontmatter.image)"
             :alt="$frontmatter.title || 'Hardware Image'"
             class="max-w-full max-h-full object-contain rounded"
           />
