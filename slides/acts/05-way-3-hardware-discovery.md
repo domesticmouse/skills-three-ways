@@ -404,11 +404,11 @@ layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-pinout/SKILL.md
 title: Master Pinout & Polarity Table
-step: Zoom-In 1 of 4
+step: Zoom-In 1 of 3
 ---
 
 <!-- S58 -->
-<div class="space-y-2 text-xs">
+<div class="space-y-2 text-s">
   <table>
     <thead>
       <tr>
@@ -482,7 +482,7 @@ layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-pinout/resources/gamma_pins.h
 title: Bundling resources/gamma_pins.h
-step: Zoom-In 2 of 4
+step: Zoom-In 2 of 3
 ---
 
 <!-- S59 -->
@@ -524,68 +524,24 @@ Even better, `gamma-pinout` bundles `resources/gamma_pins.h` right inside the sk
 ---
 layout: skill-breakdown
 way: 3
-skill: .agents/skills/gamma-hardware-controls/SKILL.md
-title: 1 kHz TIM5 ISR & Diagnostic Table
-step: Zoom-In 3 of 4
----
-
-<!-- S60 -->
-<div class="grid grid-cols-12 gap-4 items-center text-xs">
-  <div class="col-span-6 space-y-2">
-    <div class="font-mono text-emerald-300 uppercase">1 kHz Hardware Timer (<code>TIM5</code>)</div>
-
-```cpp
-// Sample encoder & 14 keys at 1000 Hz
-// Immune to 9.5ms I2C OLED frame updates!
-TimerHandle::Config tim_cfg;
-tim_cfg.periph     = TimerHandle::Config::Peripheral::TIM_5;
-tim_cfg.dir        = TimerHandle::Config::CounterDir::UP;
-tim_cfg.period     = 240000 - 1; // 240MHz / 240k = 1kHz
-tim_cfg.enable_irq = true;
-```
-
-  </div>
-
-  <div class="col-span-6 space-y-2">
-    <div class="font-mono text-amber-300 uppercase">Symptom &rarr; Cause Lookup in SKILL.md</div>
-    <table>
-      <thead>
-        <tr><th>Symptom</th><th>Root Cause</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>OLED blank on soft reboot</td><td>Missing <code>I2C1_FORCE_RESET</code></td></tr>
-        <tr><td>Encoder misses clicks</td><td>Polled in main loop vs <code>TIM5</code></td></tr>
-        <tr><td>Controls freeze during play</td><td>Runaway DSP (<code>AnalogBassDrum</code> &gt; 90 Hz) starving <code>TIM5</code> ISR</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!--
-In `gamma-hardware-controls/SKILL.md`, we give the agent the 1 kHz `TIM5` hardware interrupt architecture so OLED updates never drop encoder clicks, plus a symptom-to-root-cause troubleshooting table.
--->
-
----
-layout: skill-breakdown
-way: 3
 skill: .agents/skills/gamma-hardware-controls/references/
 title: Progressive Disclosure via references
-step: Zoom-In 4 of 4
+step: Zoom-In 3 of 3
 ---
 
 <!-- S61 -->
-<ol class="space-y-2.5 text-xs text-gray-200 list-decimal pl-6 leading-relaxed">
+<ol class="space-y-2.5 text-s text-gray-200 list-decimal pl-6 leading-relaxed">
   <li>
     <strong class="text-emerald-300 font-mono">references/display.md</strong>
     <span class="text-gray-300"> &mdash; <code>I2C1</code> force-reset sequence, <code>I2C_1MHZ</code> config, and 30 Hz frame throttling</span>
   </li>
   <li>
     <strong class="text-emerald-300 font-mono">references/analog_inputs.md</strong>
-    <span class="text-gray-300"> &mdash; 9-channel <code>AdcChannelConfig</code>, pot/joystick inversion, and soft-takeover / pickup logic</span>
+    <span class="text-gray-300"> &mdash; 9-channel <code>AdcChannelConfig</code>, pot/joystick inversion, and soft-takeover / pickup</span>
   </li>
   <li>
     <strong class="text-emerald-300 font-mono">references/digital_keys.md</strong>
-    <span class="text-gray-300"> &mdash; 14 active-low keys, 8ms shift-register debounce, and lock-free <code>KeyEvent</code> ring buffer</span>
+    <span class="text-gray-300"> &mdash; 14 active-low keys, 8ms shift-register debounce, and lock-free ring buffer</span>
   </li>
   <li>
     <strong class="text-emerald-300 font-mono">references/rotary_encoder.md</strong>
@@ -593,7 +549,7 @@ step: Zoom-In 4 of 4
   </li>
   <li>
     <strong class="text-emerald-300 font-mono">references/main_loop_blueprint.md</strong>
-    <span class="text-gray-300"> &mdash; Complete end-to-end C++ firmware skeleton combining all 4 subsystems</span>
+    <span class="text-gray-300"> &mdash; Complete end-to-end C++ firmware skeleton combining everything</span>
   </li>
 </ol>
 
