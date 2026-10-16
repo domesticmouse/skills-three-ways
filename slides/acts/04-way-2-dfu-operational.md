@@ -26,7 +26,7 @@ layout: default
 
 <!-- S36 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">The Pattern: Interactive Troubleshooting &rarr; Script &rarr; Skill</h2>
+  <h2 class="text-2xl font-bold m-0">Interactive Troubleshooting &rarr; Script &rarr; Skill</h2>
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
