@@ -19,16 +19,14 @@ A complete technical architecture, presentation structure, and content specifica
 
 - [Integrate asciinema-player with Slidev](issues/01-asciinema-slidev-integration.md): Package asciinema-player v3 as a custom Vue 3 component in `slides/components/` with client dynamic import (`onMounted`), Vite SSR exclusion (`noExternal`), `BASE_URL` resolution for GitHub Pages subpaths, and `ResizeObserver` container scaling.
 - [Proof of concept: Slidev + asciinema-player on GitHub Pages](issues/02-slidev-setup-and-github-pages.md): Deploy minimal Slidev deck with `AsciinemaPlayer.vue`, Vite SSR exclusion, and GitHub Actions `deploy-slides.yml` to `https://domesticmouse.github.io/skills-three-ways/`, cleanly validating the presentation stack.
-
+- [Presentation narrative arc and slide-by-slide structure](issues/03-presentation-narrative-and-slide-breakdown.md): Structure as an 80-slide (30s/slide, 35–40 min) deck across 7 Acts built around the three skill buckets (`libdaisy-guide`/`daisysp-guide` Library Review Skills, `gamma-firmware-flash`/`gamma-firmware-restore` DFU Operational Skills, `gamma-pinout`/`gamma-hardware-controls` Hardware Discovery Skills) plus the `gamma-usb-connectivity` Mashup Skill, using 2-slide click-to-play 85–90% viewport `asciinema` beats, multi-slide skill zoom-ins, and a live physical Gamma mini synth demo in Act 7.
 
 ## Not yet specified
 
-- Visual theme and custom styling (styling Slidev with clean dark mode, monospace terminal accents, Google Cloud brand alignment).
-- Reusable slide layout templates (split-pane terminal player + narrative bullet points).
-- Live audio sample playback or audio wave preview for synth sounds during the presentation.
 - Production custom domain configuration (if needed beyond `<user>.github.io/<repo>/`).
 
 ## Out of scope
 
 - Direct implementation of embedded C++ firmware for the Gamma mini synth (belongs in `domesticmouse/reverse-engineering-gamma`).
 - Creating physical hardware modifications for the Gamma mini synth.
+- Embedded browser audio sample playback (superseded by live physical Gamma mini synth hardware demonstration on stage in Act 7).
