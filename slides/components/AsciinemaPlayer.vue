@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import 'asciinema-player/dist/bundle/asciinema-player.css'
 
 export interface AsciinemaPlayerProps {
   /**
@@ -130,10 +131,8 @@ async function initPlayer() {
   teardownPlayer()
 
   try {
-    // Dynamic import guarantees no SSR execution
+    // Dynamic import guarantees no SSR execution for player JS
     const AsciinemaPlayer = await import('asciinema-player')
-    // Ensure CSS bundle is injected
-    await import('asciinema-player/dist/bundle/asciinema-player.css')
 
     const resolvedSrc = resolveUrl(props.src)
 
@@ -229,7 +228,7 @@ watch(
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
-  background-color: #121317;
+  background-color: #1a1b26;
 }
 
 .asciinema-player-element {

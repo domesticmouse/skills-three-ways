@@ -1,0 +1,24 @@
+@import 'asciinema-player/dist/bundle/asciinema-player.css';
+
+/* High-contrast and crisp terminal readability for Slidev */
+.ap-player,
+.asciinema-player-theme-dracula {
+  --term-color-foreground: #f8f8f2;
+  --term-color-background: #1a1b26;
+  --term-color-0: #16161e;
+  --term-color-1: #ff5555;
+  --term-color-2: #50fa7b;
+  --term-color-3: #f1fa8c;
+  --term-color-4: #7aa2f7; /* Vibrant blue for prompt text */
+  --term-color-5: #bb9af7;
+  --term-color-6: #7dcfff;
+  --term-color-7: #c0caf5;
+  --term-color-8: #9aa5ce; /* Clear, readable bright black / secondary labels */
+  --term-color-9: #f7768e;
+  --term-color-10: #9ece6a;
+  --term-color-11: #e0af68;
+  --term-color-12: #b4f9f8;
+  --term-color-13: #bb9af7;
+  --term-color-14: #2ac3de;
+  --term-color-15: #ffffff;
+}
