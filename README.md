@@ -1,4 +1,4 @@
-# Skills Three Ways: Teaching Agents New Tricks via Agent Skills
+# Teaching Agents New Tricks via Agent Skills
 
 A presentation and technical exploration by Brett Morgan categorizing how **Agent Skills** (following the [agentskills.io](https://agentskills.io) open specification) are authored, generated, and applied in practice—using the reverse-engineering of embedded firmware for the **this.is.NOISE Gamma mini synth** (powered by an Electro-Smith **Daisy Seed 2 DFM**) as a real-world case study.
 
