@@ -37,8 +37,8 @@ layout: default
   <li>
     <strong class="text-white">Left &amp; Right Keypads: 7 Note + 7 Chord Keys</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Left keypad plays melodic scale degrees (<code>N1</code>–<code>N7</code>)</li>
-      <li>Right keypad triggers rich diatonic seventh &amp; extended chords (<code>C1</code>–<code>C7</code>)</li>
+      <li>Left keypad plays melodic scale degrees</li>
+      <li>Right keypad triggers rich diatonic seventh &amp; extended chords</li>
     </ul>
   </li>
   <li>
@@ -168,42 +168,35 @@ Before taking a screwdriver to every bolt on the backplate, I asked the creator 
 -->
 
 ---
-layout: default
+layout: hardware-callout
+title: Inside the Chassis
+subtitle: Electro-Smith Daisy Seed 2 DFM
+image: /images/ES_Daisy_Seed2_DFM_light.png
+imageCaption: Electro-Smith Daisy Seed 2 DFM — STM32H750 @ 480 MHz & TI PCM3060 Codec
 ---
 
 <!-- S17 -->
-<div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Inside the Chassis: Electro-Smith Daisy Seed 2 DFM</h2>
-</div>
+<div class="space-y-3">
+  <h3 class="text-lg font-bold text-cyan-300">The Brain: Daisy Seed 2 DFM</h3>
+  <p class="text-sm text-gray-300 leading-relaxed">
+    Lifting the back cover revealed a welcome surprise soldered onto the Gamma carrier board: an <strong>Electro-Smith Daisy Seed 2 DFM</strong> module!
+  </p>
 
-<div class="grid grid-cols-12 gap-6 mt-6 items-center">
-  <div class="col-span-6 space-y-3">
-    <p class="text-sm text-gray-300 leading-relaxed">
-      Lifting the back cover revealed a welcome surprise soldered onto the Gamma mainboard: an <strong>Electro-Smith Daisy Seed 2 DFM</strong> module!
-    </p>
-    <div class="p-4 rounded-xl bg-cyan-950/20 border border-cyan-500/30 space-y-2">
-      <div class="text-xs font-mono text-cyan-300 uppercase">Hardware Specs on the Carrier</div>
-      <ul class="text-xs text-gray-200 space-y-1.5 list-disc pl-4">
-        <li><strong>MCU</strong>: STM32H750IBK6 (ARM Cortex-M7 @ 480 MHz)</li>
-        <li><strong>RAM</strong>: 1 MB Internal + 64 MB External SDRAM</li>
-        <li><strong>Flash</strong>: 8 MB External QSPI NOR Flash (<code>0x90000000</code>)</li>
-        <li><strong>Audio Codec</strong>: TI PCM3060 24-bit / 48 kHz Stereo via SAI1</li>
-      </ul>
-    </div>
+  <div class="p-3 rounded-lg bg-cyan-950/20 border border-cyan-500/30 space-y-1.5">
+    <div class="text-xs font-mono text-cyan-300 uppercase font-semibold">Hardware Specs on Carrier</div>
+    <ul class="text-xs text-gray-200 space-y-1 list-disc pl-4">
+      <li><strong>MCU</strong>: STM32H750IBK6 (ARM Cortex-M7 @ 480 MHz)</li>
+      <li><strong>RAM</strong>: 1 MB Internal + 64 MB External SDRAM</li>
+      <li><strong>Flash</strong>: 8 MB External QSPI NOR Flash (<code>0x90000000</code>)</li>
+      <li><strong>Audio Codec</strong>: TI PCM3060 24-bit / 48 kHz Stereo via SAI1</li>
+    </ul>
   </div>
 
-  <div class="col-span-6">
-    <div class="p-5 rounded-xl bg-gray-900 border border-gray-800 font-mono text-xs space-y-2">
-      <div class="text-gray-400">// Physical buttons accessible inside:</div>
-      <div class="p-2.5 rounded bg-gray-950 border border-gray-800 text-emerald-300">
-        [BOOT] Button  &middot;  [RESET] Button
-      </div>
-      <div class="text-gray-400 pt-2">// Open-Source C++ Ecosystem Available:</div>
-      <div class="p-2.5 rounded bg-gray-950 border border-gray-800 text-cyan-300">
-        electro-smith/libDaisy  (Hardware BSP)<br/>
-        electro-smith/DaisySP   (DSP Synthesis Library)
-      </div>
-    </div>
+  <div class="p-3 rounded-lg bg-gray-900 border border-gray-800 font-mono text-xs space-y-1.5">
+    <div class="text-gray-400 text-[11px]">// Physical buttons accessible inside:</div>
+    <div class="text-emerald-300 font-semibold">[BOOT] Button &middot; [RESET] Button</div>
+    <div class="text-gray-400 text-[11px] pt-1">// Open-source C++ ecosystem:</div>
+    <div class="text-cyan-300">electro-smith/libDaisy &amp; DaisySP</div>
   </div>
 </div>
 
