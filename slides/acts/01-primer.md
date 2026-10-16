@@ -81,7 +81,7 @@ layout: default
     Ask &lsquo;What is the agent-first version of this?&rsquo;&rdquo;
   </blockquote>
   <p class="mt-6 text-sm text-gray-400">
-    &mdash; From PostHog's newsletter <a href="https://posthog.com/newsletter/building-ai-products" target="_blank" class="text-cyan-300 underline">38 things we've learned about building AI products</a>
+    &mdash; From PostHog's post <a href="https://posthog.com/newsletter/building-ai-products" target="_blank" class="text-cyan-300 underline">38 things we've learned about building AI products</a>
   </p>
 </div>
 
@@ -154,7 +154,7 @@ class: text-center
 <!-- S1-02 -->
 <div class="space-y-4">
   <h1 class="text-4xl font-extrabold text-white">
-    Primer: What Are Agent Skills?
+    What Are Agent Skills?
   </h1>
   <p class="text-lg text-gray-400 max-w-xl mx-auto">
     Why on-demand procedural runbooks beat stuffing everything into your system prompt
