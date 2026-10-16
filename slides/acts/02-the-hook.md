@@ -2,7 +2,7 @@
 layout: hardware-callout
 title: Meet the Gamma Mini Synth
 subtitle: this.is.NOISE inc.
-image: /images/gamma-promo.png
+image: /images/GammaMiniSynth.png
 imageCaption: Gamma Mini Synth — Pocket-sized polyphonic chord & lead synthesizer
 ---
 
@@ -144,7 +144,7 @@ Having a spare unit completely changes your psychology. One unit stays pristine 
 layout: hardware-callout
 title: Asking the Creator How to Get Inside
 subtitle: Disassembly Guidance
-image: /images/gamma-screws.jpg
+image: /images/GammaSynthScrews.png
 imageCaption: Annotated rear enclosure photo showing which 4 corner screws to remove
 ---
 
