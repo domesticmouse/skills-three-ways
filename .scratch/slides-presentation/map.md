@@ -17,8 +17,8 @@ A complete technical architecture, presentation structure, and content specifica
 
 ## Decisions so far
 
-<!-- the index: one line per closed ticket, enough to judge relevance, then zoom the link for the detail the ticket holds -->
 - [Integrate asciinema-player with Slidev](issues/01-asciinema-slidev-integration.md): Package asciinema-player v3 as a custom Vue 3 component in `slides/components/` with client dynamic import (`onMounted`), Vite SSR exclusion (`noExternal`), `BASE_URL` resolution for GitHub Pages subpaths, and `ResizeObserver` container scaling.
+- [Proof of concept: Slidev + asciinema-player on GitHub Pages](issues/02-slidev-setup-and-github-pages.md): Deploy minimal Slidev deck with `AsciinemaPlayer.vue`, Vite SSR exclusion, and GitHub Actions `deploy-slides.yml` to `https://domesticmouse.github.io/skills-three-ways/`, cleanly validating the presentation stack.
 
 
 ## Not yet specified
