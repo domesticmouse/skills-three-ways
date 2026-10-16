@@ -68,21 +68,21 @@ layout: default
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
   <li>
-    <strong class="text-white">Hallucinated HAL APIs</strong>
+    <strong class="text-white">Hallucinated Hardware Abstraction Layer APIs</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Without a skill, LLMs mix up Arduino <code>analogRead()</code>, raw STM32 HAL calls, and older <code>libDaisy</code> v4 vs v7</li>
       <li>Causes immediate compile errors and wasted retry loops</li>
     </ul>
   </li>
   <li>
-    <strong class="text-white">STM32H7 DMA &amp; RAM Traps</strong>
+    <strong class="text-white">STM32H7 Direct Memory Access &amp; RAM Traps</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>The Cortex-M7 D-Cache does not snoop DMA transfers</li>
       <li>Putting a DMA buffer in cached AXI SRAM or a 395 KB <code>ReverbSc</code> on the stack silently crashes the MCU</li>
     </ul>
   </li>
   <li>
-    <strong class="text-white">ISR Deadline Violations</strong>
+    <strong class="text-white">Interrupt Service Routine Deadline Violations</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>At 48 kHz with a 48-sample block, <code>AudioCallback</code> has a strict <strong>1.0 millisecond</strong> deadline</li>
       <li>Calling <code>oled.Update()</code> (9 ms over I2C) inside the audio ISR destroys audio output</li>
@@ -96,10 +96,10 @@ Why is this especially critical for embedded C++? Because general LLM weights ha
 
 ---
 layout: cast-full
-title: "Recording 02: Creating libdaisy-guide from libDaisy/"
+title: "Creating libdaisy-guide from libDaisy"
 cast: /casts/libdaisy-skill-creation.cast
 autoPlay: false
-speed: 4.0
+speed: 2.0
 idleTimeLimit: 1.0
 fit: both
 ---
