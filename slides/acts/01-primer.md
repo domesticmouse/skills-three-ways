@@ -273,7 +273,7 @@ layout: default
   <li>
     <strong class="text-white">Tier 1 &middot; Discovery (~100 Tokens, Always Loaded)</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>At session start, only <code>name</code> and <code>description</code> from each skill's YAML frontmatter are injected into the system prompt</li>
+      <li>At session start, only <code>name</code> and <code>description</code> from each skill's YAML frontmatter are injected</li>
       <li>Acts as a lightweight semantic index without consuming working memory</li>
     </ul>
   </li>
@@ -287,7 +287,7 @@ layout: default
   <li>
     <strong class="text-white">Tier 3 &middot; Execution (On-Demand Files, Loaded Per Sub-Task)</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>The agent selectively reads <code>references/*.md</code>, uses templates in <code>resources/</code>, or executes <code>scripts/*.py</code> only for required sub-steps</li>
+      <li>The agent selectively reads <code>references/*.md</code>, uses templates in <code>resources/</code>, or executes <code>scripts/*.py</code></li>
       <li>Executable code runs in the terminal rather than bloating the prompt context</li>
     </ul>
   </li>
@@ -302,26 +302,38 @@ layout: default
 ---
 
 <!-- S1-10 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-6">
   <h2 class="text-2xl font-bold m-0">Authoring Skills with Agent Skills</h2>
 </div>
 
-<div class="grid grid-cols-12 gap-6 mt-6 items-center">
-  <div class="col-span-7 space-y-4">
-    <p class="text-sm text-gray-300 leading-relaxed">
-      You don't have to write <code>SKILL.md</code> files by hand! Antigravity includes built-in meta-skills (<code>agy-customizations</code> and <code>agent-skills</code>) that know the <code>agentskills.io</code> specification inside and out.
-    </p>
-    <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2 text-xs">
-      <div class="font-mono text-cyan-300 uppercase">The Meta-Workflow for Packaging Skills:</div>
-      <ol class="list-decimal pl-5 space-y-1.5 text-gray-300">
-        <li>Solve or research a problem with AGY in the workspace.</li>
-        <li>Ask AGY: <em>"Convert these findings and scripts into a self-contained Agent Skill in <code>.agents/skills/&lt;name&gt;/</code>."</em></li>
-        <li>Validate frontmatter, negative constraints, and relative links.</li>
-      </ol>
-    </div>
-  </div>
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Phase 1 &middot; Exploration &amp; Problem Solving (Do the Work First)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Solve an unfamiliar task, research an API, or reverse-engineer hardware interactively in the workspace</li>
+      <li>Iterate until commands, scripts, and edge-case fixes are thoroughly tested and proven</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Phase 2 &middot; Synthesis with Meta-Skills (<code>agy-customizations</code>)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Prompt the agent: <code>"/agy-customize Please convert this into an agent skill"</code></li>
+      <li>The agent structures <code>SKILL.md</code>, formats YAML frontmatter, and isolates deep context into <code>scripts/</code> or <code>references/</code></li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Phase 3 &middot; Verification from Cold Storage (Test in a Clean Session)</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Start a brand-new conversation with an empty context window to simulate a real user prompt</li>
+      <li>Verify that semantic routing activates Tier 1 and the agent executes Tier 2 and 3 without human intervention</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="mt-6 p-3 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-xs text-gray-400">
+  <strong class="text-gray-200">The Golden Rule:</strong> If an agent cannot successfully run the workflow from a cold start in a clean session, the skill isn't finished.
 </div>
 
 <!--
-Best of all, you don't have to hand-author every line of SKILL.md. Using the `agent-skills` and `agy-customizations` skills, you can have the agent itself package its research and scripts into a compliant skill directory. Now let's meet the mystery hardware we're going to tackle!
+Best of all, you don't have to hand-author every line of SKILL.md. We use two built-in meta-skills—`agent-skills` for standard directory anatomy and YAML frontmatter, and `agy-customizations` for Antigravity-specific rules and discovery roots. The workflow is simple: first, solve the problem interactively in the terminal; second, tell the agent to package the working session into a skill; third, verify it in a brand-new conversation to prove it works from cold storage. Now let's meet the mystery hardware we're going to tackle!
 -->
