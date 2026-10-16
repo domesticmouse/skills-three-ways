@@ -33,7 +33,9 @@ SKILLS=(
 )
 
 SKILLS_SRC=""
-if [ -d "../../../../reverse-engineering-gamma/.agents/skills" ]; then
+if [ -d "../../../.agents/skills" ] && [ -d "../../../.agents/skills/libdaisy-guide" ]; then
+  SKILLS_SRC="../../../.agents/skills"
+elif [ -d "../../../../reverse-engineering-gamma/.agents/skills" ]; then
   SKILLS_SRC="../../../../reverse-engineering-gamma/.agents/skills"
 elif [ -d "../../../../../reverse-engineering-gamma/.agents/skills" ]; then
   SKILLS_SRC="../../../../../reverse-engineering-gamma/.agents/skills"
