@@ -130,37 +130,36 @@ layout: default
   <div class="col-span-6">
 
 ```text
-.agents/skills/<skill-name>/
+skills/code-reviewer/
 ├── SKILL.md          # Required: YAML frontmatter + core runbook
-├── scripts/          # Optional: Deterministic CLI helpers (.py, .sh)
-│   └── flash_firmware.py
-├── references/       # Optional: Deep Tier-3 docs read on demand
-│   ├── display.md
-│   └── rotary_encoder.md
-└── resources/        # Optional: Drop-in templates & C++ headers
-    └── gamma_pins.h
+├── scripts/          # Optional: Helper scripts & CLI utilities
+│   └── run_linter.py
+├── references/       # Optional: In-depth documentation & API specs
+│   └── style_guide.md
+└── resources/        # Optional: Drop-in templates & sample assets
+    └── report_template.md
 ```
 
   </div>
 
   <div class="col-span-6 space-y-3 text-xs">
     <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
-      <div class="font-mono font-bold text-cyan-300">SKILL.md (Mandatory)</div>
-      <p class="text-gray-400 mt-1">Entry point kept concise (&lt;500 lines). Contains activation metadata and primary procedural workflow.</p>
+      <div class="font-mono font-bold text-cyan-300">SKILL.md (Required)</div>
+      <p class="text-gray-400 mt-1">Single entry point kept concise (&lt;500 lines). Contains activation metadata and primary procedural workflow.</p>
     </div>
     <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
-      <div class="font-mono font-bold text-amber-300">scripts/ (Deterministic Execution)</div>
-      <p class="text-gray-400 mt-1">Executable Python/Bash utilities so the agent runs tested code instead of improvising fragile shell pipelines.</p>
+      <div class="font-mono font-bold text-amber-300">scripts/ (Executable Utilities)</div>
+      <p class="text-gray-400 mt-1">Deterministic Python/Bash tools so the agent runs tested commands instead of improvising fragile shell pipelines.</p>
     </div>
     <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
-      <div class="font-mono font-bold text-emerald-300">references/ &amp; resources/ (Deep Artifacts)</div>
-      <p class="text-gray-400 mt-1">Subsystem deep-dives and verified <code>.h</code> headers loaded only when the specific task requires them.</p>
+      <div class="font-mono font-bold text-emerald-300">references/ &amp; resources/ (Deep Context)</div>
+      <p class="text-gray-400 mt-1">In-depth API specs, reference manuals, and template assets loaded on-demand only when a sub-step requires them.</p>
     </div>
   </div>
 </div>
 
 <!--
-A skill isn't just a markdown file—it's a directory package. Alongside SKILL.md, it can bundle executable scripts in scripts/, deep subsystem docs in references/, and ready-to-include C++ headers in resources/.
+As Antigravity showed in the recording, a skill isn't just a loose markdown file—it is a self-contained directory package. SKILL.md acts as the primary runbook, while optional directories hold executable scripts, in-depth documentation, and reusable templates.
 -->
 
 ---
@@ -176,11 +175,10 @@ layout: default
 
 ```yaml
 ---
-name: gamma-firmware-flash
+name: code-reviewer
 description: >-
-  Build, validate, and flash custom or diagnostic firmware to the this.is.NOISE
-  Gamma Mini Synth (Electro-Smith Daisy Seed 2 DFM) via USB DFU using the
-  automated Daisy Bootloader polling workflow.
+  Reviews code changes for bugs, security vulnerabilities, and style violations.
+  Use when reviewing pull requests or checking code quality.
 ---
 ```
 
@@ -190,20 +188,20 @@ description: >-
   <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
     <div class="font-mono font-bold text-white mb-1"><code>name</code> (Identifier Constraint)</div>
     <p class="text-gray-400 leading-relaxed">
-      1–64 chars, lowercase alphanumeric + hyphens (<code>^[a-z0-9]+(-[a-z0-9]+)*$</code>), and <strong>must match the parent folder name</strong>.
+      A unique, lowercase, hyphenated identifier (<code>^[a-z0-9]+(-[a-z0-9]+)*$</code>) that <strong>must match the parent directory name</strong>.
     </p>
   </div>
 
   <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
     <div class="font-mono font-bold text-cyan-300 mb-1"><code>description</code> (The Routing Trigger)</div>
     <p class="text-gray-400 leading-relaxed">
-      This is the <strong>only text</strong> the model sees before activation. Pack it with domain nouns (<code>Daisy Seed 2 DFM</code>, <code>USB DFU</code>) and explicit "Use when..." trigger conditions.
+      The <strong>primary activation trigger</strong> loaded at startup. The agent matches user prompts against this text to decide whether to load the full skill.
     </p>
   </div>
 </div>
 
 <!--
-Inside SKILL.md, the YAML frontmatter is critical. Because the agent only sees `name` and `description` in its initial system prompt, your `description` is the semantic router that determines whether the skill gets read.
+The YAML frontmatter provides the skill's identity and activation trigger. Because only name and description are loaded into context at session startup, the description must clearly specify domain keywords and explicit "Use when..." conditions.
 -->
 
 ---
@@ -212,44 +210,54 @@ layout: default
 
 <!-- S1-08 -->
 <div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Inside SKILL.md Part 2: Runbooks &amp; Negative Constraints</h2>
+  <h2 class="text-2xl font-bold m-0">Inside SKILL.md Part 2: Procedural Instructions</h2>
 </div>
 
 <div class="grid grid-cols-2 gap-5 mt-4">
   <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
     <div class="text-xs font-mono text-amber-300 uppercase">1. Sharp Negative Constraints ("Do NOT")</div>
     <p class="text-xs text-gray-300">
-      Tell the agent explicitly which plausible-looking defaults will fail on your target:
+      Tell the agent explicitly what <em>not</em> to do to avoid dangerous or failing defaults:
     </p>
 
 ```markdown
 > [!CAUTION]
-> Do **NOT** use `BOOT_QSPI` or `BOOT_NONE`;
-> the Daisy Bootloader rejects `BOOT_QSPI`
-> builds and emits an SOS error blink!
+> Do **NOT** modify production database tables
+> directly or bypass linter rules with flags!
 ```
 
   </div>
 
   <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
-    <div class="text-xs font-mono text-emerald-300 uppercase">2. Relative Pointers to Tier-3 Files</div>
+    <div class="text-xs font-mono text-emerald-300 uppercase">2. Relative Links to Deep Files</div>
     <p class="text-xs text-gray-300">
-      Link directly to bundled scripts, headers, and reference docs using relative paths:
+      Link directly to bundled scripts and reference docs using relative paths:
     </p>
 
 ```markdown
-## Pin Definitions & Header Location
-* Canonical Header:
-  [`resources/gamma_pins.h`](resources/gamma_pins.h)
-* Display Guide:
-  [`references/display.md`](references/display.md)
+## Execution & References
+* Run linter:
+  [`scripts/run_linter.py`](scripts/run_linter.py)
+* Style guide:
+  [`references/style_guide.md`](references/style_guide.md)
 ```
 
   </div>
 </div>
 
+<div class="grid grid-cols-2 gap-4 mt-3 text-xs">
+  <div class="p-3 rounded-lg bg-gray-900/60 border border-gray-800/80">
+    <strong class="text-white">Explicit Workflows:</strong>
+    <span class="text-gray-400"> Numbered, step-by-step instructions and procedural runbooks.</span>
+  </div>
+  <div class="p-3 rounded-lg bg-gray-900/60 border border-gray-800/80">
+    <strong class="text-white">Validation Steps:</strong>
+    <span class="text-gray-400"> Clear criteria and commands for the agent to verify its own work.</span>
+  </div>
+</div>
+
 <!--
-The body of SKILL.md does two jobs: it establishes sharp negative constraints—stopping the agent from using plausible defaults that fail—and provides relative file links into scripts/, references/, and resources/.
+The markdown body contains the procedural guidance. As Antigravity explained in the recording, it combines step-by-step workflows with sharp negative constraints to prevent unwanted actions, relative links to secondary files, and explicit validation criteria.
 -->
 
 ---
@@ -279,7 +287,7 @@ layout: default
   <li>
     <strong class="text-white">Tier 3 &middot; Execution (On-Demand Files, Loaded Per Sub-Task)</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>The agent selectively reads <code>references/*.md</code>, copies <code>resources/*.h</code>, or executes <code>scripts/*.py</code> only for required sub-steps</li>
+      <li>The agent selectively reads <code>references/*.md</code>, uses templates in <code>resources/</code>, or executes <code>scripts/*.py</code> only for required sub-steps</li>
       <li>Executable code runs in the terminal rather than bloating the prompt context</li>
     </ul>
   </li>
@@ -304,21 +312,13 @@ layout: default
       You don't have to write <code>SKILL.md</code> files by hand! Antigravity includes built-in meta-skills (<code>agy-customizations</code> and <code>agent-skills</code>) that know the <code>agentskills.io</code> specification inside and out.
     </p>
     <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2 text-xs">
-      <div class="font-mono text-cyan-300 uppercase">The Meta-Workflow We Used Across All 7 Skills:</div>
+      <div class="font-mono text-cyan-300 uppercase">The Meta-Workflow for Packaging Skills:</div>
       <ol class="list-decimal pl-5 space-y-1.5 text-gray-300">
         <li>Solve or research a problem with AGY in the workspace.</li>
         <li>Ask AGY: <em>"Convert these findings and scripts into a self-contained Agent Skill in <code>.agents/skills/&lt;name&gt;/</code>."</em></li>
         <li>Validate frontmatter, negative constraints, and relative links.</li>
       </ol>
     </div>
-  </div>
-
-  <div class="col-span-5 p-5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 text-center space-y-2">
-    <div class="text-xs font-mono text-emerald-400 uppercase">Next Up</div>
-    <div class="text-xl font-bold text-white">The Hardware Target</div>
-    <p class="text-xs text-gray-400">
-      Now let's apply this in practice: enter the <strong>Gamma Mini Synth</strong>, an uncharted hardware instrument on our desk.
-    </p>
   </div>
 </div>
 
