@@ -408,7 +408,7 @@ step: Zoom-In 1 of 4
 ---
 
 <!-- S58 -->
-<div class="space-y-2 text-xs">
+<div class="space-y-2 text-s">
   <table>
     <thead>
       <tr>
@@ -574,18 +574,18 @@ step: Zoom-In 4 of 4
 ---
 
 <!-- S61 -->
-<ol class="space-y-2.5 text-xs text-gray-200 list-decimal pl-6 leading-relaxed">
+<ol class="space-y-2.5 text-s text-gray-200 list-decimal pl-6 leading-relaxed">
   <li>
     <strong class="text-emerald-300 font-mono">references/display.md</strong>
     <span class="text-gray-300"> &mdash; <code>I2C1</code> force-reset sequence, <code>I2C_1MHZ</code> config, and 30 Hz frame throttling</span>
   </li>
   <li>
     <strong class="text-emerald-300 font-mono">references/analog_inputs.md</strong>
-    <span class="text-gray-300"> &mdash; 9-channel <code>AdcChannelConfig</code>, pot/joystick inversion, and soft-takeover / pickup logic</span>
+    <span class="text-gray-300"> &mdash; 9-channel <code>AdcChannelConfig</code>, pot/joystick inversion, and soft-takeover / pickup</span>
   </li>
   <li>
     <strong class="text-emerald-300 font-mono">references/digital_keys.md</strong>
-    <span class="text-gray-300"> &mdash; 14 active-low keys, 8ms shift-register debounce, and lock-free <code>KeyEvent</code> ring buffer</span>
+    <span class="text-gray-300"> &mdash; 14 active-low keys, 8ms shift-register debounce, and lock-free ring buffer</span>
   </li>
   <li>
     <strong class="text-emerald-300 font-mono">references/rotary_encoder.md</strong>
@@ -593,7 +593,7 @@ step: Zoom-In 4 of 4
   </li>
   <li>
     <strong class="text-emerald-300 font-mono">references/main_loop_blueprint.md</strong>
-    <span class="text-gray-300"> &mdash; Complete end-to-end C++ firmware skeleton combining all 4 subsystems</span>
+    <span class="text-gray-300"> &mdash; Complete end-to-end C++ firmware skeleton combining everything</span>
   </li>
 </ol>
 
