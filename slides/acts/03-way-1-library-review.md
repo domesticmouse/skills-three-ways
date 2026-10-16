@@ -95,46 +95,6 @@ Why is this especially critical for embedded C++? Because general LLM weights ha
 -->
 
 ---
-layout: default
----
-
-<!-- S24 -->
-<div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Creating the <code>libdaisy-guide</code> Skill from Source</h2>
-</div>
-
-<div class="grid grid-cols-12 gap-6 mt-5 items-center">
-  <div class="col-span-8 space-y-4">
-    <div class="p-4 rounded-xl bg-gray-900 border border-cyan-500/40">
-      <div class="text-xs font-mono text-cyan-400 uppercase mb-1">Exact AGY Prompt (Scenario 02)</div>
-      <p class="font-mono text-xs text-white leading-relaxed m-0">
-        "Inspect the libDaisy/ repository in this workspace. Produce a comprehensive architectural report on how to build firmware with libDaisy, detailing the hardware peripheral taxonomy, STM32H7 memory map, and initialization patterns, and format it as an Agent Skill named libdaisy-guide."
-      </p>
-    </div>
-    <div class="text-xs text-gray-300 space-y-1.5">
-      <div class="font-semibold text-white">What to Watch For:</div>
-      <ul class="list-disc pl-5 space-y-1 text-gray-400">
-        <li>AGY traverses <code>libDaisy/src/</code> (<code>sys/</code>, <code>per/</code>, <code>dev/</code>, <code>hid/</code>, <code>ui/</code>, <code>util/</code>) and linker scripts.</li>
-        <li>Extracts the STM32H750 memory regions (<code>DTCM</code>, <code>AXI SRAM</code>, <code>SRAM1</code> DMA, <code>SDRAM</code>, <code>QSPI</code>).</li>
-        <li>Writes <code>.agents/skills/libdaisy-guide/SKILL.md</code>.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="col-span-4 p-4 rounded-xl bg-cyan-950/15 border border-cyan-500/30 text-xs text-gray-300">
-    <div class="font-mono text-cyan-300 uppercase mb-1">Target Repo</div>
-    <div class="font-bold text-white mb-2"><code>electro-smith/libDaisy</code></div>
-    <p class="text-gray-400">
-      C++ Hardware Abstraction &amp; Board Support Package for STM32H750 Daisy boards.
-    </p>
-  </div>
-</div>
-
-<!--
-In Recording 2, we point AGY at a shallow checkout of `libDaisy/` and ask it to inspect the source tree and produce the `libdaisy-guide` skill. Let's watch how it explores the codebase.
--->
-
----
 layout: cast-full
 title: "Recording 02: Creating libdaisy-guide from libDaisy/"
 cast: /casts/libdaisy-skill-creation.cast
@@ -335,4 +295,3 @@ layout: default
 <!--
 That's Way 1: Library Review Skills. By distilling 50,000+ lines of C++ headers into a ~200-line runbook, the agent writes idiomatically correct Daisy C++ on the first try—and that skill is reusable on any Daisy hardware project.
 -->
-
