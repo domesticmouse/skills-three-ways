@@ -276,6 +276,194 @@ Now let's put the slides aside for a moment and do this live on the physical Gam
 layout: default
 ---
 
+<!-- S79a -->
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">Model Context Protocol</h2>
+</div>
+
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Local &rarr; Remote</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Started as local desktop execution (stdio)</li>
+      <li>Migrated to remote servers as teams moved to the cloud</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">MCP V2</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Simplified server-farm deployment</li>
+      <li>Shifted from stateful sessions to stateless requests with routing headers</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Token Tax</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Context overhead scales at <span class="font-mono text-purple-300">Servers &times; Tools per Server</span></li>
+      <li>Every schema must be declared upfront in tool definition</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">LLMs Can now Code</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Server infrastructure got easier, but agent capability leaped forward</li>
+      <li>Modern models can write scripts and execute CLI runbooks directly</li>
+    </ul>
+  </li>
+</ol>
+
+<!--
+Now that we've seen all seven skills come together in the live demo, let's step back and summarize the architectural landscape.
+
+MCP started as a clean way to connect local desktop clients to tools over stdio, then migrated to remote servers. Early on, that meant stateful connections and sticky sessions. MCP 2 addressed that head-on—going stateless and exposing methods in headers so server farms and API gateways can easily route calls.
+
+However, that’s an infrastructure optimization. It doesn't solve the context window tax: you're still paying the schema cost for every tool across every server upfront. More importantly, it’s orthogonal to the biggest change in AI: LLMs can now write and execute code. If an agent can run a script or follow a runbook, we don't always need a heavyweight RPC server to get work done.
+-->
+
+---
+layout: default
+---
+
+<!-- S79b -->
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">Always-On Rules</h2>
+</div>
+
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Constitution &amp; Guardrails</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Permanent project conventions and non-negotiable boundaries</li>
+      <li>Sets core behavioral rules that the agent must never violate</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Paid on Every Turn</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Injected into prompt context on every single conversational turn</li>
+      <li>Permanently consumes working memory regardless of task relevance</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Plain Markdown Only</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Static text instructions without bundled executable code</li>
+      <li>Cannot package helper scripts, dependencies, or rich assets</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Repository Conventions</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>De facto root conventions (<code class="text-blue-300">AGENTS.md</code>, <code class="text-blue-300">CLAUDE.md</code>)</li>
+      <li>Recognized across modern coding assistants for project-wide guidance</li>
+    </ul>
+  </li>
+</ol>
+
+<!--
+Rules in files like AGENTS.md act as your project's constitution. They're essential for non-negotiable guardrails—things like code style, branch naming, or security constraints that the agent should never violate.
+
+The catch is context cost: you pay for them on every single turn. Whether the agent is writing a complex feature or just fixing a typo, your entire rules file is sitting in the prompt. And because they're plain Markdown, they can't package runnable scripts, data files, or multi-step workflows. They set boundaries, but they don't teach deep procedures.
+-->
+
+---
+layout: default
+---
+
+<!-- S79c -->
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">Agent Skills</h2>
+</div>
+
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">Procedural Runbooks</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Specialized step-by-step procedures loaded on-demand</li>
+      <li>Teaches the model how to solve specific domains without prompt bloat</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Two-Stage Discovery</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Only metadata (~100 tokens) loaded into system context at startup</li>
+      <li>Full instructions and references pulled into context only on match</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Self-Contained Packages</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Directory bundling <code class="text-emerald-300">SKILL.md</code>, <code class="text-emerald-300">scripts/</code>, and <code class="text-emerald-300">references/</code></li>
+      <li>Executable code runs directly in terminal instead of eating context tokens</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Open Standard</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Governed by the portable <span class="text-emerald-300 font-mono">agentskills.io</span> specification</li>
+      <li>Shareable and cross-compatible across modern agent environments</li>
+    </ul>
+  </li>
+</ol>
+
+<!--
+Agent Skills take a completely different approach: progressive disclosure and procedural runbooks. Instead of loading everything into memory upfront, the agent only sees a tiny 100-token summary during indexing.
+
+When a task matches, the full SKILL.md is read into context. Crucially, a skill is a directory, not just a document. It bundles executable scripts, reference guides, and templates. Because modern LLMs can run code, a skill can execute complex workflows locally in a sandbox without needing an external RPC server or bloating the prompt with thousands of lines of documentation. And it's an open standard via agentskills.io.
+-->
+
+---
+layout: default
+---
+
+<!-- S79d -->
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">The Laboratory Analogy</h2>
+</div>
+
+<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+  <li>
+    <strong class="text-white">The Keycard: Model Context Protocol</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Unlocks the lab doors and powers up external instruments</li>
+      <li>Gives the agent the raw capability and authorization to act</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">The Safety Placard: Always-On Rules</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Safety policies and guardrails posted permanently on the wall</li>
+      <li>Non-negotiable boundaries the agent must never violate</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">The Procedure Manual: Agent Skills</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Standard operating procedures resting on the workbench</li>
+      <li>Opened and followed step-by-step only when running a specific protocol</li>
+    </ul>
+  </li>
+  <li>
+    <strong class="text-white">Working in Harmony</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li><strong class="text-purple-300">Tools</strong> provide access &middot; <strong class="text-blue-300">Rules</strong> set boundaries &middot; <strong class="text-emerald-300">Skills</strong> teach the SOP</li>
+      <li>Each mechanism solves a distinct challenge in agent architecture</li>
+    </ul>
+  </li>
+</ol>
+
+<!--
+To pull these three concepts together, think of an agent entering a research laboratory.
+
+MCP is the keycard: it unlocks the doors, turns on the power, and gives access to the lab instruments. AGENTS.md is the safety placard on the wall: the hard rules you read once and must never break, like wearing eye protection. And Agent Skills are the standard operating procedure manuals sitting on the bench: you don't memorize them all, you just open the centrifuge protocol when you need to spin down a sample.
+
+Tools give access, Rules set boundaries, and Skills teach the actual procedure.
+-->
+
+---
+layout: default
+---
+
 <!-- S80 -->
 <div class="flex items-center justify-between mb-4">
   <div class="flex items-center gap-3">
