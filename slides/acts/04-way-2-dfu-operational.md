@@ -177,80 +177,6 @@ Trap #2: When you tap RESET, the Daisy Bootloader only listens for DFU connectio
 layout: default
 ---
 
-<!-- S40 -->
-<div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Trap #3: Why Does My Firmware Blink SOS?</h2>
-</div>
-
-<div class="grid grid-cols-12 gap-6 mt-5 items-center">
-  <div class="col-span-6 space-y-3 text-xs">
-    <p class="text-sm text-gray-300 leading-relaxed">
-      Our first test build flashed to <code>0x90040000</code>—so naturally we assumed <code>APP_TYPE = BOOT_QSPI</code>. Instead of booting, the Daisy Seed LED blinked a <strong>red SOS pattern</strong> (<code>... --- ...</code>)!
-    </p>
-    <div class="p-3.5 rounded-xl bg-amber-950/20 border border-amber-500/30">
-      <div class="font-mono font-bold text-amber-300 mb-1">How AGY Solved It:</div>
-      <p class="text-gray-300">
-        AGY unpacked the first 8 bytes (ARM Cortex-M7 vector table) of the official <code>gamma-v2.0.3.bin</code> factory binary:
-      </p>
-    </div>
-  </div>
-
-  <div class="col-span-6">
-
-```python
-# Inspecting official gamma-v2.0.3.bin vector table:
-with open("gamma-v2.0.3.bin", "rb") as f:
-    sp, reset_handler = struct.unpack("<II", f.read(8))
-
-# Initial SP:    0x20020000 (End of 128KB DTCM RAM)
-# Reset Handler: 0x240047ED (Inside AXI SRAM 0x24000000!)
-```
-
-    <div class="mt-3 p-3 rounded-lg bg-emerald-950/30 border border-emerald-500/40 text-xs text-emerald-200 font-mono">
-      Aha! Even though it's stored in QSPI at <code>0x90040000</code>, the bootloader copies the binary into AXI SRAM (<code>0x24000000</code>) before jumping. Makefile MUST set <code>APP_TYPE = BOOT_SRAM</code>!
-    </div>
-  </div>
-</div>
-
-<!--
-Trap #3 was a real head-scratcher: since we flash to QSPI at `0x90040000`, we compiled with `APP_TYPE = BOOT_QSPI`—and got an SOS error blink! AGY inspected the ARM vector table of the factory binary and saw the Reset Handler at `0x240047ED`: AXI SRAM (`BOOT_SRAM`)!
--->
-
----
-layout: default
----
-
-<!-- S41 -->
-<div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Trap #4: The Ghost on the OLED Screen</h2>
-</div>
-
-<div class="grid grid-cols-2 gap-6 mt-6 items-center">
-  <div class="p-5 rounded-xl bg-gray-900 border border-gray-800 space-y-3">
-    <div class="text-xs font-mono text-amber-400 uppercase">The Illusion</div>
-    <h3 class="text-lg font-bold text-white">"Wait—Did Our Flash Fail?"</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      After flashing minimal LED-blink firmware, the Gamma's 1.3" OLED still proudly displayed the factory <code>this.is.NOISE inc</code> UI—making it look like the factory firmware was still running!
-    </p>
-  </div>
-
-  <div class="p-5 rounded-xl bg-amber-950/15 border border-amber-500/30 space-y-3">
-    <div class="text-xs font-mono text-amber-300 uppercase">The Hardware Reality</div>
-    <h3 class="text-lg font-bold text-white">SSD1306 GDDRAM Retention</h3>
-    <p class="text-xs text-gray-300 leading-relaxed">
-      The SSD1306 OLED controller has its own internal Graphic Display Data RAM (GDDRAM). As long as 3.3V power stays on across a soft reset, the screen retains its last image until new firmware explicitly initializes I2C1 (<code>0x3D</code>) and clears the buffer.
-    </p>
-  </div>
-</div>
-
-<!--
-Trap #4 fooled us more than once: the SSD1306 OLED has its own internal display RAM. Across a soft reset, it keeps displaying the old screen even if your new firmware is running—or if the MCU is completely halted!
--->
-
----
-layout: default
----
-
 <!-- S42 -->
 <div class="flex items-center gap-3 mb-4">
   <h2 class="text-2xl font-bold m-0">Safety First: Building <code>gamma-firmware-restore</code> Before Probing</h2>
@@ -285,7 +211,7 @@ Before probing a single unknown pin, we built our parachute: `gamma-firmware-res
 layout: skill-breakdown
 way: 2
 skill: .agents/skills/gamma-firmware-restore/
-title: "gamma-firmware-restore: Unbrick Runbook & Script"
+title: Unbrick Runbook & Script
 step: Zoom-In 1 of 3
 ---
 
@@ -347,7 +273,7 @@ Here's `gamma-firmware-restore` side by side: `SKILL.md` tells the agent when to
 layout: skill-breakdown
 way: 2
 skill: .agents/skills/gamma-firmware-flash/SKILL.md
-title: "gamma-firmware-flash: Negative Constraints & Exit Code 74"
+title: Negative Constraints & Exit Code 74
 step: Zoom-In 2 of 3
 ---
 
@@ -370,7 +296,6 @@ an SOS error blink on the LED).*
 ````
 
   </div>
-
   <div class="space-y-2">
     <div class="font-mono text-amber-300 uppercase">Constraint 2: Normal Exit Code 74</div>
 
@@ -382,9 +307,9 @@ an SOS error blink on the LED).*
 > leave command.
 ```
 
-    <div class="p-3 rounded bg-gray-900 border border-gray-800 text-gray-300">
-      Without this note in <code>SKILL.md</code>, coding agents think exit code <code>74</code> means the flash failed and enter an endless retry loop!
-    </div>
+  <div class="p-3 rounded bg-gray-900 border border-gray-800 text-gray-300">
+    Without this note in <code>SKILL.md</code>, coding agents think exit code <code>74</code> means the flash failed and enter an endless retry loop!
+  </div>
   </div>
 </div>
 
@@ -396,7 +321,7 @@ Now look at `gamma-firmware-flash/SKILL.md`. Beyond requiring `APP_TYPE = BOOT_S
 layout: skill-breakdown
 way: 2
 skill: .agents/skills/gamma-firmware-flash/scripts/flash_firmware.py
-title: "gamma-firmware-flash: Binary Validation & Hands-Free Reboot"
+title: Binary Validation & Hands-Free Reboot
 step: Zoom-In 3 of 3
 ---
 
@@ -442,13 +367,7 @@ layout: default
     <strong class="text-white">Scripts Over Prose for Timing Races</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Never ask an LLM to race a 2.5-second hardware window via sequential shell tool calls</li>
-      <li>Encapsulate tight 100ms polling loops inside <code>scripts/</code></li>
-    </ul>
-  </li>
-  <li>
-    <strong class="text-white">Pre-Flight Binary Validation</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Checking the first 8 bytes of the <code>.bin</code> header in <code>flash_firmware.py</code> catches wrong <code>Makefile</code> linker targets before touching hardware</li>
+      <li>Encapsulate tight 100ms polling loops inside scripts</li>
     </ul>
   </li>
   <li>
@@ -462,4 +381,3 @@ layout: default
 <!--
 That's Way 2: DFU Operational Skills. Don't make the agent re-solve fragile hardware timing races in prose—wrap operational mechanics and pre-flight binary checks into deterministic Python scripts inside the skill.
 -->
-
