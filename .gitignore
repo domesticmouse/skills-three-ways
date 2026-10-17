@@ -14,3 +14,6 @@ slides/.slidev.pid
 
 # Scenario workspaces
 terminal-recordings/**/workspace/
+
+# Experiment workspaces
+experiments/
