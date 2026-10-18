@@ -1,6 +1,7 @@
 ---
 theme: default
 background: '#121317'
+colorSchema: dark
 highlighter: shiki
 lineNumbers: false
 info: |
