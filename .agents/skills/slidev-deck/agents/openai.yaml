@@ -1,0 +1,3 @@
+interface:
+  display_name: "Slidev Deck"
+  short_description: "Scaffold, author, style, preview, and deploy dark-theme Slidev presentation decks"
