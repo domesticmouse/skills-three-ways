@@ -366,11 +366,14 @@ description: >-
     <p class="text-gray-300 leading-relaxed m-0">
       The <strong>primary activation trigger</strong> loaded at startup. The agent matches user prompts against this text to decide whether to load the full skill.
     </p>
+    <p v-click class="text-amber-300 font-bold mt-3 mb-0">
+      This is the most incorrectly named field in YAML that I know of.
+    </p>
   </div>
 </div>
 
 <!--
-The YAML frontmatter provides the skill's identity and activation trigger. Because only name and description are loaded into context at session startup, the description must clearly specify domain keywords and explicit "Use when..." conditions.
+The YAML frontmatter provides the skill's identity and activation trigger. Because only name and description are loaded into context at session startup, the description must clearly specify domain keywords and explicit "Use when..." conditions. Honestly, `description` is the most incorrectly named field in YAML that I know of—it's not documentation for a human, it's the semantic routing prompt the agent uses to decide when to load the skill.
 -->
 
 ---
