@@ -34,25 +34,25 @@ layout: default
   <h2 class="text-2xl font-bold m-0">About Me: Brett Morgan</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-9 text-base text-gray-200 list-decimal pl-6 mt-9 leading-relaxed">
   <li v-click>
-    <strong class="text-white">16 Years in Developer Relations at Google</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>From Sydney &mdash; though I lived right here in Brisbane for a couple of years during the awkward years.</li>
-      <li>Supported <strong>Blogger</strong>, <strong>Google+</strong>, <strong>Google Maps</strong>, <strong>Flutter</strong>, and now <strong>Google Antigravity</strong></li>
+    <strong class="text-white">16 Years in Google DevRel</strong>
+    <ul class="list-disc pl-5 mt-2.5 space-y-2 text-gray-300">
+      <li>From Sydney (plus a couple of awkward years right here in Brisbane)</li>
+      <li>Blogger, Google+, Google Maps, Flutter &rarr; now <strong>Google Antigravity</strong></li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Down the Synthesizer &amp; Electronics Rabbit Hole</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Picked up electronics as a hobby a couple of years ago after watching videos on Eurorack synthesizers</li>
-      <li>It quickly snowballed from building modules into reverse-engineering hardware</li>
+    <strong class="text-white">Synthesizers &amp; Electronics</strong>
+    <ul class="list-disc pl-5 mt-2.5 space-y-2 text-gray-300">
+      <li>Fell down a Eurorack synth rabbit hole a couple of years ago</li>
+      <li>Snowballed from building modules into reverse-engineering hardware</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">How Agents Re-Shape User Interfaces</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Exploring how LLMs and Antigravity re-shape the definition of &mdash; and requirement for &mdash; user interfaces</li>
+    <strong class="text-white">How Agents Re-Shape UI</strong>
+    <ul class="list-disc pl-5 mt-2.5 space-y-2 text-gray-300">
+      <li>Exploring how LLMs and Antigravity change the need for user interfaces</li>
     </ul>
   </li>
 </ol>
