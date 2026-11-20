@@ -354,17 +354,16 @@ description: >-
 
 </div>
 
-<div class="grid grid-cols-2 gap-4 mt-5 text-xs">
-  <div v-click class="p-4 rounded-xl bg-gray-900 border border-gray-800">
-    <div class="font-mono font-bold text-white mb-1"><code>name</code> (Identifier Constraint)</div>
-    <p class="text-gray-400 leading-relaxed">
+<div class="space-y-4 mt-6 text-sm">
+  <div v-click class="px-5 py-5 rounded-xl bg-gray-900 border border-gray-800">
+    <div class="font-mono font-bold text-white mb-1.5"><code>name</code> (Identifier Constraint)</div>
+    <p class="text-gray-300 leading-relaxed m-0">
       A unique, lowercase, hyphenated identifier that <strong>must match the parent directory name</strong>.
     </p>
   </div>
-
-  <div v-click class="p-4 rounded-xl bg-gray-900 border border-gray-800">
-    <div class="font-mono font-bold text-cyan-300 mb-1"><code>description</code> (The Routing Trigger)</div>
-    <p class="text-gray-400 leading-relaxed">
+  <div v-click class="px-5 py-5 rounded-xl bg-gray-900 border border-gray-800">
+    <div class="font-mono font-bold text-cyan-300 mb-1.5"><code>description</code> (The Routing Trigger)</div>
+    <p class="text-gray-300 leading-relaxed m-0">
       The <strong>primary activation trigger</strong> loaded at startup. The agent matches user prompts against this text to decide whether to load the full skill.
     </p>
   </div>
