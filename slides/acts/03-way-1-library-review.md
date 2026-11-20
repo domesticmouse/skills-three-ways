@@ -66,26 +66,26 @@ layout: default
   <h2 class="text-2xl font-bold m-0">Why Embedded C++ Libraries Need Skills</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-7 text-sm text-gray-200 list-decimal pl-6 mt-8 leading-relaxed">
   <li v-click>
-    <strong class="text-white">Hallucinated Hardware Abstraction Layer APIs</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Without a skill, LLMs mix up Arduino <code>analogRead()</code>, raw STM32 HAL calls, and older <code>libDaisy</code> v4 vs v7</li>
-      <li>Causes immediate compile errors and wasted retry loops</li>
+    <strong class="text-white">Hallucinated HAL APIs</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Mixes up Arduino <code>analogRead()</code>, raw STM32 HAL, and <code>libDaisy</code> v4 vs v7</li>
+      <li>Triggers immediate compile errors and wasted retry loops</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">STM32H7 Direct Memory Access &amp; RAM Traps</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>The Cortex-M7 D-Cache does not snoop DMA transfers</li>
-      <li>Putting a DMA buffer in cached AXI SRAM or a 395 KB <code>ReverbSc</code> on the stack silently crashes the MCU</li>
+    <strong class="text-white">STM32H7 DMA &amp; RAM Traps</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Cortex-M7 D-Cache does not snoop DMA transfers</li>
+      <li>Cached DMA buffers or stack-allocated <code>ReverbSc</code> (395 KB) crash the MCU</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Interrupt Service Routine Deadline Violations</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>At 48 kHz with a 48-sample block, <code>AudioCallback</code> has a strict <strong>1.0 millisecond</strong> deadline</li>
-      <li>Calling <code>oled.Update()</code> (9 ms over I2C) inside the audio ISR destroys audio output</li>
+    <strong class="text-white">Audio ISR Deadline Violations</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li><code>AudioCallback</code> has a strict <strong>1.0 ms</strong> deadline (48 samples @ 48 kHz)</li>
+      <li>Calling <code>oled.Update()</code> (9 ms over I2C) inside the ISR destroys audio</li>
     </ul>
   </li>
 </ol>
