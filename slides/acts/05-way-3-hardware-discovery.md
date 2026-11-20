@@ -374,7 +374,6 @@ layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-pinout/SKILL.md
 title: Master Pinout & Polarity Table
-step: Zoom-In 1 of 3
 ---
 
 <!-- S58 -->
@@ -452,7 +451,6 @@ layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-pinout/resources/gamma_pins.h
 title: Bundling resources/gamma_pins.h
-step: Zoom-In 2 of 3
 ---
 
 <!-- S59 -->
@@ -496,7 +494,6 @@ layout: skill-breakdown
 way: 3
 skill: .agents/skills/gamma-hardware-controls/references/
 title: Progressive Disclosure via references
-step: Zoom-In 3 of 3
 ---
 
 <!-- S61 -->

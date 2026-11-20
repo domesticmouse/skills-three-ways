@@ -212,7 +212,6 @@ layout: skill-breakdown
 way: 2
 skill: .agents/skills/gamma-firmware-restore/SKILL.md
 title: "More Than a Script Wrapper: The Restore Runbook"
-step: Zoom-In 1 of 4
 ---
 
 <!-- S43a -->
@@ -249,7 +248,6 @@ layout: skill-breakdown
 way: 2
 skill: .agents/skills/gamma-firmware-restore/scripts/restore_firmware.py
 title: Deterministic 100ms DFU Polling Loop
-step: Zoom-In 2 of 4
 ---
 
 <!-- S43b -->
@@ -282,7 +280,6 @@ layout: skill-breakdown
 way: 2
 skill: .agents/skills/gamma-firmware-flash/SKILL.md
 title: "Guardrails: Negative Constraints & Benign Errors"
-step: Zoom-In 3 of 4
 ---
 
 <!-- S44 -->
@@ -319,7 +316,6 @@ layout: skill-breakdown
 way: 2
 skill: .agents/skills/gamma-firmware-flash/scripts/flash_firmware.py
 title: Binary Validation & Hands-Free Reboot
-step: Zoom-In 4 of 4
 ---
 
 <!-- S45 -->
@@ -341,7 +337,7 @@ for dev in glob.glob("/dev/cu.usbmodem*"):
     os.write(fd, b"b\r\n")
 ```
 
-  <div class="p-2.5 rounded bg-amber-950/20 border border-amber-500/30 text-amber-200">
+  <div v-click class="p-2.5 rounded bg-amber-950/20 border border-amber-500/30 text-amber-200">
     <strong>Result</strong>: <code>flash_firmware.py</code> checks the ARM vector table <em>before</em> flashing and automatically triggers a software reboot into DFU mode over USB serial—no button press required!
   </div>
 </div>

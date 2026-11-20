@@ -114,7 +114,6 @@ layout: skill-breakdown
 way: 1
 skill: .agents/skills/libdaisy-guide/SKILL.md
 title: Frontmatter & Activation Triggers
-step: Zoom-In 1 of 3
 ---
 
 <!-- S26 -->
@@ -152,7 +151,6 @@ layout: skill-breakdown
 way: 1
 skill: .agents/skills/libdaisy-guide/SKILL.md
 title: "System & Hardware Architecture"
-step: Zoom-In 2 of 3
 ---
 
 <!-- S27 -->
@@ -217,7 +215,6 @@ layout: skill-breakdown
 way: 1
 skill: .agents/skills/libdaisy-guide/SKILL.md
 title: Codebase Organization
-step: Zoom-In 3 of 3
 ---
 
 <!-- S28 -->
