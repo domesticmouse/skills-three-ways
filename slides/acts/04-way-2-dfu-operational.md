@@ -157,14 +157,14 @@ layout: default
     </div>
   </div>
 
-  <div class="grid grid-cols-2 gap-4 text-xs">
-    <div v-click class="p-4 rounded-xl bg-red-950/15 border border-red-500/30">
-      <div class="font-bold text-red-300 mb-1">When the Agent Runs <code>dfu-util</code> Manually</div>
-      <p class="text-gray-400">By the time you tap <code>RESET</code> and tell the agent "okay go", the 2.5-second window has already expired.</p>
+  <div class="space-y-4 text-sm">
+    <div v-click class="px-5 py-4 rounded-xl bg-red-950/15 border border-red-500/30">
+      <div class="font-bold text-red-300 mb-1.5">When the Agent Runs <code>dfu-util</code> Manually</div>
+      <p class="text-gray-300 m-0">By the time you tap <code>RESET</code> and tell the agent "okay go", the 2.5-second window has already expired.</p>
     </div>
-    <div v-click class="p-4 rounded-xl bg-emerald-950/15 border border-emerald-500/30">
-      <div class="font-bold text-emerald-300 mb-1">When Wrapped in a 100ms Polling Script</div>
-      <p class="text-gray-400">The script loops <code>dfu-util -l</code> every 100ms (or sends <code>'b'</code> over USB CDC) and flashes the instant <code>0483:df11</code> appears.</p>
+    <div v-click class="px-5 py-4 rounded-xl bg-emerald-950/15 border border-emerald-500/30">
+      <div class="font-bold text-emerald-300 mb-1.5">When Wrapped in a 100ms Polling Script</div>
+      <p class="text-gray-300 m-0">The script loops <code>dfu-util -l</code> every 100ms (or sends <code>'b'</code> over USB CDC) and flashes the instant <code>0483:df11</code> appears.</p>
     </div>
   </div>
 </div>
