@@ -199,30 +199,13 @@ layout: default
   <h2 class="text-2xl font-bold m-0">The Polarity Surprise: Inverted Pots &amp; Asymmetric Sticks!</h2>
 </div>
 
-<div class="grid grid-cols-12 gap-6 mt-5 items-center">
-  <div class="col-span-6 space-y-3 text-xs">
-    <div v-click class="p-4 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-2">
-      <div class="font-mono font-bold text-amber-300 uppercase">Surprise 1: All 4 Knobs Are Wired Inverted</div>
-      <p class="text-gray-300 leading-relaxed">
-        Turning any top knob <strong>clockwise</strong> swept the ADC voltage from <code>3.3V &rarr; 0.0V</code> (<code>1.0f</code> down to <code>0.0f</code>). Without <code>1.0f - raw</code>, turning volume up turns the sound down!
-      </p>
-    </div>
-    <div v-click class="p-4 rounded-xl bg-purple-950/20 border border-purple-500/30 space-y-2">
-      <div class="font-mono font-bold text-purple-300 uppercase">Surprise 2: 3 of 4 Stick Axes Are Inverted</div>
-      <p class="text-gray-300 leading-relaxed">
-        <strong>Left Stick X (<code>D22</code>)</strong> reads <code>0.0f</code> (Left) &rarr; <code>1.0f</code> (Right), while <strong>Right Stick X (<code>D24</code>)</strong> is rotated on the PCB and reads <code>1.0f</code> (Left) &rarr; <code>0.0f</code> (Right)!
-      </p>
-    </div>
-  </div>
-
-  <div v-click class="col-span-6">
+<div class="mt-3">
 
 ```cpp
 // Verified in gamma_pins.h:
 namespace knobs {
     constexpr bool invert[4] = {true, true, true, true};
 }
-
 namespace joysticks {
     constexpr bool invert[4] = {
         false, // Left X  (D22): Direct
@@ -233,6 +216,20 @@ namespace joysticks {
 }
 ```
 
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-4 text-xs">
+  <div v-click class="p-4 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-1.5">
+    <div class="font-mono font-bold text-amber-300 uppercase">Surprise 1: All 4 Knobs Inverted</div>
+    <p class="text-gray-300 leading-relaxed m-0">
+      Turning clockwise sweeps <code>3.3V &rarr; 0.0V</code> (<code>1.0f &rarr; 0.0f</code>). Without <code>1.0f - raw</code>, turning volume up turns sound down!
+    </p>
+  </div>
+  <div v-click class="p-4 rounded-xl bg-purple-950/20 border border-purple-500/30 space-y-1.5">
+    <div class="font-mono font-bold text-purple-300 uppercase">Surprise 2: 3 of 4 Stick Axes Inverted</div>
+    <p class="text-gray-300 leading-relaxed m-0">
+      <strong>Left X (<code>D22</code>)</strong> reads <code>0.0f &rarr; 1.0f</code>, while <strong>Right X (<code>D24</code>)</strong> is rotated on the PCB and reads <code>1.0f &rarr; 0.0f</code>!
+    </p>
   </div>
 </div>
 
