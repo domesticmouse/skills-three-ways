@@ -156,20 +156,56 @@ step: Zoom-In 2 of 3
 ---
 
 <!-- S27 -->
-<div class="space-y-3 text-xs">
-
-`libDaisy` targets the **STM32H750IBK6** high-performance microcontroller and standard Daisy hardware peripherals:
-
-| Component | Hardware Specification | libDaisy Support |
-| :--- | :--- | :--- |
-| **MCU Core** | ARM Cortex-M7 @ 480 MHz with FPU (double/single precision) & DSP extensions | CMSIS-DSP, CMSIS Core, LL / HAL drivers |
-| **Internal Flash** | 128 KB User Flash (`0x08000000`) | Base bootloader location (`APP_TYPE = BOOT_NONE`) |
-| **Internal RAM** | 1 MB total: AXI SRAM (512 KB), DTCM (128 KB), SRAM1–3 (288 KB), SRAM4 (64 KB) | Fast DSP state (`DTCM`), DMA buffers (`SRAM1`) |
-| **External SDRAM** | 64 MB 32-bit SDRAM (AS4C32M16SB) via FMC bus @ ~100–120 MHz | Large audio buffers / delay lines (`DSY_SDRAM_BSS`) |
-| **External Flash** | 8 MB QSPI NOR Flash (IS25LP064A) via Quad-SPI | Daisy Bootloader app storage (`APP_TYPE = BOOT_SRAM`) & presets |
-| **Audio Codec** | 24-bit stereo up to 96 kHz (AK4556, WM8731, PCM3060, TAC5242) | Interrupt double-buffered DMA via SAI1 |
-| **USB** | USB 2.0 Full-Speed (12 Mbps) or High-Speed with external ULPI | USB CDC (Serial), USB MIDI, USB Audio, USB Host |
-
+<div class="space-y-4 text-xs">
+  <p class="text-sm text-gray-300 m-0">
+    <code>libDaisy</code> targets the <strong>STM32H750IBK6</strong> MCU and standard Daisy peripherals:
+  </p>
+  <table class="w-full text-left border-collapse">
+    <thead>
+      <tr class="border-b border-gray-700 text-gray-200">
+        <th class="py-2.5 pr-3">Component</th>
+        <th class="py-2.5 px-3">Hardware Spec</th>
+        <th class="py-2.5 pl-3">libDaisy Support</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-800/80 text-gray-300">
+      <tr>
+        <td class="py-2.5 pr-3 font-semibold text-white">MCU Core</td>
+        <td class="py-2.5 px-3">ARM Cortex-M7 @ 480 MHz (FPU &amp; DSP)</td>
+        <td class="py-2.5 pl-3">CMSIS-DSP, LL / HAL drivers</td>
+      </tr>
+      <tr>
+        <td class="py-2.5 pr-3 font-semibold text-white">Internal Flash</td>
+        <td class="py-2.5 px-3">128 KB Flash (<code>0x08000000</code>)</td>
+        <td class="py-2.5 pl-3">Bootloader (<code>BOOT_NONE</code>)</td>
+      </tr>
+      <tr>
+        <td class="py-2.5 pr-3 font-semibold text-white">Internal RAM</td>
+        <td class="py-2.5 px-3">1 MB (AXI 512K, DTCM 128K, SRAM1–4)</td>
+        <td class="py-2.5 pl-3">DSP (<code>DTCM</code>), DMA (<code>SRAM1</code>)</td>
+      </tr>
+      <tr>
+        <td class="py-2.5 pr-3 font-semibold text-white">External SDRAM</td>
+        <td class="py-2.5 px-3">64 MB SDRAM via FMC</td>
+        <td class="py-2.5 pl-3">Audio buffers (<code>DSY_SDRAM_BSS</code>)</td>
+      </tr>
+      <tr>
+        <td class="py-2.5 pr-3 font-semibold text-white">External Flash</td>
+        <td class="py-2.5 px-3">8 MB QSPI NOR Flash</td>
+        <td class="py-2.5 pl-3">Apps (<code>BOOT_SRAM</code>) &amp; presets</td>
+      </tr>
+      <tr>
+        <td class="py-2.5 pr-3 font-semibold text-white">Audio Codec</td>
+        <td class="py-2.5 px-3">24-bit stereo up to 96 kHz</td>
+        <td class="py-2.5 pl-3">Double-buffered DMA via SAI1</td>
+      </tr>
+      <tr>
+        <td class="py-2.5 pr-3 font-semibold text-white">USB</td>
+        <td class="py-2.5 px-3">USB 2.0 Full / High-Speed</td>
+        <td class="py-2.5 pl-3">CDC Serial, MIDI, Audio, Host</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <!--
@@ -185,19 +221,51 @@ step: Zoom-In 3 of 3
 ---
 
 <!-- S28 -->
-<div class="space-y-3 text-xs">
-
-The `libDaisy` source tree ([`libDaisy/src/`](https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/)) uses standardized module prefixes:
-
-| Prefix | Subsystem Domain | Description & Representative Classes |
-| :--- | :--- | :--- |
-| **`sys/`** | **System Infrastructure** | Clocks, MPU, D-cache invalidation, DMA routing, FatFs (`System`, `DmaHandler`, `FatFSInterface`) |
-| **`per/`** | **Internal Peripherals** | On-chip STM32H7 drivers (`AdcHandle`, `DacHandle`, `GPIO`, `I2CHandle`, `SpiHandle`, `SaiHandle`, `QSPIHandle`, `TimerHandle`) |
-| **`dev/`** | **External Devices** | Off-chip ICs: codecs (`Pcm3060`, `Ak4556`), OLEDs (`SSD130x`, `SH1106`), memory (`SdramHandle`, `IS25LP064A`), expanders & LEDs |
-| **`hid/`** | **Human Interface** | Real-time audio & controls (`AudioHandle`, `AnalogControl`, `Switch`, `Encoder`, `MidiHandler`, `UsbHandle`, `OledDisplay`) |
-| **`ui/`** | **User Interface** | Screen menu hierarchies, event queues, and input monitoring (`UI`, `UiEventQueue`, `AbstractMenu`, `FullScreenItemMenu`) |
-| **`util/`** | **Utilities** | Lock-free `FIFO`, heap-free `FixedCapStr`, `WavPlayer`, `PersistentStorage`, and `CpuLoadMeter` |
-
+<div class="space-y-4 text-xs">
+  <p class="text-sm text-gray-300 m-0">
+    <code>libDaisy</code> organizes <a href="https://github.com/domesticmouse/reverse-engineering-gamma/blob/main/libDaisy/src/" target="_blank" class="text-cyan-300 underline"><code>libDaisy/src/</code></a> by standardized module prefixes:
+  </p>
+  <table class="w-full text-left border-collapse">
+    <thead>
+      <tr class="border-b border-gray-700 text-gray-200">
+        <th class="py-3 pr-3">Prefix</th>
+        <th class="py-3 px-3">Subsystem</th>
+        <th class="py-3 pl-3">Key Classes &amp; Role</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-800/80 text-gray-300">
+      <tr>
+        <td class="py-3 pr-3 font-semibold text-white"><code>sys/</code></td>
+        <td class="py-3 px-3 font-semibold text-white">System</td>
+        <td class="py-3 pl-3">Clocks, MPU, cache, DMA (<code>System</code>, <code>DmaHandler</code>)</td>
+      </tr>
+      <tr>
+        <td class="py-3 pr-3 font-semibold text-white"><code>per/</code></td>
+        <td class="py-3 px-3 font-semibold text-white">Peripherals</td>
+        <td class="py-3 pl-3">On-chip STM32 drivers (<code>AdcHandle</code>, <code>GPIO</code>, <code>I2CHandle</code>, <code>TimerHandle</code>)</td>
+      </tr>
+      <tr>
+        <td class="py-3 pr-3 font-semibold text-white"><code>dev/</code></td>
+        <td class="py-3 px-3 font-semibold text-white">Devices</td>
+        <td class="py-3 pl-3">Off-chip ICs: codecs (<code>Pcm3060</code>), OLEDs (<code>SSD130x</code>), memory</td>
+      </tr>
+      <tr>
+        <td class="py-3 pr-3 font-semibold text-white"><code>hid/</code></td>
+        <td class="py-3 px-3 font-semibold text-white">Human Interface</td>
+        <td class="py-3 pl-3">Audio &amp; controls (<code>AudioHandle</code>, <code>Switch</code>, <code>Encoder</code>, <code>UsbHandle</code>)</td>
+      </tr>
+      <tr>
+        <td class="py-3 pr-3 font-semibold text-white"><code>ui/</code></td>
+        <td class="py-3 px-3 font-semibold text-white">User Interface</td>
+        <td class="py-3 pl-3">Menus &amp; event queues (<code>UI</code>, <code>UiEventQueue</code>, <code>AbstractMenu</code>)</td>
+      </tr>
+      <tr>
+        <td class="py-3 pr-3 font-semibold text-white"><code>util/</code></td>
+        <td class="py-3 px-3 font-semibold text-white">Utilities</td>
+        <td class="py-3 pl-3">Lock-free <code>FIFO</code>, <code>FixedCapStr</code>, <code>WavPlayer</code>, <code>CpuLoadMeter</code></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <!--
