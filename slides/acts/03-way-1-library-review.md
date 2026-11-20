@@ -133,11 +133,11 @@ description: >-
 ---
 ```
 
-  <div class="grid grid-cols-2 gap-4 text-xs pt-2">
-    <div v-click class="p-3 rounded-lg bg-gray-900/80 border border-gray-800">
+  <div class="space-y-4 text-sm pt-3">
+    <div v-click class="px-4 py-5 rounded-lg bg-gray-900/80 border border-gray-800">
       <span class="text-cyan-300 font-semibold">Hardware Anchors:</span> Names <code>ARM Cortex-M7 @ 480 MHz</code> and <code>STM32H750</code> so any MCU-level question triggers the skill.
     </div>
-    <div v-click class="p-3 rounded-lg bg-gray-900/80 border border-gray-800">
+    <div v-click class="px-4 py-5 rounded-lg bg-gray-900/80 border border-gray-800">
       <span class="text-cyan-300 font-semibold">Subsystem Triggers:</span> Lists <code>ADC, DAC, GPIO, I2C, SPI, UART, SAI, QSPI</code> and <code>DTCM, SRAM1 DMA, SDRAM</code>.
     </div>
   </div>
