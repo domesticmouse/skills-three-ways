@@ -199,7 +199,22 @@ layout: default
   <h2 class="text-2xl font-bold m-0">The Polarity Surprise: Inverted Pots &amp; Asymmetric Sticks!</h2>
 </div>
 
-<div class="mt-3">
+<div class="grid grid-cols-2 gap-4 mt-3 text-xs">
+  <div v-click class="p-4 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-1.5">
+    <div class="font-mono font-bold text-amber-300 uppercase">Surprise 1: All 4 Knobs Inverted</div>
+    <p class="text-gray-300 leading-relaxed m-0">
+      Turning clockwise sweeps <code>3.3V &rarr; 0.0V</code> (<code>1.0f &rarr; 0.0f</code>). Without <code>1.0f - raw</code>, turning volume up turns sound down!
+    </p>
+  </div>
+  <div v-click class="p-4 rounded-xl bg-purple-950/20 border border-purple-500/30 space-y-1.5">
+    <div class="font-mono font-bold text-purple-300 uppercase">Surprise 2: 3 of 4 Stick Axes Inverted</div>
+    <p class="text-gray-300 leading-relaxed m-0">
+      <strong>Left X (<code>D22</code>)</strong> reads <code>0.0f &rarr; 1.0f</code>, while <strong>Right X (<code>D24</code>)</strong> is rotated on the PCB and reads <code>1.0f &rarr; 0.0f</code>!
+    </p>
+  </div>
+</div>
+
+<div v-click class="mt-4">
 
 ```cpp
 // Verified in gamma_pins.h:
@@ -216,21 +231,6 @@ namespace joysticks {
 }
 ```
 
-</div>
-
-<div class="grid grid-cols-2 gap-4 mt-4 text-xs">
-  <div v-click class="p-4 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-1.5">
-    <div class="font-mono font-bold text-amber-300 uppercase">Surprise 1: All 4 Knobs Inverted</div>
-    <p class="text-gray-300 leading-relaxed m-0">
-      Turning clockwise sweeps <code>3.3V &rarr; 0.0V</code> (<code>1.0f &rarr; 0.0f</code>). Without <code>1.0f - raw</code>, turning volume up turns sound down!
-    </p>
-  </div>
-  <div v-click class="p-4 rounded-xl bg-purple-950/20 border border-purple-500/30 space-y-1.5">
-    <div class="font-mono font-bold text-purple-300 uppercase">Surprise 2: 3 of 4 Stick Axes Inverted</div>
-    <p class="text-gray-300 leading-relaxed m-0">
-      <strong>Left X (<code>D22</code>)</strong> reads <code>0.0f &rarr; 1.0f</code>, while <strong>Right X (<code>D24</code>)</strong> is rotated on the PCB and reads <code>1.0f &rarr; 0.0f</code>!
-    </p>
-  </div>
 </div>
 
 <!--
