@@ -534,28 +534,29 @@ layout: default
 
 <!-- S62 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">Takeaway: Solving Problem #3 (&ldquo;Groundhog Day&rdquo; Debugging)</h2>
+  <h2 class="text-2xl font-bold m-0">Problem #3 Solved: &ldquo;Groundhog Day&rdquo; Debugging</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-10 text-sm text-gray-200 list-decimal pl-6 mt-10 leading-relaxed">
   <li v-click>
-    <strong class="text-white">The Problem We Started With: Ephemeral Chat Breakthroughs</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Normally, spending hours probing unknown GPIO pins, inverted pot polarities, and I2C blocking hazards lives only inside that one chat transcript</li>
-      <li>Close the terminal window and that hard-won system context vanishes &mdash; forcing the next session right back to square one</li>
+    <strong class="text-white">The Problem: Ephemeral Chat Breakthroughs</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Hours probing pins, inverted pots, and I2C hazards stay trapped in one chat</li>
+      <li>Close the window and hard-won context vanishes &mdash; back to square one</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">How Discovery Skills Solve It: Freeze Truth into Code &amp; Runbooks</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Shipping verified <code>resources/gamma_pins.h</code> and <code>resources/gamma_usb.h</code> headers inside the skills turns ephemeral discoveries into drop-in C++ code</li>
-      <li>Separating declarative pin truth (<code>gamma-pinout</code>) from 1 kHz <code>TIM5</code> ISR driver blueprints (<code>gamma-hardware-controls</code>) keeps institutional memory modular</li>
+    <strong class="text-white">The Fix: Freeze Truth into Code &amp; Runbooks</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li><code>resources/gamma_pins.h</code> and <code>gamma_usb.h</code> turn discoveries into drop-in C++</li>
+      <li><code>gamma-pinout</code> and <code>gamma-hardware-controls</code> separate pin facts from ISR drivers</li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white">Compounding Engineering Intelligence</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Every solved mystery or reverse-engineered subsystem becomes a permanent upgrade to the workspace &mdash; so the agent gets smarter after every hard problem you solve together</li>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Every solved mystery becomes a permanent upgrade to the workspace</li>
+      <li>Your agent gets smarter after every hard problem you solve together</li>
     </ul>
   </li>
 </ol>
