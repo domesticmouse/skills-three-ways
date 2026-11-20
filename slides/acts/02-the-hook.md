@@ -251,26 +251,29 @@ layout: default
 </div>
 
 <p class="text-sm text-gray-200 leading-relaxed">
-  Could we use <strong>Google Antigravity</strong> not just to write C++ code, but to systematically <strong>reverse-engineer the physical hardware</strong> and capture every discovery as reusable <strong>Agent Skills</strong>?
+  Reverse-engineer the hardware with <strong>Antigravity</strong> and capture every discovery as <strong>Agent Skills</strong>:
 </p>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-6 text-sm text-gray-200 list-decimal pl-6 mt-7 leading-relaxed">
   <li v-click>
-    <strong class="text-white">Way 1 &middot; Library Review Skills (<code class="text-cyan-300">libdaisy-guide</code>, <code class="text-cyan-300">daisysp-guide</code>)</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Teach the agent the C++ hardware abstraction and DSP libraries before touching the hardware</li>
+    <strong class="text-white">Way 1 &middot; Library Review Skills</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li><code class="text-cyan-300">libdaisy-guide</code> &middot; <code class="text-cyan-300">daisysp-guide</code></li>
+      <li>Teach the C++ HAL and DSP libraries before touching hardware</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Way 2 &middot; DFU Operational Skills (<code class="text-amber-300">gamma-firmware-restore</code>, <code class="text-amber-300">gamma-firmware-flash</code>)</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Establish a rock-solid USB DFU factory restore parachute and automated flash workflow</li>
+    <strong class="text-white">Way 2 &middot; DFU Operational Skills</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li><code class="text-amber-300">gamma-firmware-restore</code> &middot; <code class="text-amber-300">gamma-firmware-flash</code></li>
+      <li>Build a deterministic USB DFU restore parachute and flash script</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Way 3 &middot; Hardware Discovery Skills (<code class="text-emerald-300">gamma-pinout</code>, <code class="text-emerald-300">gamma-hardware-controls</code>, <code class="text-emerald-300">gamma-usb-connectivity</code>)</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Run phased diagnostic firmwares to map every pin, polarity, timer ISR, and USB bus</li>
+    <strong class="text-white">Way 3 &middot; Hardware Discovery Skills</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li><code class="text-emerald-300">gamma-pinout</code> &middot; <code class="text-emerald-300">gamma-hardware-controls</code> &middot; <code class="text-emerald-300">gamma-usb-connectivity</code></li>
+      <li>Run diagnostic firmwares to map pins, polarities, ISRs, and USB</li>
     </ul>
   </li>
 </ol>
