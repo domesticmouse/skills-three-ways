@@ -213,26 +213,26 @@ layout: default
   <h2 class="text-2xl font-bold m-0">The Catch: Zero Schematics, Closed-Source Firmware</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-7 text-sm text-gray-200 list-decimal pl-6 mt-8 leading-relaxed">
   <li v-click>
     <strong class="text-white">No Public Schematic</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Over 30 Daisy Seed GPIO pins (<code>D0</code>–<code>D32</code>), 3 I2C buses, and multiple ADC channels</li>
-      <li>Zero documentation on what pin connects to which button, pot, stick, or amp</li>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>30+ GPIO pins (<code>D0</code>–<code>D32</code>), 3 I2C buses, and multiple ADC channels</li>
+      <li>Zero documentation mapping buttons, pots, sticks, OLED, or amp</li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white">Closed Factory Firmware</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Stock firmware (<code>gamma-v2.0.3.bin</code>) is distributed only as a raw compiled binary (likely C++) with no public source</li>
-      <li>No C++ project template, board support package, or pin definition header exists</li>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li><code>gamma-v2.0.3.bin</code> ships only as a compiled binary with no source</li>
+      <li>No starter template, board support package, or pin header exists</li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white">Silent Failure Modes</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Wrong linker target? Red SOS LED blink. Wrong USB port? Complete silence on <code>hw.StartLog()</code></li>
-      <li>Uninitialized speaker mute pin? Dead audio output</li>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Wrong linker target blinks SOS; wrong USB port silences <code>hw.StartLog()</code></li>
+      <li>Uninitialized speaker mute pin leaves internal audio completely dead</li>
     </ul>
   </li>
 </ol>

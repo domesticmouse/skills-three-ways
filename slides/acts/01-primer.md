@@ -426,26 +426,26 @@ layout: default
   <h2 class="text-2xl font-bold m-0">The 3-Tier Progressive Disclosure Model</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-7 text-sm text-gray-200 list-decimal pl-6 mt-8 leading-relaxed">
   <li v-click>
     <strong class="text-white">Tier 1 &middot; Discovery (~100 Tokens, Always Loaded)</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>At session start, only <code>name</code> and <code>description</code> from each skill's YAML frontmatter are injected</li>
-      <li>Acts as a lightweight semantic index without consuming working memory</li>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Injects only <code>name</code> and <code>description</code> from YAML frontmatter at startup</li>
+      <li>Lightweight semantic index that barely touches the context window</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Tier 2 &middot; Activation (&lt; 5,000 Tokens, Loaded When Relevant)</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>When the user's task matches a skill's description, the agent reads <code>SKILL.md</code> into working memory</li>
-      <li>Provides the primary procedural workflow, negative constraints, and relative links</li>
+    <strong class="text-white">Tier 2 &middot; Activation (&lt; 5,000 Tokens, Loaded on Match)</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Agent reads <code>SKILL.md</code> into memory only when a task matches</li>
+      <li>Supplies the core runbook, negative constraints, and file pointers</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Tier 3 &middot; Execution (On-Demand Files, Loaded Per Sub-Task)</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>The agent selectively reads <code>references/*.md</code>, uses templates in <code>resources/</code>, or executes <code>scripts/*.py</code></li>
-      <li>Executable code runs in the terminal rather than bloating the prompt context</li>
+    <strong class="text-white">Tier 3 &middot; Execution (On-Demand Files &amp; Scripts)</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Selectively reads <code>references/</code> or copies templates from <code>resources/</code></li>
+      <li>Executes <code>scripts/*.py</code> in the terminal instead of bloating context</li>
     </ul>
   </li>
 </ol>
@@ -463,31 +463,31 @@ layout: default
   <h2 class="text-2xl font-bold m-0">Authoring Skills with Agent Skills</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-6 text-sm text-gray-200 list-decimal pl-6 mt-7 leading-relaxed">
   <li v-click>
-    <strong class="text-white">Phase 1 &middot; Exploration &amp; Problem Solving</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Solve an unfamiliar task, research an API, or reverse-engineer hardware interactively in the workspace</li>
-      <li>Iterate until commands, scripts, and edge-case fixes are thoroughly tested and proven</li>
+    <strong class="text-white">Phase 1 &middot; Explore &amp; Solve</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li>Solve the task, research the API, or probe hardware interactively</li>
+      <li>Iterate until commands, scripts, and edge cases are proven</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Phase 2 &middot; Synthesis with Built-In Customization Skill</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Prompt the agent: <code>"/agy-customize Please convert this into an agent skill"</code></li>
-      <li>The agent structures <code>SKILL.md</code>, formats YAML frontmatter, and isolates deep context into <code>scripts/</code> or <code>references/</code></li>
+    <strong class="text-white">Phase 2 &middot; Synthesize with <code>/agy-customize</code></strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li>Prompt: <code>"/agy-customize Please convert this into an agent skill"</code></li>
+      <li>Agent writes <code>SKILL.md</code> and splits out <code>scripts/</code> and <code>references/</code></li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white">Phase 3 &middot; Test in a Clean Session</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Start a brand-new conversation with an empty context window to simulate a real user prompt</li>
-      <li>Verify that semantic routing activates Tier 1 and the agent executes Tier 2 and 3 without human intervention</li>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li>Open a brand-new conversation with an empty context window</li>
+      <li>Verify Tier 1 triggers automatically and Tiers 2 &amp; 3 run hands-free</li>
     </ul>
   </li>
 </ol>
 
-<div v-click class="mt-6 p-3.5 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
+<div v-click class="mt-8 p-3.5 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
   You don't need to write the skill <strong>by hand</strong>!
 </div>
 
