@@ -111,42 +111,33 @@ layout: default
 ---
 
 <!-- S52 -->
-<div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Phase 1 &amp; 2 (<code>phase1_i2c_scan</code>): Finding the OLED Screen</h2>
+<div class="flex items-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold m-0">Phase 1 &amp; 2: Finding the OLED Screen</h2>
 </div>
 
-<div class="grid grid-cols-12 gap-6 mt-5 items-center">
-  <div class="col-span-6 space-y-3 text-xs">
-    <p class="text-sm text-gray-300 leading-relaxed">
-      How does <code>phase1_i2c_scan</code> report which I2C bus and address answered if we don't have a screen or working USB serial yet?
-    </p>
-    <div v-click class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
-      <div class="font-mono font-bold text-emerald-300">Clever Bootstrap Trick:</div>
-      <p class="text-gray-300">
-        Have the firmware scan every <code>(Bus, Address)</code> pair, and as soon as a device ACKs, <strong>immediately initialize an SSD1306 driver on that bus/address</strong> and draw the result onto the screen itself!
-      </p>
-    </div>
-  </div>
-
-  <div v-click class="col-span-6">
-
-```cpp
-// Verified OLED Discovery on Gamma Mini Synth:
-I2CHandle::Config i2c_config;
-i2c_config.periph         = I2CHandle::Config::Peripheral::I2C_1;
-i2c_config.speed          = I2CHandle::Config::Speed::I2C_1MHZ;
-i2c_config.pin_config.scl = seed::D11; // PB8 (I2C1_SCL)
-i2c_config.pin_config.sda = seed::D12; // PB9 (I2C1_SDA)
-
-// 7-bit I2C Address: 0x3D (128x64 SSD1306)
-oled_config.driver_config.transport_config.i2c_address = 0x3D;
-```
-
-  <div class="mt-3 p-2.5 rounded bg-amber-950/20 border border-amber-500/30 text-xs text-amber-200 font-mono">
-    Bonus Discovery: Must call <code>__HAL_RCC_I2C1_FORCE_RESET()</code> on boot to clear stalled I2C1 state after soft-resetting!
-  </div>
-  </div>
-</div>
+<ol class="space-y-10 text-sm text-gray-200 list-decimal pl-6 mt-10 leading-relaxed">
+  <li v-click>
+    <strong class="text-white">The Chicken-and-Egg Problem</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>No working USB serial and no working display yet</li>
+      <li>How does <code>phase1_i2c_scan</code> report which bus and address answered?</li>
+    </ul>
+  </li>
+  <li v-click>
+    <strong class="text-white">The Bootstrap Trick</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Scan every <code>(Bus, Address)</code> pair across <code>I2C1</code>, <code>I2C2</code>, and <code>I2C4</code></li>
+      <li>On ACK, immediately init SSD1306 there and draw the address onto the screen</li>
+    </ul>
+  </li>
+  <li v-click>
+    <strong class="text-white">The Discovery</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>OLED lit up on <code>I2C1</code> (<code>D11</code> SCL / <code>D12</code> SDA, 1 MHz) at address <code>0x3D</code></li>
+      <li>Bonus trap: must call <code>__HAL_RCC_I2C1_FORCE_RESET()</code> on boot after soft-resets</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
 In Phase 1, how do you read I2C scan results without a screen or serial port? We had the scanner try initializing an SSD1306 driver on every I2C address that ACKed—and the OLED lit up immediately on `I2C1` (`D11`/`D12`) at address `0x3D`!
