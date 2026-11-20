@@ -283,24 +283,24 @@ title: "Guardrails: Negative Constraints & Benign Errors"
 ---
 
 <!-- S44 -->
-<ol class="space-y-6 text-sm text-gray-200 list-decimal pl-6 mt-2 leading-relaxed">
+<ol class="space-y-10 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
   <li v-click>
     <strong class="text-white">Negative Constraint: <code>APP_TYPE = BOOT_SRAM</code> Only</strong>
-    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+    <ul class="list-disc pl-5 mt-2.5 space-y-2.5 text-gray-300">
       <li>Explicitly bans <code>BOOT_QSPI</code> and <code>BOOT_NONE</code> despite flashing into QSPI</li>
       <li>Prevents bootloader rejections and red SOS blink crashes up front</li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white">Benign Failure Mode: <code>dfu-util</code> Exit Code <code>74</code></strong>
-    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+    <ul class="list-disc pl-5 mt-2.5 space-y-2.5 text-gray-300">
       <li>MCU reboots immediately on <code>:leave</code> before sending final USB status</li>
       <li>Stops agents from mistaking a successful flash for an error and looping</li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white">Deadlock Trap: Ban <code>daisy::Logger&lt;LOGGER_EXTERNAL&gt;</code></strong>
-    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+    <ul class="list-disc pl-5 mt-2.5 space-y-2.5 text-gray-300">
       <li>Closing a serial monitor hangs <code>TransmitSync()</code> with notes stuck forever</li>
       <li>Routes the agent straight to our timeout-guarded non-blocking logger</li>
     </ul>
