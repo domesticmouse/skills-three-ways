@@ -278,29 +278,29 @@ layout: default
 
 <!-- S29 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">Takeaway: Solving Problem #1 (Unfamiliar APIs &amp; Tribal Knowledge)</h2>
+  <h2 class="text-2xl font-bold m-0">Problem #1 Solved: Unfamiliar APIs &amp; Tribal Knowledge</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-10 text-sm text-gray-200 list-decimal pl-6 mt-10 leading-relaxed">
   <li v-click>
-    <strong class="text-white">The Problem We Started With: Hallucinated APIs &amp; Grep Loops</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Without a skill, the agent mixes up library versions, invents HAL calls, or burns turns searching 50,000+ lines of C++ headers in <code>libDaisy/</code> and <code>DaisySP/</code></li>
-      <li>Hidden architectural constraints like Cortex-M7 DMA cache coherency and 1.0 ms audio ISR deadlines aren't obvious from raw headers</li>
+    <strong class="text-white">The Problem: Hallucinated APIs &amp; Grep Loops</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Agents mix up versions and burn turns grepping 50,000+ lines of headers</li>
+      <li>Constraints like DMA cache rules and 1 ms ISR deadlines aren't obvious</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">How Library Review Skills Solve It: Distill Once, Reuse Forever</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Auditing the source tree once produces a ~200-line <code>SKILL.md</code> runbook backed by on-demand Tier-3 catalogs in <code>references/</code></li>
-      <li>Replaces repetitive codebase grep loops with zero-hallucination class names, memory macros, and real-time DSP rules</li>
+    <strong class="text-white">The Fix: Distill Once, Reuse Forever</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>One codebase audit produces a ~200-line <code>SKILL.md</code> + <code>references/</code></li>
+      <li>Verified class names, memory macros, and DSP rules replace guesswork</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Portable Expertise Across Projects &amp; Teammates</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li><code>libdaisy-guide</code> and <code>daisysp-guide</code> travel with the repo and work on any Electro-Smith Daisy Seed, Pod, Patch, or Petal project</li>
-      <li>Every new agent session &mdash; and every developer on the team &mdash; inherits instant platform mastery on turn one</li>
+    <strong class="text-white">Portable Across Projects &amp; Teammates</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li><code>libdaisy-guide</code> and <code>daisysp-guide</code> work on any Daisy project</li>
+      <li>Every new session and teammate inherits instant mastery on turn one</li>
     </ul>
   </li>
 </ol>
