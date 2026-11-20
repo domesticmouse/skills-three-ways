@@ -272,43 +272,43 @@ layout: default
       <svg class="w-4 h-4 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
       <span>.agents/skills/code-reviewer/</span>
     </div>
-    <div class="space-y-2.5 pl-3 border-l border-gray-700/80 ml-1.5">
-      <div class="flex items-center justify-between py-1.5 px-2.5 rounded-lg bg-cyan-950/30 border border-cyan-500/30">
+    <div class="space-y-1.5 pl-3 border-l border-gray-700/80 ml-1.5">
+      <div class="flex items-center justify-between py-1.5 px-2.5 rounded-lg border transition-colors" :class="$clicks === 1 ? 'bg-cyan-950/50 border-cyan-400/70' : 'border-transparent'">
         <div class="flex items-center gap-2 text-cyan-300 font-bold">
           <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           <span>SKILL.md</span>
         </div>
         <span class="text-[10px] uppercase tracking-wider text-cyan-300/90 bg-cyan-950/80 px-1.5 py-0.5 rounded">Required</span>
       </div>
-      <div class="space-y-1 pt-0.5">
-        <div class="flex items-center justify-between px-2 text-amber-300 font-bold">
+      <div class="space-y-1 py-1.5 px-2.5 rounded-lg border transition-colors" :class="$clicks === 2 ? 'bg-amber-950/40 border-amber-400/70' : 'border-transparent'">
+        <div class="flex items-center justify-between text-amber-300 font-bold">
           <div class="flex items-center gap-2">
             <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
             <span>scripts/</span>
           </div>
           <span class="text-[10px] uppercase tracking-wider text-gray-500 font-normal">Optional</span>
         </div>
-        <div class="pl-5 ml-3.5 border-l border-gray-800 text-gray-400 py-0.5">run_linter.py</div>
+        <div class="pl-5 ml-1.5 border-l border-gray-800 text-gray-400 py-0.5">run_linter.py</div>
       </div>
-      <div class="space-y-1 pt-0.5">
-        <div class="flex items-center justify-between px-2 text-emerald-300 font-bold">
+      <div class="space-y-1 py-1.5 px-2.5 rounded-lg border transition-colors" :class="$clicks === 3 ? 'bg-emerald-950/40 border-emerald-400/70' : 'border-transparent'">
+        <div class="flex items-center justify-between text-emerald-300 font-bold">
           <div class="flex items-center gap-2">
             <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
             <span>references/</span>
           </div>
           <span class="text-[10px] uppercase tracking-wider text-gray-500 font-normal">Optional</span>
         </div>
-        <div class="pl-5 ml-3.5 border-l border-gray-800 text-gray-400 py-0.5">style_guide.md</div>
+        <div class="pl-5 ml-1.5 border-l border-gray-800 text-gray-400 py-0.5">style_guide.md</div>
       </div>
-      <div class="space-y-1 pt-0.5">
-        <div class="flex items-center justify-between px-2 text-emerald-300 font-bold">
+      <div class="space-y-1 py-1.5 px-2.5 rounded-lg border transition-colors" :class="$clicks === 3 ? 'bg-emerald-950/40 border-emerald-400/70' : 'border-transparent'">
+        <div class="flex items-center justify-between text-emerald-300 font-bold">
           <div class="flex items-center gap-2">
             <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
             <span>resources/</span>
           </div>
           <span class="text-[10px] uppercase tracking-wider text-gray-500 font-normal">Optional</span>
         </div>
-        <div class="pl-5 ml-3.5 border-l border-gray-800 text-gray-400 py-0.5">report_template.md</div>
+        <div class="pl-5 ml-1.5 border-l border-gray-800 text-gray-400 py-0.5">report_template.md</div>
       </div>
     </div>
   </div>
