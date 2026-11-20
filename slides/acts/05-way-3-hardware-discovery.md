@@ -29,26 +29,26 @@ layout: default
   <h2 class="text-2xl font-bold m-0">Diagnostic Firmwares (<code>PLAN.md</code>) &rarr; Truth + Idioms</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-10 text-sm text-gray-200 list-decimal pl-6 mt-10 leading-relaxed">
   <li v-click>
-    <strong class="text-white">Phased Plan: Bootstrap One Output Channel First</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>You can't probe 30 unknown pins blind without telemetry</li>
-      <li>First find the OLED screen (<code>Phase 1 &amp; 2</code>) so the synth itself can display live GPIO and ADC readings</li>
+    <strong class="text-white">Bootstrap Telemetry First</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>You can't probe 30 unknown pins blind without an output channel</li>
+      <li>Find the OLED screen first so the synth displays live GPIO &amp; ADC data</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Interactive Probing: Turn Knobs, Press Keys, Log Truth</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Flash diagnostic firmwares (<code>phase3_adc</code>, <code>phase4_keys_encoder</code>, <code>phase5_audio</code>)</li>
-      <li>Record exact pin numbers, electrical polarities, and timing hazards</li>
+    <strong class="text-white">Probe Interactively &amp; Log Truth</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Flash phased firmwares (<code>phase3_adc</code>, <code>phase4_keys_encoder</code>, <code>phase5_audio</code>)</li>
+      <li>Record exact pins, inverted polarities, and timing hazards</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Split Facts vs. Idioms: Modular Hardware Skills</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Package raw pinout truth + <code>gamma_pins.h</code> in <code>gamma-pinout</code></li>
-      <li>Package C++ peripheral and USB driver architectures in <code>gamma-hardware-controls</code> and <code>gamma-usb-connectivity</code></li>
+    <strong class="text-white">Split Facts vs. Driver Idioms</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Ship pinout truth + <code>gamma_pins.h</code> inside <code>gamma-pinout</code></li>
+      <li>Isolate drivers in <code>gamma-hardware-controls</code> &amp; <code>gamma-usb-connectivity</code></li>
     </ul>
   </li>
 </ol>
