@@ -29,26 +29,26 @@ layout: default
   <h2 class="text-2xl font-bold m-0">Source Tree &rarr; Architecture Report &rarr; Skill</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-7 text-sm text-gray-200 list-decimal pl-6 mt-8 leading-relaxed">
   <li v-click>
-    <strong class="text-white">Clone Source: Check Out the Raw C++ Repos</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Clone <code>electro-smith/libDaisy</code> and <code>electro-smith/DaisySP</code> directly into the workspace</li>
-      <li>Ask agent to inspect source code rather than relying on stale training weights</li>
+    <strong class="text-white">Clone the Source Repos</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Check out <code>electro-smith/libDaisy</code> and <code>electro-smith/DaisySP</code> locally</li>
+      <li>Inspect live source code instead of relying on stale training weights</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Deep Audit: Synthesize Architecture</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Have Antigravity survey linker scripts, memory sections, real-time ISR rules, and module catalogs</li>
-      <li>Compile findings into a structured architectural reference</li>
+    <strong class="text-white">Run an Architectural Audit</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Survey linker scripts, memory sections, ISR rules, and module catalogs</li>
+      <li>Synthesize findings into a structured architectural report</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Package Skill: Distill into <code>.agents/skills/</code></strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Convert the report into a <code>SKILL.md</code> cheatsheet plus <code>references</code> catalogs</li>
-      <li>Future tasks know where to start looking for things</li>
+    <strong class="text-white">Package into <code>.agents/skills/</code></strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Distill the report into a concise <code>SKILL.md</code> plus <code>references/</code> catalogs</li>
+      <li>Future sessions start with an accurate map of the codebase</li>
     </ul>
   </li>
 </ol>
