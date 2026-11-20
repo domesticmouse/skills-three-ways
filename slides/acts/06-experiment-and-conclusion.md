@@ -94,7 +94,7 @@ layout: default
   <h2 class="text-2xl font-bold m-0">How All 7 Skills Composed Together</h2>
 </div>
 
-<ol class="space-y-2.5 text-xs text-gray-200 list-decimal pl-6 mt-4 leading-relaxed">
+<ol class="space-y-8 text-xs text-gray-200 list-decimal pl-6 mt-7 leading-relaxed">
   <li v-click>
     <strong class="text-cyan-300 font-mono">libdaisy-guide</strong>
     <span class="text-gray-300"> &mdash; Configured 48 kHz SAI1 <code>AudioCallback</code>, <code>AdcChannelConfig</code>, and <code>OledDisplay</code> transport</span>
@@ -121,7 +121,7 @@ layout: default
   </li>
 </ol>
 
-<div v-click class="mt-4 p-3 rounded-lg bg-gray-900 border border-gray-800 text-center text-xs text-gray-300">
+<div v-click class="mt-9 p-4 rounded-lg bg-gray-900 border border-gray-800 text-center text-sm text-gray-300">
   No single mega-skill did this—<strong>focused, modular skills composed seamlessly</strong> at task time.
 </div>
 
@@ -176,17 +176,17 @@ layout: default
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Token Tax</strong>
+    <strong class="text-white">Capabilities, Not Procedures</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Context overhead scales at <span class="font-mono text-purple-300">Servers &times; Tools per Server</span></li>
-      <li>Every schema must be declared upfront in tool definition</li>
+      <li>Lazy-loading harnesses ease the upfront schema token tax</li>
+      <li>Schemas still only describe <em>what</em> tools exist&mdash;not <em>how</em> to compose them or handle edge cases</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">LLMs Can Now Code</strong>
+    <strong class="text-white">CLI &amp; Scripts Beat Local Wrappers</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Server infrastructure got easier, but agent capability leaped forward</li>
-      <li>Modern models can write scripts and execute CLI runbooks directly</li>
+      <li>Coding agents already have a shell to run CLIs and bundled scripts directly</li>
+      <li>Reserve MCP for authenticated external APIs&mdash;not wrapping local commands</li>
     </ul>
   </li>
 </ol>
@@ -196,7 +196,7 @@ Now that we've seen all seven skills come together in the live demo, let's step 
 
 MCP started as a clean way to connect local desktop clients to tools over stdio, then migrated to remote servers. Early on, that meant stateful connections and sticky sessions. MCP 2 addressed that head-on—going stateless and exposing methods in headers so server farms and API gateways can easily route calls.
 
-However, that’s an infrastructure optimization. It doesn't solve the context window tax: you're still paying the schema cost for every tool across every server upfront. More importantly, it’s orthogonal to the biggest change in AI: LLMs can now write and execute code. If an agent can run a script or follow a runbook, we don't always need a heavyweight RPC server to get work done.
+Modern harnesses like Antigravity also lazy-load MCP tool schemas, easing the upfront token tax. Even so, MCP only exposes capabilities—schemas tell the model what tools exist, not how to compose them or recover from edge cases. And because coding agents already have a shell to run CLIs and bundled scripts directly, we don't need an MCP RPC server just to wrap local commands—reserve MCP for authenticated external APIs.
 -->
 
 ---
