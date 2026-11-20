@@ -33,31 +33,31 @@ layout: default
   <h2 class="text-2xl font-bold m-0">What the Factory Synth Does Out of the Box</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-6 text-sm text-gray-200 list-decimal pl-6 mt-7 leading-relaxed">
   <li v-click>
     <strong class="text-white">Left &amp; Right Keypads: 7 Note + 7 Chord Keys</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+    <ul class="list-disc pl-5 mt-1.5 space-y-1.5 text-gray-300">
       <li>Left keypad plays melodic scale degrees</li>
       <li>Right keypad triggers rich diatonic seventh &amp; extended chords</li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white">Expressive Modulation: 2 Analog Thumbsticks</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+    <ul class="list-disc pl-5 mt-1.5 space-y-1.5 text-gray-300">
       <li>Spring-loaded 2-axis joysticks bend pitch and sweep LFO depth</li>
       <li>Morphs wave-shaping in real time under your thumbs</li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white">Top Panel &amp; Menu: 4 Knobs + OLED + Encoder</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+    <ul class="list-disc pl-5 mt-1.5 space-y-1.5 text-gray-300">
       <li>Dedicated Chord/Note Volume &amp; Filter cutoff knobs across the top</li>
       <li>128&times;64 OLED navigated by a clickable rotary dial</li>
     </ul>
   </li>
 </ol>
 
-<div v-click class="mt-6 p-3.5 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
+<div v-click class="mt-8 p-4 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
   It's super fun out of the box—so why would anyone risk <strong>bricking it</strong>?
 </div>
 

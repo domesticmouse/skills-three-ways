@@ -354,20 +354,17 @@ description: >-
 
 </div>
 
-<div class="space-y-4 mt-6 text-sm">
-  <div v-click class="px-5 py-5 rounded-xl bg-gray-900 border border-gray-800">
-    <div class="font-mono font-bold text-white mb-1.5"><code>name</code> (Identifier Constraint)</div>
+<div class="space-y-3 mt-4 text-sm">
+  <div v-click="1" class="px-4 py-3 rounded-xl bg-gray-900 border border-gray-800">
+    <div class="font-mono font-bold text-white mb-1"><code>name</code> (Identifier Constraint)</div>
     <p class="text-gray-300 leading-relaxed m-0">
       A unique, lowercase, hyphenated identifier that <strong>must match the parent directory name</strong>.
     </p>
   </div>
-  <div v-click class="px-5 py-5 rounded-xl bg-gray-900 border border-gray-800">
-    <div class="font-mono font-bold text-cyan-300 mb-1.5"><code>description</code> (The Routing Trigger)</div>
+  <div v-click="2" class="px-4 py-3 rounded-xl bg-gray-900 border border-gray-800">
+    <div class="font-mono font-bold text-cyan-300 mb-1"><code>description</code> (The Routing Trigger)</div>
     <p class="text-gray-300 leading-relaxed m-0">
-      The <strong>primary activation trigger</strong> loaded at startup. The agent matches user prompts against this text to decide whether to load the full skill.
-    </p>
-    <p v-click class="text-amber-300 font-bold mt-3 mb-0">
-      This is the most incorrectly named field in YAML that I know of.
+      The <strong>primary activation trigger</strong> loaded at startup. The agent matches user prompts against this text to decide whether to load the full skill. <strong v-click="3">This is the most incorrectly named field in YAML that I know of.</strong>
     </p>
   </div>
 </div>
