@@ -78,14 +78,14 @@ Found DFU: [0483:df11] ver=0200, devnum=12, cfg=1, intf=0, path="1-1", alt=0,
   Product: "Daisy Bootloader" (Electrosmith)
 ```
 
-  <div class="grid grid-cols-2 gap-4 text-xs pt-2">
-    <div v-click class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
-      <div class="font-mono text-amber-300 font-bold mb-1">Bootloader in Internal Flash (<code>0x08000000</code>)</div>
-      <p class="text-gray-400">The STM32H750's 128 KB internal flash holds the permanent Electro-Smith second-stage bootloader.</p>
+  <div class="space-y-4 text-sm pt-2">
+    <div v-click class="p-5 rounded-xl bg-gray-900 border border-gray-800">
+      <div class="font-mono text-amber-300 font-bold mb-1.5">Bootloader in Internal Flash (<code>0x08000000</code>)</div>
+      <p class="text-gray-300 leading-relaxed m-0">The STM32H750's 128 KB internal flash holds the permanent Electro-Smith second-stage bootloader.</p>
     </div>
-    <div v-click class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
-      <div class="font-mono text-amber-300 font-bold mb-1">App in QSPI Flash (<code>0x90040000</code>)</div>
-      <p class="text-gray-400">User firmware binaries live in external 8 MB QSPI flash starting at offset <code>0x90040000</code>.</p>
+    <div v-click class="p-5 rounded-xl bg-gray-900 border border-gray-800">
+      <div class="font-mono text-amber-300 font-bold mb-1.5">App in QSPI Flash (<code>0x90040000</code>)</div>
+      <p class="text-gray-300 leading-relaxed m-0">User firmware binaries live in external 8 MB QSPI flash starting at offset <code>0x90040000</code>.</p>
     </div>
   </div>
 </div>
@@ -268,7 +268,7 @@ while time.time() - start_time < timeout:
         ])
 ```
 
-  <div class="p-3.5 rounded-lg bg-amber-950/20 border border-amber-500/30 text-amber-200 text-sm">
+  <div v-click class="p-3.5 rounded-lg bg-amber-950/20 border border-amber-500/30 text-amber-200 text-sm">
     <strong>Why a script:</strong> Downloading/caching <code>gamma-v2.0.3.bin</code> and polling at 100ms happens deterministically in Python—never in prose.
   </div>
 </div>
