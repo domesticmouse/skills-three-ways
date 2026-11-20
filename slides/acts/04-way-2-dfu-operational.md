@@ -179,7 +179,7 @@ layout: default
 
 <!-- S42 -->
 <div class="flex items-center gap-3 mb-4">
-  <h2 class="text-2xl font-bold m-0">Safety First: Building <code>gamma-firmware-restore</code> Before Probing</h2>
+  <h2 class="text-2xl font-bold m-0">Safety First: <code>gamma-firmware-restore</code></h2>
 </div>
 
 <div class="grid grid-cols-12 gap-6 mt-10 items-center">
@@ -216,24 +216,24 @@ step: Zoom-In 1 of 4
 ---
 
 <!-- S43a -->
-<ol class="space-y-6 text-sm text-gray-200 list-decimal pl-6 mt-2 leading-relaxed">
+<ol class="space-y-8 text-sm text-gray-200 list-decimal pl-6 mt-4 leading-relaxed">
   <li v-click>
     <strong class="text-white">Hardware &amp; Failure Mental Model</strong>
-    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+    <ul class="list-disc pl-5 mt-2.5 space-y-2 text-gray-300">
       <li>Bootloader map (<code>0x08000000</code> &rarr; <code>0x90040000</code>), 2.5s DFU window, and SOS blink</li>
       <li><strong>OLED GDDRAM retention:</strong> splash stays frozen on screen even when MCU is dead</li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white">Three Tiered Recovery Procedures</strong>
-    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+    <ul class="list-disc pl-5 mt-2.5 space-y-2 text-gray-300">
       <li>Method 1: Automated <code>scripts/restore_firmware.py</code> + cached/hosted <code>gamma-v2.0.3.bin</code></li>
       <li>Fallbacks: Manual <code>dfu-util</code> CLI (with exit code <code>74</code> note) &amp; Web Updater &ldquo;Can't Enter Boot&rdquo;</li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white">Post-Restore Verification</strong>
-    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+    <ul class="list-disc pl-5 mt-2.5 space-y-2 text-gray-300">
       <li>Runs <code>ioreg -p IOUSB</code> to verify <code>"Gamma"</code> (<code>0x0483</code> / <code>0x5740</code>) re-enumerates</li>
       <li>Confirms the live synthesizer UI returns on the OLED display</li>
     </ul>
@@ -281,48 +281,37 @@ Second, look inside `scripts/restore_firmware.py`. All the delicate timing and c
 layout: skill-breakdown
 way: 2
 skill: .agents/skills/gamma-firmware-flash/SKILL.md
-title: Negative Constraints & Exit Code 74
+title: "Guardrails: Negative Constraints & Benign Errors"
 step: Zoom-In 3 of 4
 ---
 
 <!-- S44 -->
-<div class="grid grid-cols-2 gap-4 text-xs">
-  <div class="space-y-2">
-    <div class="font-mono text-amber-300 uppercase">Constraint 1: Linker Target</div>
-
-````markdown
-### 1. Build Target: `APP_TYPE = BOOT_SRAM`
-The bootloader expects user binaries compiled for
-**AXI SRAM** (`0x24000000`).
-
-```makefile
-APP_TYPE = BOOT_SRAM
-```
-*(Do NOT use `BOOT_QSPI` or `BOOT_NONE`; the Daisy
-Bootloader will reject `BOOT_QSPI` builds and emit
-an SOS error blink on the LED).*
-````
-
-  </div>
-  <div class="space-y-2">
-    <div class="font-mono text-amber-300 uppercase">Constraint 2: Normal Exit Code 74</div>
-
-```markdown
-> [!NOTE]
-> `dfu-util: Error during download get_status`
-> / exit code 74 upon `:leave` is normal because
-> the MCU reboots immediately upon receiving the
-> leave command.
-```
-
-  <div class="p-3 rounded bg-gray-900 border border-gray-800 text-gray-300">
-    Without this note in <code>SKILL.md</code>, coding agents think exit code <code>74</code> means the flash failed and enter an endless retry loop!
-  </div>
-  </div>
-</div>
+<ol class="space-y-6 text-sm text-gray-200 list-decimal pl-6 mt-2 leading-relaxed">
+  <li v-click>
+    <strong class="text-white">Negative Constraint: <code>APP_TYPE = BOOT_SRAM</code> Only</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li>Explicitly bans <code>BOOT_QSPI</code> and <code>BOOT_NONE</code> despite flashing into QSPI</li>
+      <li>Prevents bootloader rejections and red SOS blink crashes up front</li>
+    </ul>
+  </li>
+  <li v-click>
+    <strong class="text-white">Benign Failure Mode: <code>dfu-util</code> Exit Code <code>74</code></strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li>MCU reboots immediately on <code>:leave</code> before sending final USB status</li>
+      <li>Stops agents from mistaking a successful flash for an error and looping</li>
+    </ul>
+  </li>
+  <li v-click>
+    <strong class="text-white">Deadlock Trap: Ban <code>daisy::Logger&lt;LOGGER_EXTERNAL&gt;</code></strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li>Closing a serial monitor hangs <code>TransmitSync()</code> with notes stuck forever</li>
+      <li>Routes the agent straight to our timeout-guarded non-blocking logger</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
-Now look at `gamma-firmware-flash/SKILL.md`. Beyond requiring `APP_TYPE = BOOT_SRAM`, notice Constraint 2: `dfu-util` always exits with code 74 on `:leave` because the STM32 reboots before acknowledging the final USB status packet. Documenting that stops the agent from thinking the flash failed!
+Now look at `gamma-firmware-flash/SKILL.md`. The biggest win in operational skills is documenting negative constraints and benign failure modes. First, explicitly telling the agent NOT to use `BOOT_QSPI` prevents SOS blink crashes even though we're flashing to QSPI. Second, noting that `dfu-util` exit code 74 on `:leave` is normal stops the agent from thinking the flash failed and entering an endless retry loop. And third, banning `daisy::Logger` prevents a nasty USB deadlock that hangs the synth with notes stuck playing forever.
 -->
 
 ---
@@ -367,28 +356,29 @@ layout: default
 
 <!-- S46 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">Takeaway: Solving Problem #2 (Non-Deterministic Prose Prompts)</h2>
+  <h2 class="text-2xl font-bold m-0">Problem #2 Solved: Non-Deterministic Prose Prompts</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-10 text-sm text-gray-200 list-decimal pl-6 mt-10 leading-relaxed">
   <li v-click>
-    <strong class="text-white">The Problem We Started With: &ldquo;Vibes&rdquo; Fail on Fragile Operations</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Asking an LLM in plain prose to race a 2.5-second USB DFU bootloader window via sequential shell tool calls fails almost every time</li>
-      <li>Quirky CLI behaviors &mdash; like <code>dfu-util</code> exiting with code <code>74</code> on a normal reboot &mdash; trick agents into endless retry loops</li>
+    <strong class="text-white">The Problem: Prose Fails on Fragile Operations</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Racing a 2.5s DFU window via sequential shell calls fails almost every time</li>
+      <li>Benign quirks like <code>dfu-util</code> exit code <code>74</code> trigger endless retry loops</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">How Operational Skills Solve It: Deterministic Scripts Over Prose</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Bundling <code>scripts/flash_firmware.py</code> and <code>scripts/restore_firmware.py</code> moves tight 100ms polling loops and ARM vector-table validation into tested Python code</li>
-      <li>Documenting benign exit codes and mandatory linker flags (<code>APP_TYPE = BOOT_SRAM</code>) in <code>SKILL.md</code> eliminates guesswork</li>
+    <strong class="text-white">The Fix: Scripts &amp; Negative Constraints</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li><code>flash_firmware.py</code> and <code>restore_firmware.py</code> run 100ms polling &amp; vector checks</li>
+      <li><code>SKILL.md</code> documents <code>BOOT_SRAM</code> and benign exit codes to stop guesswork</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Repeatability You Can Trust in Any Workflow</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Whether flashing embedded hardware, running database migrations, or cutting releases, operational skills turn delicate multi-step chores into deterministic one-command execution</li>
+    <strong class="text-white">Repeatability Across Any Workflow</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Hardware flashing, DB migrations, or releases become one-command execution</li>
+      <li>Verified code handles the delicate steps instead of LLM improvisation</li>
     </ul>
   </li>
 </ol>
