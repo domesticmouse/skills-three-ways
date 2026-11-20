@@ -81,42 +81,24 @@ layout: default
   <h2 class="text-2xl font-bold m-0">The 6-Phase Hardware Probing Roadmap (<code>PLAN.md</code>)</h2>
 </div>
 
-<ol class="space-y-2.5 text-xs text-gray-200 list-decimal pl-6 mt-4 leading-relaxed">
+<ol class="space-y-7 text-base text-gray-200 list-decimal pl-6 mt-9 leading-relaxed">
   <li v-click>
-    <strong class="text-white">Phase 0 &middot; Safety Net (Factory Backup &amp; DFU Restore)</strong>
-    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
-      <li>Verify <code>gamma-v2.0.3.bin</code> restore and confirm <code>APP_TYPE = BOOT_SRAM</code> vector table entry</li>
-    </ul>
+    <strong class="text-white">Phase 0 &middot; Safety Net</strong> &mdash; Verify DFU restore &amp; <code>BOOT_SRAM</code>
   </li>
   <li v-click>
-    <strong class="text-white">Phase 1 &amp; 2 &middot; Visual Output (I2C Bus Scan &amp; OLED Bringup)</strong>
-    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
-      <li>Scan <code>I2C1</code>, <code>I2C2</code>, <code>I2C4</code> across <code>0x08</code>–<code>0x77</code> to locate the 128&times;64 SSD1306 OLED screen</li>
-    </ul>
+    <strong class="text-white">Phase 1 &amp; 2 &middot; OLED Display</strong> &mdash; Scan <code>I2C</code> buses to bring up SSD1306
   </li>
   <li v-click>
-    <strong class="text-white">Phase 3 &middot; Analog Controls (ADC1 Pots &amp; Thumbsticks)</strong>
-    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
-      <li>Render live bar graphs for all 12 Daisy ADC pins on the OLED; turn each knob and stick axis one by one</li>
-    </ul>
+    <strong class="text-white">Phase 3 &middot; Analog Controls</strong> &mdash; Plot ADC bars to map pots &amp; sticks
   </li>
   <li v-click>
-    <strong class="text-white">Phase 4 &middot; Digital Inputs (14 Keys &amp; Rotary Encoder)</strong>
-    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
-      <li>Poll all remaining candidate GPIOs with internal pull-ups (<code>INPUT_PULLUP</code>) and display active-low pin indices on screen</li>
-    </ul>
+    <strong class="text-white">Phase 4 &middot; Digital Inputs</strong> &mdash; Poll <code>INPUT_PULLUP</code> for 14 keys &amp; encoder
   </li>
   <li v-click>
-    <strong class="text-white">Phase 5 &middot; Audio &amp; Amp (PCM3060 Codec &amp; Speaker Enable)</strong>
-    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
-      <li>Output a 440 Hz test tone via SAI1 and probe candidate output pins to unmute the internal speaker amplifier</li>
-    </ul>
+    <strong class="text-white">Phase 5 &middot; Audio &amp; Amp</strong> &mdash; Output 440 Hz &amp; find speaker amp pin
   </li>
   <li v-click>
-    <strong class="text-white">Phase 6 &middot; Synthesis (Distill into Skills &amp; Build Synths)</strong>
-    <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
-      <li>Freeze all discoveries into <code>gamma-pinout</code> and <code>gamma-hardware-controls</code>, then build full instruments</li>
-    </ul>
+    <strong class="text-white">Phase 6 &middot; Synthesis</strong> &mdash; Package into <code>gamma-pinout</code> &amp; driver skills
   </li>
 </ol>
 
