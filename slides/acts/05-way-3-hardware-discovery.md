@@ -249,32 +249,47 @@ layout: default
 <div class="grid grid-cols-12 gap-5 mt-5 text-xs">
   <div class="col-span-7 space-y-3">
     <div v-click class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
-      <div class="font-mono text-emerald-300 font-bold mb-1">Left Keypad: 7 Note Keys (<code>N1</code>–<code>N7</code>)</div>
-      <p class="text-gray-300 font-mono">
-        <code>D1</code> (<code>PC11</code>), <code>D2</code> (<code>PC10</code>), <code>D3</code> (<code>PC9</code>), <code>D4</code> (<code>PC8</code>), <code>D5</code> (<code>PD2</code>), <code>D6</code> (<code>PC12</code>), <code>D7</code> (<code>PG10</code>)
-      </p>
+      <div class="font-mono text-emerald-300 font-bold mb-2">Left Keypad: 7 Note Keys (<code>N1</code>–<code>N7</code>)</div>
+      <div class="grid grid-cols-4 gap-1.5 font-mono text-[11px]">
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-emerald-300 font-semibold">D1</span> <span class="text-gray-400">(PC11)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-emerald-300 font-semibold">D2</span> <span class="text-gray-400">(PC10)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-emerald-300 font-semibold">D3</span> <span class="text-gray-400">(PC9)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-emerald-300 font-semibold">D4</span> <span class="text-gray-400">(PC8)</span></div>
+        <div></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-emerald-300 font-semibold">D5</span> <span class="text-gray-400">(PD2)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-emerald-300 font-semibold">D6</span> <span class="text-gray-400">(PC12)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-emerald-300 font-semibold">D7</span> <span class="text-gray-400">(PG10)</span></div>
+      </div>
     </div>
     <div v-click class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
-      <div class="font-mono text-cyan-300 font-bold mb-1">Right Keypad: 7 Chord Keys (<code>C1</code>–<code>C7</code>)</div>
-      <p class="text-gray-300 font-mono">
-        <code>D8</code> (<code>PG11</code>), <code>D9</code> (<code>PB4</code>), <code>D10</code> (<code>PB5</code>), <code>D13</code> (<code>PB6</code>), <code>D14</code> (<code>PB7</code>), <code>D26</code> (<code>PD11</code>), <code>D27</code> (<code>PG9</code>)
-      </p>
+      <div class="font-mono text-cyan-300 font-bold mb-2">Right Keypad: 7 Chord Keys (<code>C1</code>–<code>C7</code>)</div>
+      <div class="grid grid-cols-4 gap-1.5 font-mono text-[11px]">
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-cyan-300 font-semibold">D8</span> <span class="text-gray-400">(PG11)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-cyan-300 font-semibold">D9</span> <span class="text-gray-400">(PB4)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-cyan-300 font-semibold">D10</span> <span class="text-gray-400">(PB5)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-cyan-300 font-semibold">D13</span> <span class="text-gray-400">(PB6)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-cyan-300 font-semibold">D14</span> <span class="text-gray-400">(PB7)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-cyan-300 font-semibold">D26</span> <span class="text-gray-400">(PD11)</span></div>
+        <div class="px-1.5 py-1 rounded bg-gray-800/70 border border-gray-700/60 text-center whitespace-nowrap"><span class="text-cyan-300 font-semibold">D27</span> <span class="text-gray-400">(PG9)</span></div>
+      </div>
     </div>
     <div v-click class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
-      <div class="font-mono text-amber-300 font-bold mb-1">Rotary Encoder + Push Switch</div>
-      <p class="text-gray-300 font-mono">
-        Phase A: <code>D15</code> (<code>PC0</code>) &middot; Phase B: <code>D16</code> (<code>PA3</code>) &middot; Click: <code>D28</code> (<code>PA2</code>)
-      </p>
+      <div class="font-mono text-amber-300 font-bold mb-1.5">Rotary Encoder + Push Switch</div>
+      <div class="space-y-1 font-mono text-[11px]">
+        <div><span class="inline-block w-16 text-gray-400">Phase A:</span> <span class="text-amber-300 font-semibold">D15</span> <span class="text-gray-400">(PC0)</span></div>
+        <div><span class="inline-block w-16 text-gray-400">Phase B:</span> <span class="text-amber-300 font-semibold">D16</span> <span class="text-gray-400">(PA3)</span></div>
+        <div><span class="inline-block w-16 text-gray-400">Click:</span> <span class="text-amber-300 font-semibold">D28</span> <span class="text-gray-400">(PA2)</span></div>
+      </div>
     </div>
   </div>
 
-  <div v-click class="col-span-5 p-4 rounded-xl bg-red-950/20 border border-red-500/30 space-y-2">
+  <div v-click class="col-span-5 p-6 rounded-xl bg-red-950/20 border border-red-500/30 space-y-5">
     <div class="font-mono text-red-400 uppercase">The Display Blocking Hazard</div>
     <div class="text-sm font-bold text-white">Why Main-Loop Encoder Polling Drops Clicks</div>
-    <p class="text-gray-300 leading-relaxed">
+    <p class="text-gray-300 leading-relaxed m-0">
       <code>oled.Update()</code> blocks the main thread for <strong>~9.5 ms</strong> over I2C1. Quadrature encoder transitions last 1–3 ms!
     </p>
-    <p class="text-emerald-300 font-semibold pt-1">
+    <p class="text-emerald-300 font-semibold leading-relaxed pt-2 m-0">
       Solution: Sample the encoder and 14 keys inside a <strong>1 kHz <code>TIM5</code> hardware interrupt</strong>!
     </p>
   </div>
@@ -289,33 +304,30 @@ layout: default
 ---
 
 <!-- S56 -->
-<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center gap-3 mb-3">
   <h2 class="text-2xl font-bold m-0">Phase 5 (<code>phase5_audio</code>): The Hidden Speaker Amplifier Pin</h2>
 </div>
 
-<div class="grid grid-cols-12 gap-6 mt-6 items-center">
-  <div class="col-span-6 space-y-3 text-xs">
-    <p class="text-sm text-gray-300 leading-relaxed">
-      When we started <code>AudioCallback</code> at 48 kHz, audio played through the 3.5mm headphone jack—but the Gamma's <strong>built-in speaker was completely silent</strong>!
+<div class="grid grid-cols-12 gap-5 mt-3 items-center">
+  <p class="col-span-6 text-sm text-gray-300 leading-relaxed m-0">
+    When we started <code>AudioCallback</code> at 48 kHz, audio played through the 3.5mm headphone jack—but the Gamma's <strong>built-in speaker was completely silent</strong>!
+  </p>
+  <div v-click class="col-span-6 p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 space-y-1.5 text-xs">
+    <div class="font-mono font-bold text-emerald-300">Discovery on <code>seed::D32</code> (<code>PC3</code>):</div>
+    <p class="text-gray-300 leading-relaxed m-0">
+      The internal Class-D speaker amplifier has an active-HIGH enable/unmute line wired to <code>seed::D32</code> (<code>PC3</code>)—a pin on the Daisy Seed 2 DFM bottom pads!
     </p>
-    <div v-click class="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 space-y-2">
-      <div class="font-mono font-bold text-emerald-300">Discovery on <code>seed::D32</code> (<code>PC3</code>):</div>
-      <p class="text-gray-300">
-        The internal Class-D speaker amplifier has an active-HIGH enable/unmute line wired to <code>seed::D32</code> (<code>PC3</code>)—a pin on the Daisy Seed 2 DFM bottom pads!
-      </p>
-    </div>
   </div>
+</div>
 
-  <div v-click class="col-span-6">
+<div v-click class="mt-4">
 
 ```cpp
 // Pop-Free Speaker Amp Initialization Sequence:
 GPIO spk_en;
 
 // 1. Pull LOW immediately on boot to prevent startup pop
-spk_en.Init(gamma_pins::speaker_amp::pin_enable, // seed::D32 (PC3)
-            GPIO::Mode::OUTPUT,
-            GPIO::Pull::NOPULL);
+spk_en.Init(gamma_pins::speaker_amp::pin_enable, GPIO::Mode::OUTPUT, GPIO::Pull::NOPULL);
 spk_en.Write(false);
 
 // 2. Start SAI1 PCM3060 48kHz audio engine
@@ -325,7 +337,6 @@ hw.StartAudio(AudioCallback);
 spk_en.Write(true);
 ```
 
-  </div>
 </div>
 
 <!--
@@ -341,26 +352,26 @@ layout: default
   <h2 class="text-2xl font-bold m-0">Distilling Facts vs. Idioms: Three Modular Hardware Skills</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-10 text-sm text-gray-200 list-decimal pl-6 mt-10 leading-relaxed">
   <li v-click>
     <strong class="text-white"><code class="text-emerald-300">gamma-pinout</code> &middot; Declarative Hardware Truth</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Answers <strong>"What is connected where?"</strong> via a master 32-row pinout and polarity table</li>
-      <li>Bundles a drop-in <code>resources/gamma_pins.h</code> C++ header with pure hardware constants</li>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Answers <strong>"What is connected where?"</strong> in a master pinout &amp; polarity table</li>
+      <li>Bundles drop-in <code>resources/gamma_pins.h</code> constants</li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white"><code class="text-emerald-300">gamma-hardware-controls</code> &middot; Front-Panel Driver Idioms</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Answers <strong>"How do I poll and render controls safely?"</strong> via a 1 kHz <code>TIM5</code> ISR Buxton Gray-code encoder state machine</li>
-      <li>Provides lock-free key event queues, IIR deadband pot smoothing, and 5 deep subsystem guides in <code>references/*.md</code></li>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Answers <strong>"How do I poll controls safely?"</strong> via a 1 kHz <code>TIM5</code> ISR</li>
+      <li>Adds lock-free key queues, pot smoothing, and 5 guides in <code>references/</code></li>
     </ul>
   </li>
   <li v-click>
     <strong class="text-white"><code class="text-emerald-300">gamma-usb-connectivity</code> &middot; Non-Blocking USB CDC &amp; Reboot</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Answers <strong>"Why is <code>hw.StartLog()</code> silent?"</strong> (Gamma routes USB-C to <code>UsbHandle::FS_EXTERNAL</code> on <code>D29/D30</code>, not the Seed's internal port)</li>
-      <li>Bundles <code>resources/gamma_usb.h</code> for deadlock-free telemetry and the hands-free <code>'b'</code> DFU soft-reboot command</li>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Answers <strong>"Why is <code>hw.StartLog()</code> silent?"</strong> (USB-C routes to <code>FS_EXTERNAL</code>)</li>
+      <li>Bundles <code>resources/gamma_usb.h</code> for safe logging &amp; <code>'b'</code> DFU reboot</li>
     </ul>
   </li>
 </ol>
@@ -377,66 +388,55 @@ title: Master Pinout & Polarity Table
 ---
 
 <!-- S58 -->
-<div class="space-y-2 text-s">
-  <table>
+<div class="space-y-4 text-xs">
+  <p class="text-sm text-gray-300 m-0">
+    <code>gamma-pinout</code> captures every verified peripheral, Daisy Seed pin, interface, and polarity in one authoritative table:
+  </p>
+  <table class="w-full text-left border-collapse">
     <thead>
-      <tr>
-        <th>Peripheral</th>
-        <th>Label</th>
-        <th>Daisy Pin</th>
-        <th>STM32 Pin</th>
-        <th>Function / Channel</th>
-        <th>Polarity / Logic</th>
+      <tr class="border-b border-gray-700 text-gray-200">
+        <th class="py-3 pr-3">Peripheral</th>
+        <th class="py-3 px-3">Daisy Pins</th>
+        <th class="py-3 px-3">Interface</th>
+        <th class="py-3 pl-3">Polarity / Logic</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="divide-y divide-gray-800/80 text-gray-300">
       <tr>
-        <td><strong>OLED Display</strong></td>
-        <td>SCL / SDA</td>
-        <td><code>D11</code> / <code>D12</code></td>
-        <td><code>PB8</code> / <code>PB9</code></td>
-        <td><code>I2C1</code> @ <code>0x3D</code></td>
-        <td>1 MHz Fast Mode Plus</td>
+        <td class="py-3 pr-3 font-semibold text-white whitespace-nowrap">OLED Display</td>
+        <td class="py-3 px-3 font-mono text-emerald-300 whitespace-nowrap">D11, D12</td>
+        <td class="py-3 px-3"><code>I2C1</code> @ <code>0x3D</code></td>
+        <td class="py-3 pl-3">1 MHz Fast Mode Plus</td>
       </tr>
       <tr>
-        <td><strong>Top Pots</strong></td>
-        <td>Knobs 1–4</td>
-        <td><code>D18, D17, D19, D20</code></td>
-        <td><code>PA7, PB1, PA6, PC1</code></td>
-        <td><code>ADC1</code> (Ch 7, 5, 3, 11)</td>
-        <td><strong>Inverted</strong>: <code>1.0f - raw</code></td>
+        <td class="py-3 pr-3 font-semibold text-white whitespace-nowrap">Top Pots (1–4)</td>
+        <td class="py-3 px-3 font-mono text-emerald-300 whitespace-nowrap">D18, D17, D19, D20</td>
+        <td class="py-3 px-3"><code>ADC1</code> (Ch 7, 5, 3, 11)</td>
+        <td class="py-3 pl-3"><strong class="text-amber-300">Inverted</strong>: <code>1.0f - raw</code></td>
       </tr>
       <tr>
-        <td><strong>Left Stick</strong></td>
-        <td>LX / LY</td>
-        <td><code>D22</code> / <code>D21</code></td>
-        <td><code>PA5</code> / <code>PC4</code></td>
-        <td><code>ADC1</code> (Ch 19, 4)</td>
-        <td>LX: Normal, LY: <strong>Inverted</strong></td>
+        <td class="py-3 pr-3 font-semibold text-white whitespace-nowrap">Left Stick (LX / LY)</td>
+        <td class="py-3 px-3 font-mono text-emerald-300 whitespace-nowrap">D22, D21</td>
+        <td class="py-3 px-3"><code>ADC1</code> (Ch 19, 4)</td>
+        <td class="py-3 pl-3">LX normal &middot; LY <strong class="text-amber-300">inverted</strong></td>
       </tr>
       <tr>
-        <td><strong>Right Stick</strong></td>
-        <td>RX / RY</td>
-        <td><code>D24</code> / <code>D23</code></td>
-        <td><code>PA1</code> / <code>PA4</code></td>
-        <td><code>ADC1</code> (Ch 17, 18)</td>
-        <td>RX: <strong>Inverted</strong>, RY: <strong>Inverted</strong></td>
+        <td class="py-3 pr-3 font-semibold text-white whitespace-nowrap">Right Stick (RX / RY)</td>
+        <td class="py-3 px-3 font-mono text-emerald-300 whitespace-nowrap">D24, D23</td>
+        <td class="py-3 px-3"><code>ADC1</code> (Ch 17, 18)</td>
+        <td class="py-3 pl-3">RX &amp; RY <strong class="text-amber-300">inverted</strong></td>
       </tr>
       <tr>
-        <td><strong>Keypads</strong></td>
-        <td>N1–N7, C1–C7</td>
-        <td><code>D1–D10, D13–14, D26–27</code></td>
-        <td>Multiple GPIOs</td>
-        <td>GPIO In (<code>PULLUP</code>)</td>
-        <td>Active LOW (<code>0</code> = Pressed)</td>
+        <td class="py-3 pr-3 font-semibold text-white whitespace-nowrap">Keypads (N1–7, C1–7)</td>
+        <td class="py-3 px-3 font-mono text-emerald-300 whitespace-nowrap">D1–10, D13–14, D26–27</td>
+        <td class="py-3 px-3">GPIO In (<code>PULLUP</code>)</td>
+        <td class="py-3 pl-3">Active LOW (<code>0</code> = pressed)</td>
       </tr>
       <tr>
-        <td><strong>Speaker Amp</strong></td>
-        <td>Amp Enable</td>
-        <td><code>seed::D32</code></td>
-        <td><code>PC3</code></td>
-        <td>GPIO Out Push-Pull</td>
-        <td>Active HIGH (<code>1</code> = On)</td>
+        <td class="py-3 pr-3 font-semibold text-white whitespace-nowrap">Speaker Amp</td>
+        <td class="py-3 px-3 font-mono text-emerald-300 whitespace-nowrap">D32 (PC3)</td>
+        <td class="py-3 px-3">GPIO Out (Push-Pull)</td>
+        <td class="py-3 pl-3">Active HIGH (<code>1</code> = on)</td>
       </tr>
     </tbody>
   </table>
@@ -497,7 +497,7 @@ title: Progressive Disclosure via references
 ---
 
 <!-- S61 -->
-<ol class="space-y-2.5 text-s text-gray-200 list-decimal pl-6 leading-relaxed">
+<ol class="space-y-7 text-sm text-gray-200 list-decimal pl-6 mt-4 leading-relaxed">
   <li v-click>
     <strong class="text-emerald-300 font-mono">references/display.md</strong>
     <span class="text-gray-300"> &mdash; <code>I2C1</code> force-reset sequence, <code>I2C_1MHZ</code> config, and 30 Hz frame throttling</span>
@@ -520,7 +520,7 @@ title: Progressive Disclosure via references
   </li>
 </ol>
 
-<div v-click class="mt-4 p-3 rounded-lg bg-gray-900/70 border border-gray-800 text-xs text-gray-300 text-center">
+<div v-click class="mt-9 p-4 rounded-lg bg-gray-900/70 border border-gray-800 text-sm text-gray-300 text-center">
   <code>SKILL.md</code> stays a crisp 91-line index; the agent reads only the specific <code>references/*.md</code> file it needs.
 </div>
 
