@@ -30,21 +30,21 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Hit the Wall: Debug the Hardware Protocol</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Work interactively with AGY to figure out USB VID/PIDs, bootloader button combos, memory offsets, and exit codes</li>
       <li>Isolate where standard assumptions fail on the target hardware</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Automate in Code: Write a Deterministic Script</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Don't leave timing loops or binary header checks as prose instructions</li>
       <li>Put the exact polling and validation logic into a standalone Python utility</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Wrap in a Skill: Bundle <code>scripts/*.py</code> + <code>SKILL.md</code></strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Package the script inside <code>.agents/skills/&lt;name&gt;/scripts/</code></li>
@@ -79,11 +79,11 @@ Found DFU: [0483:df11] ver=0200, devnum=12, cfg=1, intf=0, path="1-1", alt=0,
 ```
 
   <div class="grid grid-cols-2 gap-4 text-xs pt-2">
-    <div class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
+    <div v-click class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
       <div class="font-mono text-amber-300 font-bold mb-1">Bootloader in Internal Flash (<code>0x08000000</code>)</div>
       <p class="text-gray-400">The STM32H750's 128 KB internal flash holds the permanent Electro-Smith second-stage bootloader.</p>
     </div>
-    <div class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
+    <div v-click class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
       <div class="font-mono text-amber-300 font-bold mb-1">App in QSPI Flash (<code>0x90040000</code>)</div>
       <p class="text-gray-400">User firmware binaries live in external 8 MB QSPI flash starting at offset <code>0x90040000</code>.</p>
     </div>
@@ -104,7 +104,7 @@ layout: default
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-6">
-  <div class="p-5 rounded-xl bg-red-950/20 border border-red-500/30 space-y-2">
+  <div v-click class="p-5 rounded-xl bg-red-950/20 border border-red-500/30 space-y-2">
     <div class="text-xs font-mono text-red-400 uppercase">What Standard Docs Say</div>
     <h3 class="text-lg font-bold text-white">Hold BOOT + Tap RESET</h3>
     <p class="text-xs text-gray-300 leading-relaxed">
@@ -115,7 +115,7 @@ layout: default
     </div>
   </div>
 
-  <div class="p-5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 space-y-2">
+  <div v-click class="p-5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 space-y-2">
     <div class="text-xs font-mono text-emerald-400 uppercase">What the Gamma Actually Needs</div>
     <h3 class="text-lg font-bold text-white">Tap RESET Only (or Tap BOOT After)</h3>
     <p class="text-xs text-gray-300 leading-relaxed">
@@ -158,11 +158,11 @@ layout: default
   </div>
 
   <div class="grid grid-cols-2 gap-4 text-xs">
-    <div class="p-4 rounded-xl bg-red-950/15 border border-red-500/30">
+    <div v-click class="p-4 rounded-xl bg-red-950/15 border border-red-500/30">
       <div class="font-bold text-red-300 mb-1">When the Agent Runs <code>dfu-util</code> Manually</div>
       <p class="text-gray-400">By the time you tap <code>RESET</code> and tell the agent "okay go", the 2.5-second window has already expired.</p>
     </div>
-    <div class="p-4 rounded-xl bg-emerald-950/15 border border-emerald-500/30">
+    <div v-click class="p-4 rounded-xl bg-emerald-950/15 border border-emerald-500/30">
       <div class="font-bold text-emerald-300 mb-1">When Wrapped in a 100ms Polling Script</div>
       <p class="text-gray-400">The script loops <code>dfu-util -l</code> every 100ms (or sends <code>'b'</code> over USB CDC) and flashes the instant <code>0483:df11</code> appears.</p>
     </div>
@@ -194,7 +194,7 @@ layout: default
     </ul>
   </div>
 
-  <div class="col-span-5 p-5 rounded-xl bg-amber-950/20 border border-amber-500/40 text-center space-y-2">
+  <div v-click class="col-span-5 p-5 rounded-xl bg-amber-950/20 border border-amber-500/40 text-center space-y-2">
     <div class="text-xs font-mono text-amber-300 uppercase">Rule of Hardware Reverse Engineering</div>
     <div class="text-lg font-bold text-white">Never Probe Without an Automated Unbrick Script</div>
     <p class="text-xs text-gray-400">
@@ -359,25 +359,32 @@ layout: default
 
 <!-- S46 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">Takeaway: DFU Operational Skills</h2>
+  <h2 class="text-2xl font-bold m-0">Takeaway: Solving Problem #2 (Non-Deterministic Prose Prompts)</h2>
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
-    <strong class="text-white">Scripts Over Prose for Timing Races</strong>
+  <li v-click>
+    <strong class="text-white">The Problem We Started With: &ldquo;Vibes&rdquo; Fail on Fragile Operations</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Never ask an LLM to race a 2.5-second hardware window via sequential shell tool calls</li>
-      <li>Encapsulate tight 100ms polling loops inside scripts</li>
+      <li>Asking an LLM in plain prose to race a 2.5-second USB DFU bootloader window via sequential shell tool calls fails almost every time</li>
+      <li>Quirky CLI behaviors &mdash; like <code>dfu-util</code> exiting with code <code>74</code> on a normal reboot &mdash; trick agents into endless retry loops</li>
     </ul>
   </li>
-  <li>
-    <strong class="text-white">Document Benign Tool Exit Codes</strong>
+  <li v-click>
+    <strong class="text-white">How Operational Skills Solve It: Deterministic Scripts Over Prose</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Explicitly noting that <code>dfu-util</code> exit code <code>74</code> on <code>:leave</code> is expected prevents wasted agent debugging loops</li>
+      <li>Bundling <code>scripts/flash_firmware.py</code> and <code>scripts/restore_firmware.py</code> moves tight 100ms polling loops and ARM vector-table validation into tested Python code</li>
+      <li>Documenting benign exit codes and mandatory linker flags (<code>APP_TYPE = BOOT_SRAM</code>) in <code>SKILL.md</code> eliminates guesswork</li>
+    </ul>
+  </li>
+  <li v-click>
+    <strong class="text-white">Repeatability You Can Trust in Any Workflow</strong>
+    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
+      <li>Whether flashing embedded hardware, running database migrations, or cutting releases, operational skills turn delicate multi-step chores into deterministic one-command execution</li>
     </ul>
   </li>
 </ol>
 
 <!--
-That's Way 2: DFU Operational Skills. Don't make the agent re-solve fragile hardware timing races in prose—wrap operational mechanics and pre-flight binary checks into deterministic Python scripts inside the skill.
+That's Way 2: DFU Operational Skills—and this directly solves Problem #2 from the start of the talk: prose prompts are non-deterministic. When a workflow depends on tight timing windows, binary pre-flight checks, or quirky CLI exit codes, you don't want an LLM improvising shell commands from prose instructions. By wrapping tested Python scripts and explicit negative constraints inside the skill, we turn flaky operational chores into deterministic, one-command execution.
 -->

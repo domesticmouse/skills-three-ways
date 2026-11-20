@@ -34,21 +34,21 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Left &amp; Right Keypads: 7 Note + 7 Chord Keys</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Left keypad plays melodic scale degrees</li>
       <li>Right keypad triggers rich diatonic seventh &amp; extended chords</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Expressive Modulation: 2 Analog Thumbsticks</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Spring-loaded 2-axis joysticks bend pitch and sweep LFO depth</li>
       <li>Morphs wave-shaping in real time under your thumbs</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Top Panel &amp; Menu: 4 Knobs + OLED + Encoder</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Dedicated Chord/Note Volume &amp; Filter cutoff knobs across the top</li>
@@ -57,7 +57,7 @@ layout: default
   </li>
 </ol>
 
-<div class="mt-6 p-3.5 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
+<div v-click class="mt-6 p-3.5 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
   It's super fun out of the box—so why would anyone risk <strong>bricking it</strong>?
 </div>
 
@@ -76,7 +76,7 @@ layout: default
 
 <div class="grid grid-cols-12 gap-6 items-center mt-8">
   <div class="col-span-7 space-y-4">
-    <div class="p-5 rounded-xl bg-gray-900/80 border border-gray-800 space-y-3">
+    <div v-click class="p-5 rounded-xl bg-gray-900/80 border border-gray-800 space-y-3">
       <div class="text-xs font-mono text-amber-400 uppercase">Chronology of a Hardware Impulse Buy</div>
       <ol class="text-sm text-gray-300 space-y-3 list-decimal pl-5">
         <li>Ordered a <strong>Gamma Mini Synth</strong> and waited patiently while the batch was being manufactured.</li>
@@ -86,7 +86,7 @@ layout: default
     </div>
   </div>
 
-  <div class="col-span-5 p-6 rounded-xl bg-amber-950/20 border border-amber-500/30 text-center">
+  <div v-click class="col-span-5 p-6 rounded-xl bg-amber-950/20 border border-amber-500/30 text-center">
     <div class="text-4xl font-black text-amber-300 mb-2">2&times;</div>
     <div class="text-base font-semibold text-white mb-2">Gamma Mini Synths Arrived</div>
     <p class="text-xs text-gray-400">
@@ -109,7 +109,7 @@ layout: default
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-8">
-  <div class="p-6 rounded-xl bg-gray-900/60 border border-gray-800 flex flex-col justify-between">
+  <div v-click class="p-6 rounded-xl bg-gray-900/60 border border-gray-800 flex flex-col justify-between">
     <div>
       <div class="text-xs font-mono uppercase text-gray-400">Unit #1 &middot; Factory Stock</div>
       <h3 class="text-xl font-bold text-white mt-2 mb-2">One for Making Music</h3>
@@ -122,7 +122,7 @@ layout: default
     </div>
   </div>
 
-  <div class="p-6 rounded-xl bg-emerald-950/15 border border-emerald-500/40 flex flex-col justify-between">
+  <div v-click class="p-6 rounded-xl bg-emerald-950/15 border border-emerald-500/40 flex flex-col justify-between">
     <div>
       <div class="text-xs font-mono uppercase text-emerald-400">Unit #2 &middot; The Lab Rat</div>
       <h3 class="text-xl font-bold text-emerald-300 mt-2 mb-2">One for Reverse Engineering</h3>
@@ -214,21 +214,21 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">No Public Schematic</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Over 30 Daisy Seed GPIO pins (<code>D0</code>–<code>D32</code>), 3 I2C buses, and multiple ADC channels</li>
       <li>Zero documentation on what pin connects to which button, pot, stick, or amp</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Closed Factory Firmware</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Stock firmware (<code>gamma-v2.0.3.bin</code>) is distributed only as a raw compiled binary (likely C++) with no public source</li>
       <li>No C++ project template, board support package, or pin definition header exists</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Silent Failure Modes</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Wrong linker target? Red SOS LED blink. Wrong USB port? Complete silence on <code>hw.StartLog()</code></li>
@@ -255,19 +255,19 @@ layout: default
 </p>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Way 1 &middot; Library Review Skills (<code class="text-cyan-300">libdaisy-guide</code>, <code class="text-cyan-300">daisysp-guide</code>)</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Teach the agent the C++ hardware abstraction and DSP libraries before touching the hardware</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Way 2 &middot; DFU Operational Skills (<code class="text-amber-300">gamma-firmware-restore</code>, <code class="text-amber-300">gamma-firmware-flash</code>)</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Establish a rock-solid USB DFU factory restore parachute and automated flash workflow</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Way 3 &middot; Hardware Discovery Skills (<code class="text-emerald-300">gamma-pinout</code>, <code class="text-emerald-300">gamma-hardware-controls</code>, <code class="text-emerald-300">gamma-usb-connectivity</code>)</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Run phased diagnostic firmwares to map every pin, polarity, timer ISR, and USB bus</li>

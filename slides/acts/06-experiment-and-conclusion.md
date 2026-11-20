@@ -34,7 +34,7 @@ layout: default
 </div>
 
 <div class="grid grid-cols-2 gap-5 mt-5 text-xs">
-  <div class="p-4 rounded-xl bg-red-950/15 border border-red-500/30">
+  <div v-click class="p-4 rounded-xl bg-red-950/15 border border-red-500/30">
     <div class="font-mono font-bold text-red-400 uppercase mb-1">Workspace A</div>
     <div class="text-base font-bold text-white mb-1">Without Skills</div>
     <p class="text-gray-400">
@@ -42,7 +42,7 @@ layout: default
     </p>
   </div>
 
-  <div class="p-4 rounded-xl bg-emerald-950/15 border border-emerald-500/30">
+  <div v-click class="p-4 rounded-xl bg-emerald-950/15 border border-emerald-500/30">
     <div class="font-mono font-bold text-emerald-400 uppercase mb-1">Workspace B</div>
     <div class="text-base font-bold text-white mb-1">With All 7 Skills</div>
     <p class="text-gray-400">
@@ -95,33 +95,33 @@ layout: default
 </div>
 
 <ol class="space-y-2.5 text-xs text-gray-200 list-decimal pl-6 mt-4 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-cyan-300 font-mono">libdaisy-guide</strong>
     <span class="text-gray-300"> &mdash; Configured 48 kHz SAI1 <code>AudioCallback</code>, <code>AdcChannelConfig</code>, and <code>OledDisplay</code> transport</span>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-cyan-300 font-mono">daisysp-guide</strong>
     <span class="text-gray-300"> &mdash; Selected and initialized the 7 drum voices (<code>AnalogBassDrum</code> &le; 90 Hz, <code>AnalogSnareDrum</code>, <code>HiHat</code>, <code>Svf</code>)</span>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-emerald-300 font-mono">gamma-pinout</strong>
     <span class="text-gray-300"> &mdash; Supplied drop-in <code>gamma_pins.h</code> (<code>D1</code>–<code>D7</code> keys, <code>D18/17/19/20</code> pots, <code>D32</code> speaker amp)</span>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-emerald-300 font-mono">gamma-hardware-controls</strong>
     <span class="text-gray-300"> &mdash; Supplied 1 kHz <code>TIM5</code> key/encoder ISR, <code>1.0f - raw</code> pot inversion, and <code>I2C1</code> <code>0x3D</code> OLED reset</span>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-emerald-300 font-mono">gamma-usb-connectivity</strong>
     <span class="text-gray-300"> &mdash; Supplied <code>gamma_usb.h</code> on <code>FS_EXTERNAL</code> with non-blocking logging and <code>'b'</code> DFU reboot hook</span>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-amber-300 font-mono">gamma-firmware-flash &amp; gamma-firmware-restore</strong>
     <span class="text-gray-300"> &mdash; Enforced <code>APP_TYPE = BOOT_SRAM</code> (<code>0x24000000</code>) and automated USB DFU flashing</span>
   </li>
 </ol>
 
-<div class="mt-4 p-3 rounded-lg bg-gray-900 border border-gray-800 text-center text-xs text-gray-300">
+<div v-click class="mt-4 p-3 rounded-lg bg-gray-900 border border-gray-800 text-center text-xs text-gray-300">
   No single mega-skill did this—<strong>focused, modular skills composed seamlessly</strong> at task time.
 </div>
 
@@ -161,28 +161,28 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Local &rarr; Remote</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Started as local desktop execution (stdio)</li>
       <li>Migrated to remote servers as teams moved to the cloud</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">MCP V2</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Simplified server-farm deployment</li>
       <li>Shifted from stateful sessions to stateless requests with routing headers</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Token Tax</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Context overhead scales at <span class="font-mono text-purple-300">Servers &times; Tools per Server</span></li>
       <li>Every schema must be declared upfront in tool definition</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">LLMs Can Now Code</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Server infrastructure got easier, but agent capability leaped forward</li>
@@ -209,28 +209,28 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Constitution &amp; Guardrails</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Permanent project conventions and non-negotiable boundaries</li>
       <li>Sets core behavioral rules that the agent must never violate</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Paid on Every Turn</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Injected into prompt context on every single conversational turn</li>
       <li>Permanently consumes working memory regardless of task relevance</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Plain Markdown Only</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Static text instructions without bundled executable code</li>
       <li>Cannot package helper scripts, dependencies, or rich assets</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Repository Conventions</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>De facto root conventions (<code class="text-blue-300">AGENTS.md</code>, <code class="text-blue-300">CLAUDE.md</code>)</li>
@@ -255,28 +255,28 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Procedural Runbooks</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Specialized step-by-step procedures loaded on-demand</li>
       <li>Teaches the model how to solve specific domains without prompt bloat</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">3-Tier Progressive Disclosure</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Only metadata (~100 tokens) loaded into system context at startup</li>
       <li>Full <code>SKILL.md</code> runbook and <code>references/</code> pulled into context only on match</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Self-Contained Packages</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Directory bundling <code class="text-emerald-300">SKILL.md</code>, <code class="text-emerald-300">scripts/</code>, and <code class="text-emerald-300">references/</code></li>
       <li>Executable code runs directly in terminal instead of eating context tokens</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Open Standard</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Governed by the portable <span class="text-emerald-300 font-mono">agentskills.io</span> specification</li>
@@ -301,28 +301,28 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">The Keycard: Model Context Protocol</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Unlocks the lab doors and powers up external instruments</li>
       <li>Gives the agent the raw capability and authorization to act</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">The Safety Placard: Always-On Rules</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Safety policies and guardrails posted permanently on the wall</li>
       <li>Non-negotiable boundaries the agent must never violate</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">The Procedure Manual: Agent Skills</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Standard operating procedures resting on the workbench</li>
       <li>Opened and followed step-by-step only when running a specific protocol</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Working in Harmony</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li><strong class="text-purple-300">Tools</strong> provide access &middot; <strong class="text-blue-300">Rules</strong> set boundaries &middot; <strong class="text-emerald-300">Skills</strong> teach the SOP</li>

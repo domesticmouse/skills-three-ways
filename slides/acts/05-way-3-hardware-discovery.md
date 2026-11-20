@@ -30,21 +30,21 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Phased Plan: Bootstrap One Output Channel First</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>You can't probe 30 unknown pins blind without telemetry</li>
       <li>First find the OLED screen (<code>Phase 1 &amp; 2</code>) so the synth itself can display live GPIO and ADC readings</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Interactive Probing: Turn Knobs, Press Keys, Log Truth</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Flash diagnostic firmwares (<code>phase3_adc</code>, <code>phase4_keys_encoder</code>, <code>phase5_audio</code>)</li>
       <li>Record exact pin numbers, electrical polarities, and timing hazards</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Split Facts vs. Idioms: Modular Hardware Skills</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Package raw pinout truth + <code>gamma_pins.h</code> in <code>gamma-pinout</code></li>
@@ -82,37 +82,37 @@ layout: default
 </div>
 
 <ol class="space-y-2.5 text-xs text-gray-200 list-decimal pl-6 mt-4 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Phase 0 &middot; Safety Net (Factory Backup &amp; DFU Restore)</strong>
     <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
       <li>Verify <code>gamma-v2.0.3.bin</code> restore and confirm <code>APP_TYPE = BOOT_SRAM</code> vector table entry</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Phase 1 &amp; 2 &middot; Visual Output (I2C Bus Scan &amp; OLED Bringup)</strong>
     <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
       <li>Scan <code>I2C1</code>, <code>I2C2</code>, <code>I2C4</code> across <code>0x08</code>–<code>0x77</code> to locate the 128&times;64 SSD1306 OLED screen</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Phase 3 &middot; Analog Controls (ADC1 Pots &amp; Thumbsticks)</strong>
     <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
       <li>Render live bar graphs for all 12 Daisy ADC pins on the OLED; turn each knob and stick axis one by one</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Phase 4 &middot; Digital Inputs (14 Keys &amp; Rotary Encoder)</strong>
     <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
       <li>Poll all remaining candidate GPIOs with internal pull-ups (<code>INPUT_PULLUP</code>) and display active-low pin indices on screen</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Phase 5 &middot; Audio &amp; Amp (PCM3060 Codec &amp; Speaker Enable)</strong>
     <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
       <li>Output a 440 Hz test tone via SAI1 and probe candidate output pins to unmute the internal speaker amplifier</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Phase 6 &middot; Synthesis (Distill into Skills &amp; Build Synths)</strong>
     <ul class="list-disc pl-5 mt-0.5 space-y-0.5 text-gray-300">
       <li>Freeze all discoveries into <code>gamma-pinout</code> and <code>gamma-hardware-controls</code>, then build full instruments</li>
@@ -138,7 +138,7 @@ layout: default
     <p class="text-sm text-gray-300 leading-relaxed">
       How does <code>phase1_i2c_scan</code> report which I2C bus and address answered if we don't have a screen or working USB serial yet?
     </p>
-    <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
+    <div v-click class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
       <div class="font-mono font-bold text-emerald-300">Clever Bootstrap Trick:</div>
       <p class="text-gray-300">
         Have the firmware scan every <code>(Bus, Address)</code> pair, and as soon as a device ACKs, <strong>immediately initialize an SSD1306 driver on that bus/address</strong> and draw the result onto the screen itself!
@@ -146,7 +146,7 @@ layout: default
     </div>
   </div>
 
-  <div class="col-span-6">
+  <div v-click class="col-span-6">
 
 ```cpp
 // Verified OLED Discovery on Gamma Mini Synth:
@@ -180,7 +180,7 @@ layout: default
 </div>
 
 <div class="grid grid-cols-2 gap-5 mt-5 text-xs">
-  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
+  <div v-click class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
     <div class="font-mono text-emerald-300 uppercase">4 Top Rotary Potentiometers (Left &rarr; Right)</div>
     <table>
       <thead>
@@ -196,7 +196,7 @@ layout: default
     <p class="text-gray-400 pt-1">Notice <code>D18</code> comes physically before <code>D17</code> on the top panel!</p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
+  <div v-click class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
     <div class="font-mono text-cyan-300 uppercase">2 Dual-Axis Thumbsticks (4 Analog Axes)</div>
     <table>
       <thead>
@@ -228,13 +228,13 @@ layout: default
 
 <div class="grid grid-cols-12 gap-6 mt-5 items-center">
   <div class="col-span-6 space-y-3 text-xs">
-    <div class="p-4 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-2">
+    <div v-click class="p-4 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-2">
       <div class="font-mono font-bold text-amber-300 uppercase">Surprise 1: All 4 Knobs Are Wired Inverted</div>
       <p class="text-gray-300 leading-relaxed">
         Turning any top knob <strong>clockwise</strong> swept the ADC voltage from <code>3.3V &rarr; 0.0V</code> (<code>1.0f</code> down to <code>0.0f</code>). Without <code>1.0f - raw</code>, turning volume up turns the sound down!
       </p>
     </div>
-    <div class="p-4 rounded-xl bg-purple-950/20 border border-purple-500/30 space-y-2">
+    <div v-click class="p-4 rounded-xl bg-purple-950/20 border border-purple-500/30 space-y-2">
       <div class="font-mono font-bold text-purple-300 uppercase">Surprise 2: 3 of 4 Stick Axes Are Inverted</div>
       <p class="text-gray-300 leading-relaxed">
         <strong>Left Stick X (<code>D22</code>)</strong> reads <code>0.0f</code> (Left) &rarr; <code>1.0f</code> (Right), while <strong>Right Stick X (<code>D24</code>)</strong> is rotated on the PCB and reads <code>1.0f</code> (Left) &rarr; <code>0.0f</code> (Right)!
@@ -242,7 +242,7 @@ layout: default
     </div>
   </div>
 
-  <div class="col-span-6">
+  <div v-click class="col-span-6">
 
 ```cpp
 // Verified in gamma_pins.h:
@@ -278,19 +278,19 @@ layout: default
 
 <div class="grid grid-cols-12 gap-5 mt-5 text-xs">
   <div class="col-span-7 space-y-3">
-    <div class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
+    <div v-click class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
       <div class="font-mono text-emerald-300 font-bold mb-1">Left Keypad: 7 Note Keys (<code>N1</code>–<code>N7</code>)</div>
       <p class="text-gray-300 font-mono">
         <code>D1</code> (<code>PC11</code>), <code>D2</code> (<code>PC10</code>), <code>D3</code> (<code>PC9</code>), <code>D4</code> (<code>PC8</code>), <code>D5</code> (<code>PD2</code>), <code>D6</code> (<code>PC12</code>), <code>D7</code> (<code>PG10</code>)
       </p>
     </div>
-    <div class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
+    <div v-click class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
       <div class="font-mono text-cyan-300 font-bold mb-1">Right Keypad: 7 Chord Keys (<code>C1</code>–<code>C7</code>)</div>
       <p class="text-gray-300 font-mono">
         <code>D8</code> (<code>PG11</code>), <code>D9</code> (<code>PB4</code>), <code>D10</code> (<code>PB5</code>), <code>D13</code> (<code>PB6</code>), <code>D14</code> (<code>PB7</code>), <code>D26</code> (<code>PD11</code>), <code>D27</code> (<code>PG9</code>)
       </p>
     </div>
-    <div class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
+    <div v-click class="p-3.5 rounded-xl bg-gray-900 border border-gray-800">
       <div class="font-mono text-amber-300 font-bold mb-1">Rotary Encoder + Push Switch</div>
       <p class="text-gray-300 font-mono">
         Phase A: <code>D15</code> (<code>PC0</code>) &middot; Phase B: <code>D16</code> (<code>PA3</code>) &middot; Click: <code>D28</code> (<code>PA2</code>)
@@ -298,7 +298,7 @@ layout: default
     </div>
   </div>
 
-  <div class="col-span-5 p-4 rounded-xl bg-red-950/20 border border-red-500/30 space-y-2">
+  <div v-click class="col-span-5 p-4 rounded-xl bg-red-950/20 border border-red-500/30 space-y-2">
     <div class="font-mono text-red-400 uppercase">The Display Blocking Hazard</div>
     <div class="text-sm font-bold text-white">Why Main-Loop Encoder Polling Drops Clicks</div>
     <p class="text-gray-300 leading-relaxed">
@@ -328,7 +328,7 @@ layout: default
     <p class="text-sm text-gray-300 leading-relaxed">
       When we started <code>AudioCallback</code> at 48 kHz, audio played through the 3.5mm headphone jack—but the Gamma's <strong>built-in speaker was completely silent</strong>!
     </p>
-    <div class="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 space-y-2">
+    <div v-click class="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 space-y-2">
       <div class="font-mono font-bold text-emerald-300">Discovery on <code>seed::D32</code> (<code>PC3</code>):</div>
       <p class="text-gray-300">
         The internal Class-D speaker amplifier has an active-HIGH enable/unmute line wired to <code>seed::D32</code> (<code>PC3</code>)—a pin on the Daisy Seed 2 DFM bottom pads!
@@ -336,7 +336,7 @@ layout: default
     </div>
   </div>
 
-  <div class="col-span-6">
+  <div v-click class="col-span-6">
 
 ```cpp
 // Pop-Free Speaker Amp Initialization Sequence:
@@ -372,21 +372,21 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white"><code class="text-emerald-300">gamma-pinout</code> &middot; Declarative Hardware Truth</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Answers <strong>"What is connected where?"</strong> via a master 32-row pinout and polarity table</li>
       <li>Bundles a drop-in <code>resources/gamma_pins.h</code> C++ header with pure hardware constants</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white"><code class="text-emerald-300">gamma-hardware-controls</code> &middot; Front-Panel Driver Idioms</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Answers <strong>"How do I poll and render controls safely?"</strong> via a 1 kHz <code>TIM5</code> ISR Buxton Gray-code encoder state machine</li>
       <li>Provides lock-free key event queues, IIR deadband pot smoothing, and 5 deep subsystem guides in <code>references/*.md</code></li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white"><code class="text-emerald-300">gamma-usb-connectivity</code> &middot; Non-Blocking USB CDC &amp; Reboot</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Answers <strong>"Why is <code>hw.StartLog()</code> silent?"</strong> (Gamma routes USB-C to <code>UsbHandle::FS_EXTERNAL</code> on <code>D29/D30</code>, not the Seed's internal port)</li>
@@ -531,29 +531,29 @@ step: Zoom-In 3 of 3
 
 <!-- S61 -->
 <ol class="space-y-2.5 text-s text-gray-200 list-decimal pl-6 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-emerald-300 font-mono">references/display.md</strong>
     <span class="text-gray-300"> &mdash; <code>I2C1</code> force-reset sequence, <code>I2C_1MHZ</code> config, and 30 Hz frame throttling</span>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-emerald-300 font-mono">references/analog_inputs.md</strong>
     <span class="text-gray-300"> &mdash; 9-channel <code>AdcChannelConfig</code>, pot/joystick inversion, and soft-takeover / pickup</span>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-emerald-300 font-mono">references/digital_keys.md</strong>
     <span class="text-gray-300"> &mdash; 14 active-low keys, 8ms shift-register debounce, and lock-free ring buffer</span>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-emerald-300 font-mono">references/rotary_encoder.md</strong>
     <span class="text-gray-300"> &mdash; Buxton Gray-code state table eliminating mechanical contact bounce</span>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-emerald-300 font-mono">references/main_loop_blueprint.md</strong>
     <span class="text-gray-300"> &mdash; Complete end-to-end C++ firmware skeleton combining everything</span>
   </li>
 </ol>
 
-<div class="mt-4 p-3 rounded-lg bg-gray-900/70 border border-gray-800 text-xs text-gray-300 text-center">
+<div v-click class="mt-4 p-3 rounded-lg bg-gray-900/70 border border-gray-800 text-xs text-gray-300 text-center">
   <code>SKILL.md</code> stays a crisp 91-line index; the agent reads only the specific <code>references/*.md</code> file it needs.
 </div>
 
@@ -567,32 +567,32 @@ layout: default
 
 <!-- S62 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">Takeaway: Hardware Discovery Skills</h2>
+  <h2 class="text-2xl font-bold m-0">Takeaway: Solving Problem #3 (&ldquo;Groundhog Day&rdquo; Debugging)</h2>
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
-    <strong class="text-white">Telemetry First</strong>
+  <li v-click>
+    <strong class="text-white">The Problem We Started With: Ephemeral Chat Breakthroughs</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>When reverse-engineering hardware with an agent, prioritize bringing up a visual or serial output channel in Phase 1</li>
-      <li>Turns the device itself into a live logic analyzer for every subsequent phase</li>
+      <li>Normally, spending hours probing unknown GPIO pins, inverted pot polarities, and I2C blocking hazards lives only inside that one chat transcript</li>
+      <li>Close the terminal window and that hard-won system context vanishes &mdash; forcing the next session right back to square one</li>
     </ul>
   </li>
-  <li>
-    <strong class="text-white">Bundle Verified Code in <code>resources/</code></strong>
+  <li v-click>
+    <strong class="text-white">How Discovery Skills Solve It: Freeze Truth into Code &amp; Runbooks</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Don't just describe pin numbers in prose—ship a tested <code>gamma_pins.h</code> header in <code>resources/</code></li>
-      <li>Eliminates pin transcription errors in future firmware builds</li>
+      <li>Shipping verified <code>resources/gamma_pins.h</code> and <code>resources/gamma_usb.h</code> headers inside the skills turns ephemeral discoveries into drop-in C++ code</li>
+      <li>Separating declarative pin truth (<code>gamma-pinout</code>) from 1 kHz <code>TIM5</code> ISR driver blueprints (<code>gamma-hardware-controls</code>) keeps institutional memory modular</li>
     </ul>
   </li>
-  <li>
-    <strong class="text-white">Separate Declarative Truth from Driver Idioms</strong>
+  <li v-click>
+    <strong class="text-white">Compounding Engineering Intelligence</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Keeping <code>gamma-pinout</code> (facts) distinct from <code>gamma-hardware-controls</code> (ISR drivers) keeps both skills modular and easy to maintain</li>
+      <li>Every solved mystery or reverse-engineered subsystem becomes a permanent upgrade to the workspace &mdash; so the agent gets smarter after every hard problem you solve together</li>
     </ul>
   </li>
 </ol>
 
 <!--
-That's Way 3: Hardware Discovery Skills. Turn ephemeral debugging sessions into permanent, verifiable hardware abstractions by bundling both declarative truth (`gamma_pins.h`) and real-time driver blueprints.
+And that's Way 3: Hardware Discovery Skills—which solves Problem #3 from the start of our talk: Groundhog Day debugging sessions. In a typical agent workflow, all those hours we spent discovering inverted potentiometers, the hidden `D32` speaker amp pin, and the 9.5 ms OLED I2C blocking hazard would have died the moment we closed the chat tab. By freezing our discoveries into drop-in C++ headers and modular driver skills, every hard problem you solve permanently upgrades your agent for the next task.
 -->

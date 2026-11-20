@@ -35,21 +35,21 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">16 Years in Developer Relations at Google</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>From Sydney &mdash; though I lived right here in Brisbane for a couple of years during the awkward years.</li>
       <li>Supported <strong>Blogger</strong>, <strong>Google+</strong>, <strong>Google Maps</strong>, <strong>Flutter</strong>, and now <strong>Google Antigravity</strong></li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Down the Synthesizer &amp; Electronics Rabbit Hole</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Picked up electronics as a hobby a couple of years ago after watching videos on Eurorack synthesizers</li>
       <li>It quickly snowballed from building modules into reverse-engineering hardware</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">How Agents Re-Shape User Interfaces</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Exploring how LLMs and Antigravity re-shape the definition of &mdash; and requirement for &mdash; user interfaces</li>
@@ -71,24 +71,43 @@ layout: default
 
 <!-- S1-01c -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">Quote of the Day</h2>
+  <h2 class="text-2xl font-bold m-0">Three Everyday Problems with Coding Agents</h2>
 </div>
 
-
-<div class="h-80 flex flex-col items-center justify-center text-center px-8">
-  <blockquote class="text-3xl font-semibold text-white tracking-tight leading-snug max-w-3xl">
-    &ldquo;Don&rsquo;t ask &lsquo;How do we add AI to this?&rsquo;<br/>
-    Ask &lsquo;What is the agent-first version of this?&rsquo;&rdquo;
-  </blockquote>
-  <p class="mt-6 text-sm text-gray-400">
-    &mdash; From PostHog's post <a href="https://posthog.com/newsletter/building-ai-products" target="_blank" class="text-cyan-300 underline">38 things we've learned about building AI products</a>
-  </p>
-</div>
+<ol class="space-y-7 text-sm text-gray-200 list-decimal pl-6 mt-8 leading-relaxed">
+  <li v-click>
+    <strong class="text-white">Unfamiliar APIs &amp; Tribal Knowledge</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Hallucinated APIs, mixed-up versions, and endless codebase grep loops</li>
+      <li>Hard-won architectural rules live in engineers' heads, not the repo</li>
+    </ul>
+  </li>
+  <li v-click>
+    <strong class="text-white">Prose Prompts Are Non-Deterministic</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Plain-text instructions fail on fragile timing windows and CLI quirks</li>
+      <li>Natural language leaves too much room for improvisation and retries</li>
+    </ul>
+  </li>
+  <li v-click>
+    <strong class="text-white">&ldquo;Groundhog Day&rdquo; Debugging Sessions</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-2 text-gray-300">
+      <li>Hours of debugging discoveries vanish the moment you close the chat</li>
+      <li>Tomorrow's session starts back at square one with zero memory</li>
+    </ul>
+  </li>
+</ol>
 
 <!--
-There's a great line from the folks at PostHog that captures how I think about this shift: "Don't ask 'how do we add AI to this?' Ask 'what is the agent-first version of this?'"
+Before we jump into the itinerary, let's ask the most important question: why do we need Agent Skills in the first place? If you use coding agents in day-to-day software engineering, you quickly run into three frustrating walls.
 
-Today, we're going to ask what the agent-first version of hardware bring-up, reverse engineering, and documentation looks like.
+First: unfamiliar APIs and tribal knowledge. When your stack or internal library isn't well-represented in the model's training weights, the agent hallucinates function signatures, mixes up versions, or burns dozens of turns grepping through source files.
+
+Second: prose prompts are non-deterministic. When you ask an agent in plain English to run a delicate multi-step operation, hit a tight hardware timing window, or interpret a quirky CLI exit code, it improvises—and ends up in endless retry loops.
+
+Third: Groundhog Day debugging sessions. You spend two hours helping an agent untangle a gnarly system bug, finally get everything working, close the chat tab—and tomorrow, the very next session starts completely from scratch.
+
+As we walk through Skills Three Ways today, we're going to come back to each of these three problems and see how each skill pattern solves one of them directly.
 -->
 
 ---
@@ -101,21 +120,21 @@ layout: default
 </div>
 
 <ol class="space-y-3.5 text-sm text-gray-200 list-decimal pl-6 mt-4 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">What Are Agent Skills?</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Monolithic system prompts &rarr; 3-tier progressive disclosure</li>
       <li>Using Google Antigravity's inbuilt skills for fun and profit</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Two Synths &amp; Zero Schematics</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>How a late-night impulse purchase leads to developer talks</li>
       <li>Figuring out firmware without documentation</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Teaching the Agent Step by Step</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Building cheatsheets from libraries</li>
@@ -123,7 +142,7 @@ layout: default
       <li>Planning out experiments to working hardware</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Without Skills vs. With Skills</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Same prompt, how different are the results?</li>
@@ -175,7 +194,7 @@ layout: default
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-6">
-  <div class="p-5 rounded-xl bg-red-950/15 border border-red-500/30 space-y-3">
+  <div v-click class="p-5 rounded-xl bg-red-950/15 border border-red-500/30 space-y-3">
     <div class="text-xs font-mono text-red-400 uppercase">Anti-Pattern: Monolithic AGENTS.md</div>
     <h3 class="text-lg font-bold text-white">Stuffing Every Manual into Always-On Rules</h3>
     <ul class="text-xs text-gray-300 space-y-2 list-disc pl-4">
@@ -187,7 +206,7 @@ layout: default
     </ul>
   </div>
 
-  <div class="p-5 rounded-xl bg-emerald-950/15 border border-emerald-500/30 space-y-3">
+  <div v-click class="p-5 rounded-xl bg-emerald-950/15 border border-emerald-500/30 space-y-3">
     <div class="text-xs font-mono text-emerald-400 uppercase">The Solution: Progressive Disclosure</div>
     <h3 class="text-lg font-bold text-white">Modular, Self-Contained Skill Packages</h3>
     <ul class="text-xs text-gray-300 space-y-2 list-disc pl-4">
@@ -248,31 +267,61 @@ layout: default
 </div>
 
 <div class="grid grid-cols-12 gap-6 mt-5 items-center">
-  <div class="col-span-6">
-
-```text
-.agents/skills/code-reviewer/
-├── SKILL.md          # Required: YAML frontmatter + core runbook
-├── scripts/          # Optional: Helper scripts & CLI utilities
-│   └── run_linter.py
-├── references/       # Optional: In-depth documentation & API specs
-│   └── style_guide.md
-└── resources/        # Optional: Drop-in templates & sample assets
-    └── report_template.md
-```
-
+  <div class="col-span-6 p-5 rounded-xl bg-gray-900/90 border border-gray-800 font-mono text-xs">
+    <div class="flex items-center gap-2 text-white font-bold pb-2.5 mb-3 border-b border-gray-800">
+      <svg class="w-4 h-4 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span>.agents/skills/code-reviewer/</span>
+    </div>
+    <div class="space-y-2.5 pl-3 border-l border-gray-700/80 ml-1.5">
+      <div class="flex items-center justify-between py-1.5 px-2.5 rounded-lg bg-cyan-950/30 border border-cyan-500/30">
+        <div class="flex items-center gap-2 text-cyan-300 font-bold">
+          <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>SKILL.md</span>
+        </div>
+        <span class="text-[10px] uppercase tracking-wider text-cyan-300/90 bg-cyan-950/80 px-1.5 py-0.5 rounded">Required</span>
+      </div>
+      <div class="space-y-1 pt-0.5">
+        <div class="flex items-center justify-between px-2 text-amber-300 font-bold">
+          <div class="flex items-center gap-2">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span>scripts/</span>
+          </div>
+          <span class="text-[10px] uppercase tracking-wider text-gray-500 font-normal">Optional</span>
+        </div>
+        <div class="pl-5 ml-3.5 border-l border-gray-800 text-gray-400 py-0.5">run_linter.py</div>
+      </div>
+      <div class="space-y-1 pt-0.5">
+        <div class="flex items-center justify-between px-2 text-emerald-300 font-bold">
+          <div class="flex items-center gap-2">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span>references/</span>
+          </div>
+          <span class="text-[10px] uppercase tracking-wider text-gray-500 font-normal">Optional</span>
+        </div>
+        <div class="pl-5 ml-3.5 border-l border-gray-800 text-gray-400 py-0.5">style_guide.md</div>
+      </div>
+      <div class="space-y-1 pt-0.5">
+        <div class="flex items-center justify-between px-2 text-emerald-300 font-bold">
+          <div class="flex items-center gap-2">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span>resources/</span>
+          </div>
+          <span class="text-[10px] uppercase tracking-wider text-gray-500 font-normal">Optional</span>
+        </div>
+        <div class="pl-5 ml-3.5 border-l border-gray-800 text-gray-400 py-0.5">report_template.md</div>
+      </div>
+    </div>
   </div>
-
   <div class="col-span-6 space-y-3 text-xs">
-    <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
+    <div v-click class="p-3 rounded-lg bg-gray-900 border border-gray-800">
       <div class="font-mono font-bold text-cyan-300">SKILL.md (Required)</div>
       <p class="text-gray-400 mt-1">Single entry point kept concise (&lt;500 lines). Contains activation metadata and primary procedural workflow.</p>
     </div>
-    <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
+    <div v-click class="p-3 rounded-lg bg-gray-900 border border-gray-800">
       <div class="font-mono font-bold text-amber-300">scripts/ (Executable Utilities)</div>
       <p class="text-gray-400 mt-1">Deterministic tools so the agent runs tested commands instead of ad hoc on-the-fly solutions.</p>
     </div>
-    <div class="p-3 rounded-lg bg-gray-900 border border-gray-800">
+    <div v-click class="p-3 rounded-lg bg-gray-900 border border-gray-800">
       <div class="font-mono font-bold text-emerald-300">references/ &amp; resources/ (Deep Context)</div>
       <p class="text-gray-400 mt-1">In-depth API specs, reference manuals, and template assets loaded on-demand only when a sub-step requires them.</p>
     </div>
@@ -306,14 +355,14 @@ description: >-
 </div>
 
 <div class="grid grid-cols-2 gap-4 mt-5 text-xs">
-  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
+  <div v-click class="p-4 rounded-xl bg-gray-900 border border-gray-800">
     <div class="font-mono font-bold text-white mb-1"><code>name</code> (Identifier Constraint)</div>
     <p class="text-gray-400 leading-relaxed">
       A unique, lowercase, hyphenated identifier that <strong>must match the parent directory name</strong>.
     </p>
   </div>
 
-  <div class="p-4 rounded-xl bg-gray-900 border border-gray-800">
+  <div v-click class="p-4 rounded-xl bg-gray-900 border border-gray-800">
     <div class="font-mono font-bold text-cyan-300 mb-1"><code>description</code> (The Routing Trigger)</div>
     <p class="text-gray-400 leading-relaxed">
       The <strong>primary activation trigger</strong> loaded at startup. The agent matches user prompts against this text to decide whether to load the full skill.
@@ -334,10 +383,10 @@ layout: default
   <h2 class="text-2xl font-bold m-0">Inside SKILL.md Part 2: The Important Stuff</h2>
 </div>
 
-<div class="grid grid-cols-2 gap-5 mt-6">
-  <div class="p-5 rounded-xl bg-gray-900 border border-gray-800 space-y-3">
+<div class="space-y-4 mt-4">
+  <div v-click class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
     <div class="text-xs font-mono text-cyan-300 uppercase">1. Runbook Procedures</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
+    <p class="text-xs text-gray-300 leading-relaxed m-0">
       Step-by-step operational workflows, domain rules, and verification criteria the agent follows from start to finish:
     </p>
 
@@ -349,19 +398,16 @@ layout: default
 ```
 
   </div>
-
-  <div class="p-5 rounded-xl bg-gray-900 border border-gray-800 space-y-3">
+  <div v-click class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
     <div class="text-xs font-mono text-emerald-300 uppercase">2. Pointers to Scripts &amp; References</div>
-    <p class="text-xs text-gray-300 leading-relaxed">
+    <p class="text-xs text-gray-300 leading-relaxed m-0">
       Relative links to executable utilities and deep reference documentation housed inside the skill directory:
     </p>
 
 ```markdown
 ## Bundled Resources
-* Linter script:
-  [`scripts/run_linter.py`](scripts/run_linter.py)
-* Style guide:
-  [`references/style_guide.md`](references/style_guide.md)
+* Linter script: [`scripts/run_linter.py`](scripts/run_linter.py)
+* Style guide: [`references/style_guide.md`](references/style_guide.md)
 ```
 
   </div>
@@ -381,21 +427,21 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Tier 1 &middot; Discovery (~100 Tokens, Always Loaded)</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>At session start, only <code>name</code> and <code>description</code> from each skill's YAML frontmatter are injected</li>
       <li>Acts as a lightweight semantic index without consuming working memory</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Tier 2 &middot; Activation (&lt; 5,000 Tokens, Loaded When Relevant)</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>When the user's task matches a skill's description, the agent reads <code>SKILL.md</code> into working memory</li>
       <li>Provides the primary procedural workflow, negative constraints, and relative links</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Tier 3 &middot; Execution (On-Demand Files, Loaded Per Sub-Task)</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>The agent selectively reads <code>references/*.md</code>, uses templates in <code>resources/</code>, or executes <code>scripts/*.py</code></li>
@@ -418,21 +464,21 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Phase 1 &middot; Exploration &amp; Problem Solving</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Solve an unfamiliar task, research an API, or reverse-engineer hardware interactively in the workspace</li>
       <li>Iterate until commands, scripts, and edge-case fixes are thoroughly tested and proven</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Phase 2 &middot; Synthesis with Built-In Customization Skill</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Prompt the agent: <code>"/agy-customize Please convert this into an agent skill"</code></li>
       <li>The agent structures <code>SKILL.md</code>, formats YAML frontmatter, and isolates deep context into <code>scripts/</code> or <code>references/</code></li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Phase 3 &middot; Test in a Clean Session</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Start a brand-new conversation with an empty context window to simulate a real user prompt</li>
@@ -441,7 +487,7 @@ layout: default
   </li>
 </ol>
 
-<div class="mt-6 p-3.5 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
+<div v-click class="mt-6 p-3.5 rounded-lg bg-gray-900/40 border border-gray-800/80 text-center text-sm text-gray-300">
   You don't need to write the skill <strong>by hand</strong>!
 </div>
 

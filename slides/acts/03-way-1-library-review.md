@@ -30,21 +30,21 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Clone Source: Check Out the Raw C++ Repos</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Clone <code>electro-smith/libDaisy</code> and <code>electro-smith/DaisySP</code> directly into the workspace</li>
       <li>Ask agent to inspect source code rather than relying on stale training weights</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Deep Audit: Synthesize Architecture</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Have Antigravity survey linker scripts, memory sections, real-time ISR rules, and module catalogs</li>
       <li>Compile findings into a structured architectural reference</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Package Skill: Distill into <code>.agents/skills/</code></strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Convert the report into a <code>SKILL.md</code> cheatsheet plus <code>references</code> catalogs</li>
@@ -67,21 +67,21 @@ layout: default
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
+  <li v-click>
     <strong class="text-white">Hallucinated Hardware Abstraction Layer APIs</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>Without a skill, LLMs mix up Arduino <code>analogRead()</code>, raw STM32 HAL calls, and older <code>libDaisy</code> v4 vs v7</li>
       <li>Causes immediate compile errors and wasted retry loops</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">STM32H7 Direct Memory Access &amp; RAM Traps</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>The Cortex-M7 D-Cache does not snoop DMA transfers</li>
       <li>Putting a DMA buffer in cached AXI SRAM or a 395 KB <code>ReverbSc</code> on the stack silently crashes the MCU</li>
     </ul>
   </li>
-  <li>
+  <li v-click>
     <strong class="text-white">Interrupt Service Routine Deadline Violations</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
       <li>At 48 kHz with a 48-sample block, <code>AudioCallback</code> has a strict <strong>1.0 millisecond</strong> deadline</li>
@@ -134,10 +134,10 @@ description: >-
 ```
 
   <div class="grid grid-cols-2 gap-4 text-xs pt-2">
-    <div class="p-3 rounded-lg bg-gray-900/80 border border-gray-800">
+    <div v-click class="p-3 rounded-lg bg-gray-900/80 border border-gray-800">
       <span class="text-cyan-300 font-semibold">Hardware Anchors:</span> Names <code>ARM Cortex-M7 @ 480 MHz</code> and <code>STM32H750</code> so any MCU-level question triggers the skill.
     </div>
-    <div class="p-3 rounded-lg bg-gray-900/80 border border-gray-800">
+    <div v-click class="p-3 rounded-lg bg-gray-900/80 border border-gray-800">
       <span class="text-cyan-300 font-semibold">Subsystem Triggers:</span> Lists <code>ADC, DAC, GPIO, I2C, SPI, UART, SAI, QSPI</code> and <code>DTCM, SRAM1 DMA, SDRAM</code>.
     </div>
   </div>
@@ -210,33 +210,33 @@ layout: default
 
 <!-- S29 -->
 <div class="flex items-center gap-3 mb-6">
-  <h2 class="text-2xl font-bold m-0">Takeaway: Library Review Skills</h2>
+  <h2 class="text-2xl font-bold m-0">Takeaway: Solving Problem #1 (Unfamiliar APIs &amp; Tribal Knowledge)</h2>
 </div>
 
 <ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
-  <li>
-    <strong class="text-white">50,000+ Lines of C++ Headers Distilled</strong>
+  <li v-click>
+    <strong class="text-white">The Problem We Started With: Hallucinated APIs &amp; Grep Loops</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Raw source across <code>libDaisy/</code> and <code>DaisySP/</code> would overwhelm context if searched ad-hoc every session</li>
-      <li>Pre-auditing once eliminates repetitive codebase grep loops</li>
+      <li>Without a skill, the agent mixes up library versions, invents HAL calls, or burns turns searching 50,000+ lines of C++ headers in <code>libDaisy/</code> and <code>DaisySP/</code></li>
+      <li>Hidden architectural constraints like Cortex-M7 DMA cache coherency and 1.0 ms audio ISR deadlines aren't obvious from raw headers</li>
     </ul>
   </li>
-  <li>
-    <strong class="text-white">~200 Lines per <code>SKILL.md</code> Runbook</strong>
+  <li v-click>
+    <strong class="text-white">How Library Review Skills Solve It: Distill Once, Reuse Forever</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Concise architectural cheatsheets with zero-hallucination class names, memory macros, and real-time DSP rules</li>
-      <li>Backed by on-demand Tier-3 module catalogs in <code>references/</code></li>
+      <li>Auditing the source tree once produces a ~200-line <code>SKILL.md</code> runbook backed by on-demand Tier-3 catalogs in <code>references/</code></li>
+      <li>Replaces repetitive codebase grep loops with zero-hallucination class names, memory macros, and real-time DSP rules</li>
     </ul>
   </li>
-  <li>
-    <strong class="text-white">100% Reusable Across Any Daisy Project</strong>
+  <li v-click>
+    <strong class="text-white">Portable Expertise Across Projects &amp; Teammates</strong>
     <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li><code>libdaisy-guide</code> and <code>daisysp-guide</code> capture platform-level knowledge independent of the Gamma PCB</li>
-      <li>Portable to any Electro-Smith Daisy Seed, Pod, Patch, or Petal project</li>
+      <li><code>libdaisy-guide</code> and <code>daisysp-guide</code> travel with the repo and work on any Electro-Smith Daisy Seed, Pod, Patch, or Petal project</li>
+      <li>Every new agent session &mdash; and every developer on the team &mdash; inherits instant platform mastery on turn one</li>
     </ul>
   </li>
 </ol>
 
 <!--
-That's Way 1: Library Review Skills. We ran this exact same audit workflow on both `libDaisy` and `DaisySP` to produce `libdaisy-guide` and `daisysp-guide`. By distilling 50,000+ lines of C++ headers into ~200-line runbooks, the agent writes idiomatically correct Daisy C++ and DSP synthesis on the first try—and both skills are reusable on any Daisy hardware project.
+That's Way 1: Library Review Skills—and notice how it directly solves Problem #1 from the start of our talk. Instead of watching the agent hallucinate APIs or burn turns grepping through 50,000 lines of C++ headers every session, we audited `libDaisy` and `DaisySP` once and distilled them into ~200-line runbooks. Now that tribal library knowledge travels with the repository, and every future session—or teammate—gets idiomatically correct Daisy C++ on the very first try.
 -->
