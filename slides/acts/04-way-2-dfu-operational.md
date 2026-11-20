@@ -182,15 +182,15 @@ layout: default
   <h2 class="text-2xl font-bold m-0">Safety First: Building <code>gamma-firmware-restore</code> Before Probing</h2>
 </div>
 
-<div class="grid grid-cols-12 gap-6 mt-6 items-center">
-  <div class="col-span-7 space-y-3">
-    <p class="text-sm text-gray-300 leading-relaxed">
-      Before writing a single hardware-probing binary, we built our <strong>parachute</strong>: a one-command skill that restores the official <code>gamma-v2.0.3.bin</code> factory firmware even if the MCU is completely hung.
+<div class="grid grid-cols-12 gap-6 mt-10 items-center">
+  <div class="col-span-7 space-y-6">
+    <p class="text-sm text-gray-200 leading-relaxed m-0">
+      First we built our <strong>parachute</strong>: one command to restore factory <code>gamma-v2.0.3.bin</code> even from a hung MCU.
     </p>
-    <ul class="text-xs text-gray-300 space-y-2 list-disc pl-5">
-      <li>Caches <code>backups/gamma-v2.0.3.bin</code> locally (with automatic fallback download from <code>gammaupdatetool.netlify.app</code>).</li>
-      <li>Polls <code>dfu-util -l</code> at 100ms intervals so a single tap of <code>RESET</code> restores factory state in 4 seconds.</li>
-      <li>Verifies post-restore USB enumeration (<code>kUSBProductString = "Gamma"</code>, <code>0483:5740</code>).</li>
+    <ul class="text-sm text-gray-300 space-y-4 list-disc pl-5 leading-relaxed">
+      <li>Caches <code>gamma-v2.0.3.bin</code> locally with fallback download</li>
+      <li>Polls <code>dfu-util -l</code> every 100ms &mdash; one <code>RESET</code> tap restores in 4s</li>
+      <li>Verifies USB re-enumeration (<code>"Gamma"</code>, <code>0483:5740</code>)</li>
     </ul>
   </div>
 
@@ -210,63 +210,71 @@ Before probing a single unknown pin, we built our parachute: `gamma-firmware-res
 ---
 layout: skill-breakdown
 way: 2
-skill: .agents/skills/gamma-firmware-restore/
-title: Unbrick Runbook & Script
-step: Zoom-In 1 of 3
+skill: .agents/skills/gamma-firmware-restore/SKILL.md
+title: "More Than a Script Wrapper: The Restore Runbook"
+step: Zoom-In 1 of 4
 ---
 
-<!-- S43 -->
-<div class="grid grid-cols-12 gap-4 items-center text-xs">
-  <div class="col-span-6 space-y-2">
-    <div class="font-mono text-amber-300 uppercase">SKILL.md Frontmatter &amp; Command</div>
+<!-- S43a -->
+<ol class="space-y-6 text-sm text-gray-200 list-decimal pl-6 mt-2 leading-relaxed">
+  <li v-click>
+    <strong class="text-white">Hardware &amp; Failure Mental Model</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li>Bootloader map (<code>0x08000000</code> &rarr; <code>0x90040000</code>), 2.5s DFU window, and SOS blink</li>
+      <li><strong>OLED GDDRAM retention:</strong> splash stays frozen on screen even when MCU is dead</li>
+    </ul>
+  </li>
+  <li v-click>
+    <strong class="text-white">Three Tiered Recovery Procedures</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li>Method 1: Automated <code>scripts/restore_firmware.py</code> + cached/hosted <code>gamma-v2.0.3.bin</code></li>
+      <li>Fallbacks: Manual <code>dfu-util</code> CLI (with exit code <code>74</code> note) &amp; Web Updater &ldquo;Can't Enter Boot&rdquo;</li>
+    </ul>
+  </li>
+  <li v-click>
+    <strong class="text-white">Post-Restore Verification</strong>
+    <ul class="list-disc pl-5 mt-2 space-y-1.5 text-gray-300">
+      <li>Runs <code>ioreg -p IOUSB</code> to verify <code>"Gamma"</code> (<code>0x0483</code> / <code>0x5740</code>) re-enumerates</li>
+      <li>Confirms the live synthesizer UI returns on the OLED display</li>
+    </ul>
+  </li>
+</ol>
 
-```yaml
+<!--
+First, look at `gamma-firmware-restore/SKILL.md`. It isn't just a thin wrapper around a Python script—it gives the agent the full operational mental model: the bootloader memory map, why the OLED stays frozen on the splash screen when the MCU halts due to GDDRAM retention, three tiered recovery paths including manual `dfu-util` and web updater fallbacks, and explicit `ioreg` verification checks to prove the synth actually came back to life.
+-->
+
 ---
-name: gamma-firmware-restore
-description: >-
-  Restore official factory firmware or unbrick the
-  this.is.NOISE Gamma Mini Synth (Electro-Smith Daisy
-  Seed 2 DFM) via USB DFU when the device is
-  unresponsive, hanging on the splash screen, or
-  failing to connect to the official web updater.
+layout: skill-breakdown
+way: 2
+skill: .agents/skills/gamma-firmware-restore/scripts/restore_firmware.py
+title: Deterministic 100ms DFU Polling Loop
+step: Zoom-In 2 of 4
 ---
-```
 
-```bash
-python3 .agents/skills/gamma-firmware-restore/\
-  scripts/restore_firmware.py
-```
-
-  </div>
-
-  <div class="col-span-6 space-y-2">
-    <div class="font-mono text-emerald-300 uppercase">Inside <code>scripts/restore_firmware.py</code></div>
+<!-- S43b -->
+<div class="space-y-4 text-xs">
 
 ```python
-OFFICIAL_BIN_URL = (
-  "https://gammaupdatetool.netlify.app/"
-  "data/gamma-v2.0.3.bin"
-)
+OFFICIAL_BIN_URL = "https://gammaupdatetool.netlify.app/data/gamma-v2.0.3.bin"
 QSPI_START_ADDRESS = "0x90040000"
 
 # Poll every 100ms during the 2.5s grace window
 while time.time() - start_time < timeout:
-    res = subprocess.run(
-        ["dfu-util", "-l"], capture_output=True, text=True
-    )
+    res = subprocess.run(["dfu-util", "-l"], capture_output=True, text=True)
     if "0483:df11" in res.stdout:
         subprocess.run([
-            "dfu-util", "-a", "0",
-            "-s", f"{QSPI_START_ADDRESS}:leave",
-            "-D", bin_path
+            "dfu-util", "-a", "0", "-s", f"{QSPI_START_ADDRESS}:leave", "-D", bin_path
         ])
 ```
 
+  <div class="p-3.5 rounded-lg bg-amber-950/20 border border-amber-500/30 text-amber-200 text-sm">
+    <strong>Why a script:</strong> Downloading/caching <code>gamma-v2.0.3.bin</code> and polling at 100ms happens deterministically in Python—never in prose.
   </div>
 </div>
 
 <!--
-Here's `gamma-firmware-restore` side by side: `SKILL.md` tells the agent when to use it and how to verify recovery, while `scripts/restore_firmware.py` handles downloading/caching `gamma-v2.0.3.bin` and polling `dfu-util` at 100ms.
+Second, look inside `scripts/restore_firmware.py`. All the delicate timing and caching mechanics—downloading `gamma-v2.0.3.bin`, polling `dfu-util -l` every 100ms for `0483:df11`, and flashing to `0x90040000`—live inside deterministic Python code.
 -->
 
 ---
@@ -274,7 +282,7 @@ layout: skill-breakdown
 way: 2
 skill: .agents/skills/gamma-firmware-flash/SKILL.md
 title: Negative Constraints & Exit Code 74
-step: Zoom-In 2 of 3
+step: Zoom-In 3 of 4
 ---
 
 <!-- S44 -->
@@ -322,7 +330,7 @@ layout: skill-breakdown
 way: 2
 skill: .agents/skills/gamma-firmware-flash/scripts/flash_firmware.py
 title: Binary Validation & Hands-Free Reboot
-step: Zoom-In 3 of 3
+step: Zoom-In 4 of 4
 ---
 
 <!-- S45 -->
