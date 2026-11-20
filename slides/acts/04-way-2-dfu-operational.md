@@ -29,26 +29,26 @@ layout: default
   <h2 class="text-2xl font-bold m-0">Interactive Troubleshooting &rarr; Script &rarr; Skill</h2>
 </div>
 
-<ol class="space-y-4 text-sm text-gray-200 list-decimal pl-6 mt-5 leading-relaxed">
+<ol class="space-y-10 text-sm text-gray-200 list-decimal pl-6 mt-10 leading-relaxed">
   <li v-click>
-    <strong class="text-white">Hit the Wall: Debug the Hardware Protocol</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Work interactively with AGY to figure out USB VID/PIDs, bootloader button combos, memory offsets, and exit codes</li>
-      <li>Isolate where standard assumptions fail on the target hardware</li>
+    <strong class="text-white">Debug the Protocol Interactively</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Uncover USB VID/PIDs, bootloader combos, offsets, and exit codes</li>
+      <li>Isolate where standard assumptions fail on real hardware</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Automate in Code: Write a Deterministic Script</strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Don't leave timing loops or binary header checks as prose instructions</li>
-      <li>Put the exact polling and validation logic into a standalone Python utility</li>
+    <strong class="text-white">Automate in a Deterministic Script</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Move timing loops and binary checks out of prose instructions</li>
+      <li>Put polling and validation into a standalone Python utility</li>
     </ul>
   </li>
   <li v-click>
-    <strong class="text-white">Wrap in a Skill: Bundle <code>scripts/*.py</code> + <code>SKILL.md</code></strong>
-    <ul class="list-disc pl-5 mt-1 space-y-1 text-gray-300">
-      <li>Package the script inside <code>.agents/skills/&lt;name&gt;/scripts/</code></li>
-      <li>Write <code>SKILL.md</code> to tell the agent when and how to invoke it</li>
+    <strong class="text-white">Wrap in a Skill (<code>scripts/*.py</code> + <code>SKILL.md</code>)</strong>
+    <ul class="list-disc pl-5 mt-3 space-y-2.5 text-gray-300">
+      <li>Package the utility inside <code>.agents/skills/&lt;name&gt;/scripts/</code></li>
+      <li>Document when to run it and what exit codes to expect</li>
     </ul>
   </li>
 </ol>
