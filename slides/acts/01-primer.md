@@ -38,7 +38,7 @@ layout: default
   <li v-click>
     <strong class="text-white">16 Years in Google DevRel</strong>
     <ul class="list-disc pl-5 mt-2.5 space-y-2 text-gray-300">
-      <li>From Sydney (plus a couple of awkward years right here in Brisbane)</li>
+      <li>From Sydney</li>
       <li>Blogger, Google+, Google Maps, Flutter &rarr; now <strong>Google Antigravity</strong></li>
     </ul>
   </li>
@@ -58,7 +58,7 @@ layout: default
 </ol>
 
 <!--
-Before we jump in, a quick bit about me. I'm Brett Morgan, and I've been a Developer Relations Engineer at Google for 16 years. I'm from Sydney, though I actually lived right here in Brisbane for a couple of years during the awkward years! Over my time at Google I've supported Blogger, Google+, Google Maps, Flutter, and now Antigravity.
+Before we jump in, a quick bit about me. I'm Brett Morgan, and I've been a Developer Relations Engineer at Google for 16 years. I'm from Sydney. Over my time at Google I've supported Blogger, Google+, Google Maps, Flutter, and now Antigravity.
 
 Why am I talking about hardware synthesizers today? A couple of years ago I picked up electronics as a hobby after falling down a YouTube rabbit hole on Eurorack synthesizers, and it has snowballed from there.
 
